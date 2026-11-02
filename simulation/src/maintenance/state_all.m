@@ -1,0 +1,2 @@
+cfg = maintenance_context();
+load_system('tractor_mu'); rt=sfroot; c=rt.find('-isa','Stateflow.Chart','Name','launch_state'); s=rt.find('-isa','Stateflow.State'); for k=1:numel(s), if contains(s(k).Path,'launch_state'), fprintf('%d %s %s\n',s(k).Id,s(k).Name,s(k).Path); end, end; t=rt.find('-isa','Stateflow.Transition'); n=0; for k=1:numel(t), if contains(t(k).Path,'launch_state'),n=n+1;end,end; fprintf('trans=%d\n',n); close_system('tractor_mu',0); exit;

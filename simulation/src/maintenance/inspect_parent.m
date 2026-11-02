@@ -1,0 +1,2 @@
+cfg = maintenance_context();
+load_system('tractor_mu'); h=Simulink.ID.getHandle('tractor_mu:1787'); fprintf('h=%g path=%s ports=%s commented=%s\n',h,getfullname(h),mat2str(get_param(h,'Ports')),get_param(h,'Commented')); pc=get_param(h,'PortConnectivity'); for k=1:numel(pc), fprintf('port %d type=%d pos=%s dst=%d src=%d\n',k,pc(k).Type,mat2str(pc(k).Position),numel(pc(k).DstBlock),numel(pc(k).SrcBlock)); end; close_system('tractor_mu',0); exit;

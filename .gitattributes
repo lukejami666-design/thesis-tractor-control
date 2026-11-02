@@ -1,0 +1,19 @@
+* text=auto
+*.m text eol=lf
+*.py text eol=lf
+*.ps1 text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+*.slx binary
+*.mat binary
+*.sldd binary
+*.cpar binary
+*.docx binary
+*.doc binary
+*.pdf binary
+*.pptx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tif binary
+*.emf binary

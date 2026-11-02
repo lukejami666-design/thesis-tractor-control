@@ -1,0 +1,2 @@
+cfg = maintenance_context();
+load_system('tractor_mu'); rt=sfroot; c=rt.find('-isa','Stateflow.Chart','Name','launch_state'); fprintf('chart=%s sample=%s decomp=%s\n',c.Path,c.SampleTime,c.Decomposition); s=c.find('-isa','Stateflow.State'); fprintf('states=%d\n',numel(s)); for k=1:numel(s), fprintf('%s path=%s order=%d decomp=%s\n',s(k).Name,s(k).Path,s(k).ExecutionOrder,s(k).Decomposition); end; close_system('tractor_mu',0); exit;

@@ -1,0 +1,6 @@
+date,source_or_platform,query_or_action,result,access_limit,follow_up
+2026-10-10,Local repository,rg --files and title screening,16 English control/traction PDFs located; Chinese theses also located,none,Prioritize direct tractor and four-in-wheel-drive papers
+2026-10-10,Local PDF,Read first page plus method/experiment-relevant pages of core PDFs,8 entries have publisher/DOI metadata verified from PDF; 5 used as core reading,PDF text extraction works; some PDFs have OCR/encoding noise,Render checked for Sunusi et al. page 1
+2026-10-10,Crossref public API,"traction control launch low speed" and related queries,Not executed successfully,Proxy 127.0.0.1 unavailable in sandbox
+2026-10-10,Crossref public API,Escalated public metadata access request,Not executed,Approval reviewer returned 503; no bypass attempted
+2026-10-10,IEEE/ScienceDirect/Springer/CNKI/WoS/Scopus,Online database search,Not attempted after browser/approval failure,Browser URL safety check stopped computer-use; no database credentials assumed,Run the four priority queries when browser/API access is restored
