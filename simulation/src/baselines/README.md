@@ -2,4 +2,4 @@
 
 这里保存用于对比实验的基线分配逻辑和运行时参数快照。基线函数根据总驱动需求 `T0`、横摆矩 `Mz`、转角和前后轴垂直载荷比例 `k` 分配四轮扭矩，输出顺序为 `Tfl,Tfr,Trl,Trr`。
 
-`baseline_torque_distribution.m` 是从工作记录中的 MATLAB Function 文本复制并补充函数名后的版本；`launch_tcs_params_当前版本.m` 是当日使用的参数脚本来源对照；`P_runtime_20261109.m` 是从基线运行工作区导出的运行时快照。运行时参数与仓库长期参数可能不同，复现实验优先使用数据目录中记录的快照。
+`baseline_torque_distribution.m` 是从工作记录中的 MATLAB Function 文本复制并补充函数名后的版本；`launch_tcs_params_20261109_source.m` 是当日使用的参数脚本来源对照；`P_runtime_20261109.m` 是从基线运行工作区导出的运行时快照。运行时参数与仓库长期参数可能不同，复现实验优先使用数据目录中记录的快照。
