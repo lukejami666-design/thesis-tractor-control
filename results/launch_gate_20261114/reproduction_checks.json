@@ -1,0 +1,38 @@
+{
+  "vx_raw": {
+    "gate_max_abs": 0.0,
+    "baseline_max_abs": 0.0
+  },
+  "ax": {
+    "gate_max_abs": 0.0,
+    "baseline_max_abs": 0.0
+  },
+  "T_actual": {
+    "gate_max_abs": 0.0,
+    "baseline_max_abs": 0.0
+  },
+  "T_max": {
+    "gate_max_abs": 0.0,
+    "baseline_max_abs": 0.0
+  },
+  "T_base": {
+    "gate_max_abs": 0.0,
+    "baseline_max_abs": 0.0
+  },
+  "dv": {
+    "gate_max_abs": 0.0,
+    "baseline_max_abs": 0.0
+  },
+  "lambda_raw": {
+    "gate_max_abs": 0.0,
+    "baseline_max_abs": 0.0
+  },
+  "Implement_D": {
+    "gate_max_abs": 0.0,
+    "baseline_max_abs": 0.0
+  },
+  "stage": {
+    "gate_max_abs": 0.0,
+    "baseline_max_abs": 0.0
+  }
+}

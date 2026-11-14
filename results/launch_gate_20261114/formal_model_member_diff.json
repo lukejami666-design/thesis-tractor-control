@@ -1,0 +1,47 @@
+{
+  "before_path": "D:\\毕设\\launch_gate_20261113\\before_20261113_095512\\tractor_mu.slx",
+  "before_sha256": "0ccf473367e0dbe9595948b453a4442749048be0ab4ea89e0b74adb06c51b0c8",
+  "current_sha256": "bab0d3b67d277c86f9cde3e84db882c9d2b5e5a49eecd4e66ed6778351ba6c11",
+  "changed_members": [
+    {
+      "member": "metadata/coreProperties.xml",
+      "old_bytes": 722,
+      "new_bytes": 722
+    },
+    {
+      "member": "metadata/thumbnail.png",
+      "old_bytes": 65603,
+      "new_bytes": 67559
+    },
+    {
+      "member": "simulink/ScheduleCore.xml",
+      "old_bytes": 2494,
+      "new_bytes": 2494
+    },
+    {
+      "member": "simulink/blockdiagram.xml",
+      "old_bytes": 21730,
+      "new_bytes": 21730
+    },
+    {
+      "member": "simulink/stateflow/chart_870.xml",
+      "old_bytes": 18097,
+      "new_bytes": 18137
+    },
+    {
+      "member": "simulink/systems/system_1787.xml",
+      "old_bytes": 139467,
+      "new_bytes": 138505
+    },
+    {
+      "member": "simulink/systems/system_root.xml",
+      "old_bytes": 343509,
+      "new_bytes": 343472
+    },
+    {
+      "member": "simulink/windowsInfo.xml",
+      "old_bytes": 117764,
+      "new_bytes": 117763
+    }
+  ]
+}

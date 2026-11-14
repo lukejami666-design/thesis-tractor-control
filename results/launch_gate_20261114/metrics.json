@@ -1,0 +1,36 @@
+[
+  {
+    "strategy": "baseline",
+    "t2_s": 0.40700000000000003,
+    "dv_peak_common_mps": 12.584258254553866,
+    "lambda_raw_P95_common": 0.969071034577618,
+    "torque_drawdown_to_t2_Nm": 94234.25123162015,
+    "drawdown_start_s": 0.077,
+    "drawdown_end_s": 0.40700000000000003,
+    "actual_min_Nm": 0.0,
+    "max_over_cap_Nm": 0.0,
+    "Fx_forward_impulse_common_Ns": 12906.526565904373,
+    "Fx_forward_mean_common_N": 31759.112968578513,
+    "Fx_front_mean_common_N": 7106.7734465067,
+    "Fx_rear_mean_common_N": 24652.339522071816,
+    "Fz_min_N": 80.42952607462351,
+    "gate_path_loss_common_ratio": 0.0
+  },
+  {
+    "strategy": "candidate_J",
+    "t2_s": 0.406,
+    "dv_peak_common_mps": 12.219784184648663,
+    "lambda_raw_P95_common": 0.968030188370377,
+    "torque_drawdown_to_t2_Nm": 90407.02406305073,
+    "drawdown_start_s": 0.07100000000000001,
+    "drawdown_end_s": 0.406,
+    "actual_min_Nm": 0.0,
+    "max_over_cap_Nm": 0.0,
+    "Fx_forward_impulse_common_Ns": 12955.753867017482,
+    "Fx_forward_mean_common_N": 31879.538534086354,
+    "Fx_front_mean_common_N": 7420.84455674004,
+    "Fx_rear_mean_common_N": 24458.69397734631,
+    "Fz_min_N": 2684.090426114638,
+    "gate_path_loss_common_ratio": 0.04995979684757553
+  }
+]

@@ -1,0 +1,1337 @@
+MATLAB 9.13.0.2399474 (R2022b) Update 7
+model=D:\毕设\launch_gate_20261113\launch_gate_exp.slx
+InitFcn=
+if ~exist('P','var') || ~isfield(P,'gate_version'), P=gate_params(launch_tcs_params()); end
+PreLoadFcn=
+StartFcn=
+
+BLOCK launch_gate_exp/Common motor capability/ Demux  SID=5946::23 TYPE=Demux
+MaskValues=
+out1 name= dest=8566.001953125
+
+BLOCK launch_gate_exp/Common motor capability/ SFunction  SID=5946::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=8562.00341796875
+out2 name=T dest=8567.001953125
+
+BLOCK launch_gate_exp/Demux SID=3 TYPE=Demux
+MaskValues=
+out1 name=Vx dest=22257.0014648438
+out2 name=st_L dest=[8548.001953125;22474.0014648438]
+out3 name=st_R dest=[8548.001953125;22479.0014648438]
+out4 name=deg dest=[22437.0014648438;22471.0014648438]
+out5 name=deg/s dest=[22314.0014648438;22482.0014648438]
+out6 name=rpm dest=22493.0014648438
+out7 name= dest=22515.0014648438
+out8 name= dest=22452.0014648438
+out9 name= dest=22453.0014648438
+out10 name=g dest=22440.0014648438
+out11 name=g dest=22442.0014648438
+out12 name= dest=22456.0014648438
+out13 name= dest=22457.0014648438
+out14 name= dest=22458.0014648438
+out15 name= dest=22459.0014648438
+out16 name=dRoll dest=22477.0014648438
+out17 name=dPitch dest=22480.0014648438
+out18 name= dest=22483.0014648438
+out19 name=XL1 dest=22316.0014648438
+out20 name=kappaL1 dest=22602.0014648438
+out21 name=kappaR1 dest=22602.0014648438
+out22 name=kappaL2 dest=22602.0014648438
+out23 name=kappaR2 dest=22602.0014648438
+out24 name= dest=[53018.0014648438;53034.0014648438]
+out25 name= dest=[53019.0014648438;53034.0014648438]
+out26 name= dest=22486.0014648438
+out27 name= dest=22497.0014648438
+out28 name= dest=22498.0014648438
+out29 name= dest=22499.0014648438
+out30 name= dest=[53043.0014648438;22465.0014648438]
+out31 name= dest=22500.0014648438
+out32 name= dest=22501.0014648438
+out33 name= dest=22502.0014648438
+out34 name= dest=22503.0014648438
+
+BLOCK launch_gate_exp/Demux1 SID=4012 TYPE=Demux
+MaskValues=
+out1 name= dest=22287.0014648438
+out2 name= dest=22311.0014648438
+out3 name= dest=22313.0014648438
+out4 name= dest=22353.0014648438
+
+BLOCK launch_gate_exp/Demux2 SID=4709 TYPE=Demux
+MaskValues=
+out1 name= dest=22492.0014648438
+out2 name= dest=22494.0014648438
+out3 name= dest=22496.0014648438
+out4 name= dest=22495.0014648438
+
+BLOCK launch_gate_exp/Demux3 SID=5744 TYPE=Demux
+MaskValues=
+out1 name= dest=52894.0014648438
+out2 name= dest=52894.0014648438
+out3 name= dest=52894.0014648438
+out4 name= dest=52894.0014648438
+
+BLOCK launch_gate_exp/Demux4 SID=5893 TYPE=Demux
+MaskValues=
+out1 name= dest=52895.0014648438
+out2 name= dest=52895.0014648438
+out3 name= dest=52895.0014648438
+out4 name= dest=52895.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/Fz SID=3901 TYPE=Inport
+MaskValues=
+out1 name= dest=8899.00183105469
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/mu SID=3913 TYPE=Inport
+MaskValues=
+out1 name= dest=18746.0017089844
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/Demux SID=3902 TYPE=Demux
+MaskValues=
+out1 name= dest=18746.0017089844
+out2 name= dest=18746.0017089844
+out3 name= dest=18746.0017089844
+out4 name= dest=18746.0017089844
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/Fz_fl SID=3838 TYPE=Inport
+MaskValues=
+out1 name= dest=19553.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/Fz_rl SID=3839 TYPE=Inport
+MaskValues=
+out1 name= dest=20093.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/Fz_fr SID=3840 TYPE=Inport
+MaskValues=
+out1 name= dest=19854.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/Fz_rr SID=3841 TYPE=Inport
+MaskValues=
+out1 name= dest=20219.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/mu SID=3903 TYPE=Inport
+MaskValues=
+out1 name= dest=19442.0015869141
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/Demux SID=3904 TYPE=Demux
+MaskValues=
+out1 name= dest=19535.0014648438
+out2 name= dest=19536.0014648438
+out3 name= dest=19539.0014648438
+out4 name= dest=19549.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fl_dugoff/Fz SID=3850::1 TYPE=Inport
+MaskValues=
+out1 name= dest=19652.0021972656
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fl_dugoff/ Demux  SID=3850::46 TYPE=Demux
+MaskValues=
+out1 name= dest=19717.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fl_dugoff/ SFunction  SID=3850::45 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=19637.0029296875
+out2 name=Fx0 dest=19724.0014648438
+out3 name=Fy0 dest=19730.0014648438
+out4 name=Fx dest=19741.0014648438
+out5 name=Fy dest=19748.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fl_dugoff/Fx0 SID=3850::5 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fl_dugoff/Fx SID=3850::29 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fr_dugoff/Fz SID=3851::1 TYPE=Inport
+MaskValues=
+out1 name= dest=19969.0021972656
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fr_dugoff/ Demux  SID=3851::46 TYPE=Demux
+MaskValues=
+out1 name= dest=20003.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fr_dugoff/ SFunction  SID=3851::45 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=19966.0029296875
+out2 name=Fx0 dest=20011.0014648438
+out3 name=Fy0 dest=20016.0014648438
+out4 name=Fx dest=20025.0014648438
+out5 name=Fy dest=20034.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fr_dugoff/Fx0 SID=3851::5 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/fr_dugoff/Fx SID=3851::29 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rl_dugoff/Fz SID=3852::1 TYPE=Inport
+MaskValues=
+out1 name= dest=20131.0021972656
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rl_dugoff/ Demux  SID=3852::46 TYPE=Demux
+MaskValues=
+out1 name= dest=20150.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rl_dugoff/ SFunction  SID=3852::45 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=20126.0029296875
+out2 name=Fx0 dest=20151.0014648438
+out3 name=Fy0 dest=20152.0014648438
+out4 name=Fx dest=20153.0014648438
+out5 name=Fy dest=20158.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rl_dugoff/Fx0 SID=3852::5 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rl_dugoff/Fx SID=3852::29 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rr_dugoff/Fz SID=3853::1 TYPE=Inport
+MaskValues=
+out1 name= dest=20306.0021972656
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rr_dugoff/ Demux  SID=3853::46 TYPE=Demux
+MaskValues=
+out1 name= dest=20331.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rr_dugoff/ SFunction  SID=3853::45 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=20293.0029296875
+out2 name=Fx0 dest=20332.0014648438
+out3 name=Fy0 dest=20334.0014648438
+out4 name=Fx dest=20357.0014648438
+out5 name=Fy dest=20358.0014648438
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rr_dugoff/Fx0 SID=3853::5 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/rr_dugoff/Fx SID=3853::29 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/Fx_fl SID=3854 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/Fx_fr SID=3855 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/Fx_rl SID=3856 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/pac2002/Fx_rr SID=3857 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/Fx_fl SID=3862 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/Fx_fr SID=3863 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/Fx_rl SID=3864 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Dugoff轮胎模型/Fx_rr SID=3865 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Implement_Load/Load_Model/ Demux  SID=5922::23 TYPE=Demux
+MaskValues=
+out1 name= dest=22551.0014648438
+
+BLOCK launch_gate_exp/Implement_Load/Load_Model/ SFunction  SID=5922::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=B,C,D0,DMax,LoadMode,LoadStart,RampTime,StartDistance,UseDistance
+MaskValues=
+out1 name= dest=22543.0025634766
+out2 name=D dest=22552.0014648438
+out3 name=D_unlimited dest=22553.0014648438
+out4 name=u_imp dest=22554.0014648438
+out5 name=vg_record dest=22555.0014648438
+
+BLOCK launch_gate_exp/Implement_Load/Record_Fx SID=5934 TYPE=ToWorkspace
+MaskValues=
+
+BLOCK launch_gate_exp/Mux SID=3920 TYPE=Mux
+MaskValues=
+out1 name= dest=22485.0014648438
+
+BLOCK launch_gate_exp/Mux1 SID=1861 TYPE=Mux
+MaskValues=
+out1 name= dest=8588.001953125
+
+BLOCK launch_gate_exp/Mux10 SID=3550 TYPE=Mux
+MaskValues=
+out1 name= dest=52949.0014648438
+
+BLOCK launch_gate_exp/Mux11 SID=3551 TYPE=Mux
+MaskValues=
+out1 name= dest=52951.0014648438
+
+BLOCK launch_gate_exp/Mux12 SID=3552 TYPE=Mux
+MaskValues=
+out1 name= dest=52953.0014648438
+
+BLOCK launch_gate_exp/Mux13 SID=5521 TYPE=Mux
+MaskValues=
+out1 name= dest=55013.0056152344
+
+BLOCK launch_gate_exp/Mux2 SID=4647 TYPE=Mux
+MaskValues=
+out1 name= dest=52921.0014648438
+
+BLOCK launch_gate_exp/Mux4 SID=2529 TYPE=Mux
+MaskValues=
+out1 name= dest=[52960.0014648438;22488.0014648438]
+
+BLOCK launch_gate_exp/Mux5 SID=5077 TYPE=Mux
+MaskValues=
+out1 name= dest=22506.0014648438
+
+BLOCK launch_gate_exp/Mux6 SID=5505 TYPE=Mux
+MaskValues=
+out1 name= dest=55013.0056152344
+
+BLOCK launch_gate_exp/Mux7 SID=5512 TYPE=Mux
+MaskValues=
+out1 name= dest=[52966.0014648438;55013.0056152344]
+
+BLOCK launch_gate_exp/PF车速估计/ Demux  SID=3490::39 TYPE=Demux
+MaskValues=
+out1 name= dest=22629.0014648438
+
+BLOCK launch_gate_exp/PF车速估计/ SFunction  SID=3490::38 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=22621.0025634766
+out2 name=vx_est dest=22630.0014648438
+out3 name=vy_est dest=22631.0014648438
+
+BLOCK launch_gate_exp/PID Controller/PID Compensator Formula SID=2166:901 TYPE=SubSystem
+MaskValues=
+
+BLOCK launch_gate_exp/PID_Controller//直线循迹/MATLAB Function/ Demux  SID=5155::41 TYPE=Demux
+MaskValues=
+out1 name= dest=22781.0018310547
+
+BLOCK launch_gate_exp/PID_Controller//直线循迹/MATLAB Function/ SFunction  SID=5155::40 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=22778.0025634766
+out2 name=y dest=22782.0014648438
+
+BLOCK launch_gate_exp/PID_Controller//直线循迹/PID Controller/PID Compensator Formula SID=5161:901 TYPE=SubSystem
+MaskValues=
+
+BLOCK launch_gate_exp/PID_Controller//直线循迹/Saturation
+Dynamic/Data Type
+Propagation SID=5168:5 TYPE=S-Function
+FunctionName=sfix_dtprop Parameters=14,PropDataTypeMode,(getdatatypespecs(PropDataType,PropScaling,DblOver,0, 0, PropDataTypeMode, PropScalingMode)),IfRefDouble,IfRefSingle,IsSigned,NumBitsBase,NumBitsMult,NumBitsAdd,(sort(reshape(round(NumBitsAllowFinal), prod(size(NumBitsAllowFinal)),1))),PropScalingMode,ValuesUsedBestPrec,SlopeBase,SlopeMult,SlopeAdd,BiasBase,BiasMult,BiasAdd,DblOver
+MaskValues=Inherit via propagation rule | fixdt(1, 16) | double | single | IsSigned1 | NumBits1 | 1 | 0 | 1:128 | Inherit via propagation rule | 2^-10 | [5 -7] | Slope1 | 1 | 0 | Bias1 | 1 | 0
+
+BLOCK launch_gate_exp/PID_Controller//直线循迹/指数加权移动平均/ Demux  SID=5202::43 TYPE=Demux
+MaskValues=
+out1 name= dest=52633.0014648438
+
+BLOCK launch_gate_exp/PID_Controller//直线循迹/指数加权移动平均/ SFunction  SID=5202::42 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=52629.0025634766
+out2 name=y dest=52634.0014648438
+
+BLOCK launch_gate_exp/PID_Controller//直线循迹/模式判断/ Demux  SID=5203::46 TYPE=Demux
+MaskValues=
+out1 name= dest=52653.0014648438
+
+BLOCK launch_gate_exp/PID_Controller//直线循迹/模式判断/ SFunction  SID=5203::45 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=52648.0025634766
+out2 name=mode dest=52654.0014648438
+
+BLOCK launch_gate_exp/Record_Implement_Fx_actual SID=5951 TYPE=ToWorkspace
+MaskValues=
+
+BLOCK launch_gate_exp/Ref/ Demux  SID=4::35 TYPE=Demux
+MaskValues=
+out1 name= dest=52882.0014648438
+
+BLOCK launch_gate_exp/Ref/ SFunction  SID=4::34 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=52875.0025634766
+out2 name=belta_d dest=52883.0014648438
+out3 name=wr_d dest=52884.0014648438
+out4 name=mu dest=52885.0014648438
+
+BLOCK launch_gate_exp/Ref/mu SID=4::37 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/Round2_actual_mux SID=5845 TYPE=Mux
+MaskValues=
+out1 name= dest=52862.0017089844
+
+BLOCK launch_gate_exp/Round2_actual_mux1 SID=5892 TYPE=Mux
+MaskValues=
+out1 name= dest=53030.0014648438
+
+BLOCK launch_gate_exp/Saturation
+Dynamic1/Data Type
+Propagation SID=4652:5 TYPE=S-Function
+FunctionName=sfix_dtprop Parameters=14,PropDataTypeMode,(getdatatypespecs(PropDataType,PropScaling,DblOver,0, 0, PropDataTypeMode, PropScalingMode)),IfRefDouble,IfRefSingle,IsSigned,NumBitsBase,NumBitsMult,NumBitsAdd,(sort(reshape(round(NumBitsAllowFinal), prod(size(NumBitsAllowFinal)),1))),PropScalingMode,ValuesUsedBestPrec,SlopeBase,SlopeMult,SlopeAdd,BiasBase,BiasMult,BiasAdd,DblOver
+MaskValues=Inherit via propagation rule | fixdt(1, 16) | double | single | IsSigned1 | NumBits1 | 1 | 0 | 1:128 | Inherit via propagation rule | 2^-10 | [5 -7] | Slope1 | 1 | 0 | Bias1 | 1 | 0
+
+BLOCK launch_gate_exp/Saturation
+Dynamic2/Data Type
+Propagation SID=4655:5 TYPE=S-Function
+FunctionName=sfix_dtprop Parameters=14,PropDataTypeMode,(getdatatypespecs(PropDataType,PropScaling,DblOver,0, 0, PropDataTypeMode, PropScalingMode)),IfRefDouble,IfRefSingle,IsSigned,NumBitsBase,NumBitsMult,NumBitsAdd,(sort(reshape(round(NumBitsAllowFinal), prod(size(NumBitsAllowFinal)),1))),PropScalingMode,ValuesUsedBestPrec,SlopeBase,SlopeMult,SlopeAdd,BiasBase,BiasMult,BiasAdd,DblOver
+MaskValues=Inherit via propagation rule | fixdt(1, 16) | double | single | IsSigned1 | NumBits1 | 1 | 0 | 1:128 | Inherit via propagation rule | 2^-10 | [5 -7] | Slope1 | 1 | 0 | Bias1 | 1 | 0
+
+BLOCK launch_gate_exp/Saturation
+Dynamic3/Data Type
+Propagation SID=5224:5 TYPE=S-Function
+FunctionName=sfix_dtprop Parameters=14,PropDataTypeMode,(getdatatypespecs(PropDataType,PropScaling,DblOver,0, 0, PropDataTypeMode, PropScalingMode)),IfRefDouble,IfRefSingle,IsSigned,NumBitsBase,NumBitsMult,NumBitsAdd,(sort(reshape(round(NumBitsAllowFinal), prod(size(NumBitsAllowFinal)),1))),PropScalingMode,ValuesUsedBestPrec,SlopeBase,SlopeMult,SlopeAdd,BiasBase,BiasMult,BiasAdd,DblOver
+MaskValues=Inherit via propagation rule | fixdt(1, 16) | double | single | IsSigned1 | NumBits1 | 1 | 0 | 1:128 | Inherit via propagation rule | 2^-10 | [5 -7] | Slope1 | 1 | 0 | Bias1 | 1 | 0
+
+BLOCK launch_gate_exp/Saturation
+Dynamic4/Data Type
+Propagation SID=5226:5 TYPE=S-Function
+FunctionName=sfix_dtprop Parameters=14,PropDataTypeMode,(getdatatypespecs(PropDataType,PropScaling,DblOver,0, 0, PropDataTypeMode, PropScalingMode)),IfRefDouble,IfRefSingle,IsSigned,NumBitsBase,NumBitsMult,NumBitsAdd,(sort(reshape(round(NumBitsAllowFinal), prod(size(NumBitsAllowFinal)),1))),PropScalingMode,ValuesUsedBestPrec,SlopeBase,SlopeMult,SlopeAdd,BiasBase,BiasMult,BiasAdd,DblOver
+MaskValues=Inherit via propagation rule | fixdt(1, 16) | double | single | IsSigned1 | NumBits1 | 1 | 0 | 1:128 | Inherit via propagation rule | 2^-10 | [5 -7] | Slope1 | 1 | 0 | Bias1 | 1 | 0
+
+BLOCK launch_gate_exp/Subsystem2/Demux SID=5541 TYPE=Demux
+MaskValues=
+out1 name= dest=52975.0014648438
+out2 name= dest=52978.0014648438
+out3 name= dest=52981.0014648438
+out4 name= dest=52984.0014648438
+
+BLOCK launch_gate_exp/Subsystem2/Mux SID=5542 TYPE=Mux
+MaskValues=
+out1 name= dest=[52988.0014648438;52989.0014648438]
+
+BLOCK launch_gate_exp/TruckSim S-Function SID=5750 TYPE=S-Function
+FunctionName=vs_sf Parameters='simfile.sim'
+MaskValues=simfile.sim
+out1 name= dest=8593.001953125
+
+BLOCK launch_gate_exp/协同博弈扭矩分配/MATLAB Function/ Demux  SID=4805::23 TYPE=Demux
+MaskValues=
+out1 name= dest=53211.0018310547
+
+BLOCK launch_gate_exp/协同博弈扭矩分配/MATLAB Function/ SFunction  SID=4805::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=53208.0025634766
+out2 name=alpha dest=53212.0014648438
+
+BLOCK launch_gate_exp/四轮转矩分配/Fz1 SID=1573 TYPE=Inport
+MaskValues=
+out1 name= dest=[58206.0164794922;58198.0164794922;58083.0142822266]
+
+BLOCK launch_gate_exp/四轮转矩分配/Fz2 SID=1574 TYPE=Inport
+MaskValues=
+out1 name= dest=[58206.0164794922;58083.0142822266;58198.0164794922]
+
+BLOCK launch_gate_exp/四轮转矩分配/Fz3 SID=1575 TYPE=Inport
+MaskValues=
+out1 name= dest=[58206.0164794922;58084.0142822266;58198.0164794922]
+
+BLOCK launch_gate_exp/四轮转矩分配/Fz4 SID=1576 TYPE=Inport
+MaskValues=
+out1 name= dest=[58084.0142822266;58198.0164794922;58206.0164794922]
+
+BLOCK launch_gate_exp/四轮转矩分配/mu SID=2330 TYPE=Inport
+MaskValues=
+out1 name= dest=58198.0164794922
+
+BLOCK launch_gate_exp/四轮转矩分配/Fx SID=2447 TYPE=Inport
+MaskValues=
+out1 name= dest=58095.0163574219
+
+BLOCK launch_gate_exp/四轮转矩分配/Demux1 SID=2336 TYPE=Demux
+MaskValues=
+out1 name= dest=9592.00537109375
+out2 name= dest=9593.00537109375
+out3 name= dest=9594.00537109375
+out4 name= dest=9595.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/MATLAB Function2/ Demux  SID=2468::23 TYPE=Demux
+MaskValues=
+out1 name= dest=58170.0148925781
+
+BLOCK launch_gate_exp/四轮转矩分配/MATLAB Function2/ SFunction  SID=2468::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=58153.0168457031
+out2 name=Tfl dest=58171.0142822266
+out3 name=Tfr dest=58172.0142822266
+out4 name=Trl dest=58173.0142822266
+out5 name=Trr dest=58174.0148925781
+
+BLOCK launch_gate_exp/四轮转矩分配/Mux SID=2329 TYPE=Mux
+MaskValues=
+out1 name= dest=58214.0167236328
+
+BLOCK launch_gate_exp/四轮转矩分配/Mux1 SID=2335 TYPE=Mux
+MaskValues=
+out1 name= dest=[9549.00537109375;58187.0164794922]
+
+BLOCK launch_gate_exp/四轮转矩分配/Mux2 SID=2439 TYPE=Mux
+MaskValues=
+out1 name= dest=[58234.0164794922;58095.0163574219]
+
+BLOCK launch_gate_exp/四轮转矩分配/Mux3 SID=2444 TYPE=Mux
+MaskValues=
+out1 name= dest=58095.0163574219
+
+BLOCK launch_gate_exp/四轮转矩分配/Mux4 SID=2471 TYPE=Mux
+MaskValues=
+out1 name= dest=[58232.0164794922;58189.0164794922]
+
+BLOCK launch_gate_exp/四轮转矩分配/Mux5 SID=2725 TYPE=Mux
+MaskValues=
+out1 name= dest=[58231.0164794922;58189.0164794922]
+
+BLOCK launch_gate_exp/四轮转矩分配/PID Controller/PID Compensator Formula SID=2350:901 TYPE=SubSystem
+MaskValues=
+
+BLOCK launch_gate_exp/四轮转矩分配/mu1 SID=2440 TYPE=InportShadow
+MaskValues=
+out1 name= dest=58095.0163574219
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/Fz_all SID=2541 TYPE=Inport
+MaskValues=
+out1 name= dest=58248.0164794922
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/Demux SID=2552 TYPE=Demux
+MaskValues=
+out1 name= dest=58270.0164794922
+out2 name= dest=58271.0164794922
+out3 name= dest=58279.0164794922
+out4 name= dest=58280.0164794922
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/Demux1 SID=2557 TYPE=Demux
+MaskValues=
+out1 name= dest=58281.0164794922
+out2 name= dest=58282.0164794922
+out3 name= dest=58283.0166015625
+out4 name= dest=58284.0166015625
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/Demux2 SID=2562 TYPE=Demux
+MaskValues=
+out1 name= dest=58285.0164794922
+out2 name= dest=58286.0164794922
+out3 name= dest=58272.0164794922
+out4 name= dest=58273.0164794922
+out5 name= dest=58274.0164794922
+out6 name= dest=58275.0167236328
+out7 name= dest=58276.0167236328
+out8 name= dest=58277.0167236328
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右前轮/FzR1 SID=2618 TYPE=Inport
+MaskValues=
+out1 name= dest=58300.0164794922
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右前轮/FxR1 SID=2619 TYPE=Inport
+MaskValues=
+out1 name= dest=[58302.0164794922;58312.0164794922;58322.0164794922;58338.0164794922]
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右前轮/If Action
+Subsystem/Fx SID=2626 TYPE=Inport
+MaskValues=
+out1 name= dest=58308.0164794922
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右前轮/If Action
+Subsystem/Fxf-18000N SID=2628 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=58309.0167236328
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右前轮/If Action
+Subsystem1/Fx SID=2631 TYPE=Inport
+MaskValues=
+out1 name= dest=58318.0164794922
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右前轮/If Action
+Subsystem1/Fxf-52000N SID=2633 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=58319.0167236328
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右前轮/If Action
+Subsystem2/Fx SID=2636 TYPE=Inport
+MaskValues=
+out1 name= dest=58328.0164794922
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右前轮/If Action
+Subsystem2/Fxf-35000N SID=2638 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=58329.0167236328
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右前轮/PID Controller/PID Compensator Formula SID=2641:901 TYPE=SubSystem
+MaskValues=
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右后轮/FzR2 SID=2697 TYPE=Inport
+MaskValues=
+out1 name= dest=9245.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右后轮/FxR2 SID=2698 TYPE=Inport
+MaskValues=
+out1 name= dest=[9267.00537109375;9244.00537109375;9257.00537109375;9247.00537109375]
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右后轮/If Action
+Subsystem/Fx SID=2703 TYPE=Inport
+MaskValues=
+out1 name= dest=9253.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右后轮/If Action
+Subsystem/Fxr-35000N SID=2705 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=9254.00561523438
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右后轮/If Action
+Subsystem1/Fx SID=2708 TYPE=Inport
+MaskValues=
+out1 name= dest=9263.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右后轮/If Action
+Subsystem1/Fxr-69000N SID=2710 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=9264.00561523438
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右后轮/If Action
+Subsystem2/Fx SID=2713 TYPE=Inport
+MaskValues=
+out1 name= dest=9273.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右后轮/If Action
+Subsystem2/Fxr-52000N SID=2715 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=9274.00561523438
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/右后轮/PID Controller/PID Compensator Formula SID=2718:901 TYPE=SubSystem
+MaskValues=
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左前轮/FzL1 SID=2607 TYPE=Inport
+MaskValues=
+out1 name= dest=9332.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左前轮/FxL1 SID=2608 TYPE=Inport
+MaskValues=
+out1 name= dest=[9370.00537109375;9354.00537109375;9344.00537109375;9334.00537109375]
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左前轮/If Action
+Subsystem/Fx SID=2578 TYPE=Inport
+MaskValues=
+out1 name= dest=9340.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左前轮/If Action
+Subsystem/Fxf-18000N SID=2524 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=9341.00561523438
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左前轮/If Action
+Subsystem1/Fx SID=2594 TYPE=Inport
+MaskValues=
+out1 name= dest=9350.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左前轮/If Action
+Subsystem1/Fxf-52000N SID=2525 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=9351.00561523438
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左前轮/If Action
+Subsystem2/Fx SID=2599 TYPE=Inport
+MaskValues=
+out1 name= dest=9360.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左前轮/If Action
+Subsystem2/Fxf-35000N SID=2521 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=9361.00561523438
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左前轮/PID Controller/PID Compensator Formula SID=2589:901 TYPE=SubSystem
+MaskValues=
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左后轮/FzL2 SID=2658 TYPE=Inport
+MaskValues=
+out1 name= dest=9429.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左后轮/FxL2 SID=2659 TYPE=Inport
+MaskValues=
+out1 name= dest=[9431.00537109375;9441.00537109375;9428.00537109375;9451.00537109375]
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左后轮/If Action
+Subsystem/Fx SID=2666 TYPE=Inport
+MaskValues=
+out1 name= dest=9437.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左后轮/If Action
+Subsystem/Fxr-35000N SID=2526 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=9438.00561523438
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左后轮/If Action
+Subsystem1/Fx SID=2671 TYPE=Inport
+MaskValues=
+out1 name= dest=9447.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左后轮/If Action
+Subsystem1/Fxr-69000N SID=2527 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=9448.00561523438
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左后轮/If Action
+Subsystem2/Fx SID=2676 TYPE=Inport
+MaskValues=
+out1 name= dest=9457.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左后轮/If Action
+Subsystem2/Fxr-52000N SID=2523 TYPE=Lookup_n-D
+MaskValues=
+out1 name= dest=9458.00561523438
+
+BLOCK launch_gate_exp/四轮转矩分配/下层轮胎力执行控制器/左后轮/PID Controller/PID Compensator Formula SID=2681:901 TYPE=SubSystem
+MaskValues=
+
+BLOCK launch_gate_exp/四轮转矩分配/基线垂直载荷分配/ Demux  SID=1583::45 TYPE=Demux
+MaskValues=
+out1 name= dest=9575.00537109375
+
+BLOCK launch_gate_exp/四轮转矩分配/基线垂直载荷分配/ SFunction  SID=1583::44 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=9565.00537109375
+out2 name=Tfl dest=9576.00537109375
+out3 name=Tfr dest=9577.00537109375
+out4 name=Trl dest=9578.00537109375
+out5 name=Trr dest=9579.00537109375
+
+BLOCK launch_gate_exp/垂直载荷估算/MATLAB Function/ Demux  SID=1291::23 TYPE=Demux
+MaskValues=
+out1 name= dest=9769.00549316406
+
+BLOCK launch_gate_exp/垂直载荷估算/MATLAB Function/ SFunction  SID=1291::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=9760.00549316406
+out2 name=Fz1 dest=9770.00549316406
+out3 name=Fz2 dest=9771.00549316406
+out4 name=Fz3 dest=9772.00549316406
+out5 name=Fz4 dest=9773.00549316406
+
+BLOCK launch_gate_exp/垂直载荷估算/MATLAB Function/Fz1 SID=1291::5 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/垂直载荷估算/MATLAB Function/Fz2 SID=1291::26 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/垂直载荷估算/MATLAB Function/Fz3 SID=1291::27 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/垂直载荷估算/MATLAB Function/Fz4 SID=1291::28 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/垂直载荷估算/Mux SID=3897 TYPE=Mux
+MaskValues=
+out1 name= dest=9871.00549316406
+
+BLOCK launch_gate_exp/垂直载荷估算/Fz1 SID=1283 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/垂直载荷估算/Fz2 SID=1293 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/垂直载荷估算/Fz3 SID=1294 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/垂直载荷估算/Fz4 SID=1295 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/垂直载荷估算/Fz SID=3898 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/总驱动力矩制定/Mux SID=5780 TYPE=Mux
+MaskValues=
+out1 name= dest=10090.0054931641
+
+BLOCK launch_gate_exp/总驱动力矩制定/PID Controller/PID Compensator Formula SID=3183:901 TYPE=SubSystem
+MaskValues=
+
+BLOCK launch_gate_exp/总驱动力矩制定/负载工况_极限防抖/ Demux  SID=4987::106 TYPE=Demux
+MaskValues=
+out1 name= dest=10195.0054931641
+
+BLOCK launch_gate_exp/总驱动力矩制定/负载工况_极限防抖/ SFunction  SID=4987::105 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=10188.0054931641
+out2 name=T0_out dest=10196.0054931641
+
+BLOCK launch_gate_exp/总驱动力矩制定/Fx SID=2459 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/FxL1 SID=3946 TYPE=Inport
+MaskValues=
+out1 name= dest=10681.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/FxL2 SID=3948 TYPE=Inport
+MaskValues=
+out1 name= dest=10682.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/FxR1 SID=3949 TYPE=Inport
+MaskValues=
+out1 name= dest=10683.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/FxR2 SID=3950 TYPE=Inport
+MaskValues=
+out1 name= dest=10684.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/mu SID=3986 TYPE=Inport
+MaskValues=
+out1 name= dest=10526.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/FZ0 SID=3991 TYPE=Inport
+MaskValues=
+out1 name= dest=10527.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/Demux SID=3988 TYPE=Demux
+MaskValues=
+out1 name= dest=10672.0051269531
+out2 name= dest=10674.0051269531
+out3 name= dest=10673.0051269531
+out4 name= dest=10675.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/Demux1 SID=3992 TYPE=Demux
+MaskValues=
+out1 name= dest=[53336.0054931641;10672.0051269531]
+out2 name= dest=[10673.0051269531;53377.0054931641]
+out3 name= dest=[53254.0054931641;10674.0051269531]
+out4 name= dest=[53295.0054931641;10675.0051269531]
+
+BLOCK launch_gate_exp/牵引效率计算/Demux2 SID=4560 TYPE=Demux
+MaskValues=
+out1 name=FL dest=10686.0051269531
+out2 name=FR dest=10687.0051269531
+out3 name=RL dest=10688.0051269531
+out4 name=RR dest=10689.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/Demux4 SID=4731 TYPE=Demux
+MaskValues=
+out1 name= dest=10664.0051269531
+out2 name= dest=10664.0051269531
+out3 name= dest=10664.0051269531
+out4 name= dest=10664.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/FZ1 SID=4730 TYPE=InportShadow
+MaskValues=
+out1 name= dest=10529.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/FZ2 SID=5438 TYPE=InportShadow
+MaskValues=
+out1 name= dest=53418.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/MATLAB Function/ Demux  SID=4018::23 TYPE=Demux
+MaskValues=
+out1 name= dest=10596.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/MATLAB Function/ SFunction  SID=4018::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=10590.0051269531
+out2 name=y dest=10597.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/MATLAB Function3/Fx SID=4701::1 TYPE=Inport
+MaskValues=
+out1 name= dest=10628.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/MATLAB Function3/mu SID=4701::28 TYPE=Inport
+MaskValues=
+out1 name= dest=10628.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/MATLAB Function3/Fz SID=4701::29 TYPE=Inport
+MaskValues=
+out1 name= dest=10628.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/MATLAB Function3/ Demux  SID=4701::23 TYPE=Demux
+MaskValues=
+out1 name= dest=10641.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/MATLAB Function3/ SFunction  SID=4701::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=10627.0051269531
+out2 name=V_all dest=10642.0051269531
+out3 name=Traction_all dest=10643.0051269531
+out4 name=lamdaN_all dest=10644.0051269531
+out5 name=lamda_all dest=10645.0051269531
+out6 name=Mz_all dest=10646.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/Mux1 SID=4706 TYPE=Mux
+MaskValues=
+out1 name= dest=10605.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/Mux2 SID=4711 TYPE=Mux
+MaskValues=
+out1 name= dest=[10567.0051269531;10605.0051269531]
+
+BLOCK launch_gate_exp/牵引效率计算/Mux4 SID=4732 TYPE=Mux
+MaskValues=
+out1 name= dest=10605.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/Mux5 SID=4953 TYPE=Mux
+MaskValues=
+out1 name= dest=10605.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/Mux6 SID=4971 TYPE=Mux
+MaskValues=
+out1 name= dest=10605.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/Subsystem1/Fz SID=5410 TYPE=Inport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/Subsystem1/Fx_out SID=5406 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/mu1 SID=4729 TYPE=InportShadow
+MaskValues=
+out1 name= dest=10605.0051269531
+
+BLOCK launch_gate_exp/牵引效率计算/右前轮/Fz SID=5424::28 TYPE=Inport
+MaskValues=
+out1 name= dest=53268.005859375
+
+BLOCK launch_gate_exp/牵引效率计算/右前轮/ Demux  SID=5424::23 TYPE=Demux
+MaskValues=
+out1 name= dest=53277.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/右前轮/ SFunction  SID=5424::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=53267.0054931641
+out2 name=Fx_est dest=53278.0054931641
+out3 name=Fx_raw dest=53279.0054931641
+out4 name=Fx_limited dest=53280.0054931641
+out5 name=omega_hat_out dest=53281.0054931641
+out6 name=e_omega dest=53282.0054931641
+out7 name=wv dest=53283.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/右前轮/Fx_est SID=5424::5 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/右前轮/Fx_raw SID=5424::44 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/右前轮/Fx_limited SID=5424::45 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/右后轮/Fz SID=5418::28 TYPE=Inport
+MaskValues=
+out1 name= dest=53309.005859375
+
+BLOCK launch_gate_exp/牵引效率计算/右后轮/ Demux  SID=5418::23 TYPE=Demux
+MaskValues=
+out1 name= dest=53318.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/右后轮/ SFunction  SID=5418::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=53308.0054931641
+out2 name=Fx_est dest=53319.0054931641
+out3 name=Fx_raw dest=53320.0054931641
+out4 name=Fx_limited dest=53321.0054931641
+out5 name=omega_hat_out dest=53322.0054931641
+out6 name=e_omega dest=53323.0054931641
+out7 name=wv dest=53324.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/右后轮/Fx_est SID=5418::5 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/右后轮/Fx_raw SID=5418::44 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/右后轮/Fx_limited SID=5418::45 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/左前轮/Fz SID=5425::28 TYPE=Inport
+MaskValues=
+out1 name= dest=53350.005859375
+
+BLOCK launch_gate_exp/牵引效率计算/左前轮/ Demux  SID=5425::23 TYPE=Demux
+MaskValues=
+out1 name= dest=53359.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/左前轮/ SFunction  SID=5425::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=53349.0054931641
+out2 name=Fx_est dest=53360.0054931641
+out3 name=Fx_raw dest=53361.0054931641
+out4 name=Fx_limited dest=53362.0054931641
+out5 name=omega_hat_out dest=53363.0054931641
+out6 name=e_omega dest=53364.0054931641
+out7 name=wv dest=53365.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/左前轮/Fx_est SID=5425::5 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/左前轮/Fx_raw SID=5425::44 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/左前轮/Fx_limited SID=5425::45 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/左后轮/Fz SID=5422::28 TYPE=Inport
+MaskValues=
+out1 name= dest=53391.005859375
+
+BLOCK launch_gate_exp/牵引效率计算/左后轮/ Demux  SID=5422::23 TYPE=Demux
+MaskValues=
+out1 name= dest=53400.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/左后轮/ SFunction  SID=5422::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=53390.0054931641
+out2 name=Fx_est dest=53401.0054931641
+out3 name=Fx_raw dest=53402.0054931641
+out4 name=Fx_limited dest=53403.0054931641
+out5 name=omega_hat_out dest=53404.0054931641
+out6 name=e_omega dest=53405.0054931641
+out7 name=wv dest=53406.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/左后轮/Fx_est SID=5422::5 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/左后轮/Fx_raw SID=5422::44 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/左后轮/Fx_limited SID=5422::45 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/总纵向力估计/Fz4 SID=5437 TYPE=Inport
+MaskValues=
+out1 name= dest=53441.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/总纵向力估计/Demux SID=5439 TYPE=Demux
+MaskValues=
+out1 name= dest=53437.0054931641
+out2 name= dest=53437.0054931641
+out3 name= dest=53437.0054931641
+out4 name= dest=53437.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/计算平均边际贡献/ Demux  SID=4558::23 TYPE=Demux
+MaskValues=
+out1 name= dest=53499.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/计算平均边际贡献/ SFunction  SID=4558::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=53496.0054931641
+out2 name=phi dest=53500.0054931641
+
+BLOCK launch_gate_exp/牵引效率计算/EFxL1 SID=5388 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/EFxR1 SID=5389 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/EFxL2 SID=5390 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/牵引效率计算/EFxR2 SID=5391 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/软土扭矩分配/CBF-QP扭矩分配/wheel_limits_n_m SID=5461::32 TYPE=Inport
+MaskValues=
+out1 name= dest=55080.0059814453
+
+BLOCK launch_gate_exp/软土扭矩分配/CBF-QP扭矩分配/ Demux  SID=5461::23 TYPE=Demux
+MaskValues=
+out1 name= dest=55099.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/CBF-QP扭矩分配/ SFunction  SID=5461::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=55079.0056152344
+out2 name=selected_torques_n_m dest=55100.0056152344
+out3 name=cbf_torque_upper_bounds dest=55101.0056152344
+out4 name=cbf_active dest=55102.0056152344
+out5 name=qp_status dest=55103.0056152344
+out6 name=qp_objective dest=55104.0056152344
+out7 name=disturbance_state_out dest=55105.0056152344
+out8 name=disturbance_margins dest=55106.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/Demux SID=5528 TYPE=Demux
+MaskValues=
+out1 name= dest=55154.0056152344
+out2 name= dest=55155.0056152344
+out3 name= dest=55156.0056152344
+out4 name= dest=55157.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/Mux SID=5533 TYPE=Mux
+MaskValues=
+out1 name= dest=55147.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/四轮目标滑移率计算/ Demux  SID=5459::23 TYPE=Demux
+MaskValues=
+out1 name= dest=55182.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/四轮目标滑移率计算/ SFunction  SID=5459::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=55173.0056152344
+out2 name=adaptive_targets dest=55183.0056152344
+out3 name=target_base_out dest=55184.0056152344
+out4 name=gradient_estimates dest=55185.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/滑移跟踪与扭矩生成/wheel_limits_n_m SID=5460::29 TYPE=Inport
+MaskValues=
+out1 name= dest=55213.0059814453
+
+BLOCK launch_gate_exp/软土扭矩分配/滑移跟踪与扭矩生成/ Demux  SID=5460::23 TYPE=Demux
+MaskValues=
+out1 name= dest=55221.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/滑移跟踪与扭矩生成/ SFunction  SID=5460::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=55212.0056152344
+out2 name=nominal_torques_n_m dest=55222.0056152344
+out3 name=slip_errors dest=55223.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/牵引功率目标计算/wheel_omegas_radps SID=5458::25 TYPE=Inport
+MaskValues=
+out1 name= dest=55253.0059814453
+
+BLOCK launch_gate_exp/软土扭矩分配/牵引功率目标计算/ Demux  SID=5458::23 TYPE=Demux
+MaskValues=
+out1 name= dest=55265.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/牵引功率目标计算/ SFunction  SID=5458::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=55252.0056152344
+out2 name=drawbar_power_w dest=55266.0056152344
+out3 name=wheel_power_w dest=55267.0056152344
+out4 name=phi_raw dest=55268.0056152344
+out5 name=filtered_phi dest=55269.0056152344
+out6 name=filtered_normalized_phi dest=55270.0056152344
+out7 name=lambda_est dest=55271.0056152344
+out8 name=objective_valid dest=55272.0056152344
+
+BLOCK launch_gate_exp/软土扭矩分配/牵引功率目标计算/wheel_power_w SID=5458::29 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/软土扭矩分配/牵引效率评价计算/wheel_power_w SID=5647::26 TYPE=Inport
+MaskValues=
+out1 name= dest=55300.0072021484
+
+BLOCK launch_gate_exp/软土扭矩分配/牵引效率评价计算/ Demux  SID=5647::23 TYPE=Demux
+MaskValues=
+out1 name= dest=55307.0068359375
+
+BLOCK launch_gate_exp/软土扭矩分配/牵引效率评价计算/ SFunction  SID=5647::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=55299.0068359375
+out2 name=eta_wg_E dest=55308.0068359375
+out3 name=E_wg dest=55309.0068359375
+out4 name=E_w dest=55310.0068359375
+
+BLOCK launch_gate_exp/软土扭矩分配/状态接口与轮端动力学/wheel_speeds_rpm SID=5456::1 TYPE=Inport
+MaskValues=
+out1 name= dest=55348.0072021484
+
+BLOCK launch_gate_exp/软土扭矩分配/状态接口与轮端动力学/wheel_torque_limits_n_m SID=5456::31 TYPE=Inport
+MaskValues=
+out1 name= dest=55348.0072021484
+
+BLOCK launch_gate_exp/软土扭矩分配/状态接口与轮端动力学/ Demux  SID=5456::23 TYPE=Demux
+MaskValues=
+out1 name= dest=55366.0068359375
+
+BLOCK launch_gate_exp/软土扭矩分配/状态接口与轮端动力学/ SFunction  SID=5456::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=55347.0068359375
+out2 name=kappa dest=55367.0068359375
+out3 name=dot_kappa dest=55368.0068359375
+out4 name=kappa_valid dest=55369.0068359375
+out5 name=wheel_omegas_radps dest=55370.0068359375
+out6 name=rolling_speeds_mps dest=55371.0068359375
+out7 name=surface_speeds_mps dest=55372.0068359375
+out8 name=front_steers_rad dest=55373.0068359375
+out9 name=base_torques_n_m dest=55374.0068359375
+out10 name=wheel_limits_n_m dest=55375.0068359375
+out11 name=input_gains dest=55376.0068359375
+
+BLOCK launch_gate_exp/软土扭矩分配/状态接口与轮端动力学/wheel_omegas_radps SID=5456::34 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/软土扭矩分配/状态接口与轮端动力学/wheel_limits_n_m SID=5456::39 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/软土扭矩分配/wheel_power_w SID=5494 TYPE=Outport
+MaskValues=
+
+BLOCK launch_gate_exp/驱动防滑模块/Demux SID=2896 TYPE=Demux
+MaskValues=
+out1 name= dest=55644.0068359375
+out2 name= dest=55647.0068359375
+out3 name= dest=55645.0068359375
+out4 name= dest=55646.0068359375
+
+BLOCK launch_gate_exp/驱动防滑模块/Demux2 SID=5797 TYPE=Demux
+MaskValues=
+out1 name= dest=55804.0068359375
+out2 name= dest=55804.0068359375
+out3 name= dest=55804.0068359375
+out4 name= dest=55804.0068359375
+
+BLOCK launch_gate_exp/驱动防滑模块/From_record_active_perwheel SID=5900 TYPE=From
+MaskValues=
+out1 name= dest=55962.0050048828
+
+BLOCK launch_gate_exp/驱动防滑模块/Goto_active_perwheel SID=5899 TYPE=Goto
+MaskValues=
+
+BLOCK launch_gate_exp/驱动防滑模块/Launch_Tmax_mux SID=5682 TYPE=Mux
+MaskValues=
+out1 name= dest=[55636.0068359375;56404.0090332031;56485.0092773438]
+
+BLOCK launch_gate_exp/驱动防滑模块/Launch_delta_mux SID=5672 TYPE=Mux
+MaskValues=
+out1 name= dest=56485.0092773438
+
+BLOCK launch_gate_exp/驱动防滑模块/Launch_w_mux SID=5667 TYPE=Mux
+MaskValues=
+out1 name= dest=56485.0092773438
+
+BLOCK launch_gate_exp/驱动防滑模块/Launch_w_mux1 SID=5760 TYPE=Mux
+MaskValues=
+out1 name= dest=55956.0050048828
+
+BLOCK launch_gate_exp/驱动防滑模块/MATLAB Function/ Demux  SID=1820::37 TYPE=Demux
+MaskValues=
+out1 name= dest=55694.0068359375
+
+BLOCK launch_gate_exp/驱动防滑模块/MATLAB Function/ SFunction  SID=1820::36 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=55689.0068359375
+out2 name=vfl dest=55695.0068359375
+out3 name=vfr dest=55696.0068359375
+
+BLOCK launch_gate_exp/驱动防滑模块/MATLAB Function1/ Demux  SID=1821::37 TYPE=Demux
+MaskValues=
+out1 name= dest=55715.0068359375
+
+BLOCK launch_gate_exp/驱动防滑模块/MATLAB Function1/ SFunction  SID=1821::36 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=55710.0068359375
+out2 name=vrl dest=55716.0068359375
+out3 name=vrr dest=55717.0068359375
+
+BLOCK launch_gate_exp/驱动防滑模块/MATLAB Function3/ Demux  SID=3114::23 TYPE=Demux
+MaskValues=
+out1 name= dest=55790.0068359375
+
+BLOCK launch_gate_exp/驱动防滑模块/MATLAB Function3/ SFunction  SID=3114::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=
+MaskValues=
+out1 name= dest=55781.0068359375
+out2 name=v dest=55791.0068359375
+
+BLOCK launch_gate_exp/驱动防滑模块/Mux SID=2894 TYPE=Mux
+MaskValues=
+out1 name= dest=55949.0052490234
+
+BLOCK launch_gate_exp/驱动防滑模块/Mux1 SID=2895 TYPE=Mux
+MaskValues=
+out1 name= dest=55949.0052490234
+
+BLOCK launch_gate_exp/驱动防滑模块/Mux3 SID=5798 TYPE=Mux
+MaskValues=
+out1 name= dest=55955.0050048828
+
+BLOCK launch_gate_exp/驱动防滑模块/Record_active_perwheel SID=5901 TYPE=ToWorkspace
+MaskValues=
+
+BLOCK launch_gate_exp/驱动防滑模块/Round2_raw_slip_mux SID=5847 TYPE=Mux
+MaskValues=
+out1 name= dest=55822.0050048828
+
+BLOCK launch_gate_exp/驱动防滑模块/Vector_active_perwheel SID=5936 TYPE=Reshape
+MaskValues=
+out1 name= dest=55815.0050048828
+
+BLOCK launch_gate_exp/驱动防滑模块/launch_state/ Demux  SID=5664::106 TYPE=Demux
+MaskValues=
+out1 name= dest=56015.0050048828
+
+BLOCK launch_gate_exp/驱动防滑模块/launch_state/ SFunction  SID=5664::105 TYPE=S-Function
+FunctionName=sf_sfun Parameters=P
+MaskValues=
+out1 name= dest=55998.0050048828
+out2 name=stage dest=56016.0050048828
+out3 name=spin_mask dest=56017.0050048828
+out4 name=speed_valid dest=56018.0050048828
+out5 name=no_move_confirmed dest=56019.0050048828
+out6 name=source_bad dest=56020.0050048828
+out7 name=nspin dest=56021.0050048828
+out8 name=prewarn dest=57557.0086669922
+out9 name=warn_age dest=57562.0086669922
+
+BLOCK launch_gate_exp/驱动防滑模块/滑转率计算/Mux SID=5629 TYPE=Mux
+MaskValues=
+out1 name= dest=56282.0050048828
+
+BLOCK launch_gate_exp/驱动防滑模块/起步扭矩控制/ Demux  SID=5663::23 TYPE=Demux
+MaskValues=
+out1 name= dest=56451.0090332031
+
+BLOCK launch_gate_exp/驱动防滑模块/起步扭矩控制/ SFunction  SID=5663::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=P
+MaskValues=
+out1 name= dest=56431.0090332031
+out2 name=T_pref dest=56452.0090332031
+out3 name=T_lim_out dest=56453.0090332031
+out4 name=T_cmd dest=56454.0090332031
+out5 name=diag_torque dest=56455.0090332031
+out6 name=T_pref_open dest=56456.0090332031
+out7 name=I_dv_out dest=56457.0090332031
+out8 name=cap_out dest=56458.0090332031
+out9 name=T_target dest=56459.0090332031
+out10 name=T_slip_lim dest=56460.0090332031
+out11 name=slip_ratio_out dest=56461.0090332031
+out12 name=slip_recovering dest=56462.0090332031
+out13 name=cut_f_out dest=56463.0090332031
+out14 name=gate_diag dest=57616.0086669922
+
+BLOCK launch_gate_exp/驱动防滑模块/起步探测/ Demux  SID=5662::23 TYPE=Demux
+MaskValues=
+out1 name= dest=56549.0090332031
+
+BLOCK launch_gate_exp/驱动防滑模块/起步探测/ SFunction  SID=5662::22 TYPE=S-Function
+FunctionName=sf_sfun Parameters=P
+MaskValues=
+out1 name= dest=56522.0090332031
+out2 name=v_ref dest=56550.0090332031
+out3 name=dv dest=56551.0090332031
+out4 name=spin_on_raw dest=56552.0090332031
+out5 name=spin_clear_raw dest=56553.0090332031
+out6 name=no_move_raw dest=56554.0090332031
+out7 name=move_ok dest=56555.0090332031
+out8 name=speed_on_raw dest=56556.0090332031
+out9 name=speed_off_raw dest=56557.0090332031
+out10 name=consistency_ok dest=56558.0090332031
+out11 name=source_immediate_bad dest=56559.0090332031
+out12 name=drive_active dest=56560.0090332031
+out13 name=diag_motion dest=56561.0090332031
+out14 name=dv_ctrl dest=56562.0090332031
+out15 name=dv_rate_ctrl dest=56563.0090332031
+out16 name=fast_worsening dest=56564.0090332031
+out17 name=active_out dest=56565.0090332031

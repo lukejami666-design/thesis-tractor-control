@@ -1,0 +1,336 @@
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From152','error')">launch_gate_diag/From152</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From153','error')">launch_gate_diag/From153</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From16','error')">launch_gate_diag/From16</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From160','error')">launch_gate_diag/From160</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From161','error')">launch_gate_diag/From161</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From2','error')">launch_gate_diag/From2</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From20','error')">launch_gate_diag/From20</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From25','error')">launch_gate_diag/From25</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From26','error')">launch_gate_diag/From26</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From51','error')">launch_gate_diag/From51</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From56','error')">launch_gate_diag/From56</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From68','error')">launch_gate_diag/From68</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From69','error')">launch_gate_diag/From69</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From70','error')">launch_gate_diag/From70</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From71','error')">launch_gate_diag/From71</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From72','error')">launch_gate_diag/From72</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/航向角GPS','error')">launch_gate_diag/航向角GPS</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto2','error')">launch_gate_diag/Goto2</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto29','error')">launch_gate_diag/Goto29</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto39','error')">launch_gate_diag/Goto39</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto47','error')">launch_gate_diag/Goto47</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto48','error')">launch_gate_diag/Goto48</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto56','error')">launch_gate_diag/Goto56</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto57','error')">launch_gate_diag/Goto57</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto58','error')">launch_gate_diag/Goto58</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto59','error')">launch_gate_diag/Goto59</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Goto5','error')">launch_gate_diag/PID_Controller//直线循迹/Goto5</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/四轮转矩分配/下层轮胎力执行控制器/Goto13','error')">launch_gate_diag/四轮转矩分配/下层轮胎力执行控制器/Goto13</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/四轮转矩分配/下层轮胎力执行控制器/Goto15','error')">launch_gate_diag/四轮转矩分配/下层轮胎力执行控制器/Goto15</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Goto12','error')">launch_gate_diag/牵引效率计算/Goto12</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Goto13','error')">launch_gate_diag/牵引效率计算/Goto13</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/Goto5','error')">launch_gate_diag/驱动防滑模块/Goto5</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/Goto6','error')">launch_gate_diag/驱动防滑模块/Goto6</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/Goto7','error')">launch_gate_diag/驱动防滑模块/Goto7</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/Goto8','error')">launch_gate_diag/驱动防滑模块/Goto8</a>' 匹配的 "From"] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Constant7','error')">launch_gate_diag/Constant7</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Constant7'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From141','error')">launch_gate_diag/From141</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/From141'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Gain10','error')">launch_gate_diag/Gain10</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Gain10'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Gain12','error')">launch_gate_diag/Gain12</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Gain12'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Manual Switch3','error')">launch_gate_diag/Manual Switch3</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Manual Switch3'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/TCS base selector','error')">launch_gate_diag/TCS base selector</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/TCS base selector'], 'Inport', 2);">输入端口 2</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/实际轮胎纵向力','error')">launch_gate_diag/实际轮胎纵向力</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/实际轮胎纵向力'], 'Inport', 5);">输入端口 5</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/实际轮胎纵向力','error')">launch_gate_diag/实际轮胎纵向力</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/实际轮胎纵向力'], 'Inport', 6);">输入端口 6</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Product3','error')">launch_gate_diag/PID_Controller//直线循迹/Product3</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Product3'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic'], 'Inport', 2);">输入端口 2</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic'], 'Inport', 3);">输入端口 3</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/四轮转矩分配/Gain1','error')">launch_gate_diag/四轮转矩分配/Gain1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/四轮转矩分配/Gain1'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/四轮转矩分配/PID Controller','error')">launch_gate_diag/四轮转矩分配/PID Controller</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/四轮转矩分配/PID Controller'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/扭矩控制//速度控制','error')">launch_gate_diag/总驱动力矩制定/扭矩控制//速度控制</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/总驱动力矩制定/扭矩控制//速度控制'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Scope3','error')">launch_gate_diag/牵引效率计算/Scope3</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Scope3'], 'Inport', 4);">输入端口 4</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Inport', 2);">输入端口 2</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Inport', 3);">输入端口 3</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Inport', 4);">输入端口 4</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右前轮','error')">launch_gate_diag/牵引效率计算/右前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右前轮'], 'Outport', 4);">输出端口 4</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右前轮','error')">launch_gate_diag/牵引效率计算/右前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右前轮'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右前轮','error')">launch_gate_diag/牵引效率计算/右前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右前轮'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右后轮','error')">launch_gate_diag/牵引效率计算/右后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右后轮'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右后轮','error')">launch_gate_diag/牵引效率计算/右后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右后轮'], 'Outport', 4);">输出端口 4</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右后轮','error')">launch_gate_diag/牵引效率计算/右后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右后轮'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右后轮','error')">launch_gate_diag/牵引效率计算/右后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右后轮'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左前轮','error')">launch_gate_diag/牵引效率计算/左前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左前轮'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左前轮','error')">launch_gate_diag/牵引效率计算/左前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左前轮'], 'Outport', 4);">输出端口 4</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左前轮','error')">launch_gate_diag/牵引效率计算/左前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左前轮'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左前轮','error')">launch_gate_diag/牵引效率计算/左前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左前轮'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左后轮','error')">launch_gate_diag/牵引效率计算/左后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左后轮'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左后轮','error')">launch_gate_diag/牵引效率计算/左后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左后轮'], 'Outport', 4);">输出端口 4</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左后轮','error')">launch_gate_diag/牵引效率计算/左后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左后轮'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左后轮','error')">launch_gate_diag/牵引效率计算/左后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左后轮'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/F_hat','error')">launch_gate_diag/牵引效率计算/Subsystem1/F_hat</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/F_hat'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Fz','error')">launch_gate_diag/牵引效率计算/Subsystem1/Fz</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Fz'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Add','error')">launch_gate_diag/牵引效率计算/Subsystem1/Add</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Add'], 'Inport', 4);">输入端口 4</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Add','error')">launch_gate_diag/牵引效率计算/Subsystem1/Add</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Add'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Product','error')">launch_gate_diag/牵引效率计算/Subsystem1/Product</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Product'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Sum','error')">launch_gate_diag/牵引效率计算/Subsystem1/Sum</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Sum'], 'Inport', 2);">输入端口 2</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Fx_out','error')">launch_gate_diag/牵引效率计算/Subsystem1/Fx_out</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Fx_out'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配','error')">launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配','error')">launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配','error')">launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配','error')">launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配'], 'Outport', 7);">输出端口 7</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/四轮目标滑移率计算','error')">launch_gate_diag/软土扭矩分配/四轮目标滑移率计算</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/四轮目标滑移率计算'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/四轮目标滑移率计算','error')">launch_gate_diag/软土扭矩分配/四轮目标滑移率计算</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/四轮目标滑移率计算'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/滑移跟踪与扭矩生成','error')">launch_gate_diag/软土扭矩分配/滑移跟踪与扭矩生成</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/滑移跟踪与扭矩生成'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/状态接口与轮端动力学','error')">launch_gate_diag/软土扭矩分配/状态接口与轮端动力学</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/状态接口与轮端动力学'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/状态接口与轮端动力学','error')">launch_gate_diag/软土扭矩分配/状态接口与轮端动力学</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/状态接口与轮端动力学'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/滑转率计算/Sum5','error')">launch_gate_diag/驱动防滑模块/滑转率计算/Sum5</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/驱动防滑模块/滑转率计算/Sum5'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/滑转率计算/Sum7','error')">launch_gate_diag/驱动防滑模块/滑转率计算/Sum7</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/驱动防滑模块/滑转率计算/Sum7'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/1','error')">launch_gate_diag/1</a>' 上找到未连接的输出信号线(输出端口: 1)] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Gain43','error')">launch_gate_diag/Gain43</a>' 上找到未连接的输出信号线(输出端口: 1)] 
+[警告: Unconnected input line found on '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Manual Switch6','error')">launch_gate_diag/Manual Switch6</a>' (input port: 1)] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From136','error')">launch_gate_diag/From136</a>' 上找到未连接的输出信号线(输出端口: 1)] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PF车速估计','error')">launch_gate_diag/PF车速估计</a>' 上找到未连接的输出信号线(输出端口: 1)] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/起步探测','error')">launch_gate_diag/驱动防滑模块/起步探测</a>' 上找到未连接的输出信号线(输出端口: 11)] 
+[警告: <a href="matlab:sfprivate('sfOpenObjectBySId','launch_gate_diag:4987:::3')">'Tmax'</a> 已定义，但未在 Stateflow 图中使用。请<a href= "matlab: internal.stateflow.dialogs.UnusedObjectDeleter.createDeleter('launch_gate_diag:4987:::3')">删除此对象</a>或<a href= "matlab: sfprivate('openConfigParamsSFDiagnostics',1181)">配置诊断</a>。
+
+] 
+[警告: <a href="matlab:sfprivate('sfOpenObjectBySId','launch_gate_diag:4987:::27')">'timer_start'</a> 已定义，但未在 Stateflow 图中使用。请<a href= "matlab: internal.stateflow.dialogs.UnusedObjectDeleter.createDeleter('launch_gate_diag:4987:::27')">删除此对象</a>或<a href= "matlab: sfprivate('openConfigParamsSFDiagnostics',1181)">配置诊断</a>。
+
+] 
+[警告: 模块图 '<a href="matlab:open_system ('launch_gate_diag')">launch_gate_diag</a>' 包含 1 个代数环。要查看有关代数环的更多详细信息，请使用命令 <a href="matlab:Simulink.BlockDiagram.getAlgebraicLoops(bdroot);">Simulink.BlockDiagram.getAlgebraicLoops('launch_gate_diag') </a> 或通
+过在 MATLAB 命令行窗口中键入 <a href="matlab:sldebug(bdroot);">sldebug('launch_gate_diag') </a>来使用命令行 Simulink 调试器。要消除此消息，请将<a href="matlab:configset.internal.open('launch_gate_diag','AlgebraicLoopMsg');">代数环</a>设置为 "无"。] 
+Found algebraic loop containing: 
+<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/DOB补偿/Sum','error')">launch_gate_diag/总驱动力矩制定/DOB补偿/Sum</a>
+<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/DOB补偿/Discrete Transfer Fcn','error')">launch_gate_diag/总驱动力矩制定/DOB补偿/Discrete Transfer Fcn</a>
+<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/Sum1','error')">launch_gate_diag/总驱动力矩制定/Sum1</a> (algebraic variable)
+Use vehicle solver: D:\Program Files (x86)\TruckSim2019.0_Prog\Programs\solvers\trucksim_64.dll
+TruckSim 2019.0
+Vehicle Configuration: S_S + Frame Twist + Suspended Cab
+Revision 76054, December 13, 2018
+
+Tractor <* * Quick Start Guide Example>
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fl/Divide5','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fl/Divide5</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fl/Divide5'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fl/Divide','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fl/Divide</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fl/Divide'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fr/Divide5','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fr/Divide5</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fr/Divide5'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fr/Divide','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fr/Divide</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fr/Divide'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rl/Divide5','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rl/Divide5</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rl/Divide5'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rl/Divide','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rl/Divide</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rl/Divide'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rr/Divide5','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rr/Divide5</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rr/Divide5'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rr/Divide','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rr/Divide</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rr/Divide'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/Divide1','error')">launch_gate_diag/总驱动力矩制定/Divide1</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/总驱动力矩制定/Divide1'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/电机负载百分比','error')">launch_gate_diag/总驱动力矩制定/电机负载百分比</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/总驱动力矩制定/电机负载百分比'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+
+Termination at simulation time = 5 s.
+Computational time ratio: 2.83883 (real time)/(simulation time)
+
+
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From152','error')">launch_gate_diag/From152</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From153','error')">launch_gate_diag/From153</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From16','error')">launch_gate_diag/From16</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From160','error')">launch_gate_diag/From160</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From161','error')">launch_gate_diag/From161</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From2','error')">launch_gate_diag/From2</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From20','error')">launch_gate_diag/From20</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From25','error')">launch_gate_diag/From25</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From26','error')">launch_gate_diag/From26</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From51','error')">launch_gate_diag/From51</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From56','error')">launch_gate_diag/From56</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From68','error')">launch_gate_diag/From68</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From69','error')">launch_gate_diag/From69</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From70','error')">launch_gate_diag/From70</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From71','error')">launch_gate_diag/From71</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From72','error')">launch_gate_diag/From72</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "From" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/航向角GPS','error')">launch_gate_diag/航向角GPS</a>' 匹配的 "Goto"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto2','error')">launch_gate_diag/Goto2</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto29','error')">launch_gate_diag/Goto29</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto39','error')">launch_gate_diag/Goto39</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto47','error')">launch_gate_diag/Goto47</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto48','error')">launch_gate_diag/Goto48</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto56','error')">launch_gate_diag/Goto56</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto57','error')">launch_gate_diag/Goto57</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto58','error')">launch_gate_diag/Goto58</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Goto59','error')">launch_gate_diag/Goto59</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Goto5','error')">launch_gate_diag/PID_Controller//直线循迹/Goto5</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/四轮转矩分配/下层轮胎力执行控制器/Goto13','error')">launch_gate_diag/四轮转矩分配/下层轮胎力执行控制器/Goto13</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/四轮转矩分配/下层轮胎力执行控制器/Goto15','error')">launch_gate_diag/四轮转矩分配/下层轮胎力执行控制器/Goto15</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Goto12','error')">launch_gate_diag/牵引效率计算/Goto12</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Goto13','error')">launch_gate_diag/牵引效率计算/Goto13</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/Goto5','error')">launch_gate_diag/驱动防滑模块/Goto5</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/Goto6','error')">launch_gate_diag/驱动防滑模块/Goto6</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/Goto7','error')">launch_gate_diag/驱动防滑模块/Goto7</a>' 匹配的 "From"] 
+[警告: 找不到与 "Goto" '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/Goto8','error')">launch_gate_diag/驱动防滑模块/Goto8</a>' 匹配的 "From"] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Constant7','error')">launch_gate_diag/Constant7</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Constant7'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From141','error')">launch_gate_diag/From141</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/From141'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Gain10','error')">launch_gate_diag/Gain10</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Gain10'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Gain12','error')">launch_gate_diag/Gain12</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Gain12'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Manual Switch3','error')">launch_gate_diag/Manual Switch3</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Manual Switch3'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/TCS base selector','error')">launch_gate_diag/TCS base selector</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/TCS base selector'], 'Inport', 2);">输入端口 2</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/实际轮胎纵向力','error')">launch_gate_diag/实际轮胎纵向力</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/实际轮胎纵向力'], 'Inport', 5);">输入端口 5</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/实际轮胎纵向力','error')">launch_gate_diag/实际轮胎纵向力</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/实际轮胎纵向力'], 'Inport', 6);">输入端口 6</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/fl_dugoff'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/fr_dugoff'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/rl_dugoff'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff','error')">launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/Dugoff轮胎模型/pac2002/rr_dugoff'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Scope3','error')">launch_gate_diag/牵引效率计算/Scope3</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Scope3'], 'Inport', 4);">输入端口 4</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Inport', 2);">输入端口 2</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Inport', 3);">输入端口 3</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Inport', 4);">输入端口 4</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1','error')">launch_gate_diag/牵引效率计算/Subsystem1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右前轮','error')">launch_gate_diag/牵引效率计算/右前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右前轮'], 'Outport', 4);">输出端口 4</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右前轮','error')">launch_gate_diag/牵引效率计算/右前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右前轮'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右前轮','error')">launch_gate_diag/牵引效率计算/右前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右前轮'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右后轮','error')">launch_gate_diag/牵引效率计算/右后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右后轮'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右后轮','error')">launch_gate_diag/牵引效率计算/右后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右后轮'], 'Outport', 4);">输出端口 4</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右后轮','error')">launch_gate_diag/牵引效率计算/右后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右后轮'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/右后轮','error')">launch_gate_diag/牵引效率计算/右后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/右后轮'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左前轮','error')">launch_gate_diag/牵引效率计算/左前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左前轮'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左前轮','error')">launch_gate_diag/牵引效率计算/左前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左前轮'], 'Outport', 4);">输出端口 4</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左前轮','error')">launch_gate_diag/牵引效率计算/左前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左前轮'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左前轮','error')">launch_gate_diag/牵引效率计算/左前轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左前轮'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左后轮','error')">launch_gate_diag/牵引效率计算/左后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左后轮'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左后轮','error')">launch_gate_diag/牵引效率计算/左后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左后轮'], 'Outport', 4);">输出端口 4</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左后轮','error')">launch_gate_diag/牵引效率计算/左后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左后轮'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/左后轮','error')">launch_gate_diag/牵引效率计算/左后轮</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/左后轮'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Product3','error')">launch_gate_diag/PID_Controller//直线循迹/Product3</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Product3'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic'], 'Inport', 2);">输入端口 2</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic'], 'Inport', 3);">输入端口 3</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic','error')">launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/PID_Controller//直线循迹/Saturation Dynamic'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/四轮转矩分配/Gain1','error')">launch_gate_diag/四轮转矩分配/Gain1</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/四轮转矩分配/Gain1'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/四轮转矩分配/PID Controller','error')">launch_gate_diag/四轮转矩分配/PID Controller</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/四轮转矩分配/PID Controller'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/滑转率计算/Sum5','error')">launch_gate_diag/驱动防滑模块/滑转率计算/Sum5</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/驱动防滑模块/滑转率计算/Sum5'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/滑转率计算/Sum7','error')">launch_gate_diag/驱动防滑模块/滑转率计算/Sum7</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/驱动防滑模块/滑转率计算/Sum7'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/扭矩控制//速度控制','error')">launch_gate_diag/总驱动力矩制定/扭矩控制//速度控制</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/总驱动力矩制定/扭矩控制//速度控制'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/F_hat','error')">launch_gate_diag/牵引效率计算/Subsystem1/F_hat</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/F_hat'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Fz','error')">launch_gate_diag/牵引效率计算/Subsystem1/Fz</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Fz'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Add','error')">launch_gate_diag/牵引效率计算/Subsystem1/Add</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Add'], 'Inport', 4);">输入端口 4</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Add','error')">launch_gate_diag/牵引效率计算/Subsystem1/Add</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Add'], 'Outport', 1);">输出端口 1</a>' 未连接。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Product','error')">launch_gate_diag/牵引效率计算/Subsystem1/Product</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Product'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Sum','error')">launch_gate_diag/牵引效率计算/Subsystem1/Sum</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Sum'], 'Inport', 2);">输入端口 2</a>'。] 
+[警告: 未连接 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/牵引效率计算/Subsystem1/Fx_out','error')">launch_gate_diag/牵引效率计算/Subsystem1/Fx_out</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/牵引效率计算/Subsystem1/Fx_out'], 'Inport', 1);">输入端口 1</a>'。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配','error')">launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配','error')">launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配','error')">launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配','error')">launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/CBF-QP扭矩分配'], 'Outport', 7);">输出端口 7</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/四轮目标滑移率计算','error')">launch_gate_diag/软土扭矩分配/四轮目标滑移率计算</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/四轮目标滑移率计算'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/四轮目标滑移率计算','error')">launch_gate_diag/软土扭矩分配/四轮目标滑移率计算</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/四轮目标滑移率计算'], 'Outport', 3);">输出端口 3</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/滑移跟踪与扭矩生成','error')">launch_gate_diag/软土扭矩分配/滑移跟踪与扭矩生成</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/滑移跟踪与扭矩生成'], 'Outport', 2);">输出端口 2</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/状态接口与轮端动力学','error')">launch_gate_diag/软土扭矩分配/状态接口与轮端动力学</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/状态接口与轮端动力学'], 'Outport', 5);">输出端口 5</a>' 未连接。] 
+[警告: '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/软土扭矩分配/状态接口与轮端动力学','error')">launch_gate_diag/软土扭矩分配/状态接口与轮端动力学</a>' 的'<a href="matlab:slprivate('open_and_hilite_port_hyperlink', 'hilite', ['launch_gate_diag/软土扭矩分配/状态接口与轮端动力学'], 'Outport', 6);">输出端口 6</a>' 未连接。] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/1','error')">launch_gate_diag/1</a>' 上找到未连接的输出信号线(输出端口: 1)] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Gain43','error')">launch_gate_diag/Gain43</a>' 上找到未连接的输出信号线(输出端口: 1)] 
+[警告: Unconnected input line found on '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Manual Switch6','error')">launch_gate_diag/Manual Switch6</a>' (input port: 1)] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/From136','error')">launch_gate_diag/From136</a>' 上找到未连接的输出信号线(输出端口: 1)] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/PF车速估计','error')">launch_gate_diag/PF车速估计</a>' 上找到未连接的输出信号线(输出端口: 1)] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/驱动防滑模块/起步探测','error')">launch_gate_diag/驱动防滑模块/起步探测</a>' 上找到未连接的输出信号线(输出端口: 11)] 
+[警告: <a href="matlab:sfprivate('sfOpenObjectBySId','launch_gate_diag:4987:::3')">'Tmax'</a> 已定义，但未在 Stateflow 图中使用。请<a href= "matlab: internal.stateflow.dialogs.UnusedObjectDeleter.createDeleter('launch_gate_diag:4987:::3')">删除此对象</a>或<a href= "matlab: sfprivate('openConfigParamsSFDiagnostics',1181)">配置诊断</a>。
+
+] 
+[警告: <a href="matlab:sfprivate('sfOpenObjectBySId','launch_gate_diag:4987:::27')">'timer_start'</a> 已定义，但未在 Stateflow 图中使用。请<a href= "matlab: internal.stateflow.dialogs.UnusedObjectDeleter.createDeleter('launch_gate_diag:4987:::27')">删除此对象</a>或<a href= "matlab: sfprivate('openConfigParamsSFDiagnostics',1181)">配置诊断</a>。
+
+] 
+[警告: 模块图 '<a href="matlab:open_system ('launch_gate_diag')">launch_gate_diag</a>' 包含 1 个代数环。要查看有关代数环的更多详细信息，请使用命令 <a href="matlab:Simulink.BlockDiagram.getAlgebraicLoops(bdroot);">Simulink.BlockDiagram.getAlgebraicLoops('launch_gate_diag') </a> 或通
+过在 MATLAB 命令行窗口中键入 <a href="matlab:sldebug(bdroot);">sldebug('launch_gate_diag') </a>来使用命令行 Simulink 调试器。要消除此消息，请将<a href="matlab:configset.internal.open('launch_gate_diag','AlgebraicLoopMsg');">代数环</a>设置为 "无"。] 
+Found algebraic loop containing: 
+<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/DOB补偿/Sum','error')">launch_gate_diag/总驱动力矩制定/DOB补偿/Sum</a>
+<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/DOB补偿/Discrete Transfer Fcn','error')">launch_gate_diag/总驱动力矩制定/DOB补偿/Discrete Transfer Fcn</a>
+<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/Sum1','error')">launch_gate_diag/总驱动力矩制定/Sum1</a> (algebraic variable)
+Use vehicle solver: D:\Program Files (x86)\TruckSim2019.0_Prog\Programs\solvers\trucksim_64.dll
+TruckSim 2019.0
+Vehicle Configuration: S_S + Frame Twist + Suspended Cab
+Revision 76054, December 13, 2018
+
+Tractor <* * Quick Start Guide Example>
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fl/Divide5','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fl/Divide5</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fl/Divide5'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fl/Divide','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fl/Divide</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fl/Divide'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fr/Divide5','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fr/Divide5</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/fr/Divide5'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fr/Divide','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fr/Divide</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/fr/Divide'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rl/Divide5','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rl/Divide5</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rl/Divide5'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rl/Divide','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rl/Divide</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rl/Divide'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rr/Divide5','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rr/Divide5</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/lamda/rr/Divide5'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rr/Divide','error')">launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rr/Divide</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/Dugoff轮胎模型/alpha_lamda/alpha/rr/Divide'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/Divide1','error')">launch_gate_diag/总驱动力矩制定/Divide1</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/总驱动力矩制定/Divide1'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+[警告: 在 '<a href="matlab:open_and_hilite_hyperlink ('launch_gate_diag/总驱动力矩制定/电机负载百分比','error')">launch_gate_diag/总驱动力矩制定/电机负载百分比</a>' 中出现除以零
+建议的操作:
+    •  - <a href="matlab:Simulink.SuppressedDiagnostic({'launch_gate_diag/总驱动力矩制定/电机负载百分比'},'Simulink:blocks:DivideByZero');">隐藏</a>
+] 
+
+Termination at simulation time = 5 s.
+Computational time ratio: 1.28714 (real time)/(simulation time)
+
+

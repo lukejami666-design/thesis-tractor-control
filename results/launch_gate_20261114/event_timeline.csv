@@ -1,0 +1,44 @@
+﻿strategy,wheel,event,time_s,interpretation
+gate,FL,prewarn_first,0.053,
+gate,FL,spin_confirm_first,0.132,
+gate,FL,actual_torque_first_decrease,0.046,
+gate,FL,Fx_peak_0_407,0.027,
+gate,FL,dv_peak_0_407,0.361,
+gate,FR,prewarn_first,0.053,
+gate,FR,spin_confirm_first,0.132,
+gate,FR,actual_torque_first_decrease,0.046,
+gate,FR,Fx_peak_0_407,0.027,
+gate,FR,dv_peak_0_407,0.361,
+gate,RL,prewarn_first,0.07200000000000001,
+gate,RL,spin_confirm_first,0.154,
+gate,RL,actual_torque_first_decrease,0.132,
+gate,RL,Fx_peak_0_407,0.039,
+gate,RL,dv_peak_0_407,0.406,
+gate,RR,prewarn_first,0.07200000000000001,
+gate,RR,spin_confirm_first,0.154,
+gate,RR,actual_torque_first_decrease,0.132,
+gate,RR,Fx_peak_0_407,0.039,
+gate,RR,dv_peak_0_407,0.406,
+gate,vehicle,t2_20ms_hold,0.406,"2 km/h continuous 21 samples, onset time"
+baseline,FL,prewarn_first,0.053,baseline supervisor is bypassed; events do not execute control
+baseline,FL,spin_confirm_first,0.132,baseline supervisor is bypassed; events do not execute control
+baseline,FL,actual_torque_first_decrease,0.046,
+baseline,FL,Fx_peak_0_407,0.027,
+baseline,FL,dv_peak_0_407,0.36,
+baseline,FR,prewarn_first,0.053,baseline supervisor is bypassed; events do not execute control
+baseline,FR,spin_confirm_first,0.132,baseline supervisor is bypassed; events do not execute control
+baseline,FR,actual_torque_first_decrease,0.046,
+baseline,FR,Fx_peak_0_407,0.027,
+baseline,FR,dv_peak_0_407,0.36,
+baseline,RL,prewarn_first,0.07200000000000001,baseline supervisor is bypassed; events do not execute control
+baseline,RL,spin_confirm_first,0.154,baseline supervisor is bypassed; events do not execute control
+baseline,RL,actual_torque_first_decrease,0.168,
+baseline,RL,Fx_peak_0_407,0.039,
+baseline,RL,dv_peak_0_407,0.406,
+baseline,RR,prewarn_first,0.07200000000000001,baseline supervisor is bypassed; events do not execute control
+baseline,RR,spin_confirm_first,0.154,baseline supervisor is bypassed; events do not execute control
+baseline,RR,actual_torque_first_decrease,0.168,
+baseline,RR,Fx_peak_0_407,0.039,
+baseline,RR,dv_peak_0_407,0.406,
+baseline,vehicle,t2_20ms_hold,0.40700000000000003,"2 km/h continuous 21 samples, onset time"
+gate,vehicle,torque_drawdown_peak,0.07100000000000001,end=0.406 s; drawdown=90407.024063 Nm

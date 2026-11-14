@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-14T12:51:22.614399+08:00",
+  "formal_files": [
+    {
+      "path": "D:\\毕设\\simulation\\models\\tractor_mu.slx",
+      "before_sha256": "bab0d3b67d277c86f9cde3e84db882c9d2b5e5a49eecd4e66ed6778351ba6c11",
+      "after_sha256": "bab0d3b67d277c86f9cde3e84db882c9d2b5e5a49eecd4e66ed6778351ba6c11",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\毕设\\simulation\\src\\launch_tcs_params.m",
+      "before_sha256": "3f2de7cf42dfc4f115ce905cde2af83e95c7d7f883c72895c1d2caa19abeaf72",
+      "after_sha256": "3f2de7cf42dfc4f115ce905cde2af83e95c7d7f883c72895c1d2caa19abeaf72",
+      "unchanged": true
+    }
+  ],
+  "branch": "dev",
+  "head_before_archive": "b1dfd4edee75d0e2ef6ced835b14119eee66b19e",
+  "origin": "https://github.com/lukejami666-design/thesis-tractor-control.git",
+  "working_tree": "M simulation/models/tractor_mu.slx\n M simulation/src/launch_tcs_params.m\n?? results/launch_gate_20261114/\n?? simulation/models/tractor_mu.slx.original\n?? simulation/models/tractor_mu_before_20261112.slx",
+  "deployment": "NOT DEPLOYED: active-control defect and diagnostic defect",
+  "parameter_source_copy_equal": true
+}

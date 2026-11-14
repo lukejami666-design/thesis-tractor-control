@@ -1,0 +1,10 @@
+﻿component,contribution_to_drawdown_Nm
+base,90202.359375
+cap_loss,204.664688050736
+envelope_loss,0.0
+single_bound_loss,0.0
+protection_loss,0.0
+target_interface_loss,0.0
+rate_effect_signed,0.0
+multi_projection_loss,0.0
+wheel_projection_loss,0.0

@@ -1,0 +1,303 @@
+[
+  {
+    "strategy": "gate",
+    "wheel": "FL",
+    "event": "prewarn_first",
+    "time_s": 0.053,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "FL",
+    "event": "spin_confirm_first",
+    "time_s": 0.132,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "FL",
+    "event": "actual_torque_first_decrease",
+    "time_s": 0.046,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "FL",
+    "event": "Fx_peak_0_407",
+    "time_s": 0.027,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "FL",
+    "event": "dv_peak_0_407",
+    "time_s": 0.361,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "FR",
+    "event": "prewarn_first",
+    "time_s": 0.053,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "FR",
+    "event": "spin_confirm_first",
+    "time_s": 0.132,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "FR",
+    "event": "actual_torque_first_decrease",
+    "time_s": 0.046,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "FR",
+    "event": "Fx_peak_0_407",
+    "time_s": 0.027,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "FR",
+    "event": "dv_peak_0_407",
+    "time_s": 0.361,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RL",
+    "event": "prewarn_first",
+    "time_s": 0.07200000000000001,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RL",
+    "event": "spin_confirm_first",
+    "time_s": 0.154,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RL",
+    "event": "actual_torque_first_decrease",
+    "time_s": 0.132,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RL",
+    "event": "Fx_peak_0_407",
+    "time_s": 0.039,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RL",
+    "event": "dv_peak_0_407",
+    "time_s": 0.406,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RR",
+    "event": "prewarn_first",
+    "time_s": 0.07200000000000001,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RR",
+    "event": "spin_confirm_first",
+    "time_s": 0.154,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RR",
+    "event": "actual_torque_first_decrease",
+    "time_s": 0.132,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RR",
+    "event": "Fx_peak_0_407",
+    "time_s": 0.039,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "RR",
+    "event": "dv_peak_0_407",
+    "time_s": 0.406,
+    "interpretation": ""
+  },
+  {
+    "strategy": "gate",
+    "wheel": "vehicle",
+    "event": "t2_20ms_hold",
+    "time_s": 0.406,
+    "interpretation": "2 km/h continuous 21 samples, onset time"
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FL",
+    "event": "prewarn_first",
+    "time_s": 0.053,
+    "interpretation": "baseline supervisor is bypassed; events do not execute control"
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FL",
+    "event": "spin_confirm_first",
+    "time_s": 0.132,
+    "interpretation": "baseline supervisor is bypassed; events do not execute control"
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FL",
+    "event": "actual_torque_first_decrease",
+    "time_s": 0.046,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FL",
+    "event": "Fx_peak_0_407",
+    "time_s": 0.027,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FL",
+    "event": "dv_peak_0_407",
+    "time_s": 0.36,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FR",
+    "event": "prewarn_first",
+    "time_s": 0.053,
+    "interpretation": "baseline supervisor is bypassed; events do not execute control"
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FR",
+    "event": "spin_confirm_first",
+    "time_s": 0.132,
+    "interpretation": "baseline supervisor is bypassed; events do not execute control"
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FR",
+    "event": "actual_torque_first_decrease",
+    "time_s": 0.046,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FR",
+    "event": "Fx_peak_0_407",
+    "time_s": 0.027,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "FR",
+    "event": "dv_peak_0_407",
+    "time_s": 0.36,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RL",
+    "event": "prewarn_first",
+    "time_s": 0.07200000000000001,
+    "interpretation": "baseline supervisor is bypassed; events do not execute control"
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RL",
+    "event": "spin_confirm_first",
+    "time_s": 0.154,
+    "interpretation": "baseline supervisor is bypassed; events do not execute control"
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RL",
+    "event": "actual_torque_first_decrease",
+    "time_s": 0.168,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RL",
+    "event": "Fx_peak_0_407",
+    "time_s": 0.039,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RL",
+    "event": "dv_peak_0_407",
+    "time_s": 0.406,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RR",
+    "event": "prewarn_first",
+    "time_s": 0.07200000000000001,
+    "interpretation": "baseline supervisor is bypassed; events do not execute control"
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RR",
+    "event": "spin_confirm_first",
+    "time_s": 0.154,
+    "interpretation": "baseline supervisor is bypassed; events do not execute control"
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RR",
+    "event": "actual_torque_first_decrease",
+    "time_s": 0.168,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RR",
+    "event": "Fx_peak_0_407",
+    "time_s": 0.039,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "RR",
+    "event": "dv_peak_0_407",
+    "time_s": 0.406,
+    "interpretation": ""
+  },
+  {
+    "strategy": "baseline",
+    "wheel": "vehicle",
+    "event": "t2_20ms_hold",
+    "time_s": 0.40700000000000003,
+    "interpretation": "2 km/h continuous 21 samples, onset time"
+  },
+  {
+    "strategy": "gate",
+    "wheel": "vehicle",
+    "event": "torque_drawdown_peak",
+    "time_s": 0.07100000000000001,
+    "interpretation": "end=0.406 s; drawdown=90407.024063 Nm"
+  }
+]

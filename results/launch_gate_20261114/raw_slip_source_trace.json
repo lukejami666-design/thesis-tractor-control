@@ -1,0 +1,41 @@
+[
+  {
+    "source": "4877#out:4",
+    "destinations": [
+      "5847#in:4",
+      "5555#in:1"
+    ],
+    "source_block": "<Block BlockType=\"SubSystem\" Name=\"滑转率计算\" SID=\"4877\">\n    <PortCounts in=\"8\" out=\"5\" />\n    <P Name=\"Position\">[1505, 862, 1735, 1053]</P>\n    <P Name=\"ZOrder\">100000</P>\n    <P Name=\"ContentPreviewEnabled\">on</P>\n    <System Ref=\"system_4877\" />\n  </Block>\n  "
+  },
+  {
+    "source": "4877#out:1",
+    "destinations": [
+      "5847#in:1",
+      "5546#in:1"
+    ],
+    "source_block": "<Block BlockType=\"SubSystem\" Name=\"滑转率计算\" SID=\"4877\">\n    <PortCounts in=\"8\" out=\"5\" />\n    <P Name=\"Position\">[1505, 862, 1735, 1053]</P>\n    <P Name=\"ZOrder\">100000</P>\n    <P Name=\"ContentPreviewEnabled\">on</P>\n    <System Ref=\"system_4877\" />\n  </Block>\n  "
+  },
+  {
+    "source": "4877#out:2",
+    "destinations": [
+      "5847#in:2",
+      "5553#in:1"
+    ],
+    "source_block": "<Block BlockType=\"SubSystem\" Name=\"滑转率计算\" SID=\"4877\">\n    <PortCounts in=\"8\" out=\"5\" />\n    <P Name=\"Position\">[1505, 862, 1735, 1053]</P>\n    <P Name=\"ZOrder\">100000</P>\n    <P Name=\"ContentPreviewEnabled\">on</P>\n    <System Ref=\"system_4877\" />\n  </Block>\n  "
+  },
+  {
+    "source": "4877#out:3",
+    "destinations": [
+      "5847#in:3",
+      "5554#in:1"
+    ],
+    "source_block": "<Block BlockType=\"SubSystem\" Name=\"滑转率计算\" SID=\"4877\">\n    <PortCounts in=\"8\" out=\"5\" />\n    <P Name=\"Position\">[1505, 862, 1735, 1053]</P>\n    <P Name=\"ZOrder\">100000</P>\n    <P Name=\"ContentPreviewEnabled\">on</P>\n    <System Ref=\"system_4877\" />\n  </Block>\n  "
+  },
+  {
+    "source": "5847#out:1",
+    "destinations": [
+      "5848#in:1"
+    ],
+    "source_block": "<Block BlockType=\"Mux\" Name=\"Round2_raw_slip_mux\" SID=\"5847\">\n    <PortCounts in=\"4\" out=\"1\" />\n    <P Name=\"Position\">[2400, 1190, 2410, 1390]</P>\n    <P Name=\"ZOrder\">100000</P>\n    <P Name=\"DisplayOption\">bar</P>\n  </Block>\n  "
+  }
+]

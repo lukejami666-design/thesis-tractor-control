@@ -1,0 +1,38 @@
+[
+  {
+    "original_name": "round2_base_L2_U08",
+    "sha256": "60270d1c41d13d0c980b832910761a28c6dde89e9e49df7cdad27dfc1f850c36",
+    "archived_path": "data\\round2_base_L2_U08.mat",
+    "case": "L2_U08",
+    "strategy": "tcs",
+    "bypass_switch": 0,
+    "rise_rate": 12.0
+  },
+  {
+    "original_name": "r2_H_rise16",
+    "sha256": "d1ded4f309373ba8ea4c6b3014df7de1593e8262f39325071e1986b19243b1fb",
+    "archived_path": "data\\r2_H_rise16.mat",
+    "case": "L2_U08",
+    "strategy": "tcs",
+    "bypass_switch": 0,
+    "rise_rate": 16.0
+  },
+  {
+    "original_name": "r2_I_rise20",
+    "sha256": "89428328fbcd30cacea199ad73312cadf0770286f531833bac92c572152f906e",
+    "archived_path": "data\\r2_I_rise20.mat",
+    "case": "L2_U08",
+    "strategy": "tcs",
+    "bypass_switch": 0,
+    "rise_rate": 20.0
+  },
+  {
+    "original_name": "r2_no_prewarn_L2_U08",
+    "sha256": "30f94f95c388005ce4b7b5300e104739a7c9de50e8c8cb46a814d203dc0ef055",
+    "archived_path": "data\\r2_no_prewarn_L2_U08.mat",
+    "case": "L2_U08",
+    "strategy": "tcs",
+    "bypass_switch": 0,
+    "rise_rate": 12.0
+  }
+]

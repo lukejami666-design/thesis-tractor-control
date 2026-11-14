@@ -1,0 +1,65 @@
+{
+  "finite_core": true,
+  "sample_count": 5001,
+  "end_time_s": 5.0,
+  "candidate_parameters_equal_baseline": true,
+  "override_parameters_equal_snapshot": true,
+  "max_actual_minus_cmd_Nm": 0.0,
+  "max_single_hard_excess_Nm": 0.0,
+  "max_multi_excess_Nm": 2.9103830456733704e-11,
+  "max_reconstruction_residual_Nm": 1.4551915228366852e-11,
+  "single_bound_active_samples_per_wheel": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "minimum_single_bound_after_first_warning_Nm": 999999957351.5353,
+  "warn_edges": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "spin_edges": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "stage_counts": {
+    "0": 25,
+    "1": 106,
+    "4": 4869,
+    "255": 1
+  },
+  "handoff_time_s": 0.425,
+  "protection_samples_in_vehicle_run": 0,
+  "drawdown_components_Nm": {
+    "base": 90202.359375,
+    "cap_loss": 204.664688050736,
+    "envelope_loss": 0.0,
+    "single_bound_loss": 0.0,
+    "protection_loss": 0.0,
+    "target_interface_loss": 0.0,
+    "rate_effect_signed": 0.0,
+    "multi_projection_loss": 0.0,
+    "wheel_projection_loss": 0.0
+  },
+  "drawdown_sum_Nm": 90407.02406305073,
+  "baseline_drawdown_Nm": 94234.25123162015,
+  "conclusion": "证据不足",
+  "deployment": false,
+  "blocking_defect": "single-wheel event bound initialized at 1e12 never reaches finite event target within run; inactive in all samples",
+  "upstream_cap_single_precision_max_residual_Nm": 0.0,
+  "drawdown_refined_Nm": {
+    "unclipped_distribution_change": 0.00390625,
+    "upstream_common_cap_change": 90202.35546875,
+    "current_cap_change": 204.664688050736,
+    "gate_and_rate_endpoint_change": 0.0
+  },
+  "gate_diag_target_max_error_Nm": 28086.5654296875,
+  "gate_diag_target_note": "gate_diag(53:56) repeats last scalar target (RR); use T_target and T_lim_out for per-wheel accounting",
+  "maximum_path_deficit_common_Nm": 18512.448144531285,
+  "maximum_multi_projection_common_Nm": 4966.1329369116465
+}

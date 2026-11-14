@@ -1,0 +1,13 @@
+{
+  "method": "Presentation-property removal plus independent unordered source-to-destination graph comparison; all other block parameters and scripts retained",
+  "equal_after_presentation_removal": {
+    "simulink/stateflow/chart_870.xml": true,
+    "simulink/systems/system_1787.xml": false,
+    "simulink/systems/system_root.xml": true
+  },
+  "semantic_block_and_connection_equality": {
+    "simulink/systems/system_1787.xml": true,
+    "simulink/systems/system_root.xml": true
+  },
+  "formal_untouched_this_task": true
+}

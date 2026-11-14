@@ -1,0 +1,24 @@
+﻿version,case,source,archived_path,sha256,bytes
+first correction; not full J matrix,L0_U05,D:\毕设\launch_gate_20261113\fix_base_L0_U05.mat,,1c7fa8643ce634f2af58b057282598b20bdce7b5a434fa7158abae3805401d32,4192831
+first correction; not full J matrix,L0_U08,D:\毕设\launch_gate_20261113\fix_base_L0_U08.mat,,d8d3cc102e34370b53da7f2c0cdd78456a78488e69cb04110a6b1851b5f3e8ee,4232855
+first correction; not full J matrix,L0_RAMP,D:\毕设\launch_gate_20261113\fix_base_L0_RAMP.mat,,4bfc7abc7d71dbcfbcaf30775ca171952d4822ce9ef194cdc53344d070e98a9f,4216315
+first correction; not full J matrix,L1_U05,D:\毕设\launch_gate_20261113\fix_base_L1_U05.mat,,7bcd6139f1431dfeabf5f609a855ece04d4db87434c8cd26e9512048c5586ef7,4266319
+first correction; not full J matrix,L1_U08,D:\毕设\launch_gate_20261113\fix_base_L1_U08.mat,,eb8c85c399f4bbc9f726dbae0535bfda9dae832e50055e223abd0bc9d94b3015,4312247
+first correction; not full J matrix,L1_RAMP,D:\毕设\launch_gate_20261113\fix_base_L1_RAMP.mat,,5f55d83a841c9e0dc6500e4bd1accdb6a119e93b5441b15288960a6ba5b5edd1,4304173
+first correction; not full J matrix,L2_U05,D:\毕设\launch_gate_20261113\fix_base_L2_U05.mat,,402cb3945c397a06d003db2925441932739a41ab926aa39db3270c4288253985,4250953
+first correction; not full J matrix,L2_U08,D:\毕设\launch_gate_20261113\fix_baseline_L2_U08.mat,,b1b046de8dc748c72d122dc70c8f13372d6a0c7d378748c2f76bfbc6614e868d,4296116
+first correction; not full J matrix,L2_RAMP,D:\毕设\launch_gate_20261113\fix_base_L2_RAMP.mat,,1a5c256db4925103a1cd123357c1d152d07352a4bb1b623cc49c6b47acf702d8,4320550
+first correction; not full J matrix,L0_U05,D:\毕设\launch_gate_20261113\fix_gate_L0_U05.mat,,f998fbdf2573d008a687864dfd0a4f39f415feabab97fd59b8c2ee1c554e5bef,4425932
+first correction; not full J matrix,L0_U08,D:\毕设\launch_gate_20261113\fix_gate_L0_U08.mat,,816c325b47268fb2fdc4930a573298250d87015da47da9871dcd14aa90533593,4465892
+first correction; not full J matrix,L0_RAMP,D:\毕设\launch_gate_20261113\fix_gate_L0_RAMP.mat,,13279950fb773d9869bd487e37299d0714d8fc7dc7b9176dcfde14c489dcc6b3,4409570
+first correction; not full J matrix,L1_U05,D:\毕设\launch_gate_20261113\fix_gate_L1_U05.mat,,af526f5bb82e3f9998fa0d16bbf37953b0066da8dbfa87331c2b2c05ea45a22a,4610569
+first correction; not full J matrix,L1_U08,D:\毕设\launch_gate_20261113\fix_gate_L1_U08.mat,,ceae04ad2ca5957f0746c4f8df4e5512cfac615be34deb339132a802aa064d5e,4677394
+first correction; not full J matrix,L1_RAMP,D:\毕设\launch_gate_20261113\fix_gate_L1_RAMP.mat,,afac961d94b89ab70125a2e745f1a929cf5b040a43d4849618fe6d577423d5e8,4616969
+first correction; not full J matrix,L2_U05,D:\毕设\launch_gate_20261113\fix_gate_L2_U05.mat,,91968b48340cc18f2f92601be09605ad36d2e11f367adc2591bc14024f393267,4607333
+first correction; not full J matrix,L2_U08,D:\毕设\launch_gate_20261113\fix_gate_L2_U08.mat,,6ea87c4d2d34834f3e16cbaa059d5dcee9398ef3bf4fdea47697416919b09a2b,4673410
+first correction; not full J matrix,L2_RAMP,D:\毕设\launch_gate_20261113\fix_gate_L2_RAMP.mat,,482176f6a8e38944e00faf35682c46f669a9b56cbeb5141c74e8249be08443a6,4638379
+candidate J,L1_RAMP,D:\毕设\launch_gate_20261113\r2_J_L1_RAMP.mat,data\r2_J_L1_RAMP.mat,0fe3631eae0b301ccc23cb4e3b1335b74bc7a15609c528063d3a26d9827a441e,4617153
+candidate J,L1_U08,D:\毕设\launch_gate_20261113\r2_J_L1_U08.mat,data\r2_J_L1_U08.mat,e1a2cfa6b48a321d9256366c026cee1b751132d0d86b5e0d66b1799b5213d8f3,4661391
+candidate J,L2_RAMP,D:\毕设\launch_gate_20261113\r2_J_L2_RAMP.mat,data\r2_J_L2_RAMP.mat,eff43e2f1f0c3a9ba791a4ef087a8f172c7c6c673f02b604f616adde1042eb35,4617182
+candidate J,L2_U05,D:\毕设\launch_gate_20261113\r2_J_L2_U05.mat,data\r2_J_L2_U05.mat,69375e92846f716b4d2b74d02f941f388711ec3c0879140938b3b6be5f9d347c,4590189
+candidate J,L2_U08,D:\毕设\launch_gate_20261113\r2_J_rise24.mat,data\r2_J_rise24.mat,a1f0f76cb38e511282fe3bb0b72d5a0607cf7547c7c50d2609bc86cebcfbdfff,4653866

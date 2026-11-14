@@ -1,0 +1,312 @@
+{
+  "simfile_sha256": "2658d82283c9871246192bae57f3d59d4d41a4b11ff050994b024616453f124a",
+  "run_all_sha256": "b63110e49375fcf458f4eb4831d944a2b888650c10d3fc82c75e651862134ec4",
+  "run_all_path": "C:\\Users\\Public\\Documents\\TruckSim2019.0_Data\\Results\\Run_e5e17c79-c94f-468d-b017-bf6b312eca85\\Run_all.par",
+  "run_identifier": "Run_e5e17c79-c94f-468d-b017-bf6b312eca85",
+  "solver": "TruckSim 2019.0; Vehicle Configuration S_S + Frame Twist + Suspended Cab",
+  "road_friction_evidence": [
+    {
+      "line": 130,
+      "text": "OPT_TIRE_MODEL 1"
+    },
+    {
+      "line": 327,
+      "text": "MU_REF_Y .8"
+    },
+    {
+      "line": 361,
+      "text": "MU_REF_X .8"
+    },
+    {
+      "line": 413,
+      "text": "OPT_TIRE_MODEL 1"
+    },
+    {
+      "line": 610,
+      "text": "MU_REF_Y .8"
+    },
+    {
+      "line": 644,
+      "text": "MU_REF_X .8"
+    },
+    {
+      "line": 700,
+      "text": "OPT_TIRE_MODEL 1"
+    },
+    {
+      "line": 905,
+      "text": "MU_REF_Y .8"
+    },
+    {
+      "line": 939,
+      "text": "MU_REF_X .8"
+    },
+    {
+      "line": 991,
+      "text": "OPT_TIRE_MODEL 1"
+    },
+    {
+      "line": 1196,
+      "text": "MU_REF_Y .8"
+    },
+    {
+      "line": 1230,
+      "text": "MU_REF_X .8"
+    },
+    {
+      "line": 2853,
+      "text": "MU_ROAD_COMBINE ADD"
+    },
+    {
+      "line": 2854,
+      "text": "MU_ROAD_CONSTANT 0.3"
+    },
+    {
+      "line": 2855,
+      "text": "MU_ROAD_L_CONSTANT 0"
+    }
+  ],
+  "soil_note": "Active solver deck uses tire force carpet tables and a constant road friction map. No active soft-soil parameter source has been established; do not label this as validated soft soil.",
+  "export_map": [
+    {
+      "index": 1,
+      "name": "Vx",
+      "unit": "km/h",
+      "description": "Long. speed, inst. CG, vehicle",
+      "body": "Instant CG, vehicle"
+    },
+    {
+      "index": 2,
+      "name": "Steer_L1",
+      "unit": "deg",
+      "description": "Wheel steer L1",
+      "body": "Wheel steer L1"
+    },
+    {
+      "index": 3,
+      "name": "Steer_R1",
+      "unit": "deg",
+      "description": "Wheel steer R1",
+      "body": "Wheel steer R1"
+    },
+    {
+      "index": 4,
+      "name": "Beta",
+      "unit": "deg",
+      "description": "Slip angle, vehicle",
+      "body": "Vehicle slip (beta)"
+    },
+    {
+      "index": 5,
+      "name": "AVz",
+      "unit": "deg/s",
+      "description": "Yaw rate (body-fixed), vehicle",
+      "body": "Vehicle yaw (body-fixed)"
+    },
+    {
+      "index": 6,
+      "name": "AVy_L1",
+      "unit": "rpm",
+      "description": "Wheel L1 spin",
+      "body": "Wheel L1 spin"
+    },
+    {
+      "index": 7,
+      "name": "AVy_R1",
+      "unit": "rpm",
+      "description": "Wheel R1 spin",
+      "body": "Wheel R1 spin"
+    },
+    {
+      "index": 8,
+      "name": "AVy_L2",
+      "unit": "rpm",
+      "description": "Wheel L2 spin",
+      "body": "Wheel L2 spin"
+    },
+    {
+      "index": 9,
+      "name": "AVy_R2",
+      "unit": "rpm",
+      "description": "Wheel R2 spin",
+      "body": "Wheel R2 spin"
+    },
+    {
+      "index": 10,
+      "name": "Ax_Rd",
+      "unit": "g",
+      "description": "Road X accel., inst. CG, vehicle",
+      "body": "Instant CG, vehicle"
+    },
+    {
+      "index": 11,
+      "name": "Ay_Rd",
+      "unit": "g",
+      "description": "Road Y accel., inst. CG, vehicle",
+      "body": "Instant CG, vehicle"
+    },
+    {
+      "index": 12,
+      "name": "Fz_L1",
+      "unit": "N",
+      "description": "Vertical force, wheel L1",
+      "body": "Wheel L1 vertical"
+    },
+    {
+      "index": 13,
+      "name": "Fz_L2",
+      "unit": "N",
+      "description": "Vertical force, wheel L2",
+      "body": "Wheel L2 vertical"
+    },
+    {
+      "index": 14,
+      "name": "Fz_R1",
+      "unit": "N",
+      "description": "Vertical force, wheel R1",
+      "body": "Wheel R1 vertical"
+    },
+    {
+      "index": 15,
+      "name": "Fz_R2",
+      "unit": "N",
+      "description": "Vertical force, wheel R2",
+      "body": "Wheel R2 vertical"
+    },
+    {
+      "index": 16,
+      "name": "AVx",
+      "unit": "deg/s",
+      "description": "Roll rate (body-fixed), vehicle",
+      "body": "Vehicle roll (body-fixed)"
+    },
+    {
+      "index": 17,
+      "name": "AVy",
+      "unit": "deg/s",
+      "description": "Pitch rate (body-fixed), vehicle",
+      "body": "Vehicle pitch (body-fixed)"
+    },
+    {
+      "index": 18,
+      "name": "Vy",
+      "unit": "km/h",
+      "description": "Lat. speed, inst. CG, vehicle",
+      "body": "Instant CG, vehicle"
+    },
+    {
+      "index": 19,
+      "name": "Az_Rd",
+      "unit": "g",
+      "description": "Road Y accel., inst. CG, vehicle",
+      "body": "Instant CG, vehicle"
+    },
+    {
+      "index": 20,
+      "name": "Kappa_L1i",
+      "unit": "-",
+      "description": "Longitudinal slip, tire L1i",
+      "body": "Tire L1i long. slip"
+    },
+    {
+      "index": 21,
+      "name": "Kappa_R1i",
+      "unit": "-",
+      "description": "Longitudinal slip, tire R1i",
+      "body": "Tire R1i long. slip"
+    },
+    {
+      "index": 22,
+      "name": "Kappa_L2i",
+      "unit": "-",
+      "description": "Longitudinal slip, tire L2i",
+      "body": "Tire L2i long. slip"
+    },
+    {
+      "index": 23,
+      "name": "Kappa_R2i",
+      "unit": "-",
+      "description": "Longitudinal slip, tire R2i",
+      "body": "Tire R2i long. slip"
+    },
+    {
+      "index": 24,
+      "name": "Xo",
+      "unit": "m",
+      "description": "X coordinate, vehicle origin",
+      "body": "Vehicle"
+    },
+    {
+      "index": 25,
+      "name": "Yo",
+      "unit": "m",
+      "description": "Y coordinate, vehicle origin",
+      "body": "Vehicle"
+    },
+    {
+      "index": 26,
+      "name": "Fx_L1",
+      "unit": "N",
+      "description": "Longitudinal force, wheel L1",
+      "body": "Wheel L1 longitudinal"
+    },
+    {
+      "index": 27,
+      "name": "Fx_R1",
+      "unit": "N",
+      "description": "Longitudinal force, wheel R1",
+      "body": "Wheel R1 longitudinal"
+    },
+    {
+      "index": 28,
+      "name": "Fx_L2",
+      "unit": "N",
+      "description": "Longitudinal force, wheel L2",
+      "body": "Wheel L2 longitudinal"
+    },
+    {
+      "index": 29,
+      "name": "Fx_R2",
+      "unit": "N",
+      "description": "Longitudinal force, wheel R2",
+      "body": "Wheel R2 longitudinal"
+    },
+    {
+      "index": 30,
+      "name": "Pitch",
+      "unit": "deg",
+      "description": "Pitch, vehicle",
+      "body": "Vehicle pitch"
+    },
+    {
+      "index": 31,
+      "name": "Fy_L1",
+      "unit": "N",
+      "description": "Lateral force, wheel L1",
+      "body": "Wheel L1 lateral"
+    },
+    {
+      "index": 32,
+      "name": "Fy_R1",
+      "unit": "N",
+      "description": "Lateral force, wheel R1",
+      "body": "Wheel R1 lateral"
+    },
+    {
+      "index": 33,
+      "name": "Fy_L2",
+      "unit": "N",
+      "description": "Lateral force, wheel L2",
+      "body": "Wheel L2 lateral"
+    },
+    {
+      "index": 34,
+      "name": "Fy_R2",
+      "unit": "N",
+      "description": "Lateral force, wheel R2",
+      "body": "Wheel R2 lateral"
+    }
+  ],
+  "force_sign_check": "Wheel x longitudinal positive traction; confirm signs against positive drive, positive forward acceleration, and positive Fz in diagnostic trajectories. Planar forward projection Fx*cos(delta)-Fy*sin(delta); no claim of exact 3D body-force balance.",
+  "commercial_data_policy": "Only identifiers, hashes and signal metadata archived; original tire carpets, commercial PAR/VSB/VS data and licenses remain local."
+}

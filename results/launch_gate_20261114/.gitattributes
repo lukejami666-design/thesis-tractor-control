@@ -1,0 +1,6 @@
+# Evidence snapshots keep byte-exact SHA-256 across clone/checkout.
+# The repository-wide source EOL policy must not rewrite archived originals.
+* -text
+*.slx binary
+*.mat binary
+*.png binary

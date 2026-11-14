@@ -1,0 +1,13 @@
+{
+  "executed_at": "2026-11-14T12:49:56.702875+08:00",
+  "python": "3.11.8 (tags/v3.11.8:db85d51, Feb  6 2024, 22:03:32) [MSC v.1937 64 bit (AMD64)]",
+  "temporary_archive": "D:\\毕设\\launch_gate_20261114\\feasibility_local\\offline_replay_20261114\\results\\launch_gate_20261114",
+  "historical_source_directory_present": false,
+  "analysis_exit_code": 0,
+  "exact_json_equality": {
+    "metrics.json": true,
+    "engineering_checks.json": true,
+    "candidate_J_full_parameters.json": true
+  },
+  "packaged_raw_models_and_sources_unchanged": true
+}

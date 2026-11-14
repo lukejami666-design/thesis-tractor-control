@@ -1,0 +1,50 @@
+[
+  {
+    "path": "D:\\毕设\\simulation\\models\\tractor_mu.slx",
+    "sha256": "bab0d3b67d277c86f9cde3e84db882c9d2b5e5a49eecd4e66ed6778351ba6c11",
+    "bytes": 2009749,
+    "mtime": "2026-11-14T10:57:39.942769"
+  },
+  {
+    "path": "D:\\毕设\\simulation\\src\\launch_tcs_params.m",
+    "sha256": "3f2de7cf42dfc4f115ce905cde2af83e95c7d7f883c72895c1d2caa19abeaf72",
+    "bytes": 27167,
+    "mtime": "2026-11-12T11:32:11.328683"
+  },
+  {
+    "path": "D:\\毕设\\launch_gate_20261113\\launch_gate_exp.slx",
+    "sha256": "ffeb3a9fb61d02e01e6b2dab8f26fbe58add73b9872659a4ff0fdff41689e6b1",
+    "bytes": 2003339,
+    "mtime": "2026-11-14T11:04:51.699208"
+  },
+  {
+    "path": "D:\\毕设\\launch_gate_20261113\\run_gate_trial.m",
+    "sha256": "a8bba729bcdd13e788c23b4ade78a0f4d772b90535bae9d880dda87df682b724",
+    "bytes": 2685,
+    "mtime": "2026-11-13T09:59:01.522286"
+  },
+  {
+    "path": "D:\\毕设\\launch_gate_20261113\\gate_params.m",
+    "sha256": "e9073402e041a2511d9054aff85b9a515d5cd493e6b076507f11f66b7d449256",
+    "bytes": 805,
+    "mtime": "2026-11-14T11:01:48.668530"
+  },
+  {
+    "path": "D:\\毕设\\launch_gate_20261113\\LaunchTCS_Torque_gate.m",
+    "sha256": "908a1f4c28e3fe9764ef3cd4533917f7d88e3f9159c2a125aee43675ea2c54d3",
+    "bytes": 7626,
+    "mtime": "2026-11-14T11:01:40.742425"
+  },
+  {
+    "path": "D:\\毕设\\launch_gate_20261113\\MONITOR_gate.txt",
+    "sha256": "5af60ffc8572c5912c03b3e225e152ffcc00fa8c6fba9c36d73e138952feecd9",
+    "bytes": 4591,
+    "mtime": "2026-11-14T10:00:28.286783"
+  },
+  {
+    "path": "C:\\Users\\Public\\Documents\\TruckSim2019.0_Data\\launch_tcs_params.m",
+    "sha256": "3f2de7cf42dfc4f115ce905cde2af83e95c7d7f883c72895c1d2caa19abeaf72",
+    "bytes": 27167,
+    "mtime": "2026-11-12T11:32:11.328683"
+  }
+]

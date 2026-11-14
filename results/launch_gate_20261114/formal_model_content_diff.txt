@@ -1,0 +1,1230 @@
+--- experiment_start/simulink/stateflow/chart_870.xml
+
++++ current_formal/simulink/stateflow/chart_870.xml
+
+@@ -5,6 +5,8 @@
+
+   <P Name="viewLimits">[0 156.75 0 153.75]</P>
+   <P Name="screen">[1 1 3600 1200 1.180555555555556]</P>
+   <P Name="viewObj">870</P>
++  <P Name="visible">1</P>
++  <subviewS/>
+   <P Name="ssIdHighWaterMark">23</P>
+   <P Name="decomposition">CLUSTER_CHART</P>
+   <P Name="type">EML_CHART</P>
+--- experiment_start/simulink/systems/system_1787.xml
+
++++ current_formal/simulink/systems/system_1787.xml
+
+@@ -1,6 +1,8 @@
+
+ <?xml version="1.0" encoding="utf-8"?>
+ <System>
+   <P Name="Location">[-1, -8, 1921, 1033]</P>
++  <P Name="Open">on</P>
++  <P Name="ZoomFactor">80</P>
+   <Block BlockType="Inport" Name="sp1" SID="1788">
+     <P Name="Position">[1155, 603, 1185, 617]</P>
+     <P Name="ZOrder">100000</P>
+@@ -27,7 +29,7 @@
+
+     <P Name="Port">4</P>
+   </Block>
+   <Block BlockType="Inport" Name="vx" SID="1792">
+-    <P Name="Position">[-720, 1303, -690, 1317]</P>
++    <P Name="Position">[-720, 1323, -690, 1337]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Port">5</P>
+@@ -38,7 +40,7 @@
+
+     </PortProperties>
+   </Block>
+   <Block BlockType="Inport" Name="vy" SID="4889">
+-    <P Name="Position">[-695, 1353, -665, 1367]</P>
++    <P Name="Position">[-720, 1388, -690, 1402]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Port">6</P>
+@@ -64,18 +66,18 @@
+
+     <P Name="Port">10</P>
+   </Block>
+   <Block BlockType="Inport" Name="T_base" SID="5665">
+-    <P Name="Position">[115, 2123, 145, 2137]</P>
++    <P Name="Position">[120, 2258, 150, 2272]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Port">11</P>
+   </Block>
+   <Block BlockType="Inport" Name="T_actual" SID="5739">
+-    <P Name="Position">[-620, 1603, -590, 1617]</P>
++    <P Name="Position">[-715, 1713, -685, 1727]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="Port">12</P>
+   </Block>
+   <Block BlockType="Inport" Name="ax" SID="5703">
+-    <P Name="Position">[-695, 1403, -665, 1417]</P>
++    <P Name="Position">[-720, 1453, -690, 1467]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="Port">13</P>
+   </Block>
+@@ -155,7 +157,7 @@
+
+     <P Name="ZOrder">100000</P>
+   </Block>
+   <Block BlockType="Goto" Name="Common_Tmax_goto" SID="5950">
+-    <P Name="Position">[1450, 1680, 1630, 1700]</P>
++    <P Name="Position">[2230, 2565, 2410, 2585]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">Common_Tmax_current</P>
+     <P Name="TagVisibility">global</P>
+@@ -167,7 +169,7 @@
+
+   </Block>
+   <Block BlockType="Demux" Name="Demux2" SID="5797">
+     <PortCounts in="1" out="4"/>
+-    <P Name="Position">[630, 2253, 640, 2362]</P>
++    <P Name="Position">[935, 2068, 945, 2177]</P>
+     <P Name="ZOrder">100000</P>
+   </Block>
+   <Block BlockType="DiscreteTransferFcn" Name="Discrete&#xA;Transfer Fcn" SID="5546">
+@@ -506,7 +508,7 @@
+
+     </PortProperties>
+   </Block>
+   <Block BlockType="From" Name="From_fast_worsening" SID="5896">
+-    <P Name="Position">[55, 2210, 215, 2230]</P>
++    <P Name="Position">[25, 2495, 185, 2515]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">tcs_fast_worsening</P>
+     <PortProperties>
+@@ -597,7 +599,7 @@
+
+     </PortProperties>
+   </Block>
+   <Block BlockType="Gain" Name="Gain1" SID="3877">
+-    <P Name="Position">[1310, 1730, 1370, 1780]</P>
++    <P Name="Position">[1365, 1415, 1425, 1465]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Gain">pi/30</P>
+@@ -645,7 +647,7 @@
+
+     <P Name="Gain">0.94</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto" SID="1815">
+-    <P Name="Position">[-635, 1260, -605, 1280]</P>
++    <P Name="Position">[-620, 1355, -590, 1375]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">v</P>
+@@ -688,27 +690,27 @@
+
+     <P Name="GotoTag">dv</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto15" SID="5852">
+-    <P Name="Position">[555, 1997, 600, 2013]</P>
++    <P Name="Position">[520, 2007, 565, 2023]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">T_pref</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto16" SID="5855">
+-    <P Name="Position">[660, 2032, 705, 2048]</P>
++    <P Name="Position">[665, 2067, 710, 2083]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">T_cmd</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto17" SID="5857">
+-    <P Name="Position">[585, 2084, 665, 2106]</P>
++    <P Name="Position">[745, 2139, 825, 2161]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">diag_torque</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto18" SID="5859">
+-    <P Name="Position">[575, 2117, 645, 2133]</P>
++    <P Name="Position">[590, 2187, 660, 2203]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">T_pref_open</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto19" SID="5861">
+-    <P Name="Position">[575, 2147, 645, 2163]</P>
++    <P Name="Position">[590, 2232, 660, 2248]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">I_dv_out</P>
+   </Block>
+@@ -719,12 +721,12 @@
+
+     <P Name="TagVisibility">global</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto20" SID="5863">
+-    <P Name="Position">[575, 2177, 645, 2193]</P>
++    <P Name="Position">[590, 2277, 660, 2293]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">T_cap</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto21" SID="5865">
+-    <P Name="Position">[575, 2207, 645, 2223]</P>
++    <P Name="Position">[590, 2322, 660, 2338]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">T_target</P>
+   </Block>
+@@ -746,29 +748,29 @@
+
+     <P Name="GotoTag">spin_clear_raw</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto25" SID="5873">
+-    <P Name="Position">[-270, 1630, -200, 1650]</P>
++    <P Name="Position">[-190, 1685, -120, 1705]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">9</P>
+     <P Name="GotoTag">diag_motion</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto26" SID="5875">
+-    <P Name="Position">[640, 1405, 705, 1425]</P>
++    <P Name="Position">[605, 1415, 670, 1435]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">spin_mask</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto27" SID="5879">
+-    <P Name="Position">[-980, 1545, -940, 1575]</P>
++    <P Name="Position">[-720, 1825, -680, 1855]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">TMax</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto28" SID="5881">
+-    <P Name="Position">[-280, 1524, -190, 1546]</P>
++    <P Name="Position">[-235, 1554, -145, 1576]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">9</P>
+     <P Name="GotoTag">consistency_ok</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto29" SID="5883">
+-    <P Name="Position">[-140, 1549, -15, 1571]</P>
++    <P Name="Position">[-160, 1594, -90, 1616]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">source_immediate_bad</P>
+   </Block>
+@@ -779,17 +781,17 @@
+
+     <P Name="TagVisibility">global</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto30" SID="5885">
+-    <P Name="Position">[-185, 1709, -95, 1731]</P>
++    <P Name="Position">[-200, 1724, -110, 1746]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">dv_ctrl</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto31" SID="5887">
+-    <P Name="Position">[-185, 1744, -95, 1766]</P>
++    <P Name="Position">[-200, 1764, -110, 1786]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">dv_rate_ctrl</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto32" SID="5889">
+-    <P Name="Position">[-465, 1774, -375, 1796]</P>
++    <P Name="Position">[-580, 1984, -490, 2006]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="GotoTag">T_feedback</P>
+   </Block>
+@@ -820,77 +822,77 @@
+
+     <P Name="GotoTag">pr</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto9" SID="3881">
+-    <P Name="Position">[1505, 1745, 1545, 1765]</P>
++    <P Name="Position">[1560, 1430, 1600, 1450]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">w_fl</P>
+     <P Name="TagVisibility">global</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto_T_slip_lim" SID="5905">
+-    <P Name="Position">[370, 2630, 530, 2650]</P>
++    <P Name="Position">[550, 2365, 710, 2385]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="ShowName">off</P>
+     <P Name="GotoTag">fix_T_slip_lim</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto_active_perwheel" SID="5899">
+-    <P Name="Position">[-540, 1920, -380, 1940]</P>
++    <P Name="Position">[-235, 1845, -75, 1865]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="ShowName">off</P>
+     <P Name="GotoTag">fix_active_perwheel</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto_cut_f" SID="5914">
+-    <P Name="Position">[370, 2765, 530, 2785]</P>
++    <P Name="Position">[550, 2500, 710, 2520]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="ShowName">off</P>
+     <P Name="GotoTag">fix_cut_f</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto_drive_active" SID="5902">
+-    <P Name="Position">[-540, 1830, -380, 1850]</P>
++    <P Name="Position">[-235, 1645, -75, 1665]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="ShowName">off</P>
+     <P Name="GotoTag">fix_drive_active</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto_fast_worsening" SID="5895">
+-    <P Name="Position">[-540, 1875, -380, 1895]</P>
++    <P Name="Position">[-235, 1805, -75, 1825]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="ShowName">off</P>
+     <P Name="GotoTag">tcs_fast_worsening</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto_slip_ratio" SID="5908">
+-    <P Name="Position">[370, 2675, 530, 2695]</P>
++    <P Name="Position">[550, 2410, 710, 2430]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="ShowName">off</P>
+     <P Name="GotoTag">fix_slip_ratio</P>
+   </Block>
+   <Block BlockType="Goto" Name="Goto_slip_recovering" SID="5911">
+-    <P Name="Position">[370, 2720, 530, 2740]</P>
++    <P Name="Position">[550, 2455, 710, 2475]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="ShowName">off</P>
+     <P Name="GotoTag">fix_slip_recovering</P>
+   </Block>
+   <Block BlockType="From" Name="Launch_Tmax1" SID="5683">
+-    <P Name="Position">[-1225, 1540, -1185, 1560]</P>
++    <P Name="Position">[-950, 1725, -910, 1745]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">TMaxFL</P>
+     <P Name="TagVisibility">global</P>
+   </Block>
+   <Block BlockType="From" Name="Launch_Tmax2" SID="5684">
+-    <P Name="Position">[-1225, 1575, -1185, 1595]</P>
++    <P Name="Position">[-950, 1760, -910, 1780]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">TMaxFR</P>
+     <P Name="TagVisibility">global</P>
+   </Block>
+   <Block BlockType="From" Name="Launch_Tmax3" SID="5685">
+-    <P Name="Position">[-1225, 1610, -1185, 1630]</P>
++    <P Name="Position">[-950, 1795, -910, 1815]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">TMaxRL</P>
+     <P Name="TagVisibility">global</P>
+   </Block>
+   <Block BlockType="From" Name="Launch_Tmax4" SID="5686">
+-    <P Name="Position">[-1225, 1645, -1185, 1665]</P>
++    <P Name="Position">[-950, 1830, -910, 1850]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">TMaxRR</P>
+@@ -898,38 +900,38 @@
+
+   </Block>
+   <Block BlockType="Mux" Name="Launch_Tmax_mux" SID="5682">
+     <PortCounts in="4" out="1"/>
+-    <P Name="Position">[-1125, 1532, -1120, 1673]</P>
++    <P Name="Position">[-850, 1717, -845, 1858]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="DisplayOption">bar</P>
+   </Block>
+   <Block BlockType="Gain" Name="Launch_delta_gain1" SID="5674">
+-    <P Name="Position">[-830, 1684, -785, 1716]</P>
++    <P Name="Position">[-955, 1519, -910, 1551]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Gain">pi/180</P>
+   </Block>
+   <Block BlockType="Gain" Name="Launch_delta_gain2" SID="5676">
+-    <P Name="Position">[-1015, 1719, -970, 1751]</P>
++    <P Name="Position">[-1140, 1554, -1095, 1586]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Gain">pi/180</P>
+   </Block>
+   <Block BlockType="Mux" Name="Launch_delta_mux" SID="5672">
+     <PortCounts in="4" out="1"/>
+-    <P Name="Position">[-720, 1682, -715, 1823]</P>
++    <P Name="Position">[-845, 1517, -840, 1658]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="DisplayOption">bar</P>
+   </Block>
+   <Block BlockType="Constant" Name="Launch_delta_zero3" SID="5677">
+-    <P Name="Position">[-880, 1760, -850, 1780]</P>
++    <P Name="Position">[-1005, 1595, -975, 1615]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Value">0</P>
+   </Block>
+   <Block BlockType="Constant" Name="Launch_delta_zero4" SID="5678">
+-    <P Name="Position">[-880, 1795, -850, 1815]</P>
++    <P Name="Position">[-1005, 1630, -975, 1650]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Value">0</P>
+@@ -940,13 +942,13 @@
+
+     <P Name="FontSize">12</P>
+   </Block>
+   <Block BlockType="Constant" Name="Launch_reset" SID="5689">
+-    <P Name="Position">[-140, 2200, -110, 2220]</P>
++    <P Name="Position">[-155, 2415, -125, 2435]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Value">0</P>
+   </Block>
+   <Block BlockType="Constant" Name="Launch_speed_src_valid" SID="5687">
+-    <P Name="Position">[-745, 1550, -715, 1570]</P>
++    <P Name="Position">[-720, 1645, -690, 1665]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <PortProperties>
+@@ -956,7 +958,7 @@
+
+     </PortProperties>
+   </Block>
+   <Block BlockType="From" Name="Launch_steer1" SID="5673">
+-    <P Name="Position">[-940, 1690, -900, 1710]</P>
++    <P Name="Position">[-1065, 1525, -1025, 1545]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">st_L</P>
+@@ -968,7 +970,7 @@
+
+     </PortProperties>
+   </Block>
+   <Block BlockType="From" Name="Launch_steer2" SID="5675">
+-    <P Name="Position">[-1125, 1725, -1085, 1745]</P>
++    <P Name="Position">[-1250, 1560, -1210, 1580]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">st_R</P>
+@@ -980,28 +982,28 @@
+
+     </PortProperties>
+   </Block>
+   <Block BlockType="From" Name="Launch_w1" SID="5668">
+-    <P Name="Position">[-860, 1190, -820, 1210]</P>
++    <P Name="Position">[-875, 1200, -835, 1220]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">w_fl</P>
+     <P Name="TagVisibility">global</P>
+   </Block>
+   <Block BlockType="From" Name="Launch_w2" SID="5669">
+-    <P Name="Position">[-860, 1225, -820, 1245]</P>
++    <P Name="Position">[-875, 1235, -835, 1255]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">w_fr</P>
+     <P Name="TagVisibility">global</P>
+   </Block>
+   <Block BlockType="From" Name="Launch_w3" SID="5670">
+-    <P Name="Position">[-860, 1260, -820, 1280]</P>
++    <P Name="Position">[-875, 1270, -835, 1290]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">w_rl</P>
+     <P Name="TagVisibility">global</P>
+   </Block>
+   <Block BlockType="From" Name="Launch_w4" SID="5671">
+-    <P Name="Position">[-860, 1295, -820, 1315]</P>
++    <P Name="Position">[-875, 1305, -835, 1325]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="NameLocation">top</P>
+     <P Name="FontSize">14</P>
+@@ -1039,7 +1041,7 @@
+
+   </Block>
+   <Block BlockType="Mux" Name="Launch_w_mux" SID="5667">
+     <PortCounts in="4" out="1"/>
+-    <P Name="Position">[-790, 1182, -785, 1323]</P>
++    <P Name="Position">[-805, 1192, -800, 1333]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="DisplayOption">bar</P>
+@@ -1052,7 +1054,7 @@
+
+     <P Name="DisplayOption">bar</P>
+   </Block>
+   <Block BlockType="From" Name="Launch_yaw" SID="5679">
+-    <P Name="Position">[-660, 1450, -620, 1470]</P>
++    <P Name="Position">[-660, 1515, -620, 1535]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="GotoTag">omega</P>
+@@ -1156,7 +1158,7 @@
+
+   </Block>
+   <Block BlockType="Mux" Name="Mux3" SID="5798">
+     <PortCounts in="4" out="1"/>
+-    <P Name="Position">[690, 2255, 695, 2360]</P>
++    <P Name="Position">[995, 2070, 1000, 2175]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="DisplayOption">bar</P>
+   </Block>
+@@ -1342,7 +1344,7 @@
+
+   </Block>
+   <Block BlockType="ToWorkspace" Name="Record_q" SID="5835">
+     <PortCounts in="1"/>
+-    <P Name="Position">[915, 2510, 1025, 2540]</P>
++    <P Name="Position">[1140, 2290, 1250, 2320]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="VariableName">q</P>
+     <P Name="MaxDataPoints">inf</P>
+@@ -1402,7 +1404,7 @@
+
+   </Block>
+   <Block BlockType="ToWorkspace" Name="Record_total_scale" SID="5837">
+     <PortCounts in="1"/>
+-    <P Name="Position">[915, 2450, 1025, 2480]</P>
++    <P Name="Position">[1140, 2230, 1250, 2260]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="VariableName">total_scale</P>
+     <P Name="MaxDataPoints">inf</P>
+@@ -1422,19 +1424,19 @@
+
+   </Block>
+   <Block BlockType="Reshape" Name="Reshape" SID="5719">
+     <PortCounts in="1" out="1"/>
+-    <P Name="Position">[-620, 1298, -590, 1322]</P>
++    <P Name="Position">[-620, 1318, -590, 1342]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="OutputDimensionality">Customize</P>
+     <P Name="OutputDimensions">[1 1]</P>
+   </Block>
+   <Block BlockType="Reshape" Name="Round2_log_scalar_q" SID="5850">
+     <PortCounts in="1" out="1"/>
+-    <P Name="Position">[765, 2510, 815, 2540]</P>
++    <P Name="Position">[990, 2290, 1040, 2320]</P>
+     <P Name="ZOrder">100000</P>
+   </Block>
+   <Block BlockType="Reshape" Name="Round2_log_scalar_total_scale" SID="5851">
+     <PortCounts in="1" out="1"/>
+-    <P Name="Position">[765, 2450, 815, 2480]</P>
++    <P Name="Position">[990, 2230, 1040, 2260]</P>
+     <P Name="ZOrder">100000</P>
+   </Block>
+   <Block BlockType="Reshape" Name="Round2_log_vector_1" SID="5842">
+@@ -1460,7 +1462,7 @@
+
+   </Block>
+   <Block BlockType="Selector" Name="Round2_select_q" SID="5834">
+     <PortCounts in="1" out="1"/>
+-    <P Name="Position">[590, 2510, 630, 2540]</P>
++    <P Name="Position">[815, 2290, 855, 2320]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="InputPortWidth">4</P>
+     <P Name="IndexOptions">Index vector (dialog)</P>
+@@ -1469,7 +1471,7 @@
+
+   </Block>
+   <Block BlockType="Selector" Name="Round2_select_total_scale" SID="5836">
+     <PortCounts in="1" out="1"/>
+-    <P Name="Position">[590, 2450, 630, 2480]</P>
++    <P Name="Position">[815, 2230, 855, 2260]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="InputPortWidth">4</P>
+     <P Name="IndexOptions">Index vector (dialog)</P>
+@@ -1484,7 +1486,7 @@
+
+   </Block>
+   <Block BlockType="Scope" Name="Scope" SID="5795">
+     <PortCounts in="1"/>
+-    <P Name="Position">[670, 1989, 700, 2021]</P>
++    <P Name="Position">[670, 2019, 700, 2051]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="ScopeSpecificationString">Simulink.scopes.TimeScopeBlockCfg(&apos;CurrentConfiguration&apos;, extmgr.ConfigurationSet(extmgr.Configuration(&apos;Core&apos;,&apos;General UI&apos;,true),extmgr.Configuration(&apos;Core&apos;,&apos;Source UI&apos;,true),extmgr.Configuration(&apos;Sources&apos;,&apos;WiredSimulink&apos;,true,&apos;DataLoggingVariableName&apos;,&apos;ScopeData1&apos;),extmgr.Configuration(&apos;Visuals&apos;,&apos;Time Domain&apos;,true,&apos;SerializedDisplays&apos;,{struct(&apos;MinYLimReal&apos;,&apos;-51.61068&apos;,&apos;MaxYLimReal&apos;,&apos;464.49611&apos;,&apos;YLabelReal&apos;,&apos;&apos;,&apos;MinYLimMag&apos;,&apos;0.00000&apos;,&apos;MaxYLimMag&apos;,&apos;464.49611&apos;,&apos;LegendVisibility&apos;,&apos;On&apos;,&apos;XGrid&apos;,true,&apos;YGrid&apos;,true,&apos;PlotMagPhase&apos;,false,&apos;AxesColor&apos;,[0 0 0],&apos;AxesTickColor&apos;,[0.686274509803922 0.686274509803922 0.686274509803922],&apos;ColorOrder&apos;,[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],&apos;Title&apos;,&apos;%&lt;SignalLabel&gt;&apos;,&apos;LinePropertiesCache&apos;,{{}},&apos;UserDefinedChannelNames&apos;,{{}},&apos;NumLines&apos;,4,&apos;LineNames&apos;,{{&apos;起步扭矩控制/T_cmd:1&apos;,&apos;起步扭矩控制/T_cmd:2&apos;,&apos;起步扭矩控制/T_cmd:3&apos;,&apos;起步扭矩控制/T_cmd:4&apos;}},&apos;ShowContent&apos;,true,&apos;Placement&apos;,1)},&apos;DisplayPropertyDefaults&apos;,struct(&apos;MinYLimReal&apos;,&apos;-51.61068&apos;,&apos;MaxYLimReal&apos;,&apos;464.49611&apos;,&apos;YLabelReal&apos;,&apos;&apos;,&apos;MinYLimMag&apos;,&apos;0.00000&apos;,&apos;MaxYLimMag&apos;,&apos;464.49611&apos;,&apos;LegendVisibility&apos;,&apos;On&apos;,&apos;XGrid&apos;,true,&apos;YGrid&apos;,true,&apos;PlotMagPhase&apos;,false,&apos;AxesColor&apos;,[0 0 0],&apos;AxesTickColor&apos;,[0.686274509803922 0.686274509803922 0.686274509803922],&apos;ColorOrder&apos;,[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration(&apos;Tools&apos;,&apos;Plot Navigation&apos;,true,&apos;PreviousAutoscale&apos;,&apos;XY&apos;),extmgr.Configuration(&apos;Tools&apos;,&apos;Measurements&apos;,true,&apos;Version&apos;,&apos;2022b&apos;)),&apos;Version&apos;,&apos;2022b&apos;)</P>
+     <P Name="NumInputPorts">1</P>
+@@ -1594,7 +1596,7 @@
+
+   </Block>
+   <Block BlockType="ToWorkspace" Name="To Workspace12" SID="5796">
+     <PortCounts in="1"/>
+-    <P Name="Position">[770, 2295, 840, 2325]</P>
++    <P Name="Position">[1075, 2110, 1145, 2140]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="VariableName">T_lim_out</P>
+     <P Name="MaxDataPoints">inf</P>
+@@ -1792,7 +1794,7 @@
+
+   </Block>
+   <Block BlockType="Scope" Name="四轮轮端轮心速度差" SID="5708">
+     <PortCounts in="1"/>
+-    <P Name="Position">[-125, 1274, -95, 1306]</P>
++    <P Name="Position">[-120, 1279, -90, 1311]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">9</P>
+     <P Name="ScopeSpecificationString">Simulink.scopes.TimeScopeBlockCfg(&apos;CurrentConfiguration&apos;, extmgr.ConfigurationSet(extmgr.Configuration(&apos;Core&apos;,&apos;General UI&apos;,true),extmgr.Configuration(&apos;Core&apos;,&apos;Source UI&apos;,true),extmgr.Configuration(&apos;Sources&apos;,&apos;WiredSimulink&apos;,true,&apos;DataLoggingVariableName&apos;,&apos;ScopeData2&apos;),extmgr.Configuration(&apos;Visuals&apos;,&apos;Time Domain&apos;,true,&apos;SerializedDisplays&apos;,{struct(&apos;MinYLimReal&apos;,&apos;-1.57229&apos;,&apos;MaxYLimReal&apos;,&apos;14.15057&apos;,&apos;YLabelReal&apos;,&apos;&apos;,&apos;MinYLimMag&apos;,&apos;0.00000&apos;,&apos;MaxYLimMag&apos;,&apos;14.15057&apos;,&apos;LegendVisibility&apos;,&apos;off&apos;,&apos;XGrid&apos;,true,&apos;YGrid&apos;,true,&apos;PlotMagPhase&apos;,false,&apos;AxesColor&apos;,[0 0 0],&apos;AxesTickColor&apos;,[0.686274509803922 0.686274509803922 0.686274509803922],&apos;ColorOrder&apos;,[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],&apos;Title&apos;,&apos;%&lt;SignalLabel&gt;&apos;,&apos;LinePropertiesCache&apos;,{{}},&apos;UserDefinedChannelNames&apos;,{{}},&apos;NumLines&apos;,4,&apos;LineNames&apos;,{{&apos;起步探测/dv:1&apos;,&apos;起步探测/dv:2&apos;,&apos;起步探测/dv:3&apos;,&apos;起步探测/dv:4&apos;}},&apos;ShowContent&apos;,true,&apos;Placement&apos;,1)},&apos;DisplayPropertyDefaults&apos;,struct(&apos;MinYLimReal&apos;,&apos;-1.57229&apos;,&apos;MaxYLimReal&apos;,&apos;14.15057&apos;,&apos;YLabelReal&apos;,&apos;&apos;,&apos;MinYLimMag&apos;,&apos;0.00000&apos;,&apos;MaxYLimMag&apos;,&apos;14.15057&apos;,&apos;LegendVisibility&apos;,&apos;off&apos;,&apos;XGrid&apos;,true,&apos;YGrid&apos;,true,&apos;PlotMagPhase&apos;,false,&apos;AxesColor&apos;,[0 0 0],&apos;AxesTickColor&apos;,[0.686274509803922 0.686274509803922 0.686274509803922],&apos;ColorOrder&apos;,[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration(&apos;Tools&apos;,&apos;Plot Navigation&apos;,true,&apos;PreviousAutoscale&apos;,&apos;XY&apos;),extmgr.Configuration(&apos;Tools&apos;,&apos;Measurements&apos;,true,&apos;Version&apos;,&apos;2022b&apos;)),&apos;Version&apos;,&apos;2022b&apos;,&apos;Position&apos;,[898 307 560 420])</P>
+@@ -1824,7 +1826,7 @@
+
+   </Block>
+   <Block BlockType="SubSystem" Name="起步扭矩控制" SID="5663">
+     <PortCounts in="7" out="12"/>
+-    <P Name="Position">[270, 1986, 485, 2244]</P>
++    <P Name="Position">[270, 1986, 445, 2539]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="LibrarySourceBlock">simulink/User-Defined
+ Functions/MATLAB Function</P>
+@@ -1876,7 +1878,7 @@
+
+   </Block>
+   <Block BlockType="SubSystem" Name="起步探测" SID="5662">
+     <PortCounts in="10" out="16"/>
+-    <P Name="Position">[-540, 1236, -360, 1734]</P>
++    <P Name="Position">[-555, 1236, -360, 1874]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="LibrarySourceBlock">simulink/User-Defined
+ Functions/MATLAB Function</P>
+@@ -2017,7 +2019,7 @@
+
+     <P Name="Port">6</P>
+   </Block>
+   <Block BlockType="Outport" Name="T_cmd" SID="5666">
+-    <P Name="Position">[680, 2058, 710, 2072]</P>
++    <P Name="Position">[675, 2098, 705, 2112]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="FontSize">14</P>
+     <P Name="Port">7</P>
+@@ -2151,24 +2153,24 @@
+
+   <Line>
+     <P Name="ZOrder">1534</P>
+     <P Name="Src">5682#out:1</P>
+-    <P Name="Points">[-5, 0; 80, 0]</P>
++    <P Name="Points">[-5, 0; 102, 0]</P>
+     <Branch>
+       <P Name="ZOrder">1660</P>
+-      <P Name="Points">[0, -45]</P>
++      <P Name="Points">[0, 50]</P>
+       <P Name="Dst">5879#in:1</P>
+     </Branch>
+     <Branch>
+       <P Name="ZOrder">1659</P>
+-      <P Name="Points">[357, 0]</P>
++      <P Name="Points">[89, 0]</P>
+       <Branch>
+-        <P Name="ZOrder">1658</P>
+-        <P Name="Points">[469, 0; 0, 545]</P>
+-        <P Name="Dst">5663#in:5</P>
++        <P Name="ZOrder">2001</P>
++        <P Name="Points">[0, -5]</P>
++        <P Name="Dst">5662#in:9</P>
+       </Branch>
+       <Branch>
+-        <P Name="ZOrder">1532</P>
+-        <P Name="Points">[0, 55]</P>
+-        <P Name="Dst">5662#in:9</P>
++        <P Name="ZOrder">2000</P>
++        <P Name="Points">[0, 555]</P>
++        <P Name="Dst">5663#in:5</P>
+       </Branch>
+     </Branch>
+   </Line>
+@@ -2211,7 +2213,7 @@
+
+     </Branch>
+     <Branch>
+       <P Name="ZOrder">747</P>
+-      <P Name="Points">[0, 1145]</P>
++      <P Name="Points">[0, 830]</P>
+       <P Name="Dst">3877#in:1</P>
+     </Branch>
+   </Line>
+@@ -2237,7 +2239,7 @@
+
+   <Line>
+     <P Name="ZOrder">752</P>
+     <P Name="Src">5663#out:2</P>
+-    <P Name="Points">[63, 0; 0, 285]</P>
++    <P Name="Points">[319, 0; 0, 65]</P>
+     <P Name="Dst">5797#in:1</P>
+   </Line>
+   <Line>
+@@ -2282,25 +2284,24 @@
+
+   <Line>
+     <P Name="ZOrder">760</P>
+     <P Name="Src">5689#out:1</P>
+-    <P Name="Points">[72, 0]</P>
+-    <Branch>
+-      <P Name="ZOrder">917</P>
+-      <P Name="Points">[144, 0; 0, -25]</P>
+-      <P Name="Dst">5663#in:6</P>
+-    </Branch>
+-    <Branch>
+-      <P Name="ZOrder">762</P>
+-      <P Name="Points">[0, -346]</P>
++    <P Name="Points">[87, 0]</P>
++    <Branch>
++      <P Name="ZOrder">1985</P>
++      <P Name="Points">[0, -497]</P>
+       <Branch>
+-        <P Name="ZOrder">924</P>
+-        <P Name="Points">[0, -164]</P>
++        <P Name="ZOrder">1998</P>
++        <P Name="Points">[0, -228]</P>
+         <P Name="Dst">5664#in:10</P>
+       </Branch>
+       <Branch>
+         <P Name="ZOrder">922</P>
+-        <P Name="Points">[-575, 0; 0, -154]</P>
++        <P Name="Points">[-542, 0; 0, -78]</P>
+         <P Name="Dst">5662#in:10</P>
+       </Branch>
++    </Branch>
++    <Branch>
++      <P Name="ZOrder">917</P>
++      <P Name="Dst">5663#in:6</P>
+     </Branch>
+   </Line>
+   <Line>
+@@ -2355,7 +2356,7 @@
+
+   <Line>
+     <P Name="ZOrder">773</P>
+     <P Name="Src">5667#out:1</P>
+-    <P Name="Points">[189, 0; 0, 5]</P>
++    <P Name="Points">[-5, 0]</P>
+     <P Name="Dst">5662#in:1</P>
+   </Line>
+   <Line>
+@@ -2363,10 +2364,10 @@
+
+     <P Name="FontSize">14</P>
+     <P Name="ZOrder">774</P>
+     <P Name="Src">5664#out:1</P>
+-    <P Name="Points">[0, 0]</P>
++    <P Name="Points">[59, 0]</P>
+     <Branch>
+       <P Name="ZOrder">1696</P>
+-      <P Name="Points">[86, 0]</P>
++      <P Name="Points">[27, 0]</P>
+       <Branch>
+         <P Name="ZOrder">1301</P>
+         <P Name="Points">[0, -60]</P>
+@@ -2380,7 +2381,7 @@
+
+     <Branch>
+       <P Name="ZOrder">1175</P>
+       <P Name="Labels">[2, 1]</P>
+-      <P Name="Points">[-265, 0; 0, 650]</P>
++      <P Name="Points">[0, 501; -328, 0; 0, 164]</P>
+       <P Name="Dst">5663#in:1</P>
+     </Branch>
+   </Line>
+@@ -2407,16 +2408,15 @@
+
+     <P Name="FontSize">14</P>
+     <P Name="ZOrder">1524</P>
+     <P Name="Src">5664#out:2</P>
+-    <P Name="Points">[0, 0]</P>
++    <P Name="Points">[29, 0]</P>
+     <Branch>
+       <P Name="ZOrder">1695</P>
+-      <P Name="Points">[10, 0; 0, -10]</P>
+       <P Name="Dst">5875#in:1</P>
+     </Branch>
+     <Branch>
+       <P Name="ZOrder">1653</P>
+       <P Name="Labels">[2, 1]</P>
+-      <P Name="Points">[-265, 0; 0, 620]</P>
++      <P Name="Points">[0, 374; -313, 0; 0, 306]</P>
+       <P Name="Dst">5663#in:2</P>
+     </Branch>
+   </Line>
+@@ -2462,7 +2462,6 @@
+
+   <Line>
+     <P Name="ZOrder">1528</P>
+     <P Name="Src">5665#out:1</P>
+-    <P Name="Points">[53, 0; 0, -15]</P>
+     <P Name="Dst">5663#in:4</P>
+   </Line>
+   <Line>
+@@ -2527,44 +2526,44 @@
+
+   <Line>
+     <P Name="ZOrder">1486</P>
+     <P Name="Src">5663#out:3</P>
+-    <P Name="Points">[64, 0; 0, 20; 64, 0]</P>
+-    <Branch>
+-      <P Name="ZOrder">1621</P>
+-      <P Name="Dst">5666#in:1</P>
+-    </Branch>
+-    <Branch>
+-      <P Name="ZOrder">1620</P>
+-      <P Name="Points">[0, -25]</P>
++    <P Name="Points">[168, 0]</P>
++    <Branch>
++      <P Name="ZOrder">1988</P>
++      <P Name="Points">[0, -30]</P>
++      <Branch>
++        <P Name="ZOrder">1989</P>
++        <P Name="Points">[0, -40]</P>
++        <P Name="Dst">5795#in:1</P>
++      </Branch>
+       <Branch>
+         <P Name="ZOrder">1625</P>
+         <P Name="Dst">5855#in:1</P>
+       </Branch>
+-      <Branch>
+-        <P Name="ZOrder">1624</P>
+-        <P Name="Points">[0, -35]</P>
+-        <P Name="Dst">5795#in:1</P>
+-      </Branch>
++    </Branch>
++    <Branch>
++      <P Name="ZOrder">1621</P>
++      <P Name="Points">[0, 0]</P>
++      <P Name="Dst">5666#in:1</P>
+     </Branch>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1490</P>
+     <P Name="Src">5663#out:4</P>
+-    <P Name="Points">[10, 0; 0, 30; 9, 0]</P>
+-    <Branch>
+-      <P Name="ZOrder">1628</P>
++    <P Name="Points">[250, 0]</P>
++    <Branch>
++      <P Name="ZOrder">1994</P>
+       <P Name="Dst">5857#in:1</P>
+     </Branch>
+     <Branch>
+-      <P Name="ZOrder">1627</P>
+-      <P Name="Points">[0, 370]</P>
++      <P Name="ZOrder">1987</P>
++      <P Name="Points">[0, 95; 0, 0]</P>
+       <Branch>
+-        <P Name="ZOrder">1544</P>
+-        <P Name="Points">[0, 60; 81, 0]</P>
++        <P Name="ZOrder">1992</P>
++        <P Name="Points">[0, 60]</P>
+         <P Name="Dst">5834#in:1</P>
+       </Branch>
+       <Branch>
+-        <P Name="ZOrder">1546</P>
+-        <P Name="Points">[81, 0]</P>
++        <P Name="ZOrder">1991</P>
+         <P Name="Dst">5836#in:1</P>
+       </Branch>
+     </Branch>
+@@ -2748,10 +2747,10 @@
+
+   <Line>
+     <P Name="ZOrder">833</P>
+     <P Name="Src">4889#out:1</P>
+-    <P Name="Points">[83, 0]</P>
++    <P Name="Points">[108, 0]</P>
+     <Branch>
+       <P Name="ZOrder">1622</P>
+-      <P Name="Points">[0, -241; 2053, 0; 0, -99]</P>
++      <P Name="Points">[0, -276; 2053, 0; 0, -99]</P>
+       <P Name="Dst">4877#in:7</P>
+     </Branch>
+     <Branch>
+@@ -2764,8 +2763,8 @@
+
+     <P Name="Src">1792#out:1</P>
+     <P Name="Points">[14, 0]</P>
+     <Branch>
+-      <P Name="ZOrder">1623</P>
+-      <P Name="Points">[0, -40]</P>
++      <P Name="ZOrder">2004</P>
++      <P Name="Points">[0, 35]</P>
+       <P Name="Dst">1815#in:1</P>
+     </Branch>
+     <Branch>
+@@ -2786,7 +2785,7 @@
+
+   <Line>
+     <P Name="ZOrder">841</P>
+     <P Name="Src">5672#out:1</P>
+-    <P Name="Points">[77, 0; 0, -245]</P>
++    <P Name="Points">[-5, 0]</P>
+     <P Name="Dst">5662#in:6</P>
+   </Line>
+   <Line>
+@@ -2881,7 +2880,7 @@
+
+   <Line>
+     <P Name="ZOrder">1502</P>
+     <P Name="Src">5662#out:1</P>
+-    <P Name="Points">[13, 0; 0, -5; 13, 0]</P>
++    <P Name="Points">[26, 0]</P>
+     <Branch>
+       <P Name="ZOrder">1641</P>
+       <P Name="Points">[0, -35]</P>
+@@ -2898,11 +2897,12 @@
+
+     <P Name="Points">[153, 0]</P>
+     <Branch>
+       <P Name="ZOrder">1602</P>
++      <P Name="Points">[0, 0]</P>
+       <P Name="Dst">5708#in:1</P>
+     </Branch>
+     <Branch>
+       <P Name="ZOrder">1506</P>
+-      <P Name="Points">[0, -30]</P>
++      <P Name="Points">[0, -35]</P>
+       <P Name="Dst">5799#in:1</P>
+     </Branch>
+   </Line>
+@@ -2912,7 +2912,7 @@
+
+     <P Name="ZOrder">1512</P>
+     <P Name="Labels">[2, 1]</P>
+     <P Name="Src">5662#out:3</P>
+-    <P Name="Points">[167, 0; 0, 20; 168, 0]</P>
++    <P Name="Points">[167, 0; 0, 5; 168, 0]</P>
+     <Branch>
+       <P Name="ZOrder">1644</P>
+       <P Name="Points">[0, -50]</P>
+@@ -2929,7 +2929,7 @@
+
+     <P Name="ZOrder">1516</P>
+     <P Name="Labels">[2, 1]</P>
+     <P Name="Src">5662#out:4</P>
+-    <P Name="Points">[153, 0; 0, 30; 153, 0]</P>
++    <P Name="Points">[153, 0; 0, 5; 153, 0]</P>
+     <Branch>
+       <P Name="ZOrder">1647</P>
+       <P Name="Points">[0, -135]</P>
+@@ -2944,9 +2944,9 @@
+
+     <P Name="Name">检测到车辆仍未有效起步的瞬时判据</P>
+     <P Name="FontSize">12</P>
+     <P Name="ZOrder">859</P>
+-    <P Name="Labels">[1, 1]</P>
++    <P Name="Labels">[3, 1]</P>
+     <P Name="Src">5662#out:5</P>
+-    <P Name="Points">[279, 0; 0, 40]</P>
++    <P Name="Points">[35, 0; 0, 1; 191, 0; 0, 4]</P>
+     <P Name="Dst">5664#in:3</P>
+   </Line>
+   <Line>
+@@ -2955,7 +2955,7 @@
+
+     <P Name="ZOrder">860</P>
+     <P Name="Labels">[1, 1]</P>
+     <P Name="Src">5662#out:6</P>
+-    <P Name="Points">[251, 0; 0, 50]</P>
++    <P Name="Points">[245, 0; 0, 5]</P>
+     <P Name="Dst">5664#in:4</P>
+   </Line>
+   <Line>
+@@ -2964,7 +2964,7 @@
+
+     <P Name="ZOrder">861</P>
+     <P Name="Labels">[2, 1]</P>
+     <P Name="Src">5662#out:7</P>
+-    <P Name="Points">[224, 0; 0, 60]</P>
++    <P Name="Points">[248, 0; 0, 5]</P>
+     <P Name="Dst">5664#in:5</P>
+   </Line>
+   <Line>
+@@ -2973,7 +2973,7 @@
+
+     <P Name="ZOrder">862</P>
+     <P Name="Labels">[2, 1]</P>
+     <P Name="Src">5662#out:8</P>
+-    <P Name="Points">[196, 0; 0, 70]</P>
++    <P Name="Points">[217, 0; 0, 5]</P>
+     <P Name="Dst">5664#in:6</P>
+   </Line>
+   <Line>
+@@ -2981,16 +2981,17 @@
+
+     <P Name="FontSize">12</P>
+     <P Name="ZOrder">863</P>
+     <P Name="Src">5662#out:9</P>
+-    <P Name="Points">[18, 0; 0, 35; 18, 0]</P>
++    <P Name="Points">[44, 0]</P>
++    <Branch>
++      <P Name="ZOrder">2007</P>
++      <P Name="Labels">[2, 1]</P>
++      <P Name="Points">[0, 5]</P>
++      <P Name="Dst">5664#in:7</P>
++    </Branch>
+     <Branch>
+       <P Name="ZOrder">1668</P>
++      <P Name="Points">[0, -10]</P>
+       <P Name="Dst">5881#in:1</P>
+-    </Branch>
+-    <Branch>
+-      <P Name="ZOrder">1667</P>
+-      <P Name="Labels">[2, 1]</P>
+-      <P Name="Points">[0, 45; 333, 0]</P>
+-      <P Name="Dst">5664#in:7</P>
+     </Branch>
+   </Line>
+   <Line>
+@@ -2998,35 +2999,26 @@
+
+     <P Name="FontSize">12</P>
+     <P Name="ZOrder">864</P>
+     <P Name="Src">5662#out:10</P>
+-    <P Name="Points">[10, 0; 0, 40; 10, 0]</P>
++    <P Name="Points">[30, 0]</P>
++    <Branch>
++      <P Name="ZOrder">2006</P>
++      <P Name="Labels">[2, 1]</P>
++      <P Name="Points">[0, 5]</P>
++      <P Name="Dst">5664#in:8</P>
++    </Branch>
+     <Branch>
+       <P Name="ZOrder">1671</P>
+       <P Name="Points">[0, -10]</P>
+       <P Name="Dst">5883#in:1</P>
+     </Branch>
+-    <Branch>
+-      <P Name="ZOrder">1670</P>
+-      <P Name="Labels">[2, 1; 3, 1]</P>
+-      <P Name="Points">[2, 0; 0, 50; 347, 0]</P>
+-      <P Name="Dst">5664#in:8</P>
+-    </Branch>
+   </Line>
+   <Line>
+     <P Name="Name">是否存在有效驱动扭矩</P>
+     <P Name="FontSize">12</P>
+     <P Name="ZOrder">1710</P>
++    <P Name="Labels">[0, 0]</P>
+     <P Name="Src">5662#out:11</P>
+-    <P Name="Points">[0, 0]</P>
+-    <Branch>
+-      <P Name="ZOrder">1709</P>
+-      <P Name="Labels">[2, 1]</P>
+-      <P Name="Points">[0, 45; 205, 0]</P>
+-    </Branch>
+-    <Branch>
+-      <P Name="ZOrder">1711</P>
+-      <P Name="Points">[5, 0; 0, 265; -205, 0]</P>
+-      <P Name="Dst">5902#in:1</P>
+-    </Branch>
++    <P Name="Dst">5902#in:1</P>
+   </Line>
+   <Line>
+     <P Name="ZOrder">867</P>
+@@ -3061,15 +3053,15 @@
+
+   <Line>
+     <P Name="ZOrder">1553</P>
+     <P Name="Src">5739#out:1</P>
+-    <P Name="Points">[15, 0]</P>
++    <P Name="Points">[76, 0]</P>
++    <Branch>
++      <P Name="ZOrder">1999</P>
++      <P Name="Dst">5662#in:8</P>
++    </Branch>
+     <Branch>
+       <P Name="ZOrder">1678</P>
+-      <P Name="Points">[0, 175]</P>
++      <P Name="Points">[0, 275]</P>
+       <P Name="Dst">5889#in:1</P>
+-    </Branch>
+-    <Branch>
+-      <P Name="ZOrder">1677</P>
+-      <P Name="Dst">5662#in:8</P>
+     </Branch>
+   </Line>
+   <Line>
+@@ -3227,7 +3219,7 @@
+
+     </Branch>
+     <Branch>
+       <P Name="ZOrder">1924</P>
+-      <P Name="Points">[-240, 0; 0, -915]</P>
++      <P Name="Points">[0, -30]</P>
+       <P Name="Dst">5950#in:1</P>
+     </Branch>
+   </Line>
+@@ -3294,25 +3286,21 @@
+
+   <Line>
+     <P Name="ZOrder">1631</P>
+     <P Name="Src">5663#out:5</P>
+-    <P Name="Points">[9, 0; 0, 40]</P>
+     <P Name="Dst">5859#in:1</P>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1632</P>
+     <P Name="Src">5663#out:6</P>
+-    <P Name="Points">[5, 0; 0, 50]</P>
+     <P Name="Dst">5861#in:1</P>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1633</P>
+     <P Name="Src">5663#out:7</P>
+-    <P Name="Points">[35, 0; 0, 60]</P>
+     <P Name="Dst">5863#in:1</P>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1634</P>
+     <P Name="Src">5663#out:8</P>
+-    <P Name="Points">[35, 0; 0, 70]</P>
+     <P Name="Dst">5865#in:1</P>
+   </Line>
+   <Line>
+@@ -3356,7 +3344,6 @@
+
+     <P Name="ZOrder">1649</P>
+     <P Name="Labels">[0, 0]</P>
+     <P Name="Src">5662#out:12</P>
+-    <P Name="Points">[35, 0; 0, 50]</P>
+     <P Name="Dst">5873#in:1</P>
+   </Line>
+   <Line>
+@@ -3407,22 +3394,20 @@
+
+   <Line>
+     <P Name="ZOrder">1565</P>
+     <P Name="Src">5662#out:13</P>
+-    <P Name="Points">[57, 0; 0, 55; 58, 0]</P>
++    <P Name="Points">[115, 0]</P>
+     <Branch>
+       <P Name="ZOrder">1675</P>
+-      <P Name="Points">[0, 45]</P>
+       <P Name="Dst">5885#in:1</P>
+     </Branch>
+     <Branch>
+       <P Name="ZOrder">1674</P>
+-      <P Name="Points">[248, 0; 0, 405]</P>
++      <P Name="Points">[0, 450]</P>
+       <P Name="Dst">5663#in:3</P>
+     </Branch>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1676</P>
+     <P Name="Src">5662#out:14</P>
+-    <P Name="Points">[77, 0; 0, 105]</P>
+     <P Name="Dst">5887#in:1</P>
+   </Line>
+   <Line>
+@@ -3498,37 +3483,31 @@
+
+   <Line>
+     <P Name="ZOrder">1712</P>
+     <P Name="Src">5662#out:15</P>
+-    <P Name="Points">[5, 0; 0, 190; -205, 0]</P>
+     <P Name="Dst">5895#in:1</P>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1713</P>
+     <P Name="Src">5662#out:16</P>
+-    <P Name="Points">[0, 205; -200, 0]</P>
+     <P Name="Dst">5899#in:1</P>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1714</P>
+     <P Name="Src">5663#out:9</P>
+-    <P Name="Points">[5, 0; 0, 460; -140, 0]</P>
+     <P Name="Dst">5905#in:1</P>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1715</P>
+     <P Name="Src">5663#out:10</P>
+-    <P Name="Points">[5, 0; 0, 440; -145, 0; 0, 60]</P>
+     <P Name="Dst">5908#in:1</P>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1716</P>
+     <P Name="Src">5663#out:11</P>
+-    <P Name="Points">[5, 0; 0, 420; -145, 0; 0, 105]</P>
+     <P Name="Dst">5911#in:1</P>
+   </Line>
+   <Line>
+     <P Name="ZOrder">1717</P>
+     <P Name="Src">5663#out:12</P>
+-    <P Name="Points">[0, 390; -150, 0; 0, 160]</P>
+     <P Name="Dst">5914#in:1</P>
+   </Line>
+   <Annotation SID="5891">
+@@ -3539,7 +3518,7 @@
+
+     <P Name="BackgroundColor">[0.901961, 0.901961, 1.000000]</P>
+     <P Name="DropShadow">on</P>
+     <P Name="AnnotationType">area_annotation</P>
+-    <P Name="ZOrder">3</P>
++    <P Name="ZOrder">60</P>
+     <P Name="FontSize">12</P>
+   </Annotation>
+   <Annotation SID="5709">
+--- experiment_start/simulink/systems/system_root.xml
+
++++ current_formal/simulink/systems/system_root.xml
+
+@@ -1,8 +1,7 @@
+
+ <?xml version="1.0" encoding="utf-8"?>
+ <System>
+   <P Name="Location">[-1, -8, 1921, 1033]</P>
+-  <P Name="Open">on</P>
+-  <P Name="ZoomFactor">150</P>
++  <P Name="ZoomFactor">60</P>
+   <P Name="ReportName">simulink-default.rpt</P>
+   <P Name="SIDHighWatermark">5952</P>
+   <Block BlockType="ManualSwitch" Name="1" SID="5082">
+@@ -2825,7 +2824,7 @@
+
+   </Block>
+   <Block BlockType="ToWorkspace" Name="Record_Implement_Fx_actual" SID="5951">
+     <PortCounts in="1"/>
+-    <P Name="Position">[-330, 3402, -130, 3428]</P>
++    <P Name="Position">[405, 1467, 605, 1493]</P>
+     <P Name="ZOrder">100000</P>
+     <P Name="VariableName">Implement_Fx_actual</P>
+     <P Name="MaxDataPoints">inf</P>
+@@ -6786,7 +6785,7 @@
+
+     </Branch>
+     <Branch>
+       <P Name="ZOrder">18162</P>
+-      <P Name="Points">[0, 1850; -685, 0]</P>
++      <P Name="Points">[0, -65]</P>
+       <P Name="Dst">5951#in:1</P>
+     </Branch>
+   </Line>
+@@ -6865,7 +6864,7 @@
+
+     <P Name="BackgroundColor">[0.901961, 0.901961, 1.000000]</P>
+     <P Name="DropShadow">on</P>
+     <P Name="AnnotationType">area_annotation</P>
+-    <P Name="ZOrder">4670</P>
++    <P Name="ZOrder">4682</P>
+     <P Name="FontName">Arial</P>
+     <P Name="FontSize">36</P>
+     <P Name="FontWeight">bold</P>
+@@ -6879,7 +6878,7 @@
+
+     <P Name="BackgroundColor">[0.901961, 0.960784, 1.000000]</P>
+     <P Name="DropShadow">on</P>
+     <P Name="AnnotationType">area_annotation</P>
+-    <P Name="ZOrder">4667</P>
++    <P Name="ZOrder">4679</P>
+     <P Name="FontName">Arial</P>
+     <P Name="FontSize">36</P>
+     <P Name="FontWeight">bold</P>
+@@ -6894,7 +6893,7 @@
+
+     <P Name="BackgroundColor">[0.996078, 0.968627, 0.909804]</P>
+     <P Name="DropShadow">on</P>
+     <P Name="AnnotationType">area_annotation</P>
+-    <P Name="ZOrder">4668</P>
++    <P Name="ZOrder">4680</P>
+     <P Name="FontName">Arial</P>
+     <P Name="FontSize">36</P>
+     <P Name="FontWeight">bold</P>
+@@ -6909,7 +6908,7 @@
+
+     <P Name="BackgroundColor">[0.968627, 0.925490, 0.976471]</P>
+     <P Name="DropShadow">on</P>
+     <P Name="AnnotationType">area_annotation</P>
+-    <P Name="ZOrder">4669</P>
++    <P Name="ZOrder">4681</P>
+     <P Name="FontName">Arial</P>
+     <P Name="FontSize">36</P>
+     <P Name="FontWeight">bold</P>
