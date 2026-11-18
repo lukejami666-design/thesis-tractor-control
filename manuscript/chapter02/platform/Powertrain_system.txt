@@ -1,0 +1,3126 @@
+Mechanical Simulation
+ CarSim and TruckSim
+755 Phoenix Drive, Ann Arbor MI, 48108, USA
+Phone: 734 668-2930 • Fax: 734 668-2877 • Email: info@carsim.com carsim.com
+
+ 1/53 December 2018
+Powertrain System
+Assembling Powertrain Components ..................................................................... 3
+Engine to transmission ..................................................................................... 5
+Differentials ..................................................................................................... 5
+Drive shaft effect ............................................................................................. 5
+Torsional flexibility of driveline ...................................................................... 7
+Multi-axle powertrain .................................................................................... 10
+Engine 11
+Turning the engine off and on ........................................................................ 14
+ESC/TCS torque control interface ................................................................. 14
+Torque Converter ................................................................................................. 16
+Mechanical Clutch ................................................................................................ 17
+Condition of slip or locked ............................................................................ 17
+Torque calculation and reduction of degree-of-freedom ............................... 18
+Transmission ........................................................................................................ 20
+Discussions .................................................................................................... 21
+Shift schedule ................................................................................................. 22
+User settings ................................................................................................... 24
+Transmission (Extended) ...................................................................................... 27
+Continuously Variable Transmission (CVT) ........................................................ 29
+Overview of the Various Differential Systems .................................................... 32
+Viscous Coupling ........................................................................................... 33
+Differential Clutch ......................................................................................... 33
+Limited Slip Differential (LSD) ..................................................................... 33
+Yaw Control Differential ............................................................................... 35
+Twin-Clutch ................................................................................................... 36
+Transfer Case ........................................................................................................ 37
+Locked (Part-Time 4WD) .............................................................................. 37
+Free or Viscous Coupling (Full-Time 4WD) ................................................. 38
+Mechanical Clutch (LSD) .............................................................................. 38
+User Settings .................................................................................................. 40
+Differential Gear ................................................................................................... 41
+Torque Distribution (Always Locked) ........................................................... 42
+Torque Distribution (Free Differential or Viscous Coupling) ....................... 42
+Mechanical Clutch (LSD) .............................................................................. 42
+User Settings .................................................................................................. 44
+Driving Wheel Calculation ................................................................................... 45
+References ............................................................................................................ 47
+Appendix .............................................................................................................. 47
+Notation ................................................................................................................ 49
+
+  2 / 53
+The VehicleSim powertrain model includes an engine, torque transfer device (torque converter or
+mechanical clutch), transmission, transfer case (for 4WD), and differential gears on the front and
+rear axles (see Figure 1).
+
+Figure 1. Torques between engine, torque transfer device, and transmission.
+With front-wheel drive (FWD) or rear-wheel drive (RWD), the transmission output is fed to the
+differential gear, which is in the middle of the drive axle. Figure 2 shows a diagram for the rear
+axle and differential gear in a RWD system.
+
+Figure 2. Differential at rear drive axle (rear-wheel drive vehicle).
+In the 4-wheel drive system ( 4WD) shown in Figure 3, the transmission output is fed to the
+transfer case, which is in between the front and rear drive shafts connected with the front and rear
+differentials, respectively.
+  3 / 53
+
+Figure 3. Transfer case and differentials (four-wheel drive vehicle).
+Note 1 In version 2019, t he VehicleSim powertrain model is exte nded for the
+hybrid electric vehicle and described in a separate document, Powertrain
+for H ybrid Electric Vehicles (HEV) . This document describes only for
+the conventional powertrain system without electric motor.
+Note 2 An interface to 3 rd party powertrain program s (e.g. AVL Cruise) is also
+available, described in a separate docume nt, VehicleSim-AVL Cruise
+Interface.
+Assembling Powertrain Components
+Figure 4 shows the screen that assembles the information needed to define a four -wheel drive
+powertrain – Engine, torque converter (or clutch), transmission, t ransfer case  and differentials.
+Each part can be switched between the internal model and an external model by using a drop -
+down list (e.g., the drop-down list of the engine model.)
+
+The block diagram shown on the screen describes the power flow from the e ngine to the wheels
+using red arrows. If an external model is selected, the internal model is completely ignored; this
+means that the power flow is completely routed through the external model, and the internal
+model does not pass any torque and physical s tate informa tion (such as rotational angle and
+speed) to the next parts (see Figure 5).
+  4 / 53
+
+Figure 4. Powertrain assemble screen for four-wheel drive system.
+
+
+Figure 5. Diagram between the external and internal model blocks.
+When the external model is selected, you have to feed power and physical state information
+from/to the next parts using the external import/export variables. In the block diagram on th e
+screen, an  external model is shown by a red block, and possible importing variables from the
+external model are shown by green and possible exporting variables to the external model are
+shown by blue. Those import/export variables are not set automatical ly; you need  to set them
+using the I/O Channels: Import and I/O Channels: Export screens.
+
+
+External engine
+
+model is selected
+
+
+Possible
+
+
+importing
+
+
+
+variables
+
+
+
+Possible
+
+
+exporting
+
+variables
+
+
+
+Internal torque converter
+
+
+model is selected
+
+
+  5 / 53
+These options are assembled on the screen shown in Figure 4, with the following user settings.
+Engine to transmission
+1  Drop-down list for s electing an external or internal engine model (keyword =
+OPT_ENGINE_INTERNAL). The data link for the engine
+2  is hidden when the external
+engine model is selected.
+2   Link to a Powertrain: Engine dataset.
+3   Drop-down list for selecting an external torque coupling model, internal torque converter or
+internal clutch model (keyword = OPT_PWR_CPL_INTERNAL). The data link for the
+torque coupling
+4  is hidden when the external torque coupling model is selected.
+4  Link to either a Powertrain: Torque Converter dataset or a Powertrain: Clutch Torque
+dataset. The type of link determines how the engine transfers torque to the transmission.
+5  Drop-down list for selecting an external or internal transmission model (keyword =
+OPT_TRANS_INTERNAL).
+6  Link to either a Powertrain: Trans mission (External) dataset or a Powertrain:
+Transmission dataset.
+Differentials
+7  Drop-down list for selecting an external or internal transfer case model (keyword =
+OPT_DIFF_INTERNAL(3)). The data link for the transfer case
+8  is hidden when th e
+external transfer case model is selected.
+8   Link to a Powertrain: Transfer Case dataset.
+9   Drop-down list for selecting an external differential, internal differential or internal twin -
+clutch differential model for the front axle (keyword = OPT_DIFF_INTERNAL(1)). The
+data link for the differential
+10  is hidden when the external differential model is selected.
+10  Link to either a Powertrain: Front Differential dataset or Powertrain: Front Twin -
+Clutch Differential dataset. The type of link determines how th e front drive shaft torque is
+transferred to the front wheels.
+11   Drop-down list for selecting an external differential, internal differential or internal twin -
+clutch differential model for the rear axle (keyword = OPT_DIFF_INTERNAL(2)). The
+data link for the differential
+12  is hidden when the external differential model is selected.
+12   Link to either a Powertrain: Rear Differential dataset or Powertrain: Rear Twin-Clutch
+Differential dataset. The type of link determines how the rear drive shaft torque is
+transferred to the rear wheels.
+Drive shaft effect
+The engine receives the torque reaction from the wheels through the drive shafts (pitch effect), or
+from the differentials through the propeller shafts (roll effect).
+  6 / 53
+The ways to receive the torque reaction are defined by the drop-down list
+13  and checkbox(es)
+14  on the powertrain screens. However, those controls work differently depending on suspension
+types (either independent or solid axle suspension ) and whether the optional engine mount model
+is in use.
+1. In the case of the basic model (the engine mass is lumped as part of the sprung mass), the
+sprung mass  receives the torque reaction from the differentials though the propeller
+shaft(s) in the roll direction  when the powered axle is a solid-axle suspension  (the
+differential is supposed to be mounted on the solid axle) . The roll effect (clockwise or
+counter-clockwise) is defined by the drop -down list
+13 . If the powered axle has an
+independent suspension, then the torque reaction  defined by the drop -down list
+13  is
+ignored because both the engine and differential are rigid parts of the sprung mass. In this
+case, the sprung mass receives the torque reaction from the wheels in  the pitch direction
+no matter how the pitch  effect checkboxes
+14  are set. The checkboxes
+14  are no effect
+on the basic model.
+2. In the case of the e ngine-mount model , the engine mass  is a separate  body from the
+sprung mass and it  receives the torque reaction from the wheels through the drive shafts
+in the pitch direc tion, or from the differential(s) though the propeller shaft(s) in the roll
+direction. The direction of the reaction is depending on the pitch effect checkbox
+14  for
+each powered axle. For example, in the four -wheel-drive system, either pitch or roll
+effect can be selected for each of the front and rear drive axles. If both pitch checkboxes
+are checked, the drop -down list for  the roll effect
+13  is hidden. Otherwise, the drop -
+down list is used to apply a roll effect for the front and/or rear axle that does not have a
+pitch effect.  A dri ve axle cann ot produce both pitch and roll effect simultaneously.
+Further mode, the solid More details about the engin e mount model are described in the
+separate document, Engine Mount Model.
+User settings
+13   Drive Shaft Rol l Effect pull-down control (keyword = R_MDRIVE). As described abo ve,
+this setting causes the driveline to apply a moment between the engine and differential(s)
+during acceleration and deceleration with engine brake . Most engines and drivelines rotate
+counter-clockwise when looking forward along the X axis, causing the engine to roll to the
+right (positive).
+14   Drive torque pitch effect  check box (keyword = OPT_ENGINE_PITCH_REACTION). If
+this checkbox is checked, the drive toque applies a moment between the drive wheels and
+engine mass during the acceleration and deceleration with engine brake. In this case, the
+engine body receives reaction torque in  the pitch direction opposite of that applied to the
+wheels. For example, the engine body pitches in the negative direction (engine front up)
+during acceleration.
+
+Note  Even though the basic model  does not support the pitch effects , the roll
+effect drop-down list
+13  is hidden in the GUI  if all of the pitch effect
+  7 / 53
+boxes
+14  are checked. In this case, the clockwise ro ll effect (d efault) is
+applied if the basic model is used when the powered axle is the solid axle
+suspension.
+Torsional flexibility of driveline
+Generally the driveline (from the transmission to drive axles including differentials and
+driveshafts) is not c ompletely ri gid and each part has some compliance due to the torsional
+flexibility. In VehicleSim vehicle model, those flexibilities of all driveline parts are represented
+by a single unit of torsional spring -damper, which is located at after the transmiss ion gearbox as
+shown in Figure 1 and Figure 6. Figure 6 shows an example of an entire driveline for rear -wheel
+drive (RWD). The user input parameters for a natural frequency and damping ratio, which are
+converted automatically to the torsional stiffness and damping coefficient in the model and used
+for the simulation.
+Measurement for user parameters
+You can measure the torsional natural frequency and damping ratio of the driveline with th e
+following method. First, the vehicle is lifted from the ground using a test rig. Make sure that the
+drive wheels are not touching the ground and there is no rolling resistance from the ground.
+Second, disconnect engine from the transmission. If the driveline involves a manual transmission,
+simply disengage the clutch. Third, apply either transient clunk impact [1] or randomly generated
+torque noise at the transmission input shaft. If it is difficult to apply the torque to the transmission
+input shaft, you  may need to  remove the entire driveline from the chassis. Another option is to
+apply the transient torque at all of drive axles. However, in this case, you have to apply the exact
+same impact torque to all of drive axles. Then, measure torque and angular velocity of any part of
+driveline (the frequency and damping ratio should be the same everywhere in driveline.)
+Validation in the simulation
+Figure 7 shows examples of the power spectrum density of spectrum analysis results obtain ed by
+the VehicleSim vehicle model simulation. In this example, the natural frequency is set as 9 Hz
+and damping ratio is set to 0. In this simulation, the vehicle is lifted from the ground and the main
+clutch is disengaged. Random white noise torque is ap plied at the input shaft of the transmission.
+Angular velocities and torques at the transmission output shaft and drive wheel is measured. The
+vehicle has a rear -wheel drive powertrain. As shown in this figure, the natural frequency of the
+oscillation of torque and angular speed are same in the transmission and drive wheel – that is as
+same as the user input parameter of 9 Hz.
+  8 / 53
+
+Figure 6. Entire driveline shown with a single unit of torsional spring-damper, which represents
+the torsional compliance of the driveline (RWD).
+
+Figure 7. Driveline natural frequency obtained by VehicleSim vehicle model simulation (user
+input parameter for the natural frequency of the driveline is set as 9 Hz; damping ratio is 0.)
+  9 / 53
+Calculation of torsional stiffness and damping coefficient from the user input
+parameters
+As described above, the torsional spring -damper is located after the transmission gearbox whose
+stiffness a nd damping c oefficient are derived from the user parameters (natural frequency and
+damping ratio) and all driveline inertia by using the following equations.
+The driveline can be split into two parts (engine side and wheel side separated at the middle of the
+transmission inertia where the torsional spring -damper is located, see Figure 6).  First, both ends
+of driveline inertia are calculated. The front end of driveline inertia (engine side) is:
+ transtransouttcendfrontdriveline INII ·+·= 5.0
+2
+___  (1)
+The rear end of driveline inertia depends on what type of powertrain is used. If rear -wheel drive
+(RWD) is used, the rear end of driveline inertia is (also see Figure 6):
+  Raxletransendreardriveline III ___ 5.0
++
+·
+=
+ (2)
+where Iaxle_R is rear driveshaft inertia inv olving the a ll inertia of both sides of drive axles and
+wheels such as:
+
+2
+_____ /)2( RdiffRRaxleLRaxlewRRshaftRaxle NIIIII ++·+=  (3)
+In case for the front -wheel drive (FWD), a similar calculation is applied. However, in the four -
+wheel drive (4WD), the rear end of driveline inertia should  account the torque bias ratio of the
+central transfer case, Tbias_to_rear, such as:
+
+2
+___
+2
+___
+__
+__
+)1(
+5.0
+reartobiasFaxlereartobiasRaxle
+RaxleFaxle
+transendreardriveline
+TITI
+IIII
+·+-·
+·
++·=  (4)
+The total driveline inertia, Idriveline, is derived by the following equation:
+
+endreardrivelineendfrontdrivelinedriveline III ____
+111 +=  (5)
+The torsional stiffness ( Kdriveline) and dampi ng coefficient ( Ddriveline) of the entire driveline is
+derived by the natural frequency (
+w
+n_driveline) and damping ratio (
+z
+driveline), such as:
+
+drivelinedrivelinendrivelinedriveline
+drivelinedrivelinendriveline
+ID
+IK
+××=
+×=
+_
+2
+_
+2
+wz
+w
+ (6)
+In the above equations, the torsional stiffness and damping coefficient  may change with the shift
+position (gear ratio of transmission). However, the user defined natural frequency and damping
+ratio is maintained during the simulation.
+User settings
+15   Natural frequency of driveline (keyword = DRIVELINE_FREQ).
+16   Damping ratio of driveline (keyword = DRIVELINE_ZETA).
+  10 / 53
+Note:  The torsional stiffness and damping coefficient derived from the user
+parameters (natural frequency and damping ratio) are linear. However, if
+you want to set non -linear characteristics, you can apply non -linear
+tables for the torsional stiffness and damping of the transmission. Those
+non-linear tables are available by using keywords: M_TRANS_ROT for
+stiffness and M_TRANS_AV for damping setting on the Generic Table
+screen. Those non -linear tables are added  to Kdriveline and Ddriveline,
+respectively, in the simulation. Therefore, if you use the non -linear
+tables, set zero for both natural frequency and damping ratio on the
+powertrain screen.
+Multi-axle powertrain
+In TruckSim, the VS powertrain model supports  up to a 10-wheel drive . Figure 8 shows the
+screen that assembles the information needed to define a 10 -wheel drive powertrain. The multi-
+axle screen has the same items as the assembly screen for a 4-wheel drive system (Figure 4), but
+they differ in that the 10-wheel drive has more transfer cases/inter-axle differentials ( , ) and
+differentials on drive axles (  – ).
+2
+4
+5
+9
+7
+8
+6
+12
+1
+3
+13
+15
+16
+10
+11
+7
+8
+9
+10
+7
+8
+9
+12
+10
+11
+7
+8
+17
+17
+
+Figure 8. Powertrain assembly screen for a 10-wheel drive system.
+
+1
+2
+
+9
+
+8
+
+7
+
+  11 / 53
+Note: There are also 6 -wheel and 8-wheel drive powertrain libraries available
+in TruckSim.
+There are several powertrain systems such as: 2 -wheel, 4 -wheel, 6-wheel, and 10 -wheel drive,
+and those drive systems are applied to the back axles on the lead unit only (not the trailer). This is
+in the case that the number of suspension axles  on the lead unit  are five or less. For exampl e, if
+the lead unit has four axles and the 4-wheel drive system is selected, the powered driven axles are
+the 3rd and 4th axles. In case that the lead unit has more than 5 axles, the drive systems are applied
+at the 5th axle only. The drive axl es in the mu lti-axle vehicles are summarized in Table 1, where
+“D” denotes a drive axle, and “\” denotes it’s not applicable.
+Table 1. Drive axles on multi-axle vehicles with various types of powertrain system.
+Number of
+suspension
+axles
+
+2
+-
+axle
+
+3
+-
+axle
+
+4
+-
+axle
+
+5
+-
+axle
+
+X
+-
+axle (5 <)
+
+Axle number
+
+1
+
+2
+
+1
+
+2
+
+3
+
+1
+
+2
+
+3
+
+4
+
+1
+
+2
+
+3
+
+4
+
+5
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+X
+
+2WD (FWD)
+
+D
+
+
+
+D
+
+
+
+
+D
+
+
+
+
+
+D
+
+
+
+
+
+D
+
+
+
+
+2WD (RWD)
+
+
+D
+
+
+
+D
+
+
+
+
+D
+
+
+
+
+
+D
+
+
+
+
+
+D
+
+
+
+4WD
+
+D
+
+D
+
+
+D
+
+D
+
+
+
+D
+
+D
+
+
+
+
+D
+
+D
+
+
+
+
+D
+
+D
+
+
+
+6WD
+
+
+
+D
+
+D
+
+D
+
+
+D
+
+D
+
+D
+
+
+
+D
+
+D
+
+D
+
+
+
+D
+
+D
+
+D
+
+
+
+8WD
+
+
+
+
+
+
+D
+
+D
+
+D
+
+D
+
+
+D
+
+D
+
+D
+
+D
+
+
+D
+
+D
+
+D
+
+D
+
+
+
+10WD
+
+
+
+
+
+
+
+
+
+
+D
+
+D
+
+D
+
+D
+
+D
+
+D
+
+D
+
+D
+
+D
+
+D
+
+
+
+User settings
+  Spin inertia of the drive shafts to the inter-axle differentials (keyword = IDS(IDIFF)).
+Note: The inter-axle differentials are specified by Powertrain: Transfer Case
+screen which does not involve the drive shaft inertia field, therefore, they
+are specified on the powertrain assemble screen. On the other hand, t he
+spin inertia of the drive shaft to each of the drive ax les is set o n
+Powertrain: Front Differential or Rear Differential screen.
+Engine
+The engine is the power source of the vehicle when the driveline model is engaged. Engines are
+typically characterized by the flywheel torque measured on a dynamometer as a f unction of
+throttle position, throttle, and rotational speed,
+w
+e. These properties are defined in a table lookup
+of torque versus engine speed for different throttle settings, such as:
+1
+7
+
+  12 / 53
+ controleeete TthrottlefT _),(
++
+=
+w
+ (7)
+where Te_control is an additional  engine torque which is modulated by ESC/TCS controller and its
+details are described in the following subsection (page 14).
+The relationship between the engine torque ( Te), engine’s moment of inertia ( Ie), engine angular
+acceleration (
+a
+e), moment of inertia of torque transfer device  engine side ( Itc_in), and torque
+transfer device input torque (Ttcin) are
+
+(
+I
+e
++
+I
+tc _ in
+)
+a
+e
+=
+T
+e
+-
+T
+tcin  (8)
+Engine angular speed is obtained in each time step by integrating the differential equation:
+
+intce
+tcine
+ee
+II
+TT
+_+
+-
+==
+aw
+&  (9)
+The engine rotation angle is given by
+ ee
+wf
+=
+&
+ (10)
+The above parameters and table function involved in these engine calculations are set on the
+screen in Figure 9, using the controls described below.
+
+  13 / 53
+
+Figure 9. Screen for an engine.
+1   Checkbox for using  a 1 st order time delay of the engine th rottle. When checked, extra data
+fields (
+2  and
+3 ) are shown that specify the time constants. If not checked, the engine
+throttle responds instantly without delay.
+
+2  Dynamic time constant for opening the engine throttle (keyword = TC_THR_APP).
+3  Dynamic time constant for closing the engine throttle (keyword = TC_THR_REL).
+4  Optional link to a Powertrain: Fuel Consumption Rate dataset defining the rate of fuel
+consumption for this engine. Whe n linked, the fuel consumption rate (kg/ sec) and total fuel
+consumption (kg) for the run are calculated.
+5   Engine rotational inertia at crankshaft (keyword = IENG). This parameter includes the
+inertia properties of all parts that spin with the engine outp ut shaft and possibly portions of
+the hydraulic torque converter or clutch.
+
+  14 / 53
+6   Idle speed (keyword = AV_ENG_IDLE). This is the static engine rotational speed when
+there is zero throttle input.
+7   Tabular data for engine torque (root keyword = MENGINE).
+Turning the engine off and on
+The parameter OPT_ENGINE_RUNNING turns the engine off (OPT_ENGINE_RUNNING = 0)
+or on (OPT_ENGINE_RUNNING = 1). The default value is 1. This parameter can be found in
+the Engine section of an Echo file.
+The parameter OPT_ENGINE_RUNNING enables, for example, a start/stop  controller to turn the
+engine off when the vehicle comes to a stop and to turn the engine on when the driver releases the
+brake pedal. The intended engine speed after startup, which can be set by the state variable
+SV_AV_ENG, must be high enough to preven t stalling the engine. In the start/stop example, the
+user may wish to set engine speed to the idle speed defined by the parameter AV_ENG_IDLE.
+This could be accomplished by typing SV_AV_ENG = AV_ENG_IDLE  in a miscel laneous
+yellow field in an Event which turns the engine on.
+Note: The state of OPT_ENGINE_RUNNING will not automatically change
+from 1 (running) to 0 (not running) if the engine is stalled by other
+means such as keeping the transmission clutch engaged when  the vehicle
+reaches zero speed. Because  OPT_ENGINE_RUNNING is a parameter
+rather than a variable, it needs to be explicitly set to 0 to turn the engine
+off, then back to 1 to turn the engine on.
+ESC/TCS torque control interface
+ESC (Electric Stability Con trol) or TCS (Traction Control System) i s required by regulations for
+all passenger cars since 2012. In these controllers, the engine torque is often modulated to
+minimize an excessive engine torque to prevent an instability due to wheel slipping. Further,
+some autonomous throttle control systems assist when climbing gravel hills.
+With these controllers in mind, VS powertrain includes a controllable engine torque  Te_control in
+Equation 7.
+The ESC/TCS controller typically com mands a demand torque to the engine base d on the driver
+requesting engine torque and some vehicle operating states, such as speed, yaw rate, wheel slip
+ratio, etc.
+The VS model does not have a built-in ESC/TCS controller. A control algorithm defined with VS
+Commands or from an external model su ch as Simulink, actual hardware ECU, etc., provides the
+torque request Te_ESC_rq, which is accessed in the VS Solver through the import variable
+IMP_MENGINE_ESC_REQUEST.
+The engine torque requested by the driver mod el (Te_DRV_rq) is exportable from the VS  Solver to
+outside controller through an output variable (M_Eng_Rq) and is calculated based on the current
+engine speed with throttle level, such as:
+  15 / 53
+ ),(__ eetrqDRVe throttlefT
+w
+=
+ (11)
+The VS model ha s an internal P+I controller which modul ates the engine torque, Te_control, in
+Equation 7 to meet the ESC’s torque demand. The internal controller has three different
+operational states distinguished by an import variable (IMP_ESC_ENGINE_CON_STATE), 0: no
+control as default; 1: reduce; or 2:  increase the engine torque to meet the torque request from
+ESC. For example, if the ESC is the reduce state (IMP_ESC_ENGINE_CON_STATE = 1), the
+ESC’s target is the smaller of ESC and driver demand, such as:
+
+eette
+rqDRVerqESCeette
+rqDRVerqESCeette
+TT
+stateESCifelse
+TTT
+stateESCifelse
+TTT
+stateESCif
+=
+=
+=
+=
+=
+=
+arg_
+____arg_
+____arg_
+)0_(
+},max{
+)2_(
+},min{
+)1_(
+ (12)
+The time derivative of the engine control torque is:
+
+(
+)
+(
+)
+ESCIeetteESCPeettecontrole GdtTTGTTT _arg__arg__
+ò
+-+-=
+&
+ (13)
+All import and export variables related with the ESC torque control are summarized in Table 2
+and Table 3, respectively. PI parameters are summarized in Table 4.
+Table 2. Import variables related with ESC/TCS torque control
+Keyword Notation Description
+IMP_ESC_ENGINE_CON_STATE ESC_state ESC engine torque control state
+IMP_MENGINE_ESC_REQUEST T
+e_ESC_rq
+
+Engine torque requested by ESC/TCS
+
+Table 3. Export variables related with ESC/TCS torque control
+Keyword Notation Description
+ESC_Stat ESC_state ESC engine torque control state
+M_Eng_Rq T
+e_DRV_rq
+ Driver requesting engine torque
+M_EngEsc T
+e_target
+
+ESC targeting engine torque
+RgearDLT --- Driveline total gear ratio
+
+Table 4. PI parameters for ESC/TCS torque control
+Keyword Notation Unit Description
+ENGINE_ESC_PG G
+P_ESC
+
+1/s P gain of engine control
+ENGINE_ESC_IG G
+I_ESC
+
+1/s2 I gain of engine control
+
+
+  16 / 53
+Note  Some ESC/TCS control systems use driver or ESC torque request signal
+at the wheels instead of the engine. In such cases, users can use an export
+variable RgearDLT, which is the total gear ratio from the engine to the
+wheels through transmission, transfer case (if any) and differentials.
+Torque Converter
+Torque is transmitted from the engine to the transmissio n by either a hydraulic torque converter
+or a mechanical clutch.
+If the hydraulic torque converter is selected, the torque at the output side of a torque converter
+(Ttcout) is given by the characteristic table ( ftr), which is the torque ratio ( Ttcout / Ttcin) as a function
+of speed ratio (Stc), multiplying the torque at the input side.
+
+T
+tcout
+=
+f
+tr
+(
+S
+tc
+)
+·
+T
+tcin
+ (14)
+Torque at the input side of the torque converter ( Ttcin) is equal to the torque load on the engine
+given by the characterist ic table (ftki), which is the inverse to rque capacity (1/K) as a function of
+the speed ratio, (Stc =
+w
+tco /
+w
+e), multiplying angular speed of engine.
+ Ttcin = sign ftki(Stc )
+{
+}
+· ftki(Stc) ·
+w
+e
+{
+}
+2
+ (15)
+In general, the torque converter is characterized by the torque capacity (K). Ho wever, to account
+for engine braking, it  is difficult to describe the model directly in terms of K because normally
+K
+ﬁ
+¥
+ as
+w
+tco
+w
+e
+ﬁ
+1
+. Therefore, the capacity is described by a table for
+1
+K
+ as a function of
+w
+tco
+w
+e
+. When
+w
+tco
+w
+e
+>
+1
+, the sign o f K is assumed to be negative, thus exerting a retarding
+torque on the transmission, and ultimately, the wheels.
+If a lockup torque converter is employed, a mechanical clutch is applied parallel to this hydraulic
+equation. This is explained in the next sub -section. The lockup schedule is described in the
+section, Transmission.
+The above parameters and table function involved in these hydraulic torque converter calculations
+are set on the screen in Figure 10, using the screen items described below.
+1  Inverse of the torque converter capacity as a function of speed ratio (root keyword =
+INV_CAP_TC).
+2  Torque amplification as a function of speed ratio (root keyword = RM_TC).
+3  Spin inertia of the input shaft of the torque converter (keyword = ITC_INPUT_SHAFT).
+4  Spin inertia of the output shaft of the torque converter (keyword = ITC_OUTPUT_SHAFT).
+
+
+  17 / 53
+
+Figure 10. Screen for a torque converter.
+Mechanical Clutch
+Torque is transmitted from the engine to the transmission by either a hydraulic torque converter
+or a mechanical clutc h.  In VehicleSim vehicle models, the same equations are adopted for the
+mechanical clutch and lockup clutch on the hydraulic torque converter.
+Condition of slip or locked
+The clutch has two states: slipping or locked. Between those two states, the equati ons to calculate
+the torque and degree -of-freedom are different. Firstly, those states are distinguished by the
+following operating conditions.
+
+slipping'tochange'elselocked'keep'then
+)abs()02.1abs(If
+locked)(currentlyelse
+slipping'keep'elselocked'tochage'then
+0.0)()abs()abs(If
+thenslippingcurrentlyif
+__
+___
+lockclutchcapclutch
+oldclutchclutchlockclutchcapclutch
+TT
+ddANDTT
+>·
+<·>
+ww
+ (16)
+
+  18 / 53
+Where d
+w
+clutch is the speed differential between input and output plates of the clutch  (
+w
+e-
+w
+tco) and
+d
+w
+clutch_old is d
+w
+clutch from one calculation step ago. The term of the condition “( d
+w
+clutch_old x
+d
+w
+clutch) < 0.0” represents that the speed differential of the clutch reverses to the other direction.
+Tclutch_cap denotes the torque capacity of clutch, which is defined by the table function as:
+ )(__ placementClutch_disfT capclutchcapclutch
+=
+ (17)
+Clutch_displacement is the input value (0 – 1) from the control from the driver. Tclutch_lock denotes
+the theoretically calculated torque load on the locked clutch, whose value is calculated by:
+
+2
+_
+2
+_
+_
+/5.0
+1
+/5.0
+transtrans
+intce
+transtrans
+intce
+trans
+g
+e
+lockclutch
+NI
+II
+NI
+II
+N
+TT
+T ++
++
+×-
+=  (18)
+Note: The derivation of the torque load on the locked clutch is described in the
+Appendix (page 47).
+The reason why the clutch torque capacity is multipl ied by 1.02 in the currently locked condition
+of equation 16 is that the static friction is considered 2% greater than the dynamic friction.
+Overall, when the clutch is slipping, if the torque capacity ( Tclutch_cap) is bigger than the torque
+load (Tclutch_lock) and the speed differential between the input/output clutch plates is reversed to the
+other direction then the clutch is locked. While the clutch is locked, if the torque load ( Tclutch_lock)
+exceeds more than 2% of the torque capacity (Tclutch_cap), the clutch starts to slip.
+Torque calculation and reduction of degree-of-freedom
+When clutch is in slip
+If the clutch is slipping, the torque reacting to the engine ( Ttcin) and the torque to the transmission
+input shaft (Ttcout) are the same, such as:
+
+(
+)
+clutchcapclutchtcouttcin dTTT
+w
+,sign _
+=
+=
+ (19)
+where sign is the sign function that the sign of the first term ( Tclutch_cap) depends on the second
+term (d
+w
+clutch). When d
+w
+clutch is positive, Ttcin is also positive in this case.
+When clutch is locked (removed degree-of-freedom of engine)
+If the clutch is locked, the clutch torque is treated as same as engine torque, the degree -of-
+freedom of the engine crankshaft is removed, and both sides of the clutch are treated as “one
+unit”.  Therefore, Equation 9 and 10 are ignored and angular acceleration and angular speed of
+engine are treated as:
+
+  19 / 53
+
+.
+,
+,
+tcoe
+tcoee
+etcouttcin TTT
+ww
+waw
+=
+==
+=
+=
+&&  (20)
+However, the clutch torque for plot is compensated by the engine inertial term only when th e
+clutch is locked such as:
+ .)( _
+**
+eintceetcouttcin IITTT
+a
++-==  (21)
+Note Ttcout* is also used for the criteria of driving or coasting efficiencies of the
+transmission, transfer cases and differentials.
+
+Figure 11. Screen for a mechanical clutch.
+User settings
+1   Checkbox for using a 1 st order time delay of the clutch torque capacity (keyword =
+OPT_CLUTCH_DELAY). When checked, extra data fields (
+2  and
+3 ) are shown that
+specify the time constants. If not checked, the clut ch torque responds instantly without
+delay.
+
+  20 / 53
+
+2  Dynamic time constant for engaging the clutch (keyword = TC_CLUTCH_ENGAGE).
+3  Dynamic time constant for disengaging the clutch (keyword = TC_CLUTCH_DISENGAGE).
+4  Spin inertia of the input shaft of the clutch (keyword = ITC_INPUT_SHAFT).
+5  Spin inertia of the output shaft of the clutch (keyword = ITC_OUTPUT_SHAFT).
+6   Tabular data for the maximum torque available from a mechanical clutch as a function of a
+control (root keyword = CLUTCH_TORQUE). When the control is 1 (or greater), the clutch
+disengages such that no torque is transferred between the two shafts.
+Transmission
+
+Figure 12. Diagrammatic figures of the VehicleSim transmission model: geared transmission
+(above diagram) and disconnected with neutral position (bottom diagram).
+
+  21 / 53
+Discussions
+Figure 12 shows the two states of the transmission, the above diagram is geared position (either
+reverse, 1 st gear or higher gear shift position), and the bottom diagram is the neutral position.
+When the transmission is geared, it has one degree -of-freedom, which is the transmission’s
+torsional twist. On the other hand, when the transmission is in neutral, it has an additional degree-
+of-freedom, which is the spin of the torque transfer device’s output shaft.
+The transmission output shaft torque (Tg) is given by the torsional spring-damper, such as:
+ )()( ggroutdrivelineggroutdrivelineg DKT
+w
+w
+f
+f
+-
+·
++
+-
+·
+=
+,  (22)
+where the torsional stiffness ( Kdriveline) and damping coefficient ( Ddriveline) of the entire driveline
+are given in Equation 6.
+The other equations for the spin and torque regarding the transmission vary with whether geared
+or neutral, or whether the main clutch is engaged o r disengaged (total 4 cases) as described
+below.
+Cases of geared transmission
+When the transmission is geared, the transmission gear ratio ( Ntrans) is associated with either the
+selected gear number or continuously variable. The output torque of the transm ission gearbox
+(Tgrout) is given by the torque transfer device output torque ( Ttcout), gear ratio and efficiency
+depending on whether the engine drives the wheel or the wheels drive the engine, such as:
+
+)0(/
+)0(
+*
+_
+*
+<·=
+‡··=
+tcoutrevtranstcouttransgrout
+tcouttranstcouttransgrout
+TETNT
+orTETNT
+ (23)
+where Etrans is the efficiency (multiplying) when the engine drives the wheels. On the other hand,
+Etrans_rev is the efficiency (dividing) when the wheels drive the engine. Those two efficiencies are
+switched depending on the direction of the torque through the transmission.
+Note All of the efficiency parameters used in the following descriptions have
+two cases, switched by the direction of Ttcout*, which is compensated by
+engine inertial term when the clutch is locked in Equation 21.
+The gearbox output speed is given by:
+
+transtransouttcintce
+ggrout
+groutgrout
+transtransouttc
+ggrout
+groutgrout
+INIII
+TT
+INI
+TT
+5.0)(
+locked)is(clutchelse
+5.0
+slipping
+is
+clutch
+If
+2
+__
+2
+_
++×++
+-==
++×
+-==
+aw
+aw
+&
+&
+ (24)
+  22 / 53
+where in case of the locked clutch, the engine, torque transfer device output shaft and gearbox are
+all treated as one unit (Ttcout = Te).
+The angular speed of the torque transfer device  output,
+w
+tco, is calculated by the transmission
+output angular speed,
+w
+grout, multiplied by the transmission gear ratio, such as:
+ grouttranstco N
+w
+w
+·
+=
+ (25)
+The rotation angle of the torque transfer device  output,
+f
+tco, is calculated by the transmission
+output rotation angle,
+f
+grout, multiplied by the transmission gear ratio, such as:
+ grouttranstco N
+f
+f
+·
+=
+ (26)
+Cases of neutral transmission
+On the other hand, if the transmission is in neutral position (see the bottom diagram of Figure 12),
+the gearbox output speed is:
+
+trans
+g
+groutgrout
+I
+T
+5.0
+-
+==
+aw
+&  (27)
+Furthermore, the output shaft of the torque transfer device has an independent degree-of-freedom.
+Its speed is given by:
+
+outtcintce
+e
+tcotco
+outtc
+tcout
+tcotco
+III
+T
+I
+T
+__
+_
+locked)is(clutchelse
+slippingisclutchIf
+++==
+==
+aw
+aw
+&
+&
+ (28)
+For any case (whether transmission is geared or neutral), the gearbox output rotation angle is
+given by:
+ groutgrout
+wf
+=
+&
+ (29)
+Shift schedule
+The gear of the transmission is determined in part by the transmission’s mode of operation. The
+mode is detailed as an open -loop function of time specified on the screen Control: Shifting
+(Closed Loop). When the mode is -1, the reverse gear of the transmission is invoked. When the
+mode is 0, the transmission is in neutral: its output torque is zero. A mode of 1 means that the
+transmission gear is determined as an open -loop function of time as s pecified on the screen
+Control: Shifting (Open Loop). Modes 2 through 7 cause the gears to be changed automatically
+according to the upshift and downshift schedule tables linked to the transmission screen.
+Furthermore, transmissions with fewer than 18 gears are simulated by specifying the highest gear
+allowed. For example, if the mode is 3, then gears higher than 3 are never accessed.
+
+  23 / 53
+The screen shown in Figure 13 is used to specify the upshift boundary from a table look -up of
+transmission speed as a function of throttle position. A nearly identical screen is used for the
+downshift boundary. Also, if you setup a hydraulic torque converter with a lockup clutch, locking
+and unlocking control schedules are specified by similar screens.  Table 5 summarizes those
+schedule table screens.
+Upshifting occurs when the transmission speed rises above a specified level or a throttle position
+drops below a specified level. Figure 14 shows an examp le upshift diagram with an upshift
+boundary from 3 rd to 4 th gear. In this figure, the current throttle position is 0.6 (60%) and
+transmission output speed is 2000 rpm with the current gear position of 3 rd gear. The upshift will
+happen if the throttle posit ion is reduced below 0.38 keeping the same transmission speed, or if
+the transmission speed increases to more than 2600 rpm while keeping the same throttle position.
+Downshifting occurs when the transmission speed decreases below a specified level or the
+throttle position rises above a specified level. Figure 15 shows an example downshift diagram
+with an downshift boundary from 4 th to 3rd gear. In this figure, the current throttle position is 0.6
+(60%) and transmission output speed is 2000 rpm. A downshift will happen if the throttle position
+is increased above 0.82 keeping the same transmission speed, or if the transmission speed drops
+to less than 1200 rpm keeping the same throttle position.
+
+Figure 13. Shift schedule screen
+
+  24 / 53
+
+Figure 14. Example upshift diagram
+
+Figure 15. Example downshift diagram
+User settings
+These parameters and table function ar e defined on the screen shown in Figure 16, with user
+settings that are described below.
+Note This screen does not involve the link to the CVT settings, which should
+be linked from the other screen, Transmission (Extended).
+  25 / 53
+
+Figure 16. Screen for a transmission.
+1  Drop-down list for selecting an external or internal shift schedule (keyword =
+OPT_SHIFT_INTERNAL). The data link for the upshift schedule
+2  and downshift
+schedule
+3  are hidden when the external shift schedule is selected.
+2  Link to Powertrain: Upshift Schedule datasets. The root keyword for the associated table
+is UPSHIFT_TRANS (see Table 5.)
+3  Link to Powertrain: Downshift Schedul e datasets. The root keyword for the associated
+table is DOWNSHIFT_TRANS (see Table 5.)
+4   Checkbox to include a lockup clutch in the torque converter of an automatic transmission.
+Checking the box reveals two links (
+5  and
+6 ) to d efine locking and unlocking control
+parameters for the lockup clutch. Also, the lockup clutch parameters (
+7  and
+8 ) are used.
+This box must be unchecked when a manual clutch is linked on the main Powertrain screen.
+
+  26 / 53
+Table 5. Summary of gear shift and lock-up clutch control keywords.
+Library Screen Name Root Keyword Index
+
+Description
+Powertrain: Upshift
+Schedule
+UPSHIFT_TRANS IGEAR
+
+Gear Upshift schedule using throttle
+position and transmission output
+speed.
+Powertrain: Downshift
+Schedule
+DOWNSHIFT_TRANS
+
+IGEAR
+
+Gear downshift schedule using throttle
+position and transmission output
+speed.
+
+Powertrain: Lockup
+Schedule
+LOCK_AT IGEAR
+
+Torque converter lockup schedule
+using throttle position and
+transmission output speed.
+
+Powertrain: Unlock
+Schedule
+UNLOCK_AT IGEAR
+
+Torque converter unlock schedule
+using throttle position and
+transmission output speed.
+
+
+5   Link to a Powertrain: Lockup Schedule datasets. The root keyword for the associated table
+is LOCK_AT (see Table 5.)
+6   Link to a Powertrain: Unlock Schedule datasets. The root keyword for the associated table
+is UNLOCK_AT (see Table 5.)
+7   Maximum torque capacity of the lockup clutch (keywords = M_LOCKUP_CLUTCH_CAP).
+8  Checkbox for using a 1 st order time delay of the clutch torque capacity (keyword =
+OPT_CLUTCH_DELAY). When checked, extra data fields (
+9  and
+10 ) are shown that
+specify the time constants. If not checked, the clutch torque responds instantly without
+delay.
+
+9  Dynamic time constant for engaging the clutch (keyword = TC_CLUTCH_ENGAGE).
+10  Dynamic time constant for disengaging the clutch (keyword = TC_CLUTCH_DISENGAGE).
+11  Drop-down list for selecting external or internal transmission gear ratios (keyword =
+OPT_TR_GEAR_INTERNAL).
+12   Shift duration, which is the transition time to change from one gear to another, for automatic
+transmission with a hydraulic torque converter (keyword = T_SHIFT).
+Note Manual transmission shift duration is accessed on the Driver Controls
+screen.
+13   Driveline gear ratios (keywords = R_GEAR_TR_REVERSE, R_GEAR_TR(IGEAR)). The
+forward gear ratios must be positive and the reverse gear ratio must be negative.
+  27 / 53
+14  Driveline inertias (keywords =  ITR_REVERSE, ITR_NEUTRAL, ITR (IGEAR)). All
+values should be positive. For front and rear -wheel drive, the equivalent inertias are the
+inertial loads placed on the respective differential. For both part -time an d full -time four -
+wheel drive, the equivalent inertias are the inertial loads placed on the transfer case, and the
+drive shafts are assumed to have zero inertia.
+15  Driving and coasting efficiencies for each gear (keywords = R_EFF_TR_F(IGEAR),
+R_EFF_TR_F_REVERSE, R_EFF_TR_R(IGEAR), R_EFF_TR_R_REVERSE).
+Transmission (Extended)
+Use this screen (see Figure 17) to specify the properties of an automatic/manual transmission with
+up to 18 gears or continuously variable transmission (CVT). Howeve r, for the transmission up to
+18 gears, all mathematical calculations are as same as those described in the previous section.
+2
+4
+5
+6
+1
+3
+7
+8
+11
+12
+13
+14
+15
+9
+10
+
+Figure 17. Screen for a transmission (Extended)
+1  Drop-down list for specif ying the type of the transmission gears (keyword =
+OPT_TR_GEAR_INTERNAL). The option chosen determines the kind of the transmission
+that appears directly underneath:
+  28 / 53
+
+1. Up to 18 gears: specifying the gear ratio, inertia and efficiencies for each gear num ber
+(this item is selected in Figure 17),
+2. Continuously variable transmission (CVT): specifying the gear ratio, inertia and
+efficiencies by using tables (see the next subsection, Continuously Variable
+Transmission (CVT), for more details), and
+3. External gear ratio: specifying the gear ratio, inertia and efficiencies via external
+importing variables.
+2  Ring control to define the number of gears in the transmission (keyword = NGEARS). Any
+parameters involving gears above this number are ignored by the math model, and any
+controls on this screen are hidden.
+3  Driveline gear ratios (keywords = R_GEAR_TR_REVERSE, R_GEAR_TR (IGEAR)). The
+forward gear ratios must be positive and the reverse gear ratio must be negative.
+4  Driveline inertias (keywords =  ITR_REVERSE, ITR_NEUTRAL, ITR  (IGEAR)). All
+values should be positive. For front and rear -wheel drive, the equivalent inertias are the
+inertial loads placed on the respective differential. For bot h part -time and full -time four -
+wheel drive, the equivalent inertias are the inertial loads placed on the transfer case, and the
+drive shafts are assumed to have zero inertia.
+5  Driving efficiencies for each gear (keywords = R_EFF_TR_F_REVERSE, R_EFF_TR_F
+(IGEAR)). When power is being transferred from the transmission input shaft to the output
+shaft (in normal operation when the engine is providing power to the wheels), the torque of
+the input shaft is multiplied by this coefficient (Equation 23). It accounts for friction and
+other losses.
+6   Coasting efficiencies for each gear (keywords =  R_EFF_TR_R_REVERSE,
+R_EFF_TR_R (IGEAR)). When power is being transferred from the transmission output
+shaft to the input shaft (when the engi ne is providing a braking effect), the torque of the
+input shaft is divided by this coefficient (Equation 23). It accounts for friction and other
+losses.
+7  Drop-down list for selecting an external or internal shift schedule (k eyword =
+OPT_SHIFT_INTERNAL). The data link for the shift schedule for each gear
+9  is hidden
+when the external shift schedule is selected.
+8   Shift duration (legacy), which is the transition time to change from one gear to another for
+automatic transmission with a hydraulic torque converter (keyword = T_SHIFT).
+Note Since version 2018 the shift duration time can be set separately for each
+gear on Powertrain: Shift Schedule  screen (keywords: T_SHIFT_UP
+and T_SHIFT_DOWN), and the legacy field
+8  remains on Transmission
+  29 / 53
+screen for backward compatibility. The solver recognizes both old and
+new keywords and the values specified with new keywords are
+prioritized. Therefore, if the new fields are blank, the value on the legacy
+field is applied. This is applicable only to automatic transmissions with a
+hydraulic torque converter . Manual transmission shift duration is
+accessed on the Driver Controls screen.
+9   Links to Powertrain: Shift Schedule data sets. Each linked data set provides criteria for
+upshifting and downshift between the gears associated with the link (see Table 6).
+10   Checkbox to include a lockup clutch in the torque converter of an automat ic transmission.
+Checking the box reveals a links for each gear to define locking and unlocking control
+conditions for the lockup clutch. This box must be unchecked when a manual clutch is
+linked on the main Powertrain screen.
+11   Maximum torque capacity of the lockup clutch (keywords = M_LOCKUP_CLUTCH_CAP).
+12  Checkbox for using a 1 st order time delay of the clutch torque capacity (keyword =
+OPT_CLUTCH_DELAY). When checked, extra data fields (
+13  and
+14 ) are shown that
+specify the time constants. If not checked , the clutch torque responds instantly without
+delay.
+13  Dynamic time constant for engaging the clutch (keyword = TC_CLUTCH_ENGAGE).
+14  Dynamic time constant for disengaging the clutch (keyword = TC_CLUTCH_DISENGAGE).
+15   Links to Powertrain: AT Clutch Schedule data sets. These links are only visible if the
+above box
+10  is checked. Each linked data set provides criteria for engaging and
+disengaging a torque converter lock -up clutch for the gear associated with the link (see
+Table 6).
+Table 6. Summary of gear shift and lock-up clutch control keywords (for 18 gears).
+Library Screen Name Root Keyword Index
+
+Description
+Powertrain: Shift
+Schedule
+UPSHIFT_TRANS
+DOWNSHIFT_TRANS
+
+T_SHIFT_UP
+T_SHIFT_DOWN
+IGEAR
+
+Gear upshift and downshift schedule
+using throttle position and
+transmission output speed.
+Powertrain: AT Clutch
+Schedule
+LOCK_AT and
+UNLOCK_AT
+IGEAR
+
+Torque converter lockup and unlock
+schedule using throttle position and
+transmission output speed.
+
+Continuously Variable Transmission (CVT)
+When the transmission is continuously variable (CVT), the most equations are as same as the
+equations (23 - 26) described for the Cases of geared transmission  in the previous subsection,
+except that the transmission gear ratio (Ntrans) is continuously variable as a function of the throttle
+position and the transmission output speed, such as:
+  30 / 53
+ ),(__ tcogearcvtinsttrans throttlefN
+w
+=
+ (30)
+where Ntrans_inst is the instant gear ratio which does not involve any time delay. The actual gear
+ratio applied to the transmission is expressed by a 1st order dynamic time delay such as:
+
+cvtc
+transinsttrans
+trans T
+NN
+N
+_
+_
+-
+=&  (31)
+where Tc_cvt is the dynamic time constant, and Ntrans is integrated and updated for every numerical
+calculation time step. In turn, the transmission efficiencies ( Etrans and Etrans_rev) and transmission
+inertia (Itrans) are also continuously variable as the functions of the current transmission gear ratio,
+such as:
+
+,
+),(
+),(
+__
+2
+__
+___
+_
+pulleyoutputcvttranspulleyinputcvttrans
+transrevefficiencycvtrevtrans
+transefficiencycvttrans
+INII
+andNfE
+NfE
++·=
+=
+=
+ (32)
+where Icvt_input_pulley and Icvt_output_pulley are the inertial of the input and output pulley of the CVT,
+respectively.
+Because the gear ratio is differentiable with time, the angular acceleration of the transmission
+input can be:
+ grouttransgrouttranstco NN
+www
+&
+&
+&
++=  (33)
+which yields the gearbox output speed given by:
+
+transtransouttcintce
+grouttranstranspulleyinputcvtouttcintceggrout
+groutgrout
+transtransouttc
+grouttranstranspulleyinputcvtouttcggrout
+groutgrout
+INIII
+NNIIIITT
+INI
+NNIITT
+5.0)(
+)(
+locked)is(clutchelse
+5.0
+)(
+slippingisclutchIf
+2
+__
+____
+2
+_
+___
++×++
+×××+++--==
++×
+×××+--==
+waw
+waw
+&
+&
+&
+&
+ (34)
+Equation 34 is similar to equation 24 but involves an additional term with the time derivative o f
+transmission gear ratio. If the transmission gear ratio continuously varies (time differentiable)
+such as CVT, the gearbox output speed is calculated by equation 34 instead of equation 24.
+On th e Powertrain: Transmission (Extended)  screen, select the menu item, Continuously
+variable transmission (CVT), in the drop-down list
+1 , the appearance of the screen is changed
+as shown in Figure 18 to specify the properties of the continuously variable transmission (CVT).
+Note This section describes only the controls for the CVT on the Powertrain:
+Transmission (Extended)  screen. The other controls shared with the
+transmission (up to 18 gears) are described in the previous subsection.
+
+  31 / 53
+
+Figure 18. Alternate appearance of the transmission (Extended) screen for the CVT settings.
+1  Drop-down list for specifying the type of the transmission gears (keyword =
+OPT_TR_GEAR_INTERNAL). The option chosen determines the ki nd of the transmission
+that appears directly underneath:
+1. Up to 18 gears: specifying the gear ratio, inertia and efficiencies for each gear number,
+2. Continuously variable transmission (CVT): specifying the gear ratio, inertia and
+efficiencies by using tables (this item is selected in Figure 18), and
+3. External gear ratio: specifying the gear ratio, inertia and efficiencies via external
+importing variables.
+
+2  Checkbox to extend CVT settings for the reverse gear (keyword = OPT_CVT_REVERSE). If
+this box is checked, the constant values for the gear ratio, inertia and efficiencies for the
+reverse gear are hidden and these are defined by a link to Powertrain: CVT Gear Ratio
+data set
+3  (see Table 7).
+
+  32 / 53
+
+3   Links to Powertrain: CVT Gear Ratio data set, which in turn links to Powertrain: CVT
+Efficiencies data set (see Table 7).
+4   Input pulley inertia (keywords = ICVT_INPUT_PULLEY).
+5   Output pulley inertia (keywords = ICVT_OUTPUT_PULLEY).
+6   Dynamic time constant for the CVT (keyword = TC_RGEAR_CVT).
+Table 7. Summary of the continuously variable gear ratio and efficiencies control keywords.
+Library Screen Name Root Keyword Index
+
+Description
+Powertrain: CVT Gear
+Ratio
+R_GEAR_CVT ICVT CVT gear ratio as a function of
+throttle position and transmission
+output speed. The index refers either
+the drive (forward) or reverse.
+Powertrain: CVT
+Efficiencies
+R_EFF_CVT_F and
+
+R_EFF_CVT_R
+ICVT CVT driving and coasting effici
+encies,
+respectively, as functions of the
+transmission gear ratio. The index
+refers either the drive (forward) or
+reverse.
+
+Overview of the Various Differential Systems
+The VehicleSim solvers  have various differential systems, which can be individually set in the
+front, rear and center differentials. Table 8 summarizes the differential system types.
+Table 8. Available differential systems.
+System name Location Corresponding GUI screen
+Viscous Coupling Front Powertrain: Front Differential
+Rear Powertrain: Rear Differential
+Center Powertrain: Transfer Case
+Differential Clutch
+or LSD
+Front
+Rear
+Powertrain: Limited Slip Differential (Front or
+Rear), linked from each Differential screen.
+Center Powertrain: Limited Slip Differential for Center
+Case, linked from Transfer Case screen.
+Yaw Control
+Differential
+Front
+Rear
+Center
+Powertrain: Yaw Control Differential, linked from
+each Differential or Transfer Case screen.
+Twin-Clutch Front Powertrain: Front Twin-Clutch Differential, linked
+from Front-Wheel Drive screen.
+Rear Powertrain: Rear Twin-Clutch Differential, linked
+from Rear-Wheel Drive screen.
+  33 / 53
+Viscous Coupling
+Generally, the viscous coupling means a speed-sensitive limited slip differential using some
+hydraulic mechanism as a part of the differential system. The system can limit the slipping of one
+wheel or slipping of one end of the drive shaft (4WD). The viscous coupling is defined by a
+torque differential as a non -linear function of a speed differential using a table. The viscous
+coupling is available over the front, rear, and center differentials.
+To left wheel
+
+To rig ht wheel
+
+Clutch
+
+Differential
+
+
+Figure 19: The clutch over the differential (Front or Rear).
+Differential Clutch
+The mechanical friction mechanism applies to the front, rear and center differentials as shown in
+Figure 19. The clutch transmits a torque from the slipping side to the other side – therefore it can
+limit the slipping of one wheel or slipping of one end of the drive shaft (4WD). The clutch is
+defined by a maximum available torque as a non -linear function of a clutch control position,
+which is controlled by a simple control law or external signal through VS Commands, Simulink,
+or external code.  The si mple control law adopts a non -linear function of the sum of the output
+torques. Therefore, the system can behave as a torque-sensitive slip-limiting device. It is very
+similar to the limited slip differential (LSD).
+Limited Slip Differential (LSD)
+Limited Slip Differential (LSD) involves a mechanical friction clutch, which is very similar to the
+Differential Clutch. Generally, the clutch is pre-loaded by a spring to provide an initial torque that
+maintains minimum traction when one wheel slips. The loading of the clutch increases when the
+sum of the output torque is increased as shown in Figure 20. There are two types of pre -load
+strategies: One is the sum of pre -load and increasing load, the other is the maximum of pre -load
+and inc reasing load.  The slope of each line is the Torque Bias Ratio (TBR) defined by the
+following equation:
+
+torquesideSlipping
+torquesideslippingNonTBR
+-
+=  (35)
+TBR can be different between during the acceleration and deceleration with engine braking –
+therefore TBR is defined separately for each case.
+  34 / 53
+Another expression for LSD ’s characteristics is Lock Ratio (L.R.), which is defined by the
+following equation:
+torqueoutputofSum
+aldifferentiTorque=+
+-
+= torque)side(Slippingtorque)sideslipping(Non
+torque)side(Slippingtorque)sideslipping(Non.L.R  (36)
+
+Slipping side torque
+Sum type Select type
+Open
+differential
+Pre
+-
+load
+
+Non-slipping side torque
+
+Figure 20: Definition of torque bias ratio (TBR).
+Figure 21 shows the LSD’s characteristics using the lock ratio. As shown in this figure, when the
+sum of the output torque increases, the torque differential increases.
+
+  35 / 53
+Pre-load
+
+Select type
+
+
+Sum type
+
+Sum of the output torque
+
+Torque differential
+
+
+Figure 21: Definition of Lock Ratio (L. R.)
+The LSDs over front and rear differentials are expressed by TBR and the center differential is
+expressed by L.R.
+Yaw Control Differential
+The Yaw Control Differential employs two clutches with reduction gears in parallel over a
+differential as shown in Figure 22. (This configuration, developed by Honda Formula1, was
+described by Peter Wright [2].) Each output shaft from the differential feeds back torque through
+a reduction gear to a clutch connected to the outp ut shaft from the opposite side of the
+differential. With the clutches released, the feedback paths are disconnected and the system
+functions as a normal free differential. If either clutch is loaded, torque is transferred from one
+side to the other, bypas sing the differential. The two shafts are forced to run at different speeds
+due to the reduction gear. Selective control of the left side or right side clutch thus allows the
+vehicle yaw motion to be controlled. Use of this type of system at the transfer c ase allows control
+over the torque distribution between front and rear wheels.
+
+  36 / 53
+Drive shaft
+To left wheel To right wheel
+Clutch #2
+Clutch #1
+Gear
+Differential
+Gear
+
+Figure 22 Yaw control differential (front or rear).
+Twin-Clutch
+The Twin-Clutch system is available at the front and/or rear axles. The system involves a gearbox
+in the middle of the axle and two clutches between each wheel and the gearbox as shown in
+Figure 23.
+
+
+To left wheel
+
+To right wheel
+
+Clutch
+
+Clutch
+
+Gear
+
+Figure 23: Twin-clutch (front or rear).
+If the clutch is disconnected (free), the drive torque is not transmitted to the wheel. The clutch
+also can include a viscous effect, which transmits a torque to the wheel determined by the speed
+differential between the gearbox output and wheel.
+In general, the twin -clutch system is adopted for either front or rear axle in the part -time 4WD,
+whose transfer case may be locked all the time as shown in Figure 24. The system is essentially a
+front-wheel drive vehicle when the both of twin-clutches in rear are free. Whenever the rear twin-
+clutches are engaged, the system becomes a Part -Time 4WD. The right and left clutches in the
+twin-clutch system can be controlled different ways in order to affect the vehicle yaw motion.
+  37 / 53
+Front
+To right front wheel
+Clutch
+Differential
+To left front wheel
+Center Case
+Gear
+To right rear wheel
+To left rear wheel
+Transmission
+Rear
+Clutch
+Clutch
+Locked
+
+Figure 24: An example setting - front LSD/rear twin clutch in the part-time 4-wheel drive.
+
+Transfer Case
+In the 4-wheel drive model, the transmission output torque is distributed to the front and rear
+drive shafts through the transfer case. Torque transfer from the transfer case to the driv e shafts is
+explained as follows.
+Locked (Part-Time 4WD)
+When the transfer case is locked, the t ransmission output shaft angular speed
+w
+g is defined by the
+rotational speed of front and rear drive shafts, such as:
+
+w
+g
+=
+0
+.
+5
+·
+(
+w
+gF
++
+w
+gR
+)
+ (37)
+Transmission output shaft rotation angle
+f
+g is defined by the rotational angle of front and rear
+drive shafts, such as:
+
+f
+g
+=
+0
+.
+5
+·
+(
+f
+gF
++
+f
+gR
+)
+ (38)
+Torque distribution to the front and rear drive shafts are as foll ows. The front drive shaft torque
+is:
+
+)0(/5.0
+)0(5.0
+*
+__
+*
+_
+<-··=
+‡-···=
+tcouttrcaselockrevtrcasetrcaseggF
+tcouttrcaselocktrcasetrcaseggF
+TTENTT
+orTTENTT
+ (39)
+where Tlock_trcase  is the torque due to torsion of front and rear axles, such as:
+
+T
+lock _ trcase
+=
+K
+lock _TC
+·
+(
+f
+gF
+-
+f
+gR
+)
++
+D
+lock _ TC
+·
+(
+w
+gF
+-
+w
+gR
+)
+ (40)
+  38 / 53
+The rear drive shaft torque is:
+
+)0(/
+)0(
+*
+_
+*
+<-·=
+‡-··=
+tcoutgFrevtrcasetrcaseggR
+tcoutgFtrcasetrcaseggR
+TTENTT
+orTTENTT
+ (41)
+Free or Viscous Coupling (Full-Time 4WD)
+When the transfer case is not locked, the transmission output shaft angular speed
+w
+g is defined by
+the rotational speed of front and re ar drive shafts  and gear ratio of the transfer case , Ntrcase, such
+as:
+
+w
+g
+=
+{(
+1
+-
+T
+bias_ to _ rear
+)
+·
+w
+gF
++
+T
+bias _ to_ rear
+·
+w
+gR
+}
+·
+N
+trcase  (42)
+Transmission output shaft rotation angle
+f
+g is defined by the rotational angle of front and rear
+drive shafts and gear ratio of the transfer case, Ntrcase, such as:
+
+f
+g
+=
+{(
+1
+-
+T
+bias_ to _ rear
+)
+·
+f
+gF
++
+T
+bias_ to _ rear
+·
+f
+gR
+}
+·
+N
+trcase  (43)
+Torque distribution to front and back is as follows. The front drive shaft torque is:
+
+)0()(5.0/)1(
+)0()(5.0)1(
+*
+____
+*
+___
+<--·+··-=
+‡--·+···-=
+tcouttrcaseclutchgRgFtrcaserevtrcasetrcasegreartobiasgF
+tcouttrcaseclutchgRgFtrcasetrcasetrcasegreartobiasgF
+TTfENTTT
+orTTfENTTT
+ww
+ww
+  (44)
+where Etrcase  is the efficiency of transfer case for when the engine drives the wheel while Etrcase_rev
+is the e fficiency for when the wheels drive the engine . The table function, ftrcase, is the t orque
+difference between the front and rear, as the function of speed differential. Tbias_to_rea  is the torque
+bias to the rear wheels , whose range of value is between 0 and 1. Tclutch_trcase  is the torque at the
+transfer case clutch, which is described in the next sub-section.
+The torque transferred to the rear drive shaft is:
+
+)0(/
+)0(
+*
+_
+*
+<-·=
+‡-··=
+tcoutgFrevtrcasetrcaseggR
+tcoutgFtrcasetrcaseggR
+TTENTT
+orTTENTT
+ (45)
+Mechanical Clutch (LSD)
+Tclutch_trcase is the torque of a mechanical clutch, which is calculated by the different equations in
+the cases of locked and slipping clutches. Firstly, those states are distinguished and switch to the
+other state according to the following operating conditions.
+
+  39 / 53
+
+slipping'tochange'elselocked'keep'then
+)abs()abs(If
+locked)(currentlyelse
+slipping'keep'elselocked'tochage'then
+0.0)()abs()abs(If
+thenslippingcurrentlyif
+___
+_______
+trcaseclutchcaptrcaseclutch
+oldtrcaseclutchtrcaseclutchlocktrcaseclutchcaptrcaseclutch
+TT
+ddANDTT
+>
+<·>
+ww
+ (46)
+Where d
+w
+clutch_trcase is the speed differential between front and rear driveshaft (
+w
+gF-
+w
+gR) and
+d
+w
+clutch_trcase_old is d
+w
+clutch_trcase from one calculation step ago. The term of the condition
+“(d
+w
+clutch_trcase_old x d
+w
+clutch_trcase) < 0.0” represents that the speed differential of the clutch reverses
+to the other direction.  Tclutch_trcase_cap denotes the torque capacity of clutch, which is defined by the
+table function as:
+ )__(____ ntdisplacemetrcaseClutchfT captrcaseclutchcaptrcaseclutch
+=
+ (47)
+Clutch_trcase_displacement is the input value (0 – 1) from the external control or from the other
+table, which is the torque sensitive limiting slip, namely, LSD. Tclutch_trcase_lock denotes the
+theoretically calculated torque load on the locked clutch, whose value is calculated by:
+
+Raxle
+Faxle
+Raxle
+Faxle
+gRgF
+locktrcaseclutch
+I
+I
+I
+IMM
+T
+_
+_
+_
+_
+__
+1+
+×-
+=  (48)
+where:
+
+RshaftRdiffRRaxleLRaxlewRRaxle
+FshaftFdiffRFaxleLFaxlewFFaxle
+RdiffRRloadyLRloadygR
+FdiffRFloadyLFloadygF
+INIIII
+INIIII
+NMMM
+NMMM
+_
+2
+____
+_
+2
+____
+_____
+_____
+}/)2{(
+}/)2{(
+/)(
+/)(
++++=
++++=
++=
++
+=
+ (49)
+My_load is the torque load at each wheel that involves the torque due to tire force and moment and
+brake torque.
+Overall, if the torque capacity  (Tclutch_trcase_cap) is bigger tha n the torque load  (Tclutch_trcase_lock) and
+the speed differential between the front and rear driveshaft is reversed to the other direction then
+the clutch is locked. On the other hand, when the clutch locked, if the clutch torque ( Tclutch_trcasep :
+described below) exceeds the torque capacity (Tclutch_trcase_cap), the clutch starts to slip.
+Note:  The derivation of the torque load on the locked clutch is described in the
+Appendix (page 47).
+When the clutch is locked the clutch torque is:
+
+  40 / 53
+ )()( ___ gRgFtrcaselockgRgFtrcaselocktrcaseclutch DKT
+w
+w
+f
+f
+-
+·
++
+-
+·
+=
+ (50)
+When the clutch is slipping:
+
+(
+)
+trcaseclutchcaptrcaseclutchtrcaseclutch dTT ____ ,sign
+w
+=
+ (51)
+where sign is the sign function that the sign of the first term ( Tclutch_trcase_cap) depends on the
+second term (d
+w
+clutch_trcase). When d
+w
+clutch_trcase is positive, Tclutch_trcase is also positive in this case.
+User Settings
+These transfer case parameters and table functions are defined on the screen in Figure 25.
+
+Figure 25: Screen for a transfer case.
+All parameters and data tables involved in this screen adopt the same keywords as front and rear
+differential screens. However, those keywords are distinguished among those screens using the
+differential index IDIFF: 1 is the front dif ferential, 2 is the rear differential, and 3 is the transfer
+case.
+1  Torque differential as a function of speed differential (root keyword = M_DIFF_VISC
+(IDIFF)). This table and the corresponding plot are displayed only when the Always
+Locked box
+2  is not checked. (This table is not used for simulating a locked differential.)
+
+  41 / 53
+2  Always Locked box (keyword = OPT_LOCKED_DIFF(IDIFF)). Check this box to
+specify a locked differential. When checked, the viscous differential table and plot are
+hidden. The data link  for an optional mechanical clutch
+3  is also hidden when the
+differential is always locked.
+3  Link to a Powertrain: Differential Clutch dataset. A clutch connects the front and rear
+output shafts unless the differential is always locked (as indicated by th e checkbox
+2 ).
+Alternatively, link to a Powertrain: Limited Slip Differential for Center Case , or a
+Powertrain: Yaw Control Differential.
+4  Fraction: torque on rear drive shaft (keyword = R_REAR_BIAS(IDIFF)). This ratio is
+normally 0.5, causing the drive torque to be split evenly to the front and rear drive shafts.
+However, you can use a different value to simulate asymmetric differentials. (The range of
+acceptable values is 0 to 1). This field is hidden if the differential is always locked
+2 .
+5   Gear rati o of the transfer case (keyword = R_GEAR_DIFF(IDIFF)). This is the input
+shaft spin rate divided by the output spin rate.
+6  Torsional stiffness (keyword = LOCKED_DIFF_K(IDIFF)). Connecting the front and rear
+drive shafts with a torsional spring and damper simulates a locked differential. This is the
+stiffness of the spring.
+7  Torsional damping (keyword = LOCKED_DIFF_DAMP(IDIFF)). Connecting the front
+and rear drive shafts with a torsional spring and damper simulates a locked differential. This
+is the linear damping constant.
+8   Driving efficiency ratio (keyword = R_EFF_F_DIFF(IDIFF)). The torque of incoming
+shaft is multiplied by this coefficient when obtaining torques applied to the wheels under
+normal acceleration (Equations 39, 41, 44 and 45.)
+9  Coasting efficiency ratio (keyword = R_EFF_R_DIFF(IDIFF)). The torque of incoming
+shaft is divided by this coefficient when obtaining torques ap plied to the wheels under
+deceleration (engine drag) conditions (Equations 39, 41, 44 and 45.)
+Differential Gear
+The same differential gear model is used in the front and rear axle. The following description uses
+the notations for the front axle.
+Transmission output shaft  (or transfer case output in 4WD)  angular speed
+w
+g is defined by the
+rotational speed of right and left driving wheel and gear ratio Ndiff_F, such as:
+
+w
+g
+=
+0
+.
+5
+·
+(
+w
+whLF
++
+w
+whRF
+)
+·
+N
+diff _ F  (52)
+Transmission output shaft rotation angle
+f
+g is defined by the rotational angle of right and left
+driving wheel and gear ratio Ndiff_F, such as:
+
+f
+g
+=
+0
+.
+5
+·
+(
+f
+whLF
++
+f
+whRF
+)
+·
+N
+diff _ F  (53)
+
+  42 / 53
+Torque Distribution (Always Locked)
+When the differential system is locked, the torque transferred to the left wheel is:
+
+)0()/(5.0
+)0()(5.0
+*
+_____
+*
+____
+<-··=
+‡-···=
+tcoutFlockrevFdiffFdiffgLFy
+tcoutFlockFdiffFdiffgLFy
+TTENTM
+orTTENTM
+ (54)
+where Ediff_F  is the efficiency of the differential gear for when the engine drives the wheel while
+Ediff_F_rev  is the efficiency for when the wheels drive the engine. Tlock_F  is the torque due to torsion
+of front axle, such as:
+
+T
+lock _ F
+=
+K
+lock _ F
+·
+(
+f
+whLF
+-
+f
+whRF
+)
++
+D
+lock _ F
+·
+(
+w
+whLF
+-
+w
+whRF
+)
+ (55)
+The torque to the right wheel is:
+
+)0(/
+)0(
+*
+_____
+*
+____
+<-·=
+‡-··=
+tcoutLFyrevFdiffFdiffgRFy
+tcoutLFyFdiffFdiffgRFy
+TMENTM
+orTMENTM
+ (56)
+Torque Distribution (Free Differential or Viscous Coupling)
+Torque is transferred  to the left wheel through either a free or a viscous  coupling differential
+system:
+{
+}
+{ }
+)0()(/5.0
+)0()(5.0
+*
+_____
+*
+____
+<--+··=
+‡--+···=
+tcoutciffclutchwhRFwhLFlsdrevFdiffFdiffgLFy
+tcoutciffclutchwhRFwhLFlsdFdiffFdiffgLFy
+TTfENTM
+orTTfENTM
+ww
+ww
+ (57)
+The table function flsd is the torque difference between the left and right , as the function of speed
+differential. Tclutch_diff is the torque at the differential clutch, which is  described in the next sub -
+section.
+The torque transferred to the right wheel is:
+
+)0(/
+)0(
+*
+_____
+*
+____
+<-·=
+‡-··=
+tcoutLFyrevFdiffFdiffgRFy
+tcoutLFyFdiffFdiffgRFy
+TMENTM
+orTMENTM
+ (58)
+Mechanical Clutch (LSD)
+Tclutch_diff is the torque of the mechanical clutch, which is calculated by the different equations in
+the cases of locked and slipping clutches. Firstly, those states are dist inguished and switch to
+other state by the following operating conditions.
+
+  43 / 53
+
+slipping'tochange'elselocked'keep'then
+)abs()abs(If
+locked)(currentlyelse
+slipping'keep'elselocked'tochage'then
+0.0)()abs()abs(If
+thenslippingcurrentlyif
+___
+_______
+diffclutchcapdiffclutch
+olddiffclutchdiffclutchlockdiffclutchcapdiffclutch
+TT
+ddANDTT
+>
+<·>
+ww
+ (59)
+Where d
+w
+clutch_diff is the speed differential between left and right wheels (
+w
+whLF-
+w
+whRF) and
+d
+w
+clutch_diff_old is d
+w
+clutch_diff from one calculation step ago. The term of the condition “(d
+w
+clutch_diff_old
+x d
+w
+clutch_diff) < 0.0” represents that the speed differential of the clutch reverses to the other
+direction.  Tclutch_diff_cap denotes the torque capacity of clutch, which is defined by the table
+function as:
+
+T
+clutch _ diff _ cap
+=
+f
+clutch _ diff _ cap
+(
+Clutch
+_
+diff
+_
+displacement
+)
+ (60)
+Clutch_diff_displacement is the input value (0 – 1) from the external control or from the other
+table, which is the torque sensitive limiting slip, namely, LSD. Tclutch_diff_lock denotes the
+theoretically calculated torque load on the locked clutch, whose value is calculated by:
+
+wRRFaxle
+wFLFaxle
+wRRFaxle
+wFLFaxle
+RFloadyLFloady
+lockdiffclutch
+II
+II
+II
+IIMM
+T
++
+++
++
++
+×-
+=
+_
+_
+_
+_
+____
+__
+1
+ (61)
+where My_load is the torque load at each wheel that involves the torque due to tire force and
+moment and brake torque.
+Overall, if the torque cap acity (Tclutch_diff_cap) is bigger than  the torque load ( Tclutch_diff_lock) and the
+speed differential between the left and right wheels is reversed to the other direction then the
+clutch is locked. On the other hand, if the clutch torque ( Tclutch_diff : described below) exceeds the
+torque capacity (Tclutch_diff_cap), the clutch starts to slip.
+Note:  The derivation of the torque load on the locked clutch is described in the
+Appendix (page 47).
+When the clutch is locked the clutch torque is:
+ )()( ___ whRFwhLFFlockwhRFwhLFFlockdiffclutch DKT
+w
+w
+f
+f
+-
+·
++
+-
+·
+=
+ (62)
+When the clutch is slipping:
+
+(
+)
+diffclutchcapdiffclutchdiffclutch dTT ____ ,sign
+w
+=
+ (63)
+where sign is the sign function that the sign of the first term ( Tclutch_diff_cap) depends on the
+second term (d
+w
+clutch_diff). When d
+w
+clutch_diff  is positive, Tclutch_diff  is also positive in this case.
+
+  44 / 53
+User Settings
+These differential parameters and table functions are defined on the screen shown in Figure 26.
+All parameters and data tables involved in this  screen adopt the same keywords as front and rear
+differential screens. However, those keywords are distinguished among those screens using the
+differential index IDIFF: 1 is the front differential, 2 is the rear differential, and 3 is the transfer
+case.
+1  Torque differential as a function of speed differential (root keyword = M_DIFF_VISC
+(IDIFF)). This table and the corresponding plot are displayed only when the Always
+Locked box
+2  is not checked. (The table is not used for simulating a locked differential.)
+2  Always Locked box (keyword = OPT_LOCKED_DIFF(IDIFF)). Check this box to
+specify a locked differential. When checked, the viscous differential table and plot are
+hidden. The data link for an optional mechanical clutch
+5  is also hidden when the
+differential is always locked.
+3   Torsional stiffness (keyword = LOCKED_DIFF_K(IDIFF)). Connecting the left and right
+wheels with a torsional spring and damper simulates a locked differential. This is the
+stiffness of the spring.
+
+Figure 26: Screen for a differential gear.
+
+  45 / 53
+4   Torsional damping (keyword = LOCKED_DIFF_DAMP(IDIFF)). Connecting the left and
+right wheels with a torsional spring and damper simulates a locked differential. This is the
+linear damping constant.
+5   Link to a Powertrain: Differential Clutch dataset, a Powertrain: Limitted Slip
+Differential (Front or Rear) dataset, or a Powertrain: Yaw Control Differential dataset.
+The clutches connect the left and right output shafts unless the differential i s always locked
+(as indicated by the checkbox
+2 ).
+6   Driving efficiency ratio (keyword = R_EFF_F_DIFF(IDIFF)). The torque of the drive
+shaft is multiplied by this coefficient when obtaining torques applied the wheels under
+normal acceleration (Equations 54, 56, 57 and 58.)
+7   Coasting efficiency ratio (keyword = R_EFF_R_DIFF(IDIFF)). The torque of the drive
+shaft is divided by this coeffic ient when obtaining torques applied the wheels under
+deceleration (engine drag) conditions (Equations 54, 56, 57 and 58.)
+8   Gear ratio of the front differential (keyword = R_GEAR_DIFF(IDIFF)). This is the input
+shaft spin rate divided by the average output spin rate of the two half-shafts.
+9  Spin inertia of the drive shaft to the front differential (keyword = IDS(IDIFF)).
+10  Spin inertia o f the front differential half -shaft to the left wheel (keyword =
+IHS_L(IDIFF)).
+11   Spin inertia of the front differential half -shaft to the right wheel (keyword =
+IHS_R(IDIFF)).
+Driving Wheel Calculation
+As described in the Transmission section (page 20), the driveline inertia is divided into two parts
+at the middle of the transmission. One side (engine side) has its own degree of freedom and its
+inertia is used to calculate the transmission input spee d. The inertia of the other side (wheel side)
+is used to calculate the wheel speeds.
+If a transfer case is involved (in the case of four -wheel drive), the moments of inertia of the front
+and rear driveshafts are:
+
+RshafttrcasetransreartobiasRdrvtrans
+FshafttrcasetransreartobiasFdrvtrans
+INITI
+INITI
+_
+2
+____
+_
+2
+____
+5.0
+5.0)1(
++··=
++··-=
+ (64)
+
+If the powertrain does not involve a transfer case (either front -wheel drive or rear -wheel drive),
+the moment of inertia of a driveshaft is:
+  46 / 53
+
+RshafttransRdrvtrans
+FshafttransFdrvtrans
+III
+III
+___
+___
+5.0
+5.0
++=
++
+=
+ (65)
+
+The angular acceleration of each wheel should be calculated with the consideration of driveshaft
+inertia. For example, if an open differential is adopted on the front axle, the left and right wheel
+acceleration is:
+
+RFaxlewF
+RFloadyFdrvtransggFdiff
+whRF
+LFaxlewF
+LFloadyFdrvtransggFdiff
+whLF
+II
+MITN
+II
+MITN
+_
+_____
+_
+_____
+)(5.0
+)(5.0
++
++-=
++
++
+-
+=
+ww
+w
+w
+&&
+&
+&
+  (66)
+where My_load_LF and My_load_RF are the torque loads on the left and ri ght front wheel due to the tire
+forces/moments and brake torque, respectively. For example My_load_LF is expressed by:
+  ybkFyresisLFLFxLFLFloady MMZhwcFM
++
++
++
+·
+-
+=
+)(__  (67)
+where FxLF is tire longitudinal force, hwc + ZLF is the deflected tire radius, MyresisLF is the tire
+resistance of moment and MybkF  is brake torque.
+The angular acceleration of driveshaft is the average of left and right wheel acceleration such as:
+ )(5.0 _ whRFwhLFFdiffg N
+w
+w
+w
+&
+&
+&
++
+·
+=
+ (68)
+Substitute equation 68for 66, the left and right wheel acceleration is:
+(
+)
+( )
+( )
+( )
+÷÷
+ł
+ö
+çç
+Ł
+æ
++
+++××++
++×
+-×++×
+=
+÷÷
+ł
+ö
+çç
+Ł
+æ
++
+++××++
++×
+-×++×
+=
+LFaxlewF
+RFaxlewF
+FdiffFdrvtransRFaxlewF
+LFaxlewF
+LFloadyRFloadyFdiffFdrvtrans
+RFloadyFdiffg
+whRF
+RFaxlewF
+LFaxlewF
+FdiffFdrvtransLFaxlewF
+RFaxlewF
+RFloadyLFloadyFdiffFdrvtrans
+LFloadyFdiffg
+whLF
+II
+IINIII
+II
+MMNIMNT
+II
+IINIII
+II
+MMNIMNT
+_
+_2
+____
+_
+____
+2
+___
+___
+_
+_2
+____
+_
+____
+2
+___
+___
+14
+1
+45.0
+14
+1
+45.0
+w
+w
+&
+&
+  (69)
+Equation 69 is for the case of the open front differential. The following equations are used for all
+kinds of differential systems for four wheels:
+
+  47 / 53
+
+(
+)
+( )
+( )
+( )
+( )
+( )
+( )
+( )
+÷÷
+ł
+ö
+çç
+Ł
+æ
++
+++××++
++×
+-×++
+=
+÷÷
+ł
+ö
+çç
+Ł
+æ
++
+++××++
++×
+-×++
+=
+÷÷
+ł
+ö
+çç
+Ł
+æ
++
+++××++
++×
+-×++
+=
+÷÷
+ł
+ö
+çç
+Ł
+æ
++
+++××++
++×
+-×++
+=
+LRaxlewR
+RRaxlewR
+RdiffRdrvtransRRaxlewR
+LRaxlewR
+LRloadyRRloadyRdiffRdrvtrans
+RRloadyRRy
+whRR
+RRaxlewR
+LRaxlewR
+RdiffRdrvtransLRaxlewR
+RRaxlewR
+RRloadyLRloadyRdiffRdrvtrans
+LRloadyLRy
+whLR
+LFaxlewF
+RFaxlewF
+FdiffFdrvtransRFaxlewF
+LFaxlewF
+LFloadyRFloadyFdiffFdrvtrans
+RFloadyRFy
+whRF
+RFaxlewF
+LFaxlewF
+FdiffFdrvtransLFaxlewF
+RFaxlewF
+RFloadyLFloadyFdiffFdrvtrans
+LFloadyLFy
+whLF
+II
+IINIII
+II
+MMNIMM
+II
+IINIII
+II
+MMNIMM
+II
+IINIII
+II
+MMNIMM
+II
+IINIII
+II
+MMNIMM
+_
+_2
+____
+_
+____
+2
+___
+___
+_
+_2
+____
+_
+____
+2
+___
+___
+_
+_2
+____
+_
+____
+2
+___
+___
+_
+_2
+____
+_
+____
+2
+___
+___
+14
+1
+4
+14
+1
+4
+14
+1
+4
+14
+1
+4
+w
+w
+w
+w
+&
+&
+&
+&
+  (70)
+References
+1. Gurm, J. S., Chen, W. J., Keyvanmanesh, A. and Abe, T, “Transient Clunk Response of a
+Driveline System: Laboratory Experiment and Analytical Studies” , SAE International,
+2007-01-2233, 2007.
+2. Peter Wright, “ Formula1 T echnology”, The Society of Automotive Engineers,
+Warrendale, PA, 2001.
+Appendix
+Figure 27 shows the torques acting on the both sides of a locked clutch.
+
+  48 / 53
+
+Mg1 Mg2
+Tclutch
+
+Tclutch
+Clutch
+
+Figure 27. Torques acting on the both sides of a locked clutch.
+Mg1 and Mg2  are the torque acting on each side of the shaft. If this is the clutch between the engine
+and transmission, Mg1 is the engine torque applied on the crankshaft while Mg2  is the torque load
+from the transmission. On the other han d, if this is the clutch between left and right wheels
+(differential clutch), they are the torque load on the wheels due to the tire forces/moment and
+brake torques.
+The angular speed on each side is described by:
+
+22_2
+11_1
+gaxleclutchg
+gaxleclutchg
+ITM
+ITM
+w
+w
+&
+&
+×=+
+×
+=
+-
+ (71)
+If the clutch is locked, the angular acceleration of both sides are synchronized such as:
+ 21 gg
+w
+w
+&
+&
+=
+ (72)
+From equations 71 and 72,
+
+÷÷
+ł
+ö
+çç
+Ł
+æ -×=+
+1_
+1
+2_2
+axle
+clutchg
+axleclutchg
+I
+TMITM  (73)
+From equation 73, the torque loaded on the clutch when it is locked is:
+
+2_
+1_
+2_
+1_
+21
+_
+1
+axle
+axle
+axle
+axle
+gg
+lockclutch
+I
+I
+I
+IMM
+T
++
+×-
+=  (74)
+Therefore, if the torque load derived from equation 74 is smaller than the torque capacity of the
+clutch, the clutch can be cons idered as locked. On the other hand, if the torque load exceeds the
+torque capacity, the clutch can be considered as slipping.
+
+  49 / 53
+Notation
+Ddriveline  —  Torsional damping coefficient of driveline
+DLock_F  —  Torsional damping coefficient of front locked differential
+DLock_R —  Torsional damping coefficient of rear locked differential
+DLock_TC  —  Torsional damping coefficient of locked drive shaft of part-time 4WD
+d
+w
+clutch  —  Differential of angular speeds between input and output plate of mechanical clutch
+d
+w
+clutch_old  —  Differential of angular speeds between input and output plate of mechanical clutch
+(at 1 calculation time step before)
+d
+w
+clutch_trcase  —  Differential of angular speeds between front and rear driveshaft
+d
+w
+clutch_trcase_old  —  Differential of a ngular speeds between front and rear driveshaft (at 1
+calculation time step before)
+d
+w
+clutch_diff  —  Differential of angular speeds between left and right wheels
+d
+w
+clutch_diff_old  —  Differential of angular speeds between left and right wheels (at 1 calcul ation
+time step before)
+Ediff_F —  Efficiency of front differential (driving)
+Ediff_F_rev —  Efficiency of front differential (coasting)
+Ediff_R  —  Efficiency of rear differential (driving)
+Ediff_R_rev  —  Efficiency of rear differential (coasting)
+ESC_state —  ESC engine torque control state
+Etrcase —  Efficiency of transfer case (driving)
+Etrcase_rev —  Efficiency of transfer case (coasting)
+Etrans —  Efficiency of transmission (driving)
+Etrans_rev —  Efficiency of transmission (coasting)
+FxLF —  Longitudinal force of left-front tire
+FxRF —  Longitudinal force of right-front tire
+FxLR —  Longitudinal force of left-rear tire
+FxRR —  Longitudinal force of right-rear tire
+Fcvt_gear —  CVT gear ratio, function of a throttle position and transmission output speed
+Fcvt_efficiency —  CVT efficiency (driving), function of a transmission gear ratio
+Fcvt_efficiency_rev —  CVT efficiency (coasting), function of a transmission gear ratio
+fet —  Engine torque, function of a throttle position and crank shaft rotational speed
+
+  50 / 53
+fdsh —  Shift down timing (transmission output rotational speed and throttle position)
+fgiet —  Inertia of transmission, function of the selected gear
+fgr —  Transmission gear ratio, function of the selected gear
+flsd —  Torque difference, function of speed difference of the differential
+ftki —  Torque capacity, function of the speed ratio of torque converter
+ftr —  Torque ratio, function of speed ratio of torque converter
+ftrcase —  Torque difference, function of speed difference of ransfer case
+fush —  Shift up timing (transmission output rotational speed and throttle position)
+GP_ESC —  P gain of ECS/TCS engine torque controller
+GI_ESC —  I gain of ECS/TCS engine torque controller
+hwc —  Unloaded wheel radius
+Icvt_input_pulley —  Moment of inertia of the CVT input pulley
+Icvt_output_pulley —  Moment of inertia of the CVT output pulley
+Idriveline —  Total moment of inertia of driveline, presented at after the transmission gearbox.
+Idriveline_front_end —  Half (engine side) of the total m oment of inertia of driveline, presented at after
+the transmission gearbox.
+Idriveline_rear_end —  Half (wheel side) of the total m oment of i nertia of driveline, presented at after
+the transmission gearbox.
+Ie —  Moment of inertia of Engine (all rotating parts)
+Itc_in  —  Moment of inertia of half of the engine side of the torque transfer device
+Itc_out  —  Moment of inertia of half of the transmission side of the torque transfer device
+Itrans —  Moment of inertia of all the rotating parts with the transmission.  The inertial is
+represented just after the gearbox.
+Itrans_drv_F  —  Front driveshaft inertia with a half portion of the transmission  inertia.  The inertia is
+represented just before the differential gearbox.
+Itrans_drv_R  —  Rear driveshaft inertia with a half portion of the transmission  inertia.  The inertia is
+represented just before the differential gearbox.
+Ishaft_F —  Moment of inertia of front drive shaft
+Ishaft_R —  Moment of inertia of rear drive shaft
+Iaxle_F —  Total moment of inertia from the front driveshaft to wheels, represented after the transfer
+case.
+Iaxle_R —  Total moment of inertia from the rear driveshaft to wheels, represented after the transfer
+case.
+  51 / 53
+Iaxle_LF —  Moment of inertia of a left half of the front axle
+Iaxle_RF —  Moment of inertia of a right half of the rear axle
+Iaxle_LR —  Moment of inertia of a left half of the front axle
+Iaxle_RR  —  Moment of inertia of a right half of the rear axle
+IwF  —  Moment of inertia of a front wheel
+IwR —  Moment of inertia of a rear wheel
+Kdriveline  —  Torsional stiffness of driveline
+KLock_F  —  Torsional stiffness of the front locked differential
+KLock_R  —  Torsional stiffness of the rear locked differential
+KLock_TC  —  Torsional stiffness of the central locked transfer case
+MybkF  —  Braking torque of a front wheel
+MybkR  —  Braking torque of a rear wheel
+My_LF  —  Drive torque of the left front wheel
+My_RF  —  Drive torque of the right front wheel
+My_LR  —  Drive torque of the left rear wheel
+My_RR  —  Drive torque of the right rear wheel
+My_load_LF  —  Torque load on the left front wheel due to the tire force/moment and brake torque
+My_load_RF  —  Torque load on the right front wheel due to the tire force/moment and brake torque
+My_load_LR  —  Torque load on the left rear wheel due to the tire force/moment and brake torque
+My_load_RR  —  Torque load on the right rear wheel due to the tire force/moment and brake torque
+MyresisLF  —  Rolling resistant torque of the left front wheel
+MyresisRF  —  Rolling resistant torque of the right front wheel
+MyresisLR  —  Rolling resistant torque of the left rear wheel
+MyresisRR  —  Rolling resistant torque of the right rear wheel
+Ndiff_F  —  Gear ratio of the front differential
+Ndiff_R  —  Gear ratio of the rear differential
+Ntrans  —  Gear ratio of the transmission
+Ntrans_inst  —  Instant gear ratio of the CVT (without dynamic time delay)
+Ntrcase  —  Gear ratio of the transfer case
+Stc  —  Speed ration of the torque converter
+Tbias_to_rear —  Torque bias to the rear wheels (Full-Time 4WD)
+  52 / 53
+Tc_cvt  —  Dynamic time constant of CVT
+Te  —  Engine torque
+Te_control  —  Engine torque modulated by ESC/TCS
+Te_DRV_rq  —  Driver requesting engine torque
+Te_ESC_rq  —  Engine torque requested by ESC/TCS
+Te_target  —  ESC targeting engine torque
+Tclutch_cap  —  Maximum torque capacity of main clutch
+Tclutch_lock  —  Torque load on the locked main clutch.
+Tclutch_trcase_cap  —  Maximum torque capacity of transfer case clutch
+Tclutch_trcase_lock  —  Torque load on the locked transfer case clutch.
+Tclutch_diff_cap  —  Maximum torque capacity of differential clutch
+Tclutch_diff_lock  —  Torque load on the locked differential clutch.
+Tg —  Transmission output torque
+TgF  —  Torque at front drive shaft
+TgR  —  Torque at rear drive shaft
+Tgrout  —  Transmission gearbox output torque
+Tlock_F  —  Torque due to torsion of front axle
+Tlock_R  —  Torque due to torsion of rear axle
+Tlock_trcase  —  Torque due to torsion of front and back drive shafts
+Ttcin  —  Input torque of the torque transfer device (used for internal calculation)
+Ttcin*  —  Input torque of the torque transfer device (compensated by the engine inertial term when
+the clutch is locked: used for output plot)
+Ttcout  —  Output torque of the torque transfer device (used for internal calculation)
+Ttcout*  —  Output torque of the torque transfer device (compensated by the engine inertial term
+when the clutch is locked: used for output plot and criteria of driving/coasting efficiencies)
+throttle  —  Throttle position
+a
+e  —  Engine angular acceleration
+a
+grout  —  Transmission gearbox output angular acceleration
+ZLF  —  Tire deformation of left front
+ZRF  —  Tire deformation of right front
+ZLR  —  Tire deformation of left rear
+  53 / 53
+ZRR  —  Tire deformation of right rear
+f
+e  —  Engine rotation angle
+f
+g —  Transmission output shaft rotation angle
+f
+gF  —  Front drive shaft rotation angle
+f
+gR  —  Rear drive shaft rotation angle
+f
+grout  —  Transmission gearbox output rotation angle
+f
+tco  —  Torque transfer device output angle
+f
+whLF  —  Left front wheel rotation angle
+f
+whRF  —  Right front wheel rotation angle
+f
+whLR  —  Left rear wheel rotation angle
+f
+whRR  —  Right rear wheel rotation angle
+w
+e  —  Engine angular speed
+w
+g  —  Transmission output angular speed
+w
+gF  —  Front drive shaft angular speed
+w
+gR  —  Rear drive shaft angular speed
+w
+grout  —  Transmission gearbox output angular speed
+w
+tco —  Torque transfer device output angular speed
+w
+n_driveline —  Natural frequency of driveline
+w
+whLF  —  Left front wheel angular speed
+w
+whRF  —  Right front wheel angular speed
+w
+whLR  —  Left rear wheel angular speed
+w
+whRR  —  Right rear wheel angular speed
+z
+driveline —  Damping ratio of driveline

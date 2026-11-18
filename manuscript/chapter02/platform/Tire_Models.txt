@@ -1,0 +1,2417 @@
+Mechanical Simulation   CarSim and TruckSim
+755 Phoenix Drive, Ann Arbor MI, 48108, USA
+Phone: 734 668-2930 • Fax: 734 668-2877 • Email: info@carsim.com carsim.com
+ 1 / 66 December 2018
+Tire Models
+Tire Property Screens ............................................................................................. 2
+The Main Tire Screen ...................................................................................... 6
+Tire: Vertical Load vs. Deflection ................................................................. 18
+Setting Variable Relaxation Length or Contact Patch Size ........................... 20
+Tire: Pacejka 5.2 Parameters.......................................................................... 23
+Groups of Dual Tires ..................................................................................... 25
+The Tire Tester Utility .......................................................................................... 27
+Tire Force and Moment Calculations ................................................................... 29
+Tire/Ground Axes .......................................................................................... 31
+Lateral Slip ..................................................................................................... 31
+Longitudinal Slip ........................................................................................... 31
+Pure Longitudinal and Lateral Slip ................................................................ 32
+Sign Conventions ........................................................................................... 32
+Friction Similarity .......................................................................................... 32
+Asymmetric Characteristics (Anisotropic properties) .................................... 33
+Camber Effect (Simple) ................................................................................. 33
+Combined Slip Theory ................................................................................... 33
+Extended Camber Effects .............................................................................. 37
+Overturning Moment ..................................................................................... 38
+Rolling Resistance and Power Balance .......................................................... 39
+Tire Transient Behavior (Lags and Relaxation Length) ................................ 40
+Tire Interaction with 3D Road Geometry ............................................................. 46
+Overview of Modeling Approach .................................................................. 47
+Step 1: Estimate X and Y Coordinates of the Contact Center ....................... 47
+Step 2: Update Ground Variables Z, dZ/dX, dZ/dY ...................................... 48
+Step 3: Determine Kinematical Inputs for the Tire Model ............................ 49
+Step 4: Apply the Contact Center Tire Model ............................................... 50
+Step 5: Transform the Tire Forces and Moments .......................................... 51
+Import and Output Variables for the Tire Forces and Moments .................... 51
+Connection to third-party tire models................................................................... 52
+Overview ........................................................................................................ 52
+MF-Tyre/MF-Swift model options ................................................................ 56
+COSIN FTire model option ........................................................................... 61
+Custom 3rd-Party Tire Model Options .......................................................... 62
+Animator and custom settings ........................................................................ 64
+Appendix: Comments on PAC 52 and PAC 2002 ................................................ 65
+References ............................................................................................................ 66
+
+Several tire models are available in VS Solver programs for the calculation of tire forces and
+moments. All of these models are designed to produce the tire vertical force, the shear forces at the
+ground, and moments due to tire carcass deflection.
+ 2 / 66
+This document describes the screens in the VS Browser for specifying tire properties. It also
+provides mathematical details of the modeling assumptions and calculation methods used in VS
+Math Models.
+The tire models are based on interactions defined at the ground; however, the multibody model
+equations in VS Math Models transform the forces and moments and apply them at  the wheel
+center. Import variables are defined for both sets of forces (those applied at the center of tire contact,
+and those expressed at the wheel center), so advanced users who wish to replace or extend the VS
+tire models can work with either contact-center forces or wheel-center forces.
+Advanced users can extend the definitions of some of the variables in the tire model at run time by
+using VS commands.
+Tire Property Screens
+This section describes the screens used to define the parameters and links th at characterize a tire.
+Four screens are described in detail:
+1. Tire (the main tire screen),
+2. Tire: Vertical Load vs. Deflection,
+3. Tire: Pacejka 5.2 Parameters, and
+4. Tires: 2 Axles with Support for Duals  (and three other TruckSim screens with tire
+groups)
+The other library screens are used for specifying tire properties with tables that have standard
+editing and viewing controls as described in the VehicleSim Browser Reference Manual. Table 1
+lists these screens and identifies the keyword root names for the table. The independent variables
+for these tables are vertical load (F z) and either lateral slip angle a (alpha), longitudinal slip ratio
+k (kappa), or inclination angle g (gamma).
+Table 1. Summary of tire table libraries.
+Library Screen  Root Keyword
+
+Description
+Tire: Aligning Moment MZ_TIRE Aligning moment vs. alpha and F
+z
+
+Tire: Aligning Moment vs. Inclination MZG_TIRE Aligning moment vs. gamma and F
+z
+
+Tire:
+Camber Thrust Coefficient
+
+KGAMMA
+Camber thrust coefficient vs. Fz
+
+Tire: Lateral Force FY_TIRE Lateral force vs. alpha and F
+z
+
+Tire: Lateral Force vs. Inclination FYG_TIRE Lateral force vs. gamma and F
+z
+
+Tire: Longitudinal Force FX_TIRE Longitudinal force vs. kappa and F
+z
+
+Tire: Overturning Moment MX_TIRE Overturning moment vs. alpha and F
+z
+
+Tire: Overturning Moment vs.
+Inclination
+
+MXG_TIRE Overturning moment vs. kappa and Fz
+Generic Table  L_RELAX_X,
+L_RELAX_Y
+Relaxation length as nonlinear function
+of F
+z
+
+and slip.
+Generic Table  L_CONTACT_X,
+L_CONTACT_Y
+Contact patch dimension as nonlinear
+function of tire compression.
+
+ 3 / 66
+The Tire: Camber Thrust Coefficient  screen defines the camber thrust variable (dF y/dg) as a
+conventional VS Configurable Function  of vertical load. As with most other Configurable
+Functions, it can be set to a constant or calculated from the independent variable (load Fz) using a
+linear coefficient, a nonlinear table, or an algebraic equation provided at runtime. The calculation
+can include a gain and offset for the camber thrust and a scale factor for load.
+Nonlinear functions for relaxation length and contact patch dimensions are not needed by most
+users of the software, and are usually represented with constant values. When they a re defined as
+functions of other variables, the Generic Table library is used, as described in a later section (page
+20).
+The other Configurable Functions listed in the table  always calculate a force or moment using a
+nonlinear table based on columns and rows of data, where the columns correspond to a load and
+the rows correspond to alpha, kappa, or gamma.
+Prior to version 9 (2015), the table -based tire model assumed symmetric behavior. Tables for
+calculating tire forces and moments were required to include a column for zero load and a row for
+zero slip or inclination. To avoid potential errors, the VS Solvers automatically added the necessary
+column and row of zeros. This behavior occurs when the table type for Configurable Functions is
+set to a carpet (e.g., FY_TIRE_CARPET) with the type 2D_FROM_ZERO, and is supported in the
+GUI screen. For example, Figure 1 shows the screen for specifying data for the FY_TIRE
+Configurable Function. As with other Configurable Function screens, it has a drop -down control
+for specifying how tabular data are interpolated and extrapolated . When set to the option
+Legacy Tire (2D, absolute slip, from zero) , the keyword 2D_FROM_ZERO is written so the
+VS Solver will properly add the column and row of zeros.
+On the other hand, if any of the other calculation methods are selected (Figure 2), the interpretation
+is the same as for any other Configurable Function, with one exception noted below.
+Note When asymmetric tire data are provided (e.g., Figure 2), the first column
+of the table should contain zeros, indicating that when the tire leaves the
+ground (Fz is zero), the Fx, Fy, Mz, or Mx forces and moments must also
+be zero. If the first Fz in the table is not zero, the VS Solver automatically
+adds a column of zeros. (In this case, the Echo file will show the modified
+table.)
+When the symmetric option is used, the tabular data should show the relationship between absolute
+slip angle and absolute lateral force, which forces the origin of the plot axes to the lower-left (Figure
+1). For asymmetric data, the signs of the variables shoul d match the ISO sign conventions. In the
+case of lateral force, increasing slip angle causes increasingly negative side force (Figure 2).
+As with all VS Configurable Functions and tables, details for each are provided in the echo file
+generated by the VS Solver for each run ( Figure 3). View the echo file using the View button in
+the lower-right corner of the Run Control screen. Notice that in addition to the tire parameters, the
+comments at the start of the Tires section mention all of the tire -related Configurable Functions
+that are listed in Table 1 (see lines 280 and 281).
+
+ 4 / 66
+
+Figure 1. Tire lateral force screen, showing symmetric data.
+
+Figure 2. Tire lateral force screen, showing asymmetric data.
+1
+2
+3
+4
+
+ 5 / 66
+
+Figure 3. Tire information listed in Echo file.
+All of the parameters and Configurable Functions that are set on a tire screen are indexed to the
+axle number as indicated by the current value of the system parameter IAXLE and to the side as
+indicated by the current value of the system parameter ISIDE (1 = left, 2 = right). For models with
+trailers, they are also indexed to the unit as indicated by the current value of the system parameter
+IUNIT.
+
+ 6 / 66
+If the vehicle model supports dual tires, then the tire models are also indexed for the tire on the
+wheel with the system parameter ITIRE (1 = inner, 2 = outer). For example, Figure 4 shows the
+start of the Tires section in a CarSim Echo file where dual tires are used. The axle parameters with
+keyword L_DUAL indicate whether the axle has single or dual tires (see lines 313 and 314, Figure
+4). Also, notice that the tire parameters (e.g., OPT_TIRE_MODEL) have an extra index indicating
+whether the parameter applies for the inner or outer tire on the wheel.
+
+Figure 4. Tire information in the Echo file if the vehicle model has dual tires.
+The Main Tire Screen
+Figure 5 shows the main tire screen. The appearance of the screen will adjust based on the selected
+model options.
+The basic geometry is shown on the screen, involving a tire/ground reference frame with Z axis
+perpendicular to the ground at a point called the tire contact center, an X axis perpendicular to both
+the ground Z and the wheel spin axis, and a Y axis perpendicular to the X and Z axes.
+This screen contains five kinds of information about a tire/wheel assembly:
+1. vertical force (upper-left part of the screen),
+2. animator information (upper-right part of the screen),
+3. rolling resistance and other shear forces and moments (lower-left part of the screen),
+4. dynamic (transient) properties (middle-right part of the screen), and
+
+ 7 / 66
+
+Figure 5. Tire screen with the first tire model selected (Table Model with Simple Camber).
+5. contact patch dimensions (lower-right part of the screen).
+6. For most of the tire model options, these categories are independent, with the exception
+that the effective rolling radius is used both for the vertical force calculations and for sizing
+the shapes shown by the animator.
+Tire Model Option
+This screen supports several tire models for predicting rolling resistance and the shear forces and
+moments.
+ Model option drop -down list ( Figure 6) (keyword = OPT_TIRE_MODEL). The selection
+displays or hides various controls on the screen as need for each optional tire model. For
+example, when the Internal Table Model with Simple Camber is chosen, the lower part of
+the screen has the appearance shown in Figure 5. When the other items are chosen, the unused
+controls are hidden and other links or fields are shown.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+12
+13
+14
+15
+16
+17
+18
+19
+24
+25
+26
+29
+30
+11
+31
+32
+33
+34
+35
+36
+37
+
+ 8 / 66
+
+Figure 6. Model option drop down list
+There are four kinds of tire models available from this list:
+1. Two Internal Table models built into VS Math Models use tables of the shear forces
+and moments, as would be measured in a laboratory or on -road tester as functions of
+vertical load, longitudinal slip, lateral slip, inclination angle, and tire/surface friction.
+Calculations of forces and moments not covered explicitly in the tables are made using
+“combined slip theory” and “similarity” [1, 2], as described in section Tire Force and
+Moment Calculations (page 29). The first option ( with Simple Camber ) uses four
+linked datasets (  - , Figure 5); the second ( with Camber Details ) uses seven
+linked datasets (Figure 8, page 12).
+2. An internal Pacejka Magic Formula tire model described in the book Tire and Vehicle
+Dynamics [3] is also built into the VS Math Models. When selected, a link appears to
+a dataset with coefficients for the Magic Formula (Figure 10, page 14).
+3. The VS Solvers support external tire models that communicate (im port and export)
+force and kinematical variables with the VS Math Models. Imported forces may be
+defined at either the tire contact center or the wheel center, to accommodate virtually
+any tire model (see the subsection External Shear Models, page 13).
+4. Third-party tire model options ( legacy). The VS Solvers also support  third-party tire
+models. One is the basic MF -Tyre model (supplied by TASS/TNO). Two advanced
+models are also available that require licenses from third -party companies: the MF -
+Swift model is licensed by TASS and the FTire model is licensed by COSIN.
+5. VS Solvers also support user defined  tire models with TYDEX STI (Standard Tire
+Interface) and VS S TI (VS version of STI ). These options have been moved to Tire
+(External) screen described in Connection to third-party tire models (page 52).
+Vertical Force and Tire Radius
+The models calculate vertical tire force using a spring that reacts to changes in the tire radius (the
+distance between the wheel center and the contact center), relative to the und eflected radius. The
+stiffness of this spring is defined by a linear parameter, a table of vertical load vs. deflection, or a
+polynomial description suggested by Pacejka.
+  Reference vertical force (keyword = FZ_REF). This parameter is not used directly by the VS
+Math Model, but is provided as a standard property that can be used as a built-in reference for
+scaling other tire properties that are related to force.
+1
+
+ 9 / 66
+  Checkbox to select the method for defining tire def lection with vertical load. Checking the
+box reveals a blue link ( Figure 7) to a data set described in the section Tire: Vertical Load
+vs. Deflection (page 17). Un-checking the box specifies the use of several parameters that are
+specified in the data fields shown in Figure 5 (  – ).
+
+Figure 7. Link to Vertical Load vs. Deflection dataset
+  Effective rolling radius (keyword = RRE). This is the distance the tire rolls in one revolution
+at a typical load (usually the rated load), divided by 2π. It is used in the VS Math Models to
+relate rim speed of the tire to the forward speed at the wheel center.
+ The animator also uses this radius to size the shapes for the tire and wheel.
+If the model option  is set to the Pacejka 5.2 model, then this field is hidden and the
+effective rolling radius is taken from a linked dataset (Figure 10, page 14). For all other model
+options, this field is visible when checkbox  is unchecked.
+  Tire unloaded (free) radius (keyword = R0). This is the radius of the tire at zero load. It is used
+with the vertical spring rate to determine the vertical force at the tire contact. If this field is
+left blank, the browser automatically inserts the value specified for the effective rolling radius
+ into it.
+ This field is visible only when checkbox  is unchecked.
+  Tire vertical spring rate (keyword = FZ_TIRE_COEFFICIENT). This coefficient is used to
+develop a table for tire deflection vs. load, used in the model to calculate change in vertical
+load due to tire compression. The behavior is linear until the load reaches zero. Once the tire
+lifts off the ground, the force remains at zero until contact is made again.
+ This field is visible only when checkbox  is unchecked.
+  Maximum allowed vertical force (keyword = FZ_MAX). A maximum value is used to prevent
+numerical instabilities in some real -time applications that involve severe maneuvers. If the
+vertical tire force calculated with the spring should exceed this limit, the limit is used as the
+vertical force.
+ This field is visible only when checkbox  is unchecked.
+Animator Settings
+The visual appearance of the tire and wheel in the animator is typically specified with an animator
+dataset supplying shape information for the tire and wheel assembly. Audio information can also
+be provided to generate squeal noises during high slip conditions.
+  Tire width (keyword = SET_THICKNESS). This dimension is used only to generate
+animations of the wheels; it has no influence on the simulated vehicle response.
+
+ 10 / 66
+  Optional link to animator data to show the tire wheel assembly in the animation.
+The wheel reference frame that provides X -Y-Z coordinates and rotation information to the
+animator is provided by the vehicle screen (vehicle assembly or trailer) that links to this
+screen; this information provides the shape for the rotat ing tire/wheel assembly. By
+convention, shapes for the left side of the vehicle are shown as defined, while those for the
+right side are flipped (so the wheel hubs always face outside). The linked shapes are scaled
+according to the effective tire rolling radius  and width .
+  Optional link to animator data to define tire sounds. The animator supports generation of
+sounds. Here, a dataset can be linked to supply definitions of sounds representing tire slipping,
+skidding, wheel spin, and so forth.
+Rolling Resistance Moment
+Selecting one of the Internal Table model options or the External Shear, Internal Fx and Lags
+option displays the following controls to specify tire rolling resistance properties (Figure 5). Details
+of the calculation are provided in the subsection Rolling Resistance and Power Balance (page 39).
+ Tire rolling resistance coefficient (keyword = RR_C). This coefficient is used in the equation
+for rolling resistance on the screen as the Rr_c term.
+ Tire rolling resistance speed coefficient (keyword = RR_V). This coefficient is used in the
+equation for rolling resistance on the screen as the Rr_v term.
+Note In the equation for rolling resistance, there is a term Rr_surf that does not
+appear on this screen. It is the surface coefficient and is set on the Road:
+3D Surface screen. Rr_c and Rr_v are tire properties, while Rr_surf is a
+property of the road surface.
+ Checkbox to include an additional rolling resistance effect  due to F x and the difference
+between the effective rolling radius and the current compressed radius of the tire. Checking
+this box provides a more accurate rolling resistance. It can be unchecked to provide backward
+compatibility for versions prior to CarSim and TruckSim version 8 (2010).
+Shear Forces and Moments: Internal Table Models
+Selecting one of the Internal Table model options displays links to tabular data (Figure 5). Details
+of the calculation are presented in the section Tire Force and Moment Calculations (page 29).
+Most of the linked dataset involve a special version of the VS Configurable Function that is specific
+to tire data and was described earlier (see Figure 1, page 4). These functions all calculate a force or
+moment as a function of instant load and slip (lateral alpha or longitudinal kappa) or inclination
+angle (gamma).
+As with other Configurable Functions, all three variables in the table have associated scale factor
+parameters that can be used to rescale normalized data (e.g., by specifying values in the
+miscellaneous data field ). The scaling parameters all have default values of 1, so they do not
+have to be set unless additional scaling is needed.
+
+ 11 / 66
+Note Be aware that the tire model compares calculated force values to the peak
+potential forces when combining lateral and longitudinal forces. The
+method used to find peak values involves some extra processing that is
+done by the VS Solver during initializatio n, after all information is read
+from the input Parsfiles. If changes are made to a table or scaling property
+(e.g., FY_TIRE_GAIN), they must be made before the initialization. For
+example, do not change a gain dynamically using a VS Command
+equations; the result would be a mis-match between the new table and the
+table used during initialization, resulting in invalid tire calculations.
+ Link to a Tire: Longitudinal Force dataset. Along with tabular data that gives values of F x
+for columns of constant Fz and rows of constant longitudinal slip, a parameter is included on
+the linked screen for the reference coefficient of friction (keyword = MU_REF_X) that applies
+for the data in the table. It is used together with the coefficient of friction specified for the
+road to scale the tire shear forces. If zero or a negative value is entered for MU_REF_X, a value
+of 1.0 is used.
+ Link to a Tire: Lateral Force dataset. Along with tabular data that gives values of F y for
+columns of constant Fz and rows of constant lateral slip angle, a parameter is included on the
+linked screen for the reference coefficient of friction (keyword = MU_REF_Y) that applies for
+the data in the table. It is used together with the coefficient of friction specified for the road to
+scale the tire shear forces. If zero or a negative value is entered for MU_REF_Y, a value of 1.0
+is used. If zero or a negative value is entered for MU_REF_Y, a value of 1.0 is used.
+ Link to a Tire: Aligning Moment dataset. This screen has a table with values of M z for
+columns of constant Fz and rows of constant lateral slip angle.
+ Link to a Tire: Camber Thrust Coefficient dataset. This screen has data for a Configurable
+Function that links camber thrust (dFy/dg) to vertical load Fz.
+ Checkbox and data field for a combined slip transition. (keyword for checkbox =
+OPT_TIRE_COMB; keyword for transition factor =  R_TIRE_COMB). If the box is not
+checked, the transition is disabled in the model and the corresponding field is hidden.
+ When used, this factor controls a smooth transition from the direction of the normalized slip
+to the total theoretical slip, as described in the subsection Combined Slip Theory (page 33).
+With the method of Bakker, Pacejka, and Lidner [ 1], a normalized combined slip is used to
+determine the direction of the total horizontal force at small slip, while a theoretical combined
+slip is used at large slip.
+ The factor is denoted as q1 in equation 19 (page 36). If this factor is zero, the direction of the
+normalized slip is always applied, while if this factor is ¥, the direction of the total theoretical
+slip is always applied. This factor should be tuned in order to match the actual tire
+characteristics. If this factor is too small, the model might be less accurate for large slip; if the
+factor is too large, the model might be less accurate for small slip (this can be seen by a dent
+in the Fy - Fx friction ellipse).
+
+ 12 / 66
+ If the box not checked, the total theoretical slip is always used to determine the direction.
+(When unchecked, calculations match the methods used in CarSim and TruckSim versions
+prior to 2011.)
+Shear Forces and Moments: Internal Model with Camber Details
+Selecting the model option Internal with Camber Details  displays all fields and links shown
+in Figure 5 except the Camber Thrust link. Three additional links are shown for tabular data that
+define the effects of tire inclination (gamma) on lateral force, aligning moment, and overturning
+moment (Figure 8). Also, a link is shown for tabular data that defines overturning moment Mx as
+a function of load and lateral slip.
+
+Figure 8. Appearance of tire screen when Camber Details are selected.
+ Link to a Tire: Overturning Moment dataset. This screen has a table with values of Mx for
+columns of constant Fz and rows of constant lateral slip angle.
+ Link to a Tire: Lateral Force vs. Inclination dataset. Along with tabular data that gives
+values of Fy for columns of constant Fz and rows of constant inclination angle, a parameter is
+included on the linked screen to control the rate at which the camber effects on lateral force
+diminish with slip (keyword = CRO_FY).
+ Link to a Tire: Aligning Moment vs. Inclination dataset. Along with tabular data that gives
+values of Mz for columns of constant Fz and rows of constant inclination angle, a parameter
+is included on the linked screen to control the rate at which the camber effects on aligning
+moment diminish with slip (keyword = CRO_MZ).
+
+ 13 / 66
+ Link to a Tire: Overturning Moment vs. Inclination dataset. Along with tabular data that
+gives values of M x for columns of constant F z and rows of constant inclination angle, a
+parameter is included on the linked screen to control the rate at which the camber effects on
+overturning moment diminish with slip (keyword = CRO_MX).
+User-Defined Data Field and Link
+Advanced users can provide custom settings such as parameters for externally defined models, VS
+commands, etc.
+  Checkbox to show a miscellaneous field  and link .
+ Miscellaneous field. This is a location for advanced users to specify parameters for the tire
+model or animation. It can be used to extend the model with VS commands. When the Internal
+Table models are selected, this field can be used to scale the data by setting parameters
+associated with the Configurable Functions. (See the VehicleSim Solvers Reference Manual
+for more information about Configurable Functions).
+ This field is visible only when checkbox  is checked.
+ The location of this field depends on the model option . Regardless of the location on the
+screen, the contents are always written to the parsfile after all other data on the screen (except
+for the miscellaneous link ). Therefore, it can be used to override settings from other links
+if needed for advanced applications.
+ Miscellaneous link. This link can be used to add data for any tire model, including user -
+defined extensions, externally defined tire models, and ext ernal tire models from MF -
+Tyre/MF-Swift and FTIRE.
+ This link is visible only when checkbox  is checked.
+ If this link is used, the linked dataset is sent to the math model after all other data from this
+screen. Therefore, it can be used to override settings if needed for advanced applications.
+Shear Forces and Moments: External Shear Models
+The tire model option drop -down list ( Figure 6, page 8) includes three options  that involve an
+external (user-defined) shear model, linked through one of the many methods available to extend
+VS math models. In all three cases, the data links for lateral force, aligning moment, and camber
+thrust are hidden because they are not used (Figure 9).
+Data for the external tire model are typically provided in the miscellaneous data field  or linked
+dataset .
+Depending on the option selected, controls related to dynamics and longitudinal forces may be
+visible (as in Figure 9) or hidden.
+  Cornering stiffness of tire used by driver path -follower model (keyword = KY_TIRE). The
+built-in driver model uses tire cornering stiffness to determine the steering wheel angle needed
+to follow a target path. When the built-in tire models are used, cornering stiffness is obtained
+automatically. When the internal models are not used, the cornering stiffness must be provided
+if the driver model will be used.
+
+ 14 / 66
+
+Figure 9. Tire screen appearance when using an external tire model.
+Pacejka 5.2 Model
+Selecting the Pacejka 5.2 Model  hides most of the previously described data fields and links
+except for the tire vertical reference force , spring rate , and limit . A link for the Magic
+Formula parameters  is displayed (Figure 10).
+
+Figure 10. Selection of built-in Pacejka 5.2 Model.
+Dynamic Properties
+Tires do not immediately generate forces when they develop lateral slip angles and/or longitudinal
+slip ratios: they must roll some distance to generate carcass and tread deflections necessary to
+sustain forces. Under step inputs in slip, lateral and longi tudinal forces build up approximately as
+
+ 15 / 66
+first-order lags in distance. Distances known as relaxation lengths characterize the delays, as
+described in the subsection Tire Transient Behavior (Lags and Relaxation Length) (page 40).
+The middle right part of the screen has settings that affect the transient response of the tire (Figure
+5 and Figure 11).
+
+Figure 11. Links to datasets with Configurable Functions for variable lengths.
+ Spin moment of inertia of one tire that should be added to that of the wheel (keyword = IT).
+The spin inertias of the tires, wheel, and other rotating components are lumped into one value
+whose overall inertia is IW + IT.
+ Tire longitudinal relaxation length is about one-third the distance that the tire must roll before
+the longitudinal force due to slip ratio builds up to its full value. It is a spatial version of a time
+constant. There is little or no directly measured data for this property, but the consensus of tire
+experts is that it is shorter than the more easily measured lateral relaxation length , that it
+increases with vertical load, and that it decreases when longitudinal slip ratio magnitude
+increases. It is represented in the VS Math Model with a Configurable Function whose root
+keyword is L_RELAX_X.
+ The drop-down control provides three means for defining the relaxation length (Figure 12):
+
+Figure 12. Options for defining relaxation length.
+1. No dynamic lag (the tire response is instant, specified with the setting
+L_RELAX_X_CONSTANT = 0).
+2. A constant relaxation length (keyword = L_RELAX_X_CONSTANT).
+
+ 16 / 66
+3. Relaxation length is a nonlinear function of vertical load and lagged kappa
+(longitudinal slip ratio with dynamic lag).
+ If relaxation length is constant, a yellow field appears (Figure 5, Figure 12). If the function is
+chosen, a data link appears to the Generic Table  library ( Figure 11). An example
+Configurable Function dataset is described in a later subsection (page 20).
+ If the option is selected for no lag in Fx, then the controls that specify behavior at high and
+low speed limits (  and ) are hidden.
+ Tire lateral relaxation length is about one -third the distance that the tire must roll before the
+lateral force due to slip angle builds up to its full value. It is a spatial version of a time constant.
+Tire lateral relaxation length typically has a value of about twice the rolling radius of the tire
+at normal loads and with small slip angles. Measures over a range of conditions typically show
+that lateral rela xation length increases with vertical load, and that it decreases when lateral
+slip magnitude increases [6, 7]. It is represented in the VS Math Model with a Configurable
+Function whose root keyword is L_RELAX_Y.
+ The drop -down control for lateral dynamic lag has the same three options available for
+longitudinal lag ( Figure 12), as described above, except that lagged lateral slip angle is
+considered (lagged alpha) rather than lagged longitudinal slip (lagged kappa).
+ If the option is selected for no lag in Fy and Mz, then the controls that specify behavior at high
+and low speed limits (  and ) are hidden.
+ Drop-down list for longitudinal lag option (keyword = OPT_TIRE_LAG_KAPPA). T he
+differential equation for lag in longitudinal force generation is based on the assumption of a
+rolling tire, with the dynamic lag being within the frequency range of the overall vehicle math
+mode. When these conditions do not apply, adjustments are made to the differential equations
+based on the parameter OPT_TIRE_LAG_KAPPA.
+ A time constant is calculated internally using the relaxation length divided by the forward
+speed of the wheel center. If the time constant becomes so short that the math model woul d
+become numerically unstable, an adjustment is made.
+ There are also situations where the differential equation can lead to unrealistic behavior, in
+which energy is put into a spinning wheel undergoing significant angular acceleration. This
+can occurs with spinning under power on ice, or with rapid braking cycles controlled by ABS.
+ The drop-down control offers three options for handling these situations (Figure 13).
+
+Figure 13. Options for handling lag in Fx for high speed and decreasing slip.
+1. The first option on the list is the default (OPT_TIRE_LAG_KAPPA = 2). In this case,
+the Math Model degree of freedom (DOF) is removed for the lagged kappa at high
+speeds, and instant longitudinal slip (kappa) is used. At speeds below this transition,
+
+ 17 / 66
+lag is reduced when the longitudinal slip ratio is decreasing. This is done to reduce a
+side effect of the longitudinal relaxation length concept in which energy can be stored
+and put back into the spinning wheel when it is  undergoing significant angular
+acceleration.
+2. The second option on the list (OPT_TIRE_LAG_KAPPA = 1) removes the lag DOF at
+high speeds and always uses the full lag at lower speeds.
+3. With the third option (OPT_TIRE_LAG_KAPPA = 0), the DOF is retained at all times,
+and the lag is increased to maintain a time constant that maintains numerical stability,
+such that the time constant is not allowed to be drop below a limit based on the
+simulation time step.
+ Drop-down list for lateral lag option (keyword = OPT_TIRE_LAG_ALPHA). The differential
+equation for lag in lateral force generation is based on the assumption of a rolling tire, with
+the dynamic lag being within the frequency range of the overall vehicle math mode. If the
+relaxation length is short (due to li ght loading and/or high slip angle), and/or if the speed is
+high, then the time constant (defined as the relaxation length divided by the speed) becomes
+too small and can cause numerical instability. The tire model has two options to maintain
+numerical stability:
+1. The first option on the list is the default (OPT_TIRE_LAG_ALPHA = 0); in this case
+the lag DOF is removed at high speeds and the instant slip angle is used.
+2. With the second option ( OPT_TIRE_LAG_ALPHA = 1), the DOF is retained at all
+times, and the  lag is increased to maintain a time constant that maintains numerical
+stability, such that the time constant is not allowed to be drop below a limit based on
+the simulation time step.
+ Minimum speed used in longitudinal relaxation differential equation ( keyword =
+VLOW_KAPPA). The definition of longitudinal slip ratio (kappa) involves division by the
+forward speed of the wheel center. At very low speeds, small changes in angular velocity
+cause large changes in slip ratio, which in turn can result in unreal istically harsh changes in
+Fx. To reduce the harshness, this limit speed is used in lag differential equation.
+ This setting is not shown if the drop-down control  is set to disable lag in Fx.
+ Minimum speed used in lateral relaxation differential equat ion (keyword = VLOW_ALPHA).
+The definition of lateral slip angle (alpha) involves division by the forward speed of the wheel
+center. At very low speeds, small changes in lateral velocity cause large changes in slip angle,
+which in turn can result in unreal istically harsh changes in F y and M z. To reduce the
+harshness, this limit speed is used in the lag differential equation.
+ This setting is not shown if the drop-down control  is set to disable lag in Fy and Mz.
+Contact Path Dimensions
+A tire contacts the ground over a small area called the contact patch. All of the built-in tire models
+calculate forces and moments based on an assumption that the ground is flat, but not necessarily
+level, in the contact patch. When the ground is not flat, the models use several points to calculate a
+
+ 18 / 66
+virtual tire contact center with elevation and slope to represent the contact patch area. The models
+support four options:
+1. A single point (the contact center).
+2. Two points at the forward and rear limits of the contact patch, spaced by a specified
+length (the contact center is at the center of these two points). In this case, the contact
+patch width is zero.
+3. Two points at the left and right limits of the contact patch, spaced by a specified width
+(the contact center is at the center of these two points). In this case, the contact patch
+length is zero.
+4. Four points at the corners of a rectangular contact patch, spaced by a specified length
+width (the contact center is at the center of these four points).
+ Tire contact length (root keyword = L_CONTACT_X). As with the relaxation length drop -
+down controls, the length and width of the contact patch can be set with drop -down controls
+that have three options (Figure 14):
+1. Contact length = 0.
+2. A constant length.
+3. Length is a nonlinear function of tire compression.
+
+Figure 14. Options for defining a contact patch dimension.
+ Tire contact width (root keyword =  L_CONTACT_Y). The drop -down control for contact
+width has the same three options available for contact length (Figure 14), as described above.
+Tire: Vertical Load vs. Deflection
+The relationship between tire vertical load and deflection usually can be defined with a linear
+stiffness parameter. On the other hand, some tires exhibit significantly non-linear changes in force
+with deflection. Examples include tires undergoing extreme variations in load and tires with very
+low vertical stiffness. When the checkbox  (Figure 7) labeled Use tire force table is checked
+on the Tire screen, a link to the Tire: Vertical Load vs. Deflection screen (Figure 15) is displayed.
+Information for the Vehicle Model
+The vehicle model will use a few parameters and the tabular data from this screen, described below.
+ Effective rolling radius (keyword = RRE). This is the distance the tire rolls in one revolution
+at a typical load (usually the rated load), divided by 2π . It is used in the simulation model to
+relate rim speed of the tire to the forward speed at the wheel center.
+ This radius is also used by the animator to size the shapes used to create the tire and wheel.
+
+ 19 / 66
+
+Figure 15. The Tire: Vertical Load vs. Deflection screen.
+ Tire unloaded radius (keyword = R0). This is the radius of the tire at zero load. It is used with
+the vertical spring rate to determine the vertical force at the tire contact. If this field is left
+blank, the browser automatically inserts the value specified for the effective rolling radius into
+it.
+ Maximum allowed vertical force (keyword = FZ_MAX). A maximum value is used to prevent
+numerical instabilities in some real -time applications that involve severe maneuvers.  If the
+vertical tire force calculated with the spring should exceed this limit, the limit is used as the
+vertical force.
+ Table of vertical deflection (mm) and vertical force (N) (root keyword = FZ_TIRE). This
+table includes the options for viewing and editing tables that are described in the VehicleSim
+Browser Reference Manual.
+Information for the Calculator
+This screen has an option to calculate tabular data. Parameters described below are used for the
+calculation, but are not sent to the math model. They are used only to generate the tabular data
+.
+If checkbox  is checked, the values displayed can be calculated from an equation by clicking
+the Calculate button .
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+
+ 20 / 66
+Although the screen might show extrapolated force going negative, VS Solvers limit the minimum
+tire vertical force to zero to account for the case of the tire leaving the ground.
+  Checkbox to select a Pacejka Magic Formula method to define table values. The equation
+used for the calculation is displayed on the screen.
+ If the checkbox is not selected, the deflection of the tire under load is simply specified by
+filling in the table .
+ In either case, the data actually sent to the math model is the table of values . The Magic
+Formula calculation is only used to generate the table.
+ When the box is checked, controls  through  are displayed. When it is not checked,
+they are hidden.
+ Checkbox to specify the method for defining the vertical force increment. When the box is
+checked, deflec tions are calculated at equal load increments from zero to the maximum
+allowed force specified . The number of rows in the table determines the number of points.
+When the box is not checked, the calculator uses loads typed into the “Y Axis” column of the
+spreadsheet control.
+  Parameter “B” in the Magic Formula equation for load versus deflection (database keyword
+= PAC_B).
+  Parameter “D” in the Magic Formula equation for load versus deflection (database keyword
+= PAC_D).
+  Parameter “F” in the Magic Formula equation for load versus deflection (database keyword =
+PAC_F).
+  The nominal vertical stiffness coefficient for the tire, used in the Magic Formula equation for
+load versus deflection (database keyword = PAC_KT).
+  The nominal vertical load for  the tire, used in the Magic Formula equation for load versus
+deflection (database keyword = PAC_FZO). If you are using this screen to specify the load
+and deflection properties and the Pacejka 5.2 tire model, the value entered here should be the
+same as the one entered in the “FZO” field on the Tire Pacejka 5.2 Parameters screen.
+ Calculate button. After selecting the calculation option, setting the table size, entering
+calculation parameters, and possibly specifying load points, click this button to calc ulate the
+deflection at each load and update the table.
+Setting Variable Relaxation Length or Contact Patch Size
+Four of the tires properties that can be represented with Configurable Functions are often given
+constant values. These are the relaxation leng ths (lateral and longitudinal) and contact patch
+dimensions (length and width). As described earlier, they can also be defined with Configurable
+Functions, in which case the yellow fields are replaced with blue links to datasets from the Generic
+Table library (Figure 11, page 15).
+In order to use the Generic Table library, you must specify keywords in order for the VS Solver
+to identify exactly which Configurable Function is being set. The main resource for finding these
+keywords is the echo file generated with each simulation run. For example, the Echo file shown in
+
+ 21 / 66
+Figure 3 on page 5 identified the Configurable Functions us ed in the tire model, including one
+named L_RELAX_Y. Search the Echo file for this name (L_RELAX_Y) to find more information
+(Figure 16).
+
+Figure 16. Search the Echo file for the Configurable Function L_RELAX_Y.
+The comments tell what the function does, what keywords are used, what calculation methods are
+supported, and how the indexing is defined. For this example, there are three indices corresponding
+the system parameters IAXLE, ISIDE, and ITIRE. Gains and offsets can be applied to the
+calculated length using L_RELAX_Y_GAIN and L_RELAX_Y_OFFSET. The independent
+variables (Fz and Lagged slip) can also be scaled using FZ_SCALE_L_RELAX_Y and
+LAGGED_ALPHA_SCALE_L_RELAX_Y.
+Figure 17 shows how a dataset for lateral relaxation length is set up in the Generic Table library
+to define normalized tables that are scaled to tire properties.
+Note This dataset was set up to be scaled automatically to work with any tire
+dataset in which the FZ_REF value was set (  in Figure 5, page 7). To
+do so, it makes use of what might be considered “advanced features” of
+Configurable Functions.
+
+ 22 / 66
+
+Figure 17. Using the Generic Table screen to specify variable relaxation length.
+As with other table screens, the Generic Table  screen has drop -down controls to specify
+calculation methods ( , , and  ) and spreadsheets with tabular data. In this case, the
+relaxation length is defined by multiplying two 1D table functions together. The root keywords for
+the two functions are entered in the data fields (  and ) on the screen, the box to enable the
+second variable is checked  , and the option is selected to multiply the two function results
+together . When the multiplication option is used, the second function is redefined internally as
+a dimensionless ratio.
+Two of the scale factors for the Configurable Function are set in the miscellaneous yellow field
+. The output gain L_RELAX_Y_GAIN is set to twice the effective rolling radius, RRE. The
+vertical load, used as the independent variable for the bottom table, is divided by the scale factor
+FZ_SCALE_L_RELAX_Y, which is set to the tire reference vertical force FZ_REF. Therefore, a
+value of 1.0 on the horizontal axis for the bottom table corresponds to a vertical force of FZ_REF.
+In order to simply the scaling concepts, the top table has a maximum value of 1.0 at zero slip; the
+units for the table are set to meter (the internal SI units of length) with the SET_UNITS command
+.
+More information about using the Generic Table screen is provided in the documentation for that
+screen.
+
+ 23 / 66
+Tire: Pacejka 5.2 Parameters
+The Pacejka tire model (often called the Magic Formula) calculates the steady state behavior of a
+tire. In general, the inputs are slip ratio, slip angle, inclination angle, and vertical load. (In this
+implementation, the low speed behavior is modified as in the internal tire model). The model
+accounts for dynamic effects through its own calculation of dynamically varying slips. The outputs
+are Fx and Fy at the contact center, Mx, My, and Mz.
+The equations are considered valid when the radius of curvature of the road surface is large
+compared to radius of the tire (road radius of curvature greater than approximately 4 times the tire
+diameter.)
+The Pacejka tire model uses a list of parameters in a set of equations with a standard form. The
+parameters are derived from tire test data using curve-fitting algorithms. Supplying the parameters
+to the equations, along with the time-varying input variables, produces output forces and moments
+for combined slip conditions.  This version of the  model includes 128 parameters per tire. When
+used, the parameters are all listed together in the Echo file (Figure 18).
+The parameters are installed in the VS Solver with a command INSTALL_TIRE_PAC52 (line
+409, Figure 18). This command is automatically written into Parsfiles associated with the Tire:
+Pacejka 5.2 Parameters library (Figure 19).
+For a complete discussion of this tire model, see reference [3].
+  On the screen shown in Figure 19, the parameters are grouped for clarity, and the names follow
+the four-character Pacejka naming convention:
+ First character: P  Force at pure slip
+ Q  Moment at pure slip
+ R  Force at combined slip
+ S Moment at combined slip
+ Second character: B  Stiffness factor
+ C  Shape factor
+ D  Peak value
+ E  Curvature factor
+ K  Slip stiffness = BCD
+ H Horizontal shift
+ V Vertical shift
+ S Moment at combined slip
+ T Transient tire effects
+ Third character X Longitudinal
+ Y Lateral
+ Z Vertical
+ Fourth character  1,2,3, etc.  Sequential numbering
+
+ 24 / 66
+
+Figure 18. Part of Echo file showing Pacejka 5.2 parameters.
+  In addition to the standard Pacejka parameter list, two data fields are present to supply the
+reference coefficients of friction for the X and Y direction, and a blue link to a data list
+containing scale factors.
+ The Mu_X and Mu_Y coefficients define the properties of the surface on which the subject
+tire was measured. They are used in combination with coefficients of friction from  the road
+surface to properly scale forces for changing road conditions. This treatment of friction scaling
+is a slight departure from the Pacejka method, and was chosen for clarity and consistency with
+other VS tire models. To use the unmodified Pacejka f riction calculations, set these values
+and the road coefficient of friction to 1. Keep in mind that in this case, friction is considered
+entirely a property of the tire.
+
+ 25 / 66
+
+Figure 19. The Tire: Pacejka 5.2 Parameters screen.
+Groups of Dual Tires
+Each axle in TruckSim has two wheels that are either set up for single or dual tires. The tires are
+not necessarily the same, so there is sometimes a need to specify four distinct tire datasets for an
+axle. For vehicle units with more than a single axle, there is not enough room for those four links
+per axle. Therefore, tire group screens are used for all TruckSim vehicle units with more than one
+axle to select whether the wheels are single or dual, and to specify which tire data sets are used.
+TruckSim has four library screens for selecting the tires that go on a vehicle unit with two or more
+axles. The libraries are:
+• Tires: Vehicle Unit with 2 Axles
+• Tires: Vehicle Unit with 3 Axles
+• Tires: Vehicle Unit with 4 Axles
+• Tires for Any Vehicle Unit
+CarSim Dual Tire Option
+CarSim models typically have wheels with single tires, which are specified on the vehicle assembly
+or trailer screens. However, starting with version 2017, CarSim also supports dual tires. In this case,
+the links to tire datasets are also made on a tire group screen  Tires: 2 Axles with Support for
+Duals (Figure 20) that can be used for the four-wheeled lead unit or trailer with one or two axles.
+1
+2
+1
+1
+1
+1
+1
+1 1
+1
+1
+1
+1
+ 26 / 66
+The CarSim option to use dual tires is activated by linking to a dataset from this library. Doing so
+causes the CarSim VS Browser ( carsim.exe) to install the dual tire option before the math
+model (VS Solver) reads the input Parsfile, such that options involving dual tires are pr operly
+recognized.
+
+Figure 20. Selection of tires for a vehicle unit.
+User Controls
+ Mix Tire Types checkbox. When checked, all tires on the axle (either two or four, depending
+on whether the Dual tires box  is checked) can be s pecified with separate links ( Figure
+21). When not checked, a single link is shown (Figure 20) and the specified data set is copied
+for all of the tires on the axle.
+  Dual tires checkbox. When checked, a yellow field  is shown for specifying the dual
+spacing. When not checked, the yellow field is hidden and a value of 0 is written in the data
+file, indicating that this axle has wheels with single tires.
+1
+2
+3
+4
+5
+6
+1
+2
+5
+
+ 27 / 66
+
+Figure 21. Option to specify four distinct tire datasets for an axle.
+  Checkbox for offsetting tire shapes laterally for the animator. For routine use, this box should
+be checked. When this is checked, the shape information associated with a tire data set is used
+twice. One copy is shifted by half the dual spacing inward and the other is shifted by the same
+amount outward. Also, the shapes are rotated 180° for dual tire assemblies so the wheels face
+inward, giving a concave appearance typical of dual as semblies. If this box is not checked,
+then the animation information associated with the tires is used without modification, as might
+be needed for some advanced animation presentations.
+  Spacing for dual tires (keyword = L_DUAL) When the Dual tires box is checked , this
+value specifies the spacing between tires, as measured center-to-center.
+ Link(s) to a Tire data set. Depending on whether the axle has single or dual tires, and on
+whether the tire types are mixed, there can be one, two, or four tire links shown for an axle.
+  Checkbox for specifying that the dataset is for a single-axle trailer. This control exists only in
+the CarSim screen shown in the figure. When checked, settings for Axle 2 are hidden.
+The Tire Tester Utility
+Tire properties are d efined with a combination of tabular data and parameters. The input data
+typically describes is single operating condition, such as free rolling or zero slip. Often it is useful
+to examine the predicted performance of a tire under conditions involving vari ous combined slip
+conditions, different loads, inclination angles, or surface coefficients of friction. The Tire Tester
+utility calls the tire models to obtain predicted performance under user -specified conditions. It
+simulates the behavior of a steady-state tire test machine.
+Note The Tire Tester presently supports the standard and extended lookup table
+models, the Pacejka 5.2 m odel, MF -Tyre/MF-Swift and any other user
+defined tire model.
+To use the tire tester, select the Tire library under the Test Specifications section on the Run
+Control screen and choose a tire dataset (Figure 22).
+41
+2
+5
+5
+5
+5
+
+ 28 / 66
+
+Figure 22. Select a tire dataset for the tire tester.
+Select the Tire Tester library under the Procedure link and choose a test dataset (Figure 23).
+
+Figure 23. Select a tire test procedure.
+The Tire Tester can be configured to define four kinds of tests (Figure 24).
+  Drop down list to select the test mode for the tire tester. The four available modes are:
+ Sweep Vertical Load. Slip angle, slip ratio, and inclination angle are held at constant user -
+specified values while vertical load is incremented between user-specified limits.
+ Sweep Slip Angle. Vertical load, slip ratio, and inclination angle are held at constant user -
+specified values while slip angle is incremented between user-specified limits.
+ Sweep Slip Ratio. Slip angle, vertical load, and inclination angle are held  at constant user-
+specified values while slip ratio is incremented between user-specified limits.
+ Sweep Inclination Angle. Slip angle, slip ratio, and vertical load are held at constant user -
+specified values while inclination angle is incremented between user-specified limits.
+  Depending on the mode selected, data fields are displayed for the upper limit, lower limit, and
+step size of the variable to be swept, and for the values of the remaining variables to be held
+fixed.
+ Data fields are also displayed  for the longitudinal and lateral coefficients of friction. To use
+the data exactly as it is entered in the property tables without modifying it for surface friction,
+enter -1.
+
+ 29 / 66
+
+Figure 24. The tire tester screen.
+ A field for the test speed is also present, but in the steady state test it is not used.
+  Plot links are available to select plotting of output variables. Six forces and moments are
+calculated. The tire tester operates as if it is installed at the left front of a vehicle without duals,
+so the force and moment output variables are named Fx_L1, Fy_L1, Fz_L1, Mx_L1, My_L1,
+and Mz_L1. The input variables are also written to output.
+  Miscellaneous data field and library link. This field and link have no specific purpose. Th ey
+can be used to add VS commands to define new output variables based on the calculated
+outputs.
+Tire Force and Moment Calculations
+The interaction of each tire with the ground is defined by a longitudinal force (F X), a lateral force
+(FY), a vertical force (FZ), an overturning moment (MX), ), a rolling resistance moment (MyRR), and
+an aligning moment (MZ). FX, FY, FZ, Mx, MyRR, and MZ are applied to the wheels and reacted by
+the ground at the contact center point shown in Figure 25.
+The figure shows three axis systems. They are defined based on two points (the wheel center and
+the contact center) and two directions (the ground normal at the contact center gz and the spin axis
+of the wheel wy).
+1
+2
+3
+4
+
+ 30 / 66
+
+Figure 25. Tire points and axes.
+1. The tire/ground axis system has X and Y axes that lie in the plane of the road as defined at
+the contact center. The Z axis direction gz is normal to the ground surface at the contact
+center.
+2. The wheel axis system has a Y axis in the direction of wheel spin wy, and a Z axis in the
+direction that connects the contact center to the wheel center. The X axis for the wheel is
+parallel to that of the ground at the contact center: wx = gx.
+3. The steered (but non-rolling) wheel carrier axis system has the same Y axis as the wheel
+(wy = cy), but can pitch relative to the wheel axis system based on its connection to the
+vehicle sprung mass through the suspension and steering system kinematics.
+Notes The axis directions of the ground contact gx, gy, and gz are expressed in
+the vehicle dynamics standards SAE J670 and ISO 8855 as XG, YG, and
+ZG. The axis directions of the wheel wx, wy, and wz are expressed in the
+standards as XW, YW, and ZW.
+ The contact center is also known as the center of tire contact in J670. The
+letters “CTC” have always been used in VehicleSim products in the names
+of some output variables associated with the center of tire contact.
+Most tire models calculate the tire forces and moments based on a few kinematical variables: lateral
+slip angle a, longitudinal slip ratio k, inclination angle g, and tire vertical deflection defined by the
+spatial relationship between the wheel center and contact center.
+The tire models built into VS Math Models use a detailed static model that calculates tire forces
+and moments form the kinematical variables under steady -state conditions. The static model is
+extended to include transient behavior as described later (page 40).
+
+ 31 / 66
+Tire/Ground Axes
+The tire/ground X and Y axis directions, gX and gY, lie in the plane of the ground as defined at the
+contact center. gx is defined as being perpendicular to the wheel spin axis wy which is also the
+carriage Y axis cy (from the multibody vehicle model). Thus,
+
+z
+z
+x
+gc
+gcg
+y
+y
+·
+·
+=  gy = gz x gx (1)
+Lateral Slip
+The slip angle ( a) for each tire is defined in terms of the X and Y velocity of W C, V X and VY,
+expressed in the ground plane:
+ vx = gx • vCC vy = gy • vCC (2)
+where vCC is the velocity vector for the contact center (Figure 25).
+The slip angle is the arc tangent of the ratio:
+ a = tan–1 (vy / |vx|) (3)
+Note Vehicle dynamics standards such as SAE J670 and ISO 8855 define lateral
+slip angle for the tire axis system, which has a tire X axis that always points
+in the direction of motion. In VS Math Models, the tire X axis (gx in Figure
+25) always points forward, even if the wheel center is moving backward.
+For this r eason, the absolute value of v x is used in the denominator in
+equation 3; on the other hand, SAE J670 and ISO 8855 define longitudinal
+slip ratio with vx in the denominator (not the absolute value of vx.)
+Longitudinal Slip
+Longitudinal slip ratio (k) is defined in VS Math Models as
+ k =
+x
+x
+v
+vωR-  (4)
+where w is the wheel -spin velocity of the wheel, R is the effective rolling radius, and v x is the
+forward speed of the wheel center.
+Note Vehicle dynamics standards  SAE J670 and ISO 8855 define the
+longitudinal slip ratio with vx in the denominator (not the absolute value
+of vx). As noted earlier, the direction gx always points forward in VS Math
+Models; the absolute value is used to define lateral slip such that the
+
+ 32 / 66
+resulting forces and moments are applied in the correct directions on the
+vehicle.
+Pure Longitudinal and Lateral Slip
+FX, FY and MZ are calculated with VS Configurable Functions of two independent variables. FX is
+modeled as a function of FZ and longitudinal slip (k):
+ FX = FX(FZ, k)        { a = 0} (5)
+FY and MZ are modeled as table functions of FZ and lateral slip angle (a):
+ FY = FY(FZ, a) MZ = MZ(FZ, a)         { k = 0} (6)
+Sign Conventions
+For the above definitions of longitudinal and lateral slip,
+positive k generates positive FX,
+positive a generates negative FY, and
+positive (small) a generates positive MZ.
+In VS Math Models, the X axis always points towards the front of the vehicle and the Y axis always
+points to the vehicle left. Therefore, the signs of Fx and Mz are reversed when the wheel speed is
+negative. The sign of Fy is not reversed due to the use of |vx| in the definition of tan(a).
+Friction Similarity
+Tire data are measured to fill out tables to define the functions shown in Equations 5 and 6. When
+measured over a full range of slip conditions, the resulting shear forces and aligning moment
+depend on the friction limits between the tire and test surface. On the other hand, the linear behavior
+for small amounts of slip is essentially unaffected by the friction limits, because the forces are
+caused solely by deformation of the tire structure.
+In order to simulate the tire behavior on different surfaces, a method called similarity is used [2]. It
+predicts the change in limit shear force, while maintaining the linear behavior for small amounts of
+slip. Given a friction coefficient tire measurements, mo, and the friction coefficient for the simulated
+condition, m, the table functions defined in Equations 5 and 6 are modified as follows:
+ FX =
+oμ
+μ FX(FZ,
+μ
+μ o k)        {For a = 0} (7)
+FY and MZ are modeled as table functions of FZ and lateral slip angle (a):
+ FY =
+oμ
+μ FY(FZ,
+μ
+μ o a) MZ =
+oμ
+μ MZ(FZ,
+μ
+μ o a)     {For k = 0} (8)
+
+ 33 / 66
+In VS Math Models, the similarity method is integrated within the combined slip theory described
+below.
+Asymmetric Characteristics (Anisotropic properties)
+The original Combined Slip Theory assumed symmetric tire behavior such that tabular data must
+goes through the origin (i.e. zero slip causes zero force ). However, r eal tire s are inherently
+asymmetric due to rolling resistance, ply steer and conicity, and typical tabular data for Fx and Fy
+from the tire measurements have side offset dk and da, respectively, as shown in Figure 26.
+In order to make the theory work with asymmetry, Bakker et al. suggested that the tabular data is
+adjusted by the side offset (adjust the characteristic curves pass through the origin - they are called
+as the base curves), and the slip ratio and slip angle are compensated with dk and da, respectively
+[1]. This approach is used in the VS Tire model, and is included in the following equations where
+applicable.
+δα
+δκ
+
+Figure 26. Shifted longitudinal and lateral forces due to rolling resistance and conisity/ply steer,
+respectively (exaggerated).
+Camber Effect (Simple)
+In the internal model with simple camber, the small effect of inclination is handled by modifying
+the slip angle using camber thrust:
+ aeff = tan–1(t) + g • Rg Rg =
+α
+γ
+K
+K ( 9 )
+
+where t  is the tangent of the slip angle a, Kg is a linear camber -thrust coefficient and K a is the
+linear cornering stiffness. Both coefficients are evaluated at the instant vertical load Fz.
+Combined Slip Theory
+The longitudinal and lateral slips are combined to get total theoretical (combined) slip using a
+method described by Bakker, Pacejka, and Lidner [1]:
+
+ 34 / 66
+
+ (10)
+where
+
+δκ
+1
+δκ
+κ
+1
+κσ X
++++-= ,
+( )
+δαtan
+κ
+1
+)tan(ασ eff
+Y -
++
+=  (11)
+dk and da are the side offset of tabular data for Fx and Fy, respectively (see Figure 26). The
+theoretical longitudinal slip sx becomes equal to zero for k=dk while the theoretical lateral slip sY
+will be zero for aeff=da (k=0 for pure side slip condition).
+The tables of Equatio ns 5 and 6 are adjusted for each offset in order that the characteristics  go
+through the origin. The relation between the original and adjusted functions FX0, FY0 and MZ0 are:
+
+(
+)
+(
+)
+Z0Z Fκ,FXFδκ,κFX =+
+
+(
+)
+(
+)
+Z0Z Fα,FYFδα,αFY =+
+(
+)
+(
+)
+Z0Zmz Fα,MZF,δααMZ =+  (12)
+The theoretical slips are then normalized by peak slip values, sXmax and sYmax, that cause peak or
+negative peak in the adjusted functions F X0 and FY0. For example, when the longitudinal slip is
+bigger than dk, sXmax is calculated by the slip which causes the positive peak of FX0 while the peak
+value is calculated by the absolute slip with the negative peak of FX0 when the longitudinal slip is
+less than dk. They are functions of Fz and are obtained by a search algorithm. The total normalized
+slip is:
+
+ (13)
+where
+
+
+ (14)
+The equivalent longitudinal and lateral slips are calculated from the normalized total theoretical
+slip,
+
+(
+)
+( )
+XXmax
+*
+total
+XXmax
+*
+total
+σsignσσ1
+σsignσσκ +-=¢
+
+ (15)
+Using the equivalent longitudinal and lateral slips, the so -called “base-curves” are obtained by
+means of the tabular data. Note that the normalized slip values are modified to include the friction
+ratio in support of the similarity method.
+
+ 35 / 66
+
+÷÷
+ł
+ö
+çç
+Ł
+æ ¢=
+÷÷
+ł
+ö
+çç
+Ł
+æ ¢=
+αμ
+μ,FFYF
+κμ
+μ,FFXF
+0
+Z00Y
+0
+Z00X
+ (16)
+The base-curves are modified to account for the anisotropic properties of the tire-road friction.
+
+ (17)
+where  for  and  for .
+The longitudinal and lateral tire forces are then calculated by
+
+ (18)
+where
+
+ (19)
+l defines the direction of the total horizontal force as shown in Figure 27. According to Bakker et
+al [1],
+s
+*total (denoted as
+s
+* in Figure 27) should b e used to determine the direction of the total
+horizontal force at small slip, while
+s
+total (denoted as
+s
+tot in the figure) should be used at large slip.
+The parameter (q1) in equation 19 controls a smooth transition from the direction of the normalized
+slip to the total theoretical slip. If q1=0 (l=h) the direction of the normalized slip is always applied,
+while if q1=¥ (l=q) the direction of the total theoretical slip is always applied. A q1 value of 1.1
+was used by Bakker et al [ 1]. Of course, the value of q1 should be set to match the actual tire
+characteristics. If q1 is too small, the model might  be less accurate for large slip; if too large, the
+model might be less accurate for small slip (this can be seen by a dent in the Fy - Fx friction ellipse).
+
+
+e = s
+t
+ot
+a
+l
+*
+
+s
+t
+ot
+a
+l
+* <
+1
+
+e
+=
+1
+
+s
+t
+ot
+a
+l
+* >
+1
+ 36 / 66
+
+Figure 27. Magnitude and direction of the total horizontal force using the normalized
+characteristics[1].
+Notes Equations 18 and 19 were added to the tire model in 2011 to more fully
+support the combined slip theory originally presented by Bakker et al [1].
+Earlier versions used the direction of the total theoretical slip (l=q), as is
+now done by un-checking the box on the tire screen.
+ In the figure, y is an additional ply steer or conicity effect that is not used
+in CarSim or TruckSim.
+The aligning moment is calculated by
+
+( )
+λsinμ
+μ)’μ
+μ,(FMZM
+0
+0
+Z0Z
+a
+=  (20)
+As described above, the  longitudinal force (F x), lateral force (F y) and aligning moment (M z) are
+derived by the combined slip theory in equations 10 to 20. In practice, the F x, Fy and Mz values
+cannot be calculated in the same time, because that the shifted theoretical slip sx and side slip sY
+(in equations 11) influence each other; thus, the forces and moment at pure slip condition cannot
+be reproduced.
+In order to reproduce the pure slip condition, for example, the longitudinal force is calculat ed
+without side shifting the theoretical side slip (da is set to zero in equation 11) while the lateral force
+
+
+ 37 / 66
+is calculated without side shifting the theoretical longitudinal slip (dk is set to zero). Therefore, the
+combined slip calculation through equations 10 to 20 are repeated for each of F x, F y and M z as
+shown in the flow chart of Figure 28.
+Extended Camber Effects
+An extension to the basic tire model includes more effects of camber and the overturning moment
+Mx.
+The added camber effects are supplied to the model as tables of lateral force, aligning moment, and
+overturning moment vs. inclination angle (at a zero slip angle and free rolling condition). Because
+they are defined this way, the camber effect is not included in the combined slip calculations for
+Fy, Mz, and Mx due to slip. Therefore, the camber modification of slip angle (equation 9) adopted
+in the simple model is only applied for Fx but not necessary for the other forces and moment, and
+the combined slip calculation (equation 11) uses pure slip angle, a, instead of aeff (otherwise,
+camber effects would be included twice).
+
+Figure 28 Calculation flow chart for tire forces and moment with the combined slip.
+In this extension model, a force or moment component is added to the value determined from the
+combined slip equations unadjusted for inclination as follows:
+ 38 / 66
+
+( )
+( )
+( ) ( ){ }
+2*ZZ
+0
+ZG
+2*Z
+0
+Z
+0
+XG
+2*Z
+0
+Z
+0
+YG
+1
+10,FMZG,FMZGM
+1
+10,FMXG,FMXGM
+1
+10,FFYG,FFYGF
+totalRO
+totalRO
+totalRO
+C
+C
+C
+s
+gm
+m
+s
+gm
+m
+m
+m
+s
+gm
+m
+m
+m
++
+×-=
++
+×
+ïþ
+ïý
+ü
+ïî
+ïí
+ì -÷÷
+ł
+ö
+çç
+Ł
+æ=
++
+×
+þ
+ý
+ü
+î
+í
+ì -÷÷
+ł
+ö
+çç
+Ł
+æ=
+ (21)
+where FYG, MXG, and MZG are determined from the table s for the instantaneous values of Fz and
+g. CRO is a parameter describing the rate at which each force or moment due to inclination
+diminishes with increasing total slip – the method has been suggested by Pacejka and Sharp [ 2].
+The force and  moments with g=0 should be subtracted in order to avoid doubl e counting the
+remained force and moments with a=0.
+The value of the parameter CRO should be selected for each force and moment component to
+reproduce test data for combined slip and camber, if available. If combined test data is not available,
+a value of 1.0 is suggested for Fy, and 100.0 for Mz. The overturning moment (Mx) due to camber
+is primarily a geometric effect, independent of slip, so a value of zero is suggested.
+In equation 21, friction ratio (μ/μ0) is used differently in each of for ce and moments: for lateral
+force (FYG), the friction ratio is used as same way as described by previous sub -section, Friction
+Similarity; for aligning  moment (M ZG), the friction ratio is used as simply scaling down the
+moment; and for overturning moment (M XG), the friction ratio is used inversely but the effect is
+compensated by modifying the side slip angle (αMXG) used by the table for the overturning moment
+due to slip angle described in the next sub-section.
+Finally, FY, MX, and MZ due to slip are added with FYG, MXG, and MZG, respectively.
+Overturning Moment
+In the basic tire model, overturning moment Mx is assumed to be zero. However, it is included in
+the extended model that includes detailed effects of camber.
+Several mechanisms contribute to the development of an overturning moment. First, a lateral force
+causes a lateral distortion of the tire carcass. This distortion produces a lateral displacement of the
+effective center of tire contact. Second, inclination of the tire compresses one edge and unloads the
+other. This also causes a lateral displacement of the effective center of tire contact. The sum of
+these effects combines with the vertical load to produce an overturning moment.
+Lateral force and inclination also may cause the belt of the tire to twist as it enters and leaves contact
+with the ground. This and other elastic effects may contribute to an overturning moment.
+Although t he tab les for overturnin g moment with side slip and inclination ar e treated as
+independent, the saturation of overturning moment due to friction limit is treated as total effect by
+modifying the side slip angle (αMXG) such as:
+ aMXG = tan–1(t) - dMXG/KMXα  ),MXG(MdM XGXG
+g
+ZF
+-
+=
+( 22 )
+
+
+ 39 / 66
+where t is the tangent of the slip angle a and KMXα is the partial derivative of MX0 with respect to
+the side slip angle a (at α=0).
+The overturning moment due to side slip is calculated with modified side slip angle (αMXG) such as:
+
+( )
+( ) ( )
+,α,FMXδαα,FMX
+where
+λsinμ
+μ)’αμ
+μ,(FMXM
+Z0mxZ
+0
+MXG
+0
+Z0X
+=+
+=
+ (23)
+damx is the side offset of tabular data for Mx and αMXG’ is calculated with αMXG instead of αeff by
+equations 10 through 15. The net overturning moment is the sum of the values of MX and MXG.
+Finally, the overturning moment and vertical force imply a net lateral displacement of the center of
+tire contact. This displacement and the longitudinal force Fx contribute to the aligning moment Mz.
+Notes  The data curve of Fx, Fy, Mz, and M x due to slip must cross the zero
+force or zero moment axis in order to specify the side offset dk, da, damz
+and damx, respectively. Otherwise, the calculation will stop with an error
+message.
+ As noted earlier, the tabular should include a column of zeros for a load
+Fz = 0. If not, the VS Solver will automatically add the column of zeros.
+Rolling Resistance and Power Balance
+Rolling Resistance
+A free rolling tire (longitudinal slip ratio equal to zero), under load requires a force (at the wheel
+center) to roll it forward. This force is called rolling resistance . Although there are several
+mechanisms involved in the development of rolling resistance, it is thought to arise primarily from
+distortion of the loaded tire contact patch. When the loaded tire is rolled, the centroid of the
+distribution of vertical force moves forward of the geometric center of contact. The tire vertical
+load and the forward offset of the vertical tire force combine to contribute a moment in a direction
+that opposes rolling. As speed increase, the distortion may increase. The forward movement of the
+centroid of the vertical force is also influenced by factors due to the road surface such as the paving
+material and temperature.
+The force due to rolling resistance is implemented as a moment that opposes rotation. It is
+nominally described by the equation:
+ MyRR = Fz • R • Rr_surf • (Rr_c  + Rr_v • vx) (24)
+where F z is the tire vertical load, R is the effective rolling radius, Rr_surf is a parameter
+describing the effect of the road surface, rr_c is the constant component of the rolling resistance
+coefficient, and rr_v is the speed varying component.
+
+ 40 / 66
+Power Balance
+The effective rolling radius RRE is usually described simply as the radius that relates the tire
+rotational speed to translational speed with little further discussion. It is observed by calculation
+from measured speeds, and is found to be less than the free radius but greater than the loaded radius,
+and it varies little over a wide range of vertical load.
+A tire under vertical load assumes a flattened shape in the contact area, and of course, the loaded
+radius is less than the free radius. One might conclude that the loaded radius would be the effective
+radius relating translational and rotational speeds, but observations prove otherwise. Consider that,
+although the radius of the tire is reduced under load, the tire is no longer circular, and the length of
+the belt of the tire (its circumference) is essentially unchanged. During each revolution of the tire,
+the entire belt of the tire must pass through the contact patch. The result is an effective rolling radius
+that remains nearly constant over a wide range of load.
+Tire forces occur at the interface between the tire and ground (at the loaded radius). They must to
+produce the correct suspension loading including roll, load transfer, and pitch effects, among many
+others. The drive torque might be determined from the longitudinal force and the loaded radius, or
+from the longitudinal force and the effective rolling radius. Using the loaded radius (rather than
+effective rolling radius) to determine torque results in a power unbalance (the torque is based on a
+smaller radius than the speed). However, the forces are physically produced at the loaded radius,
+and must be to interact properly with other vehicle properties.
+To avoid a power unbalance, a moment due to Fx is calculated and added to the rolling resistance
+moment.
+ MyRR_Fx = Fx • (R – loaded_radius) (25)
+Where loaded_radius is determined from the unloaded radius, the vertical load, and the tire
+stiffness.
+The sign is chosen so that it always opposes the direction of Fx, while rolling resistance always
+opposes the direction of rotation. This means, for example, it has the effect of increasing stopping
+distance. The power unbalance resulting from ignoring this amounts to a few percent, but can be
+important to many applications. On the other hand, you may wish to use only the effective rolling
+radius to describe the tire, so the capability to disable this calculation is provided on the Tire
+screen.
+Tire Transient Behavior (Lags and Relaxation Length)
+Tires develop shear forces in response to deformation of the tire  structure. The forces do not
+develop instantaneously, but build as the tire rolls [ 4, 5]. For example, Figure 29 shows how F Y
+builds in response to a step change in slip angle.
+
+ 41 / 66
+
+Figure 29. Tire relaxation.
+Lagged Slip in VS Tire Models
+Two methods are commonly used for including the tire lag in a vehicle model:
+1. A tire model with the dynamics built in, or
+2. A static (steady-state) tire model with a separate filter to account for the lag.
+The second approach is used in VS Math Models because it offers two practical advantages. First,
+it allows the use of any static tire model from the literature independently of the method used to
+introduce lag. Second, it simplifies the calculation of the kinematical variables used as inputs to the
+tire model. Lag is introduced into the slip angle such that the instantaneous response calculated for
+the lagged slip angle yields the lagged side force and aligning moment.
+A method described by Bernard [ 5] is used to account for the lateral lag in tire response. In this
+method, a lagged slip angle, aL is defined as the arc tangent of a state variable, t.
+ aL = tan–1(t) (26)
+The state variable t is defined with the first-order differential equation:
+
+
+
+
+
+ (27)
+where LY is the relaxation length for lateral slip.
+The same approach is taken for defining a lagged longitudinal slip, kL, using a relaxation length LX
+for longitudinal slip. The lagged slip is then defined by the differential equation:
+
+
+
+a
+F y
+x
+x
+5%
+3L
+ 42 / 66
+
+ (28)
+In a VS Math Model, aL and kL are both state variables that are normally calculated by integrating
+the differential equations 27 and 28. Thus, these state variables have a dynamic lag similar to what
+is measured in physical tire tests. The static model (equations 5 - 25) is used with the replacement
+of the lagged slips for the instant slips (equations 3 and 4) that would be used for a static model.
+Rebound and Overshoot Due to Lateral Relaxation Length
+The concept of dynamic lag based on forward travel assumes the tire is mainly moving forward. It
+leads to unrealistic behavior in situations where this is not true. For example, if there is significant
+slip angle and vx approaches zero, then the time constant (L/vx) becomes very large, with the result
+that the lagged lateral slip angle follows the instant slip angle slowly, if at all. The simulated vehicle
+will come to zero lateral speed, and then “rebound” as if there is a big rubber spring between the
+tire and ground, slowly pulling the wheel back. The “rebound” or “overshoot” effect is cau sed
+because the lagged slip generates an unrealistic lagged side force.
+Rill [6] and van der Jagt [7] describe relaxation data that vary with tire load and slip. Under large
+slip conditions, the lag is grea tly reduced. These additions have been found to improve vehicle
+motion and stability under some conditions, such as sliding to a stop at very large slip angles.
+Relaxation lengths (both lateral and longitudinal) are defined internally using Configurable
+Functions of load (F z) and lagged slip (lateral or longitudinal) to provide sensitivity to operating
+conditions. When tabular data are used to reduce lateral relaxation length for high slip angles, the
+rebound/overshoot effect described above can be reduced to a negligible amount.
+Overshoot Due to Longitudinal Relaxation Length
+There is a similar overshoot complication involving the interaction between slip and generated
+shear force that applies in the longitudinal direction but not in the lateral direction. There is a much
+tighter coupling between the generation of the force Fx (via kL) and the application of the force to
+the wheel angular velocity w, which in turn defines the lagged slip k. For typical tire properties and
+tire/wheel spin inertia values, there can be a high-frequency dynamic interaction.
+At some speeds, the lagged slip can interact with the wheel spin inertia and acceleration to store
+energy in a manner that is not seen in physical test results. When there is high wheel -spin
+acceleration, as occurs when rapidly cycling the brakes under the control of ABS, release of the
+applied torque allows the wheel speed to not only return to a wheel -spin velocity close to the free
+rolling case, but in some cases, to overshoot. In this case, “overshoot” means that when the brake
+is released, the wheel spins up to a higher angular spin velocity than the free-rolling reference. It is
+as if the tire stored energy during the braking, and then put that energy into the spinning wheel.
+In order to avoid this behavi or, the VS Math Model supports an option to use the full lagged slip
+kL only when |k| is increasing; when |k| is decreasing (defined as the case when |k| < |kL| and both
+k and kL have the same sign) the model uses reduced lag. This option is selected by setting the
+parameter OPT_TIRE_LAG_KAPPA = 2. (This is also the default value for the parameter.)
+
+ 43 / 66
+Speed Thresholds for Tire Transient Behavior
+The tire models built into VS Math Mo dels use the standard concepts of lateral and longitudinal
+relaxation length to provide realistic transient behavior at ranging from about 15 km/h and up using
+the equations proposed by Bernard and Clover [5] (see equations 27 and 28, page 41). When large
+ranges in slip and load are encountered, relaxation lengths should be defined as Configurable
+Functions of slip and load [6, 7]. However, will be described in the following subsections, the basic
+equations lead to some unrealistic behavior at speed conditions outside the range originally
+considered for the models. Especially in the cases of running real-time driving simulators that can
+cover any conceivable speed, driving behavior, or surface condition, modifications to the equations
+are provided to maintain feasible behavior.
+Table 2 lists the parameters that were mentioned in this section on Tire Transient Behavior.
+Table 2. Tire parameters linking transient response to speed and special conditions.
+Parameter Default Description
+OPT_TIRE_LAG_ALPHA
+1
+
+Specifies how lag is handled at high speeds when the
+relaxation length defines a frequency that is too high
+OPT_TIRE_LAG_KAPPA
+
+2
+
+VLOW_ALPHA
+2 km/h
+
+Minimum speed used in ODE for lagged slip, except
+at very low speeds where “drift” might occur
+VLOW_KAPPA
+2 km/h
+
+VLOW_DRIFT_X
+0.1 km/h
+
+Speed where vehicle can be considered “at rest” such
+that ODEs can allow lagged slip to prevent “drift”
+VLOW_DRIFT_Y
+0.1 km/h
+
+VLOW_DAMP_Y 0.5 km/h Speed where lateral damping force is added to avoid
+oscillation that sometimes occurs when stopping
+
+Avoiding Lateral Tire Harshness at Very Low Speed
+When the vehicle is at rest, or moving at a very low speed, then a tire model for vehicle dynamics
+is not representing the behavior of the tire as structural element connecting the wheel the ground.
+In the case of lateral slip and force, a tire model without a transient lag in the lateral response acts
+as a very stiff lateral damper. Because the forward speed v x is zero, any perturbation in lateral
+velocity vy generates a slip angle of ±90°, with maximum lateral force F y. The vehicle model is
+subject to a “bang-bang” oscillation.
+VS Tire Models avoid this type of oscillation by three means:
+1. The relaxation length differential equation (27) acts as a low-pass filter that reduces high-
+frequency behavior.
+2. A low-speed limit is used in place of vx in the equations for a and aL (if used), making the
+tire less sensitive at very low speeds.
+3. A lateral force is added to the tire F y opposing the instant v y component of the wheel
+motions, to damp potential oscillations.
+When vx and vy are both very small, the response of the vehicle feels “harsh” when run in real -
+time driving simulators. Hence, the core definition of a is modified to include a low limiting speed:
+ 44 / 66
+ a =
+ (29)
+where v lowa is the low -speed limit, defined in the VS Math Model with the tire parameter
+VLOW_ALPHA. The differential equation for lagged slip that includes vlowa is:
+
+ (30)
+When coming to a stop in a driving simulator, there can b e a lateral oscillation a near-zero speed.
+To prevent this, a lateral damping force is added to the lateral force produced by the steady -state
+tire model. The damping force is present only when the speed drops below a limit specified by the
+parameter VLOW_DAMP_Y. If this parameter is set to zero, the low-speed damping is disabled.
+Avoiding Longitudinal Tire Instability at Very Low Speed
+The equation that defines longitudinal slip ratio (4) is singular when speed vx is zero, and leads to
+unstable tire behavior for very low values of v x. To avoid this problem, a low -speed limit is
+included:
+ k =
+ (31)
+where v lowk is a low -speed limit, defined in the VS Math Model with the tire parameter
+VLOW_KAPPA. The differential equation for lagged slip ratio that includes vlowk is:
+
+ (32)
+Preventing “Drift” for the Vehicle at Rest on a Grade
+One of the advantages of the original form of the lagged slip equations 27 and 28 mentioned by
+Bernard [ 5] is that they produce a static lagged slip at zero speed that keeps the vehicle from
+“drifting” when stopping on a grade. This behavior is not impo rtant in many vehicle simulation
+scenarios, but is helpful when used in driving simulators to provide confidence to drivers that the
+vehicle model is trustworthy. Unfortunately, the parameters v lowa (VLOW_ALPHA) and v lowk
+(VLOW_KAPPA), introduced in the previous subsections to reduce perceived “harshness” of the
+vehicle at very low speeds, prevent the lagged slips from reaching static values needed to avoid a
+very low drift (v < 0. 1 km/h).
+To restore this capability, two vehicle para meters are included: VLOW_DRIFT_X and
+VLOW_DRIFT_Y to define extremely low speed limits. These are used to set VLOW_KAPPA and
+VLOW_ALPHA to zero, when the vehicle is considered “almost at rest.”
+For the case of longitudinal movement, VLOW_KAPPA is temporarily set to zero if three conditions
+are satisfied:
+1. | vx| < VLOW_DRIFT_X, and
+
+ 45 / 66
+2. | vy| < VLOW_DRIFT_X, and
+3. | wR| < VLOW_DRIFT_X
+For the case of lateral movement, VLOW_ALPHA is temporarily set to zero if two conditions are
+satisfied:
+1. | vx| < VLOW_DRIFT_Y, and
+2. | vy| < VLOW_DRIFT_Y
+The parameters VLOW_DRIFT_X and VLOW_DRIFT_Y both have default values of 0.1 km/h.
+They can be changed if needed using any miscellaneous yellow fields in the CarSim or TruckSim
+browser.
+In order to avoid a discontinuity when the vehic le speed goes into or out of the limits defined by
+the drift parameters, a transition is used. For longitudinal drift, the transition covers speeds between
+VLOW_DRIFT_X and 2•VLOW_DRIFT_X; for lateral drift, the transition covers speeds between
+VLOW_DRIFT_Y and 2•VLOW_DRIFT_Y.
+Limits at High Speed
+The numerical integration methods used in VS Solver programs to solve the equations of motion
+use a discrete time ∆T that must be much shorter than any response times in the math model. The
+response time associated with relaxation length is simply the length L divided by forward speed of
+the wheel center: L/v x. As speed increases, the time constant associated with relaxation length
+diminishes, until the numerical integration method becomes unstable because ∆T is not small
+enough for the assumptions underlying the calculation method.
+The problem of numerical instability is more serious with longitudinal relaxation length Lx, which
+is typically 50 mm or less. It has been found that the differential equations are well behaved if the
+time constant is greater than about 12 times the smallest time step ∆T used in the VS Math Model.
+For most of the numerical integration methods, the differential equations are applied twice each
+major time step, at a half of the parameter TSTEP. For example, if TSTEP is set to 0.001 s, the half
+step is 0.0005 s, and the time constant should not be less than 12•0.0005 = 0.006 s. If Lx is 50 mm
+(0.05 m), then the limit is reached when vx reaches Lx/(12 ∆T) = (0.05 m)/(0.006 s) = 8.3333 m/s
+=> 30 km/h. For higher speeds, the tire transient response is so quick that the dynamics are outside
+the frequency range of the VS Math Model.
+Although it is less common, lateral tire dynamic lag also becomes negligible at higher speed (e.g.
+150 km/h), or at lower speeds if the relaxation length is small.
+Two methods are available in VS Math Models to avoid numerical instabilities at higher speeds.
+One is to replace values of the lagged slip variables with instant variables (equations 3 and 4) when
+the relaxation length divided by |vx| approaches the limit of 12 ∆T. The second method is to increase
+the relaxation length such that the time constant never drops below the limit of 12 ∆T. The first
+method is recommended; the second method is provided for purposes of backward compatibility.
+The choice between these two methods is set with a parameter OPT_TIRE_LAG_KAPPA for
+longitudinal lag and a parameter OPT_TIRE_LAG_ALPHA for lateral lag. If one of these
+parameters is set to zero, the corresponding relaxation length is increased at high speeds. If set to a
+ 46 / 66
+non-zero value, the lagged slips are replaced with instant slips at high speeds, with a transition
+going from fully lagged slip when the time constant would be 12 ∆T, to instant slip when the speed
+is doubled (i.e., the time constant would be 6 ∆T if it were not replaced with instant slip).
+If a relaxation length is set to zero (either lateral or longitudinal), then the VS Solver skips the
+corresponding differential equation and simply assigns the instant slip value to the lagged slip used
+in the static tire model. Be aware that if instant slip is used at very low speeds, the wheel will
+probably be numerically unstable in spin.
+Tire Interaction with 3D Road Geometry
+Tire models make use of a point called the contact center for the origin of a coordinate system
+where the tire contacts the ground. The general solution of the location of contact center on an
+arbitrarily shaped surface requires an iterative solution at each time step. This section describes the
+method used in VS Math Models.
+Figure 30 shows how the wheel plane intersects with a ground plane that is not necessarily level.
+The wheel plane is assumed neither vertical nor perpendicular to the ground plane.
+
+Figure 30. Axis systems of the wheel carrier, the wheel, and the ground.
+The wheel carrier has a point that coincides with the wheel center and whose position is defined by
+global coordinates xwc, ywc, and zwc. It has axis directions cx, cy, and cz. In the immediate area
+where the wheel plane intersects the ground, the ground has constant slopes in the global X and Y
+directions (dZ/dX and dZ/dY) that define a ground normal gz:
+ gz = dir(nz – (dZ/dX)nx – (dZ/dY)ny) (33)
+where dir is a 3D vector function that sets the length of a vector to unity. The ground geometry
+is assumed to be defined such that the vertical coordinate zgnd and the two slopes dZ/dX and dZ/dY
+can be obtained as functions of the global coordinates xgnd and ygnd.
+
+
+ 47 / 66
+Note This section uses the multibody convention of representing the tire/ground
+interface directions as gx, gy, and gz and the wheel directions as wx, wy,
+and wz. These correspond to the directions expressed in the vehicle
+dynamics standards SAE J670 and ISO 8855 XG, YG, and ZG, and XW,
+YW, and ZW, respectively.
+The inertial axis directions nx, ny, and nz are used to define the ground normal, but are otherwise
+irrelevant to the geometry of the interaction between the wheel plane and the ground.
+Overview of Modeling Approach
+The multibody vehicle model handles the describing equations for the rigid bodies, so at any instant
+of time all positions, angles, and associated velocities are known for all of the bodies in the system.
+Forces can be applied to any points defined on the bodies, in any directions. However, the
+calculations are reduced if the forces are applied on points that can be described easily and are fixed
+in the bodies. The calculations are also reduced if the directions of the applied forces and moments
+are in directions that have already been defined, such as the axis directions of the rigid bodies upon
+which the forces act.
+The modeling approach involves separating the details of the 3D tire/ground connection from the
+main multibody vehicle model. The multibody model provides the position of the wheel center and
+orientation of a rigid body conta ining the wheel spindle. The multibody model is also ready to
+accept six forces and moments applied to the spindle, with the spin moment M y applied to the
+spinning wheel, and the other five forces and moments applied to the non-spinning body containing
+the spindle.
+Several functions were developed with the VehicleSim Lisp multibody code generator to handle
+details for:
+1. defining the tire contact center,
+2. developing the kinematical inputs for a tire model, and
+3. the transformation of the tire model forces and moments from the contact center to the
+wheel center.
+These calculations take place in five steps, involving 3D body kinematics, an external source of
+information about the road geometry, and an external tire model that provides six forces and
+moments at the contact center based on kinematical inputs.
+Step 1: Estimate X and Y Coordinates of the Contact Center
+At a given instant of time, the state variables of the VS Math Model give the location of the wheel
+center and the orientation of the steered wheel ca rrier. The vector from the contact center to the
+wheel center is R•wz where
+ wz = dir(dplane(tz, wy)) (34)
+
+ 48 / 66
+and dplane is a 3D vector function that projects the first vector (tz) onto a plane perpendicular to
+the second vector (the wheel plane, defined as be ing perpendicular to wy). Computation of the
+location of the contact center is direct using equations 33 and 34, if values are known for the three
+scalars: R, dZ/dX, and dZ/dY. Although they are not known initially for a new position of the wheel
+center, values from the previous time step can be used to estimate tz,  w'z, and the global X and
+Y coordinates of the contact center:
+ xgnd = xw – R wz • nx
+ ygnd = yw – R wz • ny (35)
+A function that takes as input the global coordinates of the wheel center and Euler angles for the
+wheel carrier, along with old values for R, dZ/dX, and dZ/dY computes values of xgnd  and ygnd
+based on that information.
+Step 2: Update Ground Variables Z, dZ/dX, dZ/dY
+The values of xgnd  and ygnd are used to obtain new values of zgnd, dZ/dX, and dZ/dY from the
+road model along with possible imports from Simulink or other external code.
+The new values of z gnd, dZ/dX, and dZ/dY are assumed to define the correct road geometry.
+Although the values of xgnd and ygnd obtained do not exactly match the true contact center, they
+are located on a tilted plane in the near vicinity of the contact center.
+Depending on the setting for the tire contact patch dimensions, the contact center properties (zgnd,
+dZ/dX, and dZ/dY) may be based on a single point, two points, or four points (length and width).
+There are four cases covered in the math models:
+1. If the dimensions are zero (contact is at a single point), then zgnd, dZ/dX, and dZ/dY at the
+point of contact are used.
+2. If the width is zero but the length is non -zero, then global X and Y coordinates are
+calculated for two points separated longitudinally by the instant length of the contact line,
+with the contact center at the midpoint. The elevations (Z) at the two points are averaged
+to obtain Z gnd; the difference in two point elevations is divided by the instant length to
+obtain slope in the tire X direction; and the two lateral slopes (relative to the tire Y axis)
+are averaged to obtain lateral slope.
+3. If the length is zero but the width is non -zero, then global X and Y coordinates are
+calculated for two points separated laterally by the instant width of the contact line, with
+the contact center at the midpoint. The elevat ions (Z) at the two points are averaged to
+obtain Zgnd; the difference in two point elevations is divided by the instant width to obtain
+slope in the tire Y direction; and the two longitudinal slopes (relative to the tire X axis) are
+averaged to obtain longitudinal slope.
+4. If the length and width are both non-zero, then global X and Y coordinates are calculated
+for four points on a rectangle with the contact center at the center. The elevations (Z) at the
+four points are averaged to obtain Z gnd; averages and differences of the point elevations
+
+ 49 / 66
+are used with the dimensions to calculate the effective lateral and longitudinal slopes
+associated with the contact center.
+Step 3: Determine Kinematical Inputs for the Tire Model
+The next step is to refine the location of the contact center and calculate the kinematical variables
+needed by any tire model that produces shear forces acting on the contact center.
+In this stage, gz and wz are redefined using the updated values of dZ/dX and dZ/dY, and re-applying
+equations 33 and 34. Figure 31 shows how the distance R between the wheel center and the contact
+center is updated. In the figure, point  was defined using the old value of R and point  is
+the contact center based on the correct value. The value of zgnd associated with the new xgnd  and
+ygnd values obtained in step 2 is shown in the figure directly below point  by a vertical interval
+of DZ.
+
+Figure 31. Front view of wheel plane: adjusting R to improve contact center location.
+The height DZ in the nz direction can be projected into the ground normal gz to indicate a difference
+of DZ•(nz•gz) in the gz direction. This distance can in turn be projected into the wheel plane using
+the inclination angle g between the ground normal and the wheel plane:
+ g = sin–1(wy•gz) (36)
+ DR = DZ nz•gz/cos(g) (37)
+ R = Rold + DR (38)
+Tire forces Fx and Fy are applied at the contact center in the directions gx and gy, defined as:
+ gx = dir(wy × gz) (39)
+ gy = gz × gx (40)
+
+
+ 50 / 66
+Because wy and gz are not necessarily perpendicular, the 3D vector function dir is used to set the
+magnitude of gx to unity. On the other hand, gz × gx are perpendicular, so the dir function is not
+needed to define gy.
+Longitudinal speed of the contact center is the longitudinal speed of the wheel center plus the
+angular velocity crossed with the vector from the wheel center to the contact center:
+ vwcx = (vWC – wW × [R wz])  • gx (41)
+Lateral speed of the contact center vccy is the lateral speed of the wheel center plus the angular
+velocity crossed with the vector from the wheel center to the contact center:
+ vccy = (vWC – wW × [R wz]) • ty (42)
+Any tire model that predicts forces and moments at the contact center will req uire as inputs the
+following:
+1. the distance R between the wheel center and the contact center, as defined in equation 38,
+2. the inclination g, defined in equation 36,
+3. lateral and longitudinal slips defined by velocities defined in equations 41 and 42, and
+4. angular spin of the wheel, which is simply wy of the non-spinning wheel carrier plus the
+wheel spin relative to the carrier.
+The derivative of the radius R is also simple to define, being the component of the velocity of the
+wheel center in the wheel plane:
+ dR/dt = vWC • wz (43)
+The radius derivative can be used in some tire models to affect the vertical force. Also, it can be
+used in the multibody solver program to provide a more accurate estimate of R at the next time
+step.
+The variables xgnd, ygnd, and zgnd are recalculated using the updated values of R with equation
+35 and a similar equation for zgnd:
+ zgnd = zw – R (wz • nz) (44)
+Step 4: Apply the Contact Center Tire Model
+The kinematical variables produced in step 3 are passed as arguments to a tire model which in turn
+provides six forces and moments that are intended to be applied to the contact center using
+tire/ground axis directions gx, gy, and gz. The tire model used may be one that is built into the VS
+Solver, it may be provided by a third-party software company, or it may be a user-supplied function.
+Details of the force and moment calculations were discussed in the previous section, Tire Forces
+and Moments.
+
+ 51 / 66
+Step 5: Transform the Tire Forces and Moments
+The six forces and moments provided by the tire model at the cont act center are Fx, Fy, Fz, Mx,
+My, and Mz. The forces and moments desired at the wheel center are F xwc, Fywc, Fzwc, Mxwc,
+Mywc, Mzwc. To define the transform, the scalar components are combined into vectors:
+ F = Fx gx + Fy gy + Fz gz (45)
+ Mcc = Mx gx + My gy + Mz gz (46)
+ Mwc = Mcc – (R wz) × F (47)
+The force vector and wheel center moment vector are then projected into the axis directions of the
+non-spinning wheel carrier:
+ Fxwc = F • cx Fywc = F • cy Fzwc = F • cz (48)
+ Mxwc = Mwc • cx Mywc = Mwc • cy Mzwc = Mwc • cz (49)
+A VS library function continues the calculations, taking the six contact-center forces and moments
+as input arguments and providing the six wheel-center forces and moments as outputs.
+Import and Output Variables for the Tire Forces and Moments
+The tire forces and moments at the wheel center and contact center can be imported from or
+exported to the external models , namely Simulink, VS commands, etc.  The import and output
+variables for the tire forces and moments at the wheel center and contact center are summarized in
+Table 3 and Table 4, respectively.
+Table 3. Summary of import and output variables for the wheel center forces and moments.
+Notation of
+this document
+Root keyword Description
+Import Output
+F
+xwc
+ IMP_FX0 Fx_WC Longitudinal force at the wheel center
+
+F
+ywc
+ IMP_FY0 Fy_WC Lateral force at the wheel center
+F
+zwc
+ IMP_FZ0 Fz_WC Vertical force at the wheel center
+M
+xwc
+ IMP_MX0 Mx_WC Roll moment at the wheel center
+M
+ywc
+ IMP_MY0 My_WC Spin moment at the wheel center
+M
+zwc
+ IMP_MZ0 Mz_WC Yaw moment at the wheel center
+
+As described in this chapter, the tire forces and moments at the contact center are transformed to
+the wheel center. Therefore, the imported tire forces and moments at the contact center are also
+transformed together with the internal model values to the wheel center. However, the imported
+forces and moments at the wheel center are not transformed back to the contact center.
+
+ 52 / 66
+Table 4. Summary of import and output variables for the tire contact forces and moments.
+Notation of
+this document
+Root keyword Description
+Import Output
+F
+x
+ IMP_FX Fx Longitudinal force at the contact center
+
+F
+y
+ IMP_FY Fy Lateral force at the contact center
+F
+z
+ IMP_FZ Fz Vertical force at the contact center
+M
+x
+ IMP_MX Mx Overturning moment at the contact center
+M
+y
+ IMP_MY MyRR Rolling resistance at the contact center
+M
+z
+ IMP_MZ Mz Aligning moment at the contact center
+
+If the tire model is third-party model (the details are described in the next chapter), the third-party
+model calculates the forces and moments at the wheel center that are fed to VS vehicle model. In
+this case, the tire forces and moment at the contact center are internally calculated in the third-party
+model and they are fed to VS model for just plotting purpose (not affecting to the vehicle motion),
+and those import variables are ignored.
+The effects of the import and output variables for tire forces and moments are summarized in Table
+5.
+Table 5. Summary of effects of the import and output variables for the tire forces and moments.
+Tire model option
+Wheel center (WC) Contact center (CTC)
+Import
+e.g. IMP_FX0
+
+Output
+e.g. Fx_WC
+Import
+e.g. IMP_FX
+
+Output
+e.g. Fx
+Internal tire models
+(OPT_TIRE_MODEL < 8)
+
+Importable
+Internal model
+output with
+imported values at
+WC and CTC
+Importable
+Internal model
+output with
+imported value
+at CTC
+3rd-party tire models
+(OPT_TIRE_MODEL ≥ 8)
+
+Importable
+3rd-party model
+output with
+imported value at
+WC
+Ignored
+100% from 3rd-
+party model
+output
+Connection to third-party tire models
+The VS vehicle models support third-party tire models such as MF-Tyre/MF-Swift, COSIN FTire,
+etc. If you select one of the third -party tire model options, then the tire model built into the VS
+Solver is disabled for the selected tire(s), and the third-party software calculates all tire forces and
+moments.
+Overview
+Figure 32 shows a diagram of how a VS vehicle model works together with a third-party tire model.
+The VS Solver simulates the entire vehicle except the wheel/tire (above the wheel axles) and the
+tire model simulates wheel/tire dynamics including tire/ground contact (below the wheel axles).
+ 53 / 66
+
+Figure 32. Co-simulation with a VS Solver and third-party tire model.
+The VS Solver calculates kinematical variables at each wheel center such as position coordinates,
+velocity, orientation angle, angular speed, wheel rotation speed, and provides them to the tire model.
+The tire model calculates three forces and three moments at the wheel center that are sent back to
+the vehicle model.
+The VS Solver provides road information as part of the VS API. As shown in Figure 32, third-party
+tire models can use the VS API road function to find the tire/ground contact point or contact surface.
+As an alternative to the VS road, you can also use the native function within the third-party software
+(e.g. TNO_USERROAD.dll for MF-Tyre/MF-Swift).
+VS STI Interface and Module
+The VS vehicle model and external tire models are implemented with separate program fi les that
+communicate each other through the VS STI Interface during the simulation. Figure 33 shows the
+program structure for interfacing between a VS Solver and external tire models, and corresponding
+program settings of Tire (External) screen.
+The VS STI interface is a set of predetermined function prototypes written in C. A separate program
+with the VS STI interface is called a VS STI Module . The VS STI Module  can either act as an
+interface between the VS Solver and an external tire model, or it can include an external tire model.
+Some sample programs and Microsoft Visual Studio projects are provided with CarSim and
+TruckSim to help users build custom VS STI modules. VS STI module can be compiled for a
+Windows DLL, dSPACE DS1006, or for Concurre nt RT library file. More details about the VS
+STI interface is described in the separate document, Connection to Third-party Tire Models using
+VS STI Interface and Module.
+Note  The VS STI modules for MF -Tyre/MF-Swift and FTire are provided in
+precompiled DLL files. Source code for those commercial modules is not
+provided.
+ 54 / 66
+VS Solver
+VS/STI
+Module A
+Interface A
+Tire Model A
+VS/STI
+Module B
+Tire Model B
+Interface B
+VS/STI
+Module C
+Tire Model C
+VS STI module (DLL)
+External tire program (DLL)
+VS STI module for RT (LIB)
+8
+1
+
+Figure 33. Program structure for interfacing between a VS Solver and tire model (upper) and
+corresponding program settings on Tire (External) screen (below).
+Tire Parameters
+The tire model parameters are typically specified in a separate file (.tir). You can click the view
+file button (  in Figure 33) on the Tire (External) screen to open a text editor showing the tire
+properties. Alternatively, the tire parameters can be specified by a tabular data in VS format (root
+keyword: STI_TYPARR). The external tire model either reads a TIR file directly or CarSim reads
+the STI_TYPARR table and sends the array of parameters to the tire model depending on the cases.
+For example, MF-Tyre/MF-Swift (version 7) model is not able to access a text file when running
+on the dSPA CE DS1006 system. Therefore, for on -line simulation (on the DS1006 system), the
+TIR file is automatically converted into VS format and written into a Parsfile (root keyword:
+STI_TYPARR) by the VS browser. The Parsfile is handled by the VS Solver and the tire data are
+sent into the TYPARR array of the MF-Tyre/MF-Swift model as shown in Figure 34.
+
+ 55 / 66
+
+Figure 34. Reading the tire property file for the real-time systems.
+Tire Model Option
+The Tire (External) screen can be alternatively used to communicate with the external tire models
+from the Tire screen for the internal tire model. The drop-down list of the tire model option involves
+three kinds of categories (Figure 35):
+
+Figure 35. External tire model option drop down list
+1. The first three options are MF -Tyre/MF-Swift models. One is MF -Tyre version 6.2
+model that runs with a CarSim/TruckSim license. Two advanced models (MF -Swift
+6.2 and 7 ) require licenses from TASS International. The option for MF -Tyre/MF-
+Swift version 7 is able to run on dSPACE DS1006 and Concurrent RT system.
+2. The COSIN Tire interface option requires a license from COSIN Scientific Software
+to run the FTire model.
+3. The 3rd-Party Tire Model STI option supports user defined tire models which are based
+on TYDEX STI (Standard Tire Interface) and the VS STI interface.
+Note The Tire screen for the internal tire models has also legacy options for
+MF-Tyre/MF-Swift 6.2 and COSIN FTire.
+ 56 / 66
+MF-Tyre/MF-Swift model options
+There are three model options for MF-Tyre/MF-Swift: TNO MF-Tyre v6.2, TNO MF-Tyre/MF-
+Swift v6.2 and TASS MF-Tyre/MF-Swift v7 (incl. DS1006). Figure 36 shows the Tire (External)
+screen selected with TNO MF-Tyre v6.2 option.
+
+Figure 36. Tire (External) screen with the MF-Tyre v6.2 selected.
+Note In 2014 TNO moved the Delft-Tyre activities to TASS International. The
+name of TNO still remains with MF -Tyre/MF-Swift v6.2 while
+TASS/Siemens supports version 7 with a specific focus on Real Time
+simulations.
+ The VS STI interface supports Siemens MF-Tyre/MF-Swift version 7 .3
+which is compatible with dSPACE DS1006 , dSPACE SCALEXIO and
+Concurrent RT systems.
+Basic Settings
+In the drop-down list of model options , select TNO MF-Tyre v6.2, TNO MF-Tyre/MF-Swift
+v6.2 or TASS MF-Tyre/MF-Swift v7 (incl. DS1006).
+  Model option drop-down list (keyword = OPT_TIRE_MODEL). Based on the selection, items
+on the screen that are not used are hidden. When the TNO MF-Tyre v6.2 or TNO MF-
+Tyre/MF-Swift v6.2 is chosen, the screens have the appearance shown in Figure 36. When
+TASS MF -Tyre/MF-Swift v7 (incl. DS1006)  is chosen (only selectable on the Tire
+(External) screen), the screen shows additional settings which are described in the next sub-
+section.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+
+ 57 / 66
+ Further, if TNO MF-Tyre/MF-Swift v6. 2 or TASS MF-Tyre/MF-Swift v7 (incl. DS1006)
+is chosen, a message will appear on this screen starting that you might have to have a MF -
+Swift license (issued by Siemens) in order to execute the simulation. The requirement for the
+MF-Swift license depends on how you select the options in the drop-down lists: , , and
+ and/or real-time application.
+  Reference vertical force (keyword = FZ_REF). This parameter is not used directly by the VS
+Math Model, but is provided as a standard property that can be used as a built-in reference for
+scaling other tire properties that are related to force.
+  Drop-down list to select the tire side (keyword = DELFT_TYRE_SW). The keyword is used
+with a 4-digit number (e.g. 2014). This control specifies the first digit as follows:
+  First digit:  0  automatic
+ 1 left
+ 2  right
+ 3  symmetric
+ 4 mirror
+  Drop-down list to select the tire contact method (keyword = DELFT_TYRE_SW). This control
+specifies the second digit of the 4-digit number as follows:
+  Second digit: 1  smooth road
+ 2  smooth circular cross section (motorcycle tires)
+ 3  moving road contact
+ 4 2D short wavelength road contact
+ 5 3D short wavelength road contact
+  Drop-down l ist to select the tire dynamics (keyword = DELFT_TYRE_SW). This control
+specifies the third digit of the 4-digit number as follows:
+  Third digit: 0  steady-state (< 1 Hz)
+ 1  transient (< 10 Hz, linear)
+ 2  transient (< 10 Hz, non-linear)
+ 3 rigid-ring (< 100 Hz, non-linear)
+ 4 rigid-ring + initial statics
+  Drop-down list to select the tire force evaluation (keyword = DELFT_TYRE_SW). This
+control specifies the fourth digit of the 4-digit number as follows:
+  Fourth digit: 0  none (Fz only)
+ 1  longitudinal (Fx, My, Fz)
+ 2  lateral (Fy, Mx, Mz, Fz)
+3 uncombined (Fx, Fy, Mx, My, Mz, Fz)
+4 combined (Fx, Fy, Mx, My, Mz, Fz)
+5 combined + turnslip (Fx, Fy, Mx, My, Mz, Fz)
+
+
+ 58 / 66
+Notes The various types of models (i.e. MF -Tyre, MF-MCTyre and MF-Swift)
+are distinguished by the function switches of Contact Method, Dynamics,
+and Force Evaluation ( , , and , respectively).
+   MF-Tyre and MF -MCTyre v6.2 are able to run without any additional
+license. However, MF -Swift v6.2 and all capabilities with version 7
+require specific license from Siemens. For example, if you select 2D or
+3D short wavelength road contact, MF-Tyre/MF-Swift program requires
+the license for MF-Swift v6.2. Table 6 shows the option switches that are
+supported by VehicleSim license only or additional MF-Swift license.
+ TASS M F-Tyre/MF-Swift v7 .3 supports smooth road and enveloping
+contact.
+
+Table 6.  MF -Tyre/MF-Swift function options and supported licenses.
+Option item MF-Tyre v6.2
+(VS license only)
+MF-Swift v6.2
+MF-Swift 6.2 license
+MF-Swift v7.3
+MF-Swift 7 license
+Contact  1,2,3 1,2,3,4,5 1,5
+Dynamics  0,1,2 0,1,2,3,4 0,1,2,3
+Slip forces  0,1,2,3,4 0,1,2,3,4,5 0,1,2,3,4,5
+The above integers are switch number values allowed for each option
+item
+
+
+  Pathname and adjacent file browser button for a tire property file (.tir) (keyword =
+DELFT_TYRE_DATA).
+Note When TASS MF-Tyre/MF-Swift v7 (incl. DS1006) model option  is
+selected, the TIR file specified in this field is automatically converted to a
+VS format tabular data (root keyword: STI_TYPARR) by the VS Browser
+and the pathname is indicated as:
+  DELFT_TYRE_DATA 0
+  VS Solver reads the tabular data and send s the values to TYPARR array
+of the tire model instead of sending the pathname of the TIR file.
+  View file button to open text editor to show and edit the tire property file.
+  Pathname and adjacent file browser button for a tire program file (keyword =
+DELFT_TYRE_DLL).
+Note CarSim/TruckSim includes MF-Tyre/MF-Swift v6.2.0.2 (both 32-bit and
+64-bit) and CarSim includes MF-Tyre/MF-Swift v7.1 and 7.3 (both 32-bit
+and 64-bit).
+
+ 59 / 66
+ In general, the 64-bit versions are not needed unless you running the VS
+Solvers from 64-bit external software, such as 64-bit Simulink. If you are
+running built -in models from the VS browser ( carsim.exe or
+trucksim.exe) then you should use 32-bit versions.
+  Checkbox or drop-down list to select an external road data file (optional). If the external road
+is selected, the internal VehicleSim road is ignored and the external road description is used.
+Note TASS MF-Tyre/MF-Swift v7 only supports the VS road model.
+ Pathname and adjacent file browser button for a regular road data file (.rdf) or Open CRG
+data file (.crg) (keyword = DELFT_TYRE_ROAD).
+  View file button to open text editor to show and edit the road data file.
+  Cornering stiffness of tire, for use by driver path-follower model (keyword = KY_TIRE). The
+built-in driver model uses tire cornering stiffness to determine the steering wheel angle needed
+to follow a target path. (For details on the driver model, see the Steering Controller (Driver
+Model) technical memo that can be accessed from the Help menu.)
+ Checkbox and data field for the spin moment of inertia (keyword for checkbox =
+OPT_TIRE_INERTIA_EXTERNAL; keyword for spin inertia = IT). If the box is not
+checked, the spin moment of inertia from the external tire file (.tir)  is used. If the box
+is checked, a data field for the spin inertia is shown (Figure 37); the value from this field will
+be used to override the value from the external tire file (.tir).
+14
+
+Figure 37. Checkbox and data field for the tire spin moment of inertia.
+Real-Time Settings (CarSim only)
+In order to use TASS MF-Tyre/MF-Swift version 7 for offline on Windows or for online on real -
+time system, select TASS MF-Tyre/MF-Swift v7 (incl. DS1006)  in the drop -down list of the
+model option . The Tire (External) screen appears like as shown in Figure 38. You need to
+specify a specific tire program file for MF -Tyre/MF-Swift version 7 (mfswift_carsim.dll)
+in the path field  and the additional settings (  and ).
+
+ 60 / 66
+
+Figure 38. Tire (External) screen with the MF-Tyre/MF-Swift v7 selected.
+  Pathname and adjacent file browser button for the VS STI module for running on Windows
+(***.dll), Concurrent RT ( ***.so), and dSPACE SCALEXIO ( ***.so) systems
+(keyword = *EXT_MODULE_DLL). The file name specified on this field should be for
+Windows DLL only (e.g. vsStiSimpleTire.dll). However, the same file name with
+different extension, such as vsStiSimpleTire.so, is applied for the Concurrent RT and
+dSPACE SCALEXIO systems.
+  File name of the RT library for running on real -time DS1006 system (keyword =
+*STI_RT_LIB). This field specifies only the file name and the file is always searched under
+the specific location (CarSim_Prog\Programs\solvers\dSPACE\). This library file
+is supposed to be a VS STI module together with MF -Tyre/MF-Swift tire program
+implementation.
+Note CarSim/TruckSim includes VS STI modules for MF-Tyre/MF-Swift v6.2
+(DelftTyreWrapper.dll, both 32 and 64-bit) and for version 7.1/7.3
+(mfswift_carsim_wrapper.dll, CarSim 32-bit and 64-bit) under
+CarSim_Prog\Resources\Extensions\External_
+Tire_API. If you select TNO MF-Tyre/MF-Swift v6.2 model option
+, the field  is hidden and VS STI module is automatically assigned.
+However, you need to specify the VS STI mo dule manually for TASS
+MF-Tyre/MF-Swift v7 (incl. DS1006) model option.
+ The TIR file specified in field  is automatically converted to VS
+format tabular data (root keyword: STI_TYPARR) and written in the PAR
+file by VS browser when TASS MF-Tyre/MF-Swift v7 (incl. DS1006)
+model option is selected.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+12
+13
+14
+15
+16
+
+ 61 / 66
+Detailed Information for MF-Tyre/MF-Swift Model
+Detailed information is available for MF-Tyre/MF-Swift v6.2 model in the MF-Tyre/MF-Swift 6.2
+Help Manual and for MF-Tyre/MF-Swift v7.3 model in the MF-Tyre/MF-Swift 7.3 User Manual.
+COSIN FTire model option
+In the drop-down list of model option on Tire (External) screen (Figure 39), select COSIN Tire
+Interface (FTire) .
+
+Figure 39. Alternate Tire (External) screen with the COSIN Tire Interface (FTire) selected.
+Note If this COSIN Tire Interface (FTire) option is chosen, a message will
+appear on the screen stating that you need a COSIN FTire license in order
+to execute the simulation.
+  Model option drop-down list (keyword = OPT_TIRE_MODEL). Based on the selection, items
+on the screen that are not used are hidden. When the COSIN Tire Interface (FTire) is chosen,
+the screens have the appearance shown in Figure 39.
+  Reference vertical force (keyword = FZ_REF). This parameter is not used directly by the VS
+Math Model, but is provided as a standard property that can be used as a built-in reference for
+scaling other tire properties that are related to force.
+  Pathname and adjacent file browser button for a tire property file (***.tir) (keyword =
+FTIRE_DATA).
+  View file button to open text editor or COSIN/TIRETOOLS to show and edit the tire property
+file .
+  Pathname and adjacent file browser button for a tire program file (keyword =
+FTIRE_CTI_DLL).
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+ 62 / 66
+Note CarSim and TruckSim include both 32 -bit and 64 -bit VS Solvers. You
+need to select either the 32 -bit or 64 -bit FTire programs (CTI.dll) to
+match the VS Solvers. When run alone, the 32 -bit versions are fine.
+However, when using third party software the  VS Solvers and the FTire
+DLL must match the third party software. For example, the 64-bit versions
+are needed for the VS Solvers and FTire when running under 64 -bit
+Simulink.
+ The FTire programs are not installed with CarSim or TruckSim; they must
+be ins talled separately in order to co -simulate FTire with CarSim or
+TruckSim.
+  Checkbox to select an external road data file (optional). If this box is checked, the internal
+VehicleSim road is ignored and the external road description is used.
+ Pathname and adjacent file browser button for a road data file (***.rdf) (keyword =
+FTIRE_ROAD). This field is not shown unless the checkbox for the external road is checked
+.
+  View file button to open text editor to show and edit the road data file. This button is not
+shown unless the checkbox for the external road is checked .
+  Cornering stiffness of tire, for use by driver path-follower model (keyword = KY_TIRE). The
+built-in driver model uses tire cornering stiffness to determine the steering wheel angle needed
+to follow a target path. (For details on the driver model, see the Steering Controller (Driver
+Model) technical memo that can be accessed from the Help menu.)
+ Checkbox and data field for the spin moment of inertia (keyword for checkbox =
+OPT_TIRE_INERTIA_EXTERNAL; keyword for spin inertia = IT). If the box is not
+checked, the spin moment of inertia from the external tire file (.tir)  is used. If the box
+is checked, a data field for the spin inertia is shown (Figure 40); the value from this field will
+be used to override the value from the external tire file (.tir).
+10
+
+Figure 40. Checkbox and data field for the tire spin moment of inertia.
+Detailed Information for FTire Model
+The detailed information for FTire model is available in the COSIN Scientific Software home page:
+www.cosin.eu/prod_FTire.
+Custom 3rd-Party Tire Model Options
+The Tire (External) screen with the 3rd-Party Tire Model STI option  is shown in Figure
+41. This option can be used to connect custom external tire models through the VS STI interface.
+
+ 63 / 66
+
+Figure 41. Tire (External) screen with the 3rd-Party Tire Model STI option selected.
+  Model option drop-down list (keyword = OPT_TIRE_MODEL).
+  Pathname and adjacent file browser button for a tire property file (***.tir) (keyword =
+USER_STI_DATA).
+  Pathname and adjacent file browser button for a tire program from running on Windows
+(***.dll) and Concurrent RT (***.so) systems (keyword = USER_STI_DLL). The file
+name specified on this field should be for Windows DLL only (e.g.
+vsStiSimpleTire.dll). However, the same file name with different extension, such as
+vsStiSimpleTire.so, is applied for the Concurrent RT system.
+  Drop-down list to select 3rd-party road model (optional). If the 3rd-party road is selected, the
+internal VS road is ignored and the external road description is used.
+
+ Pathname and adjacent file browser button for a road data file (***.rdf) (keyword =
+USER_STI_ROAD). This field is not shown unless the drop -down list for 3rd -party road is
+selected .
+ Pathname and adjacent file browser button for an external tire module file (***.dll)
+(keyword = *EXT_MODULE_DLL).
+  File name of the RT library. This library file is supposed to be a VS STI module together with
+tire model implementation (keyword = *STI_RT_LIB).
+If you specify an external tire model in the tire program file field , you must also specify the
+VS STI module , which interfaces between the VS Solver and the external tire model. There
+are two sample C programs provided under CarSim_Data\Extensions\User_Tire. The
+sample program vsStiWrapper interfaces between VS Solver and a simple external tire
+1
+
+2
+
+3
+
+4
+
+5
+
+4
+
+6
+
+7
+
+3
+
+6
+
+ 64 / 66
+program based on TYDEX/STI format. Another sample program vsStiSimpleTire is a simple
+tire program that is based on VS STI format.
+Animator and custom settings
+The visual appearance of the tire and wheel in the animator can be specified with a link (  in
+Figure 42) to an animator dataset with one or more objects that will define the tire and wheel
+assembly. Alternatively, the wheel can be shown as a simple cylinder. Either way, the animator
+sizes the wheel shape in proportion to the radius and width specified on this screen.
+1
+4
+3
+5
+2
+
+Figure 42. Animator and custom settings.
+  Optional link to animator data to show the tire wheel assembly in the animation. Th is link is
+visible only when the adjacent checkbox is checked.
+ Tire width and radius (keyword = SET_THICKNESS and SET_RADIUS_SGUI). These
+dimensions are used only to generate animations of the wheels; they have no influence on the
+simulated vehicle response.
+Note Alternatively, the wheel can be shown in more detail in COSIN FTire
+option by COSIN/graphics, such as tire deformation, tire contact
+surface(s), tire temperature, tire pressure (Figure 43).
+ Custom settings checkbox. This checkbox adds a miscellaneous data field  and a data
+link  (see Figure 42).
+
+ 65 / 66
+
+Figure 43. COSIN/graphics showing tire deformation (3D), tire forces graphs and ground
+contact pressure.
+ Miscellaneous data field. You can overwrite the data settings using this field (e.g.
+DELFT_TYRE_SW 31124).
+ Miscellaneous data link.
+Appendix: Comments on PAC 52 and PAC 2002
+Pacejka Magic Formula (Delft Tyre) tire models in CarSim and TruckSim are produced by TASS
+International and distributed by Mechanical Simulation under license. In our view, these represent
+the “gold standard” among Magic Formula tire models, as their development was overseen by Dr.
+Pacejka himself through the end of his career there.
+The TASS / Delft Tyre package supports many revisions as outlined in the MFTyre -MFSwift
+manual. This manual can be found under the Help menu item in the Reference Manuals section.
+The description of fit types is found in section 5.3.4 “Backward Compatibility”
+In reviewing the chart there, note the lack of reference to PAC2002. There are several
+implementations of PAC2002 models offered by various sources, based on the work published in
+Dr. Pacejka’s book, Tire and Vehicle Dynamics [3]. This model is not directly supported by TASS
+/ Delft Tyre and is not available in CarSim and TruckSim. The several PAC2002 implementations
+available from various sources are not identical. We have chosen not to develop our own based on
+the book. When you obtain parameters for a Magic Formula tire, be  sure to direct the source
+performing the curve fit to use one of the types listed in the manual.
+
+ 66 / 66
+CarSim and TruckSim do support an internally developed Pac 5.2 model. It was produced using
+equations provided to us by a customer who is a major tire manufacturer. We were supplied no
+information about the preferred handling of “edge cases”  such as zero speed, tire of f the ground,
+90 deg slip, etc., and we don’t expect exact agreement with the MF -Tyre/MF-Swift 5.2 (FITTYP
+= 6) supplied by TASS. We retain this model primarily to support those wishing to use a Magic
+Formula tire in Real Time applications. For all offline applications, we recommend use of the TASS
+model supplied with CarSim and TruckSim.
+References
+1. Bakker, E., Pacejka, H.B., and Lidner, L., “A New Tire Model with an Application in
+Vehicle Dynamics Studies,” 4 th Autotechnologies Conference, Monte Carlo, 1989, SAE
+890087.
+2. Pacejka, H., Sharp, R.S. “Shear Force development by Pneumatic Tyres in Steady State
+Conditions: A Review of Modelling Aspects” Vehicle System Dynamics , 20 (1991), pp.
+121-176, Equations 88-93.
+3. Pacejka, Hans B., Tire and Vehicle Dynamics , (2006, 2 nd edition), SAE International,
+Warrendale, PA, USA
+4. Loeb, J.S. et. al., “Lateral Stiffness, Cornering Stiffness and Relaxation Length of the
+Pneumatic Tire,” SAE Paper No. 900129, 1990.
+5. Bernard, J.  E., Clover, C. L., “Tire Modeling for Low –speed and High –speed
+Calculations,” SAE Paper No. 950311, 1995.
+6. Rill, Georg, First Order Tire Dynamics,  III European Conference on Computational
+Mechanics, 2006.
+7. van der Jagt, P.: The Road to Virtual Vehicle Proto typing; new CAE -models for
+accelerated vehicle dynamics development. PhD -Thesis, Tech. Univ. Eindhoven,
+Eindhoven 2000, ISBN 90-386-2552-9 NUGI 834.

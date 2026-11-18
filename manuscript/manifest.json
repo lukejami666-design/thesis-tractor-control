@@ -1,0 +1,378 @@
+{
+  "date": "2026-11-18",
+  "scope": "chapter02 and chapter03 theory and algorithms only",
+  "model_sha256": "de4b06d8371a5850d06bb022f91ff8b17326ce9cb0d6bf1077cd716cbb4e89ac",
+  "sources": [
+    {
+      "source": "docs/model-signal-dictionary.md",
+      "file": "chapter02/model-signal-dictionary.md",
+      "role": "基础接口说明，历史文档内链接已改为包内说明",
+      "source_sha256": "7fcb5fd0d7cb462ed6432911ad0cb062f2120db73545224c3f02e879ecb48360"
+    },
+    {
+      "source": "工作记录/2026-11-17/阶段二联合仿真复试/TruckSim_Math_Models.txt",
+      "file": "chapter02/platform/TruckSim_Math_Models.txt",
+      "role": "平台模型技术说明；需核原手册版本",
+      "source_sha256": "5d409873deee1028568c49d81f61ccc271c19e3d1015487137913f2049cba198"
+    },
+    {
+      "source": "工作记录/2026-11-17/阶段二联合仿真复试/Tire_Models.txt",
+      "file": "chapter02/platform/Tire_Models.txt",
+      "role": "平台模型技术说明；需核原手册版本",
+      "source_sha256": "961098bf8e90bbc2a2172ddfdec309bbd4d8c8b86f70828e25a8148e4f5ae256"
+    },
+    {
+      "source": "工作记录/2026-11-17/阶段二联合仿真复试/Powertrain_system.txt",
+      "file": "chapter02/platform/Powertrain_system.txt",
+      "role": "平台模型技术说明；需核原手册版本",
+      "source_sha256": "31d4718f1fae2b17eb03a33421f4f712c2ba842dc6625e3e46f442a047863bd4"
+    },
+    {
+      "source": "论文草稿/论文源稿/论文草稿/三、参数估计/轮端纵向力估计.docx",
+      "file": "chapter02/optional/轮端纵向力估计.docx",
+      "role": "可选估计器草稿，不代表当前WorkSlip已采用",
+      "source_sha256": "eecda5579ee6a710da57aded4468b403d8581945d3eff95e1d743b5d5e469d05"
+    },
+    {
+      "source": "论文草稿/论文源稿/论文草稿/三、参数估计/负载阻力估计.docx",
+      "file": "chapter02/optional/负载阻力估计.docx",
+      "role": "可选估计器草稿，不代表当前WorkSlip已采用",
+      "source_sha256": "b79b60ebbd5bf7d45ada9e7d46e026ac043449c34f6329d53da53ae05430c439"
+    },
+    {
+      "source": "工作记录/2026-11-16/SMC滑转率控制构建.docx",
+      "file": "chapter03/history/SMC滑转率控制构建_候选方案.docx",
+      "role": "历史AI建议与推导素材；未实现内容不得当作现行算法",
+      "source_sha256": "63329e46a734d292f8bdfcac3c9f24e3e567cb24fc043eeb205e71193e47da41"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/驱动防滑全过程与模块说明.md",
+      "file": "chapter03/control-framework.md",
+      "role": "1118保存副本实际运行框架",
+      "source_sha256": "967b66674e4ac19e14e520a26b50523f5b794ec38a2ba739f4601a8b29bcef8c"
+    },
+    {
+      "source": "工作记录/2026-11-17/SMC总需求接口修正与PI对比/work_slip_control_description.md",
+      "file": "chapter03/fixed-target-smc.md",
+      "role": "SMC与约束投影说明；历史开关方式须看版本说明",
+      "source_sha256": "ba6cab8279e415355772c47477c12e2b76531a1161396ffc4c5754d11ef68f30"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/chart_838.m",
+      "file": "chapter03/source/LaunchTCS_Motion.m",
+      "role": "1118保存副本内嵌源码 chart_838，原注释保留",
+      "source_sha256": "65e1d998d93ffb0276c3ca4df75d613d4f551b7c24a7e2d8030db57dd5857120"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/chart_870.m",
+      "file": "chapter03/source/LaunchTCS_Torque.m",
+      "role": "1118保存副本内嵌源码 chart_870，原注释保留",
+      "source_sha256": "f8e62f903301bb34125fcf3e23eb7642d0cdfb6134c4b6a5aa63c07e942052cc"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/chart_971.m",
+      "file": "chapter03/source/WorkSlip_State.m",
+      "role": "1118保存副本内嵌源码 chart_971，原注释保留",
+      "source_sha256": "7d3a289426dbd9bea315db54d4466335207269fe0fa99e255ca40ae424555b02"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/chart_991.m",
+      "file": "chapter03/source/WorkSlip_Reference.m",
+      "role": "1118保存副本内嵌源码 chart_991，原注释保留",
+      "source_sha256": "41053066ac2e149d75f3416611be2b4015954fc7b3388b10d099ae1e3d81b6e4"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/chart_1003.m",
+      "file": "chapter03/source/WorkSlip_Disturbance.m",
+      "role": "1118保存副本内嵌源码 chart_1003，原注释保留",
+      "source_sha256": "da75d5c9779a1acfe09e95b32e06b16ba0d9b94197d72b75a69be09ad277f139"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/chart_1018.m",
+      "file": "chapter03/source/WorkSlip_SMC.m",
+      "role": "1118保存副本内嵌源码 chart_1018，原注释保留",
+      "source_sha256": "18b09744e6ef56513d6bf43648e7df7003dfe09d0986d5bd320b683d609c7975"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/chart_1043.m",
+      "file": "chapter03/source/TCS_ModeSupervisor.m",
+      "role": "1118保存副本内嵌源码 chart_1043，原注释保留",
+      "source_sha256": "59682b30759c6171ee1ada15a88eaa7ee77ffd2268f0fcfb16ca2a6d8cd62e46"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/chart_1064.m",
+      "file": "chapter03/source/TCS_Handover.m",
+      "role": "1118保存副本内嵌源码 chart_1064，原注释保留",
+      "source_sha256": "1cbfc627b840cec272139c6062504b58c1a68fb2fd044bc2cb4bf6e4d28c6823"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/chart_1081.m",
+      "file": "chapter03/source/TCS_TorqueConstraints.m",
+      "role": "1118保存副本内嵌源码 chart_1081，原注释保留",
+      "source_sha256": "85be21127b34316c510dceb8ef80a97096db91a5de05e1119fd4ebf3d04064aa"
+    },
+    {
+      "source": "工作记录/2026-11-18/驱动防滑程序解读/model_identity.json",
+      "file": "chapter03/source/model_identity.json",
+      "role": "保存副本身份",
+      "source_sha256": "9c56c2d54a608958342c91ef516e8346b8e39fd0c43afc55087da8883e8cd492"
+    },
+    {
+      "source": "simulation/src/launch_tcs_params.m",
+      "file": "chapter03/parameters/launch_tcs_params.m",
+      "role": "2026-11-18磁盘参数/校验脚本；不是保存副本运行时P快照",
+      "source_sha256": "3f2de7cf42dfc4f115ce905cde2af83e95c7d7f883c72895c1d2caa19abeaf72"
+    },
+    {
+      "source": "simulation/src/launch_gate_params.m",
+      "file": "chapter03/parameters/launch_gate_params.m",
+      "role": "2026-11-18磁盘参数/校验脚本；不是保存副本运行时P快照",
+      "source_sha256": "efc5fdc42b1d2d9ad88d93d00765f24dbc07eed9098f617f44f3f5927926b950"
+    },
+    {
+      "source": "simulation/src/WorkSlip_validate_params.m",
+      "file": "chapter03/parameters/WorkSlip_validate_params.m",
+      "role": "2026-11-18磁盘参数/校验脚本；不是保存副本运行时P快照",
+      "source_sha256": "edbdb85be5372d5b64140391810b57e995c87641ca53878b64c337be59f4936b"
+    },
+    {
+      "source": "文献/20261010/非道路车辆轮胎-土壤相互作用建模方法及试验技术综述.pdf",
+      "file": "references/pdf/tire-soil-review.pdf",
+      "role": "第二、三章参考文献原PDF",
+      "source_sha256": "4feb3751c6e400f07dc70b0a7170a1c935aac72548409d3adb50c846a753367d"
+    },
+    {
+      "source": "文献/20261010/A method of optimal traction control for farm.pdf",
+      "file": "references/pdf/osinenko2015-optimal-traction.pdf",
+      "role": "第二、三章参考文献原PDF",
+      "source_sha256": "f7fe5aef8dc36dbe3e7a2e2e3eccceef5e3c21d217a22e9ca7e5ae8eeb6e3d20"
+    },
+    {
+      "source": "文献/20261010/Development of Online Adaptive Traction Control for Electric Robotic Tractors.pdf",
+      "file": "references/pdf/sunusi2021-adaptive-traction.pdf",
+      "role": "第二、三章参考文献原PDF",
+      "source_sha256": "4ba1fd58cc9f0a76c1c044a967b0f7ba61be47ccdbe5944746dfd6cdbca5ec9e"
+    },
+    {
+      "source": "文献/20261010/Acceleration‐basedwheelslipcontrolrealizedwithdecentralised.pdf",
+      "file": "references/pdf/acceleration-based-slip-control.pdf",
+      "role": "第二、三章参考文献原PDF",
+      "source_sha256": "d3063f5b873b81860dc61eeea001df1a144081742ff606fb109108c0cc1f697b"
+    },
+    {
+      "source": "文献/20261010/Intelligent tractors Review of online traction control process.pdf",
+      "file": "references/pdf/online-traction-review.pdf",
+      "role": "第二、三章参考文献原PDF",
+      "source_sha256": "72667914106641412c9b69cc80e49d3b49b9ccdaa679928ba5c14e01eb5cc0d6"
+    },
+    {
+      "source": "文献/20261010/Slip and tractive efficiency of an.pdf",
+      "file": "references/pdf/slip-tractive-efficiency.pdf",
+      "role": "第二、三章参考文献原PDF",
+      "source_sha256": "6228a86897b00ac3e45d57a7c1452d0f85f702fdc8f0acabb2653945b481d7b8"
+    }
+  ],
+  "files": [
+    {
+      "file": ".gitattributes",
+      "bytes": 39,
+      "sha256": "9121733e054c6780ef40c8a8211706873fb119945fa9d345389aea3cf3554575"
+    },
+    {
+      "file": "chapter02/model-signal-dictionary.md",
+      "bytes": 28540,
+      "sha256": "511bc01d2ca73fc180d536192b8b983a4af6ebb687f2db15c5965ee6ddf90330"
+    },
+    {
+      "file": "chapter02/optional/负载阻力估计.docx",
+      "bytes": 35066,
+      "sha256": "b79b60ebbd5bf7d45ada9e7d46e026ac043449c34f6329d53da53ae05430c439"
+    },
+    {
+      "file": "chapter02/optional/轮端纵向力估计.docx",
+      "bytes": 29772,
+      "sha256": "eecda5579ee6a710da57aded4468b403d8581945d3eff95e1d743b5d5e469d05"
+    },
+    {
+      "file": "chapter02/platform/Powertrain_system.txt",
+      "bytes": 89713,
+      "sha256": "a4e35125dfe1375e7e0f967b81b9bd2aa9865b8999718d0c35e95702f1995497"
+    },
+    {
+      "file": "chapter02/platform/Tire_Models.txt",
+      "bytes": 128272,
+      "sha256": "1420e47624c4f7016af854a17f323efe906e03f83674699a086df7f81aa5bf3b"
+    },
+    {
+      "file": "chapter02/platform/TruckSim_Math_Models.txt",
+      "bytes": 18323,
+      "sha256": "9967645d8716e7d38fe14f0087694be2c6df554b4fd417f56f3360f3e9f4b038"
+    },
+    {
+      "file": "chapter02/vehicle-parameters.md",
+      "bytes": 1380,
+      "sha256": "141349d95edf349460f00d7d67225bb8e8a456cb6df1f0ba0d68b5928ad3f401"
+    },
+    {
+      "file": "chapter02/writing-guide.md",
+      "bytes": 3624,
+      "sha256": "ad9b359eca6847a51d4d38483c8370f5a52ae6ef539962d528b24fe89523f0cd"
+    },
+    {
+      "file": "chapter03/control-framework.md",
+      "bytes": 15560,
+      "sha256": "967b66674e4ac19e14e520a26b50523f5b794ec38a2ba739f4601a8b29bcef8c"
+    },
+    {
+      "file": "chapter03/fixed-target-smc.md",
+      "bytes": 4224,
+      "sha256": "ba6cab8279e415355772c47477c12e2b76531a1161396ffc4c5754d11ef68f30"
+    },
+    {
+      "file": "chapter03/history/SMC滑转率控制构建_候选方案.docx",
+      "bytes": 41050,
+      "sha256": "63329e46a734d292f8bdfcac3c9f24e3e567cb24fc043eeb205e71193e47da41"
+    },
+    {
+      "file": "chapter03/launch-stateflow.md",
+      "bytes": 6852,
+      "sha256": "7fa3a3e9d170196d9e5fd6844963a410268c2eb7a824f5ec105b332e8667cbdf"
+    },
+    {
+      "file": "chapter03/parameters/launch_gate_params.m",
+      "bytes": 2405,
+      "sha256": "8dd0e3876f6412e2f718eb9a3b36126ce01498842682e83733b6240ea75ca4be"
+    },
+    {
+      "file": "chapter03/parameters/launch_tcs_params.m",
+      "bytes": 26441,
+      "sha256": "6319b13e607041a484089f0d8b8fa044df95bea6b217491e86d94f5a547944e4"
+    },
+    {
+      "file": "chapter03/parameters/WorkSlip_validate_params.m",
+      "bytes": 858,
+      "sha256": "edbdb85be5372d5b64140391810b57e995c87641ca53878b64c337be59f4936b"
+    },
+    {
+      "file": "chapter03/source/launch_state.xml",
+      "bytes": 41650,
+      "sha256": "44babc9028baba0624a0c4f4018f36314f4d238c695e908a22c7c5a584582edb"
+    },
+    {
+      "file": "chapter03/source/LaunchTCS_Motion.m",
+      "bytes": 5273,
+      "sha256": "5e3f791cc3a77f3d5c700c2dd2275bdb8231694e583367c43ddfb5cb5a107f0e"
+    },
+    {
+      "file": "chapter03/source/LaunchTCS_Torque.m",
+      "bytes": 8482,
+      "sha256": "b05ff7a042af7c9c67eab3fea3f0af9c63e2342ea6885dbe9445263c9935debd"
+    },
+    {
+      "file": "chapter03/source/model_identity.json",
+      "bytes": 171,
+      "sha256": "f49e86ce61c65b4c225de2ee7e4804cea37e8b21b0e60a11fe00a1495a99e209"
+    },
+    {
+      "file": "chapter03/source/TCS_Handover.m",
+      "bytes": 1133,
+      "sha256": "8642380b8ad6d87004c84ee843acf383aa4146905fb22f0f8c2d14b94f56cf80"
+    },
+    {
+      "file": "chapter03/source/TCS_ModeSupervisor.m",
+      "bytes": 1831,
+      "sha256": "a5bb8f93feb2cbf382df9a44f7f28d33584c709b880af8a93d0614a0e5a72e60"
+    },
+    {
+      "file": "chapter03/source/TCS_TorqueConstraints.m",
+      "bytes": 2711,
+      "sha256": "e49bf567fbee8fc8808908529a1f43483a73adb47868dc0bffe5e47fb1844533"
+    },
+    {
+      "file": "chapter03/source/WorkSlip_Disturbance.m",
+      "bytes": 2682,
+      "sha256": "36cf4a571fcdce85abedc591fca828716ad81ffcc0cd4446d2ff192d0d87aa6e"
+    },
+    {
+      "file": "chapter03/source/WorkSlip_Reference.m",
+      "bytes": 3118,
+      "sha256": "a519f930c64d4b9a9a4f6fc3dfcf326088944343d2b190d78541c473cb83c537"
+    },
+    {
+      "file": "chapter03/source/WorkSlip_SMC.m",
+      "bytes": 2949,
+      "sha256": "7097532c09f9eb431cd429c214b56d40c8eb3f5f6dfd4d10cf61a79cd7e47494"
+    },
+    {
+      "file": "chapter03/source/WorkSlip_State.m",
+      "bytes": 4273,
+      "sha256": "c25436c21decb5638c247323df0163e5c4bd8e11286c7531fdae2f68b6f2f8d4"
+    },
+    {
+      "file": "chapter03/writing-guide.md",
+      "bytes": 4828,
+      "sha256": "92d3bfec6460ffc42984ec3277a57fd6bea8da1348c96cbd13dc4f1c5260f315"
+    },
+    {
+      "file": "outline.md",
+      "bytes": 1252,
+      "sha256": "b7d0ccdf449fd31378e9e8e864871d1918a76349fcf91b165d53462b39964ad7"
+    },
+    {
+      "file": "README.md",
+      "bytes": 3779,
+      "sha256": "82d4eb2624a75e8015a92ce2254f2bf9c05bc31877195e6c434e1852c5ce4eba"
+    },
+    {
+      "file": "references/core-paper-notes.md",
+      "bytes": 1295,
+      "sha256": "3bbe519e1e9ec1afdb66a1c8216d163404df473cc148bf6a4a40235e20352a27"
+    },
+    {
+      "file": "references/pdf/acceleration-based-slip-control.pdf",
+      "bytes": 2290570,
+      "sha256": "d3063f5b873b81860dc61eeea001df1a144081742ff606fb109108c0cc1f697b"
+    },
+    {
+      "file": "references/pdf/online-traction-review.pdf",
+      "bytes": 1393459,
+      "sha256": "72667914106641412c9b69cc80e49d3b49b9ccdaa679928ba5c14e01eb5cc0d6"
+    },
+    {
+      "file": "references/pdf/osinenko2015-optimal-traction.pdf",
+      "bytes": 1336697,
+      "sha256": "f7fe5aef8dc36dbe3e7a2e2e3eccceef5e3c21d217a22e9ca7e5ae8eeb6e3d20"
+    },
+    {
+      "file": "references/pdf/slip-tractive-efficiency.pdf",
+      "bytes": 6667043,
+      "sha256": "6228a86897b00ac3e45d57a7c1452d0f85f702fdc8f0acabb2653945b481d7b8"
+    },
+    {
+      "file": "references/pdf/sunusi2021-adaptive-traction.pdf",
+      "bytes": 5431635,
+      "sha256": "4ba1fd58cc9f0a76c1c044a967b0f7ba61be47ccdbe5944746dfd6cdbca5ec9e"
+    },
+    {
+      "file": "references/pdf/tire-soil-review.pdf",
+      "bytes": 1840634,
+      "sha256": "4feb3751c6e400f07dc70b0a7170a1c935aac72548409d3adb50c846a753367d"
+    },
+    {
+      "file": "references/README.md",
+      "bytes": 1573,
+      "sha256": "463c9455cbb110ae2eded946db38e25322d0e851e4169409d81ea6b981fe12c6"
+    },
+    {
+      "file": "references/references.bib",
+      "bytes": 691,
+      "sha256": "7b9751f1d50cc58868ab7e53fd57560fe15ed995240d55020f19dbe6439ae4a5"
+    },
+    {
+      "file": "VERSION.md",
+      "bytes": 2277,
+      "sha256": "c005088982d73d249ff2f1e5c0648f90d9b4b29ddcfe89bfe26be43991c09502"
+    }
+  ],
+  "text_format": "UTF-8 with LF; platform text trailing spaces cleaned; source_sha256 is original source bytes, files.sha256 is packaged bytes"
+}

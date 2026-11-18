@@ -1,0 +1,1230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chart id="905">
+  <P Name="name">驱动防滑模块/launch_state</P>
+  <P Name="windowPosition">[199.5 216.75 417 348.75]</P>
+  <P Name="viewLimits">[513.773 2866.273 143.069 1186.819]</P>
+  <P Name="zoomFactor">1.667</P>
+  <P Name="screen">[1 1 3200 1200 1.25]</P>
+  <P Name="viewObj">905</P>
+  <P Name="ssIdHighWaterMark">130</P>
+  <P Name="decomposition">SET_CHART</P>
+  <P Name="updateMethod">DISCRETE</P>
+  <P Name="sampleTime">0.001</P>
+  <P Name="chartFileNumber">53</P>
+  <P Name="allowGlobalAccessToExportedFunctions">0</P>
+  <P Name="saturateOnIntegerOverflow">1</P>
+  <P Name="userSpecifiedStateTransitionExecutionOrder">1</P>
+  <P Name="disableImplicitCasting">1</P>
+  <P Name="actionLanguage">2</P>
+  <Children>
+    <state SSID="88">
+      <P Name="labelString">MONITOR
+entry:
+spin_on_t=zeros(4,1); spin_clear_t=zeros(4,1); spin_mask=false(4,1); nspin=0; no_move_t=0;
+no_move_confirmed=false; speed_on_t=0; speed_off_t=0; speed_valid=false; cons_bad_t=0;
+source_bad=false; desired_stage=uint8(255);
+prewarn=false(4,1);warn_armed=true(4,1);warn_age=zeros(4,1);warn_on_t=zeros(4,1);warn_clear_t=zeros(4,1);warn_early_t=zeros(4,1);
+
+control_phase=uint8(3); handover_t=0; handover_alpha=0;
+during:
+if enable&lt;=0.5 || reset&gt;0.5
+    spin_on_t=zeros(4,1); spin_clear_t=zeros(4,1); spin_mask=false(4,1); nspin=0; no_move_t=0;
+    no_move_confirmed=false; speed_on_t=0; speed_off_t=0; speed_valid=false; cons_bad_t=0;
+    prewarn=false(4,1);warn_armed=true(4,1);warn_age=zeros(4,1);warn_on_t=zeros(4,1);warn_clear_t=zeros(4,1);warn_early_t=zeros(4,1);
+
+    control_phase=uint8(0); handover_t=0; handover_alpha=0;
+    source_bad=false; if enable&lt;=0.5, desired_stage=uint8(255); else, desired_stage=uint8(0);
+    end
+else
+    % Establish current-sample validity before warning supervision. A bad
+    % source cancels warning immediately; the stage logic below still takes
+    % source_bad to PROTECT without waiting for warning timers.
+    if source_immediate_bad || ~consistency_ok
+        cons_bad_t=min(P.t_cons_bad,cons_bad_t+P.Ts);
+    else
+        cons_bad_t=max(0,cons_bad_t-P.Ts);
+    end
+    source_bad=source_immediate_bad || cons_bad_t&gt;=P.t_cons_bad;
+    if source_bad
+        prewarn=false(4,1); warn_armed=false(4,1); warn_age=zeros(4,1);
+        warn_on_t=zeros(4,1); warn_clear_t=zeros(4,1); warn_early_t=zeros(4,1);
+    else
+        for i=1:4
+            if ~prewarn(i) &amp;&amp; ~spin_mask(i) &amp;&amp; dv_warning(i)&lt;P.gate_warn_off
+                warn_armed(i)=true;
+            end
+        end
+    end
+    for i=1:4
+        if spin_on_raw(i), spin_on_t(i)=min(P.t_spin_on,spin_on_t(i)+P.Ts); spin_clear_t(i)=0;
+        else, spin_on_t(i)=max(0,spin_on_t(i)-P.Ts); if spin_clear_raw(i), spin_clear_t(i)=min(P.t_spin_clear,spin_clear_t(i)+P.Ts);
+            else, spin_clear_t(i)=0;
+            end, end
+        if spin_on_t(i)&gt;=P.t_spin_on, spin_mask(i)=true; end
+        if spin_clear_t(i)&gt;=P.t_spin_clear, spin_mask(i)=false; end
+    end
+    % Event supervision only: warning does not mask sustained spin evidence.
+    for i=1:4
+        if dv_warning(i)&gt;=P.gate_warn_on
+            warn_on_t(i)=min(P.gate_warn_delay,warn_on_t(i)+P.Ts);
+        else
+            warn_on_t(i)=0;
+        end
+        if dv_warning(i)&gt;=P.gate_early_on &amp;&amp; fast_warning(i)
+            warn_early_t(i)=min(P.gate_early_delay,warn_early_t(i)+P.Ts);
+        else
+            warn_early_t(i)=0;
+        end
+        if spin_mask(i) || source_bad
+            prewarn(i)=false; warn_armed(i)=false; warn_age(i)=0;
+            warn_on_t(i)=0; warn_clear_t(i)=0; warn_early_t(i)=0;
+        elseif ~prewarn(i)
+            if warn_armed(i) &amp;&amp; (warn_on_t(i)&gt;=P.gate_warn_delay || warn_early_t(i)&gt;=P.gate_early_delay)
+                prewarn(i)=true;warn_age(i)=0;warn_clear_t(i)=0;
+                warn_armed(i)=false;
+            end
+        else
+            warn_age(i)=warn_age(i)+P.Ts;
+            % Once confirmed-spin latching takes over, leave the warning
+            % lane immediately; the confirmed-spin limiter owns the event.
+            if dv_warning(i)&lt;P.gate_warn_off
+                warn_clear_t(i)=min(P.gate_warn_clear,warn_clear_t(i)+P.Ts);
+            else
+                warn_clear_t(i)=0;
+            end
+            if prewarn(i) &amp;&amp; warn_age(i)&gt;=P.gate_warn_hold &amp;&amp; warn_clear_t(i)&gt;=P.gate_warn_clear
+                prewarn(i)=false;warn_armed(i)=true;warn_age(i)=0;warn_on_t(i)=0;warn_early_t(i)=0;
+            end
+        end
+    end
+    nspin=sum(double(spin_mask));
+    if no_move_raw, no_move_t=min(P.t_no_move,no_move_t+P.Ts); elseif move_ok, no_move_t=0; else, no_move_t=max(0,no_move_t-P.Ts); end
+    no_move_confirmed=no_move_t&gt;=P.t_no_move;
+    if ~speed_valid
+        if speed_on_raw &amp;&amp; nspin&lt;=1 &amp;&amp; ~source_bad, speed_on_t=min(P.t_speed_on,speed_on_t+P.Ts); else, speed_on_t=0; end
+        if speed_on_t&gt;=P.t_speed_on, speed_valid=true; speed_off_t=0; end
+    else
+        if speed_off_raw || nspin&gt;=2 || source_bad, speed_off_t=min(P.t_speed_off,speed_off_t+P.Ts); else, speed_off_t=0; end
+        if speed_off_t&gt;=P.t_speed_off, speed_valid=false; speed_on_t=0; end
+    end
+    if source_bad, desired_stage=uint8(6); elseif nspin&gt;=2, desired_stage=uint8(4);
+    elseif nspin==1, desired_stage=uint8(3); elseif speed_valid, desired_stage=uint8(5);
+    elseif no_move_confirmed, desired_stage=uint8(2); elseif move_ok, desired_stage=uint8(1);
+    else, desired_stage=uint8(0); end
+    % 起步 Chart 只保留内部事件阶段；全阶段控制权由独立 TCS_ModeSupervisor 唯一决定。
+    % 旧输出端口仅为兼容保留，不接入最终 control_phase / blend_alpha。
+    control_phase=uint8(0); handover_t=0; handover_alpha=0;
+end
+</P>
+      <P Name="position">[20.6745 227 796.5755 562.5]</P>
+      <P Name="fontSize">12</P>
+      <P Name="arrowSize">40</P>
+      <P Name="subviewer">905</P>
+      <P Name="type">AND_STATE</P>
+      <P Name="decomposition">CLUSTER_STATE</P>
+      <P Name="executionOrder">1</P>
+    </state>
+    <state SSID="89">
+      <P Name="labelString">MODE</P>
+      <P Name="position">[861 227 1869.375 916.25]</P>
+      <P Name="fontSize">12</P>
+      <P Name="subviewer">905</P>
+      <P Name="type">AND_STATE</P>
+      <P Name="decomposition">CLUSTER_STATE</P>
+      <P Name="executionOrder">2</P>
+      <Children>
+        <state SSID="90">
+          <P Name="labelString">DISABLED
+entry: stage = uint8(255);</P>
+          <P Name="position">[941 269 310 100]</P>
+          <P Name="fontSize">12</P>
+          <P Name="arrowSize">20</P>
+          <P Name="subviewer">905</P>
+          <P Name="type">OR_STATE</P>
+          <P Name="decomposition">CLUSTER_STATE</P>
+        </state>
+        <state SSID="91">
+          <P Name="labelString">START_PROBE
+entry: stage = uint8(0);</P>
+          <P Name="position">[2361 269 310 100]</P>
+          <P Name="fontSize">12</P>
+          <P Name="subviewer">905</P>
+          <P Name="type">OR_STATE</P>
+          <P Name="decomposition">CLUSTER_STATE</P>
+        </state>
+        <state SSID="92">
+          <P Name="labelString">NORMAL_LAUNCH
+entry: stage = uint8(1);</P>
+          <P Name="position">[941 519 310 100]</P>
+          <P Name="fontSize">12</P>
+          <P Name="subviewer">905</P>
+          <P Name="type">OR_STATE</P>
+          <P Name="decomposition">CLUSTER_STATE</P>
+        </state>
+        <state SSID="93">
+          <P Name="labelString">HEAVY_NO_MOVE
+entry: stage = uint8(2);</P>
+          <P Name="position">[2361 519 310 100]</P>
+          <P Name="fontSize">12</P>
+          <P Name="subviewer">905</P>
+          <P Name="type">OR_STATE</P>
+          <P Name="decomposition">CLUSTER_STATE</P>
+        </state>
+        <state SSID="94">
+          <P Name="labelString">SINGLE_SPIN
+entry: stage = uint8(3);</P>
+          <P Name="position">[941 737 310 100]</P>
+          <P Name="fontSize">12</P>
+          <P Name="subviewer">905</P>
+          <P Name="type">OR_STATE</P>
+          <P Name="decomposition">CLUSTER_STATE</P>
+        </state>
+        <state SSID="95">
+          <P Name="labelString">MULTI_SPIN
+entry: stage = uint8(4);</P>
+          <P Name="position">[2361 737 310 100]</P>
+          <P Name="fontSize">12</P>
+          <P Name="subviewer">905</P>
+          <P Name="type">OR_STATE</P>
+          <P Name="decomposition">CLUSTER_STATE</P>
+        </state>
+        <state SSID="96">
+          <P Name="labelString">WORK_PASS
+entry: stage = uint8(5);</P>
+          <P Name="position">[941 991 310 100]</P>
+          <P Name="fontSize">12</P>
+          <P Name="subviewer">905</P>
+          <P Name="type">OR_STATE</P>
+          <P Name="decomposition">CLUSTER_STATE</P>
+        </state>
+        <state SSID="97">
+          <P Name="labelString">PROTECT
+entry: stage = uint8(6);</P>
+          <P Name="position">[2361 991 310 100]</P>
+          <P Name="fontSize">12</P>
+          <P Name="subviewer">905</P>
+          <P Name="type">OR_STATE</P>
+          <P Name="decomposition">CLUSTER_STATE</P>
+        </state>
+        <transition SSID="117">
+          <P Name="labelString"/>
+          <P Name="labelPosition">[1096 246 0 0]</P>
+          <P Name="fontSize">12</P>
+          <P Name="arrowSize">20</P>
+          <src>
+            <P Name="intersection">[0 0 1 0 1096 230 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">90</P>
+            <P Name="intersection">[1 0 -1 0.5 1096 269 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1096 249.5]</P>
+          <P Name="dataLimits">[1090 1102 230 269]</P>
+          <P Name="subviewer">905</P>
+          <P Name="drawStyle">SMART</P>
+          <slide>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <transition SSID="103">
+          <P Name="labelString">[desired_stage == uint8(0)]</P>
+          <P Name="labelPosition">[1766.298 329.408 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[1 -0.2451 -0.9695 0 1816.6057 643.2959 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">91</P>
+            <P Name="intersection">[4 -1 0 0.867 2361 282.3 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1815.1666 509.658]</P>
+          <P Name="dataLimits">[1808.975 2361 279.736 643.296]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">2</P>
+        </transition>
+        <transition SSID="101">
+          <P Name="labelString">[desired_stage == uint8(255)]</P>
+          <P Name="labelPosition">[1530.472 381.829 158.641 16]</P>
+          <P Name="fontSize">12</P>
+          <P Name="arrowSize">20</P>
+          <src>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[4 -0.8425 -0.5387 0 1801.671 654.0657 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">90</P>
+            <P Name="intersection">[2 1 0 0.2507 1251 294.0675 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1543.157 430.2144]</P>
+          <P Name="dataLimits">[1251 1801.671 288.067 654.066]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <transition SSID="100">
+          <P Name="labelString">[desired_stage ~= uint8(255)]</P>
+          <P Name="labelPosition">[1332.35 457.991 158.641 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">90</P>
+            <P Name="intersection">[2 1 0 0.7387 1251 342.8675 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[4 -0.8683 -0.496 0 1801.025 655.1337 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1532.8173 458.2998]</P>
+          <P Name="dataLimits">[1251 1801.025 342.868 655.134]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <transition SSID="102">
+          <P Name="labelString">[desired_stage ~= uint8(0)]</P>
+          <P Name="labelPosition">[1947.218 364.304 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">91</P>
+            <P Name="intersection">[4 -1 0 0.22 2361 347 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[1 -0.264 -0.9645 0 1816.1328 643.4204 0 0]</P>
+          </dst>
+          <P Name="midPoint">[2043.9666 424.058]</P>
+          <P Name="dataLimits">[1811.04 2361 347 643.42]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <transition SSID="107">
+          <P Name="labelString">[desired_stage == uint8(2)]</P>
+          <P Name="labelPosition">[2093.071 543.982 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[1 0.1205 -0.9927 0 1825.7459 642.7155 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">93</P>
+            <P Name="intersection">[4 -1 0 0.867 2361 532.3 0 0]</P>
+          </dst>
+          <P Name="midPoint">[2191.4696 507.561]</P>
+          <P Name="dataLimits">[1825.746 2361 503.682 642.716]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">4</P>
+        </transition>
+        <transition SSID="105">
+          <P Name="labelString">[desired_stage == uint8(1)]</P>
+          <P Name="labelPosition">[1295.078 527.357 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[4 -0.9944 -0.1056 0 1797.8732 664.8928 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">92</P>
+            <P Name="intersection">[2 1 0 0.4306 1251 562.0643 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1528.8202 606.2355]</P>
+          <P Name="dataLimits">[1251 1797.873 559.664 664.893]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">3</P>
+        </transition>
+        <transition SSID="106">
+          <P Name="labelString">[desired_stage ~= uint8(2)]</P>
+          <P Name="labelPosition">[1919.626 610.755 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">93</P>
+            <P Name="intersection">[4 -1 0 0.403 2361 578.7 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[1 0.1011 -0.9949 0 1825.26 642.6613 0 0]</P>
+          </dst>
+          <P Name="midPoint">[2139.4696 602.761]</P>
+          <P Name="dataLimits">[1823.681 2361 578.7 642.661]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <transition SSID="104">
+          <P Name="labelString">[desired_stage ~= uint8(1)]</P>
+          <P Name="labelPosition">[1278.47 643.274 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">92</P>
+            <P Name="intersection">[2 1 0 0.8386 1251 602.8643 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[4 -0.9941 -0.1083 0 1797.8803 664.8262 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1520.8624 626.0706]</P>
+          <P Name="dataLimits">[1251 1797.88 602.864 666.346]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <transition SSID="111">
+          <P Name="labelString">[desired_stage == uint8(4)]</P>
+          <P Name="labelPosition">[2101.456 698.742 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[2 1 0 0 1847.7333 667.5333 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">95</P>
+            <P Name="intersection">[1 0 -1 0.0429 2374.3 737 0 0]</P>
+          </dst>
+          <P Name="midPoint">[2277.0696 670.2173]</P>
+          <P Name="dataLimits">[1847.733 2376.7 645.237 737]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">6</P>
+        </transition>
+        <transition SSID="109">
+          <P Name="labelString">[desired_stage == uint8(3)]</P>
+          <P Name="labelPosition">[1276.052 714.605 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[4 -0.9858 0.1681 0 1798.0893 671.737 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">94</P>
+            <P Name="intersection">[2 1 0 0.3707 1251 774.0726 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1529.5212 734.438]</P>
+          <P Name="dataLimits">[1251 1798.089 671.737 776.473]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">5</P>
+        </transition>
+        <transition SSID="110">
+          <P Name="labelString">[desired_stage == uint8(6) || desired_stage == uint8(255) || (desired_stage ~= uint8(4) &amp;&amp; after(0.2,sec))]</P>
+          <P Name="labelPosition">[2102.9 813.722 558.922 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">95</P>
+            <P Name="intersection">[4 -1 0 0.3078 2361 806.2173 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[2 0.9734 0.2291 0 1847.0686 673.26 0 0]</P>
+          </dst>
+          <P Name="midPoint">[2106.1901 755.6261]</P>
+          <P Name="dataLimits">[1847.069 2361 672.757 806.217]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <transition SSID="108">
+          <P Name="labelString">[desired_stage == uint8(6) || desired_stage == uint8(255) || (desired_stage ~= uint8(3) &amp;&amp; after(0.2,sec))]</P>
+          <P Name="labelPosition">[1368.921 816.53 558.922 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">94</P>
+            <P Name="intersection">[2 1 0 0.6907 1251 806.0726 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[4 -0.9655 0.2603 0 1798.5952 674.0409 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1523.3283 759.166]</P>
+          <P Name="dataLimits">[1251 1798.595 673.806 806.073]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <transition SSID="115">
+          <P Name="labelString">[desired_stage == uint8(6)]</P>
+          <P Name="labelPosition">[2047.915 861.996 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[2 0.8438 0.5367 0 1843.8282 680.95 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">97</P>
+            <P Name="intersection">[4 -1 0 0.7278 2361 1018.2173 0 0]</P>
+          </dst>
+          <P Name="midPoint">[2086.489 890.5542]</P>
+          <P Name="dataLimits">[1843.828 2361 680.95 1020.617]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">8</P>
+        </transition>
+        <transition SSID="114">
+          <P Name="labelString">[desired_stage ~= uint8(6)]</P>
+          <P Name="labelPosition">[1852.814 790.452 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">97</P>
+            <P Name="intersection">[4 -1 0 0.3476 2361 1056.242 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[2 0.8232 0.5677 0 1843.3144 681.7256 0 0]</P>
+          </dst>
+          <P Name="midPoint">[2149.0696 1035.0173]</P>
+          <P Name="dataLimits">[1843.314 2361 681.726 1057.875]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <transition SSID="113">
+          <P Name="labelString">[desired_stage == uint8(5)]</P>
+          <P Name="labelPosition">[1518.001 939.193 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[4 -0.8195 0.5731 0 1802.2458 681.8603 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">96</P>
+            <P Name="intersection">[2 1 0 0.6307 1251 1054.0726 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1545.4809 915.14]</P>
+          <P Name="dataLimits">[1251 1802.246 681.86 1056.473]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">7</P>
+        </transition>
+        <transition SSID="112">
+          <P Name="labelString">[desired_stage ~= uint8(5)]</P>
+          <P Name="labelPosition">[1641.849 1017.057 145.297 16]</P>
+          <P Name="fontSize">12</P>
+          <src>
+            <P Name="SSID">96</P>
+            <P Name="intersection">[2 1 0 0.867 1251 1077.7 0 0]</P>
+          </src>
+          <dst>
+            <P Name="SSID">98</P>
+            <P Name="intersection">[3 0 1 0 1822.7333 692.5333 0 0]</P>
+          </dst>
+          <P Name="midPoint">[1622.4833 974.7333]</P>
+          <P Name="dataLimits">[1251 1825.133 692.533 1077.7]</P>
+          <P Name="subviewer">905</P>
+          <slide>
+            <P Name="mode">MIRROR_SLIDE</P>
+            <P Name="sticky">BOTH_STICK</P>
+          </slide>
+          <P Name="executionOrder">1</P>
+        </transition>
+        <junction SSID="98">
+          <P Name="position">[1822.7333 667.5333 25]</P>
+          <P Name="subviewer">905</P>
+          <P Name="type">CONNECTIVE_JUNCTION</P>
+        </junction>
+      </Children>
+    </state>
+    <data SSID="1" name="spin_on_raw">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="2" name="spin_clear_raw">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="3" name="no_move_raw">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="4" name="move_ok">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="5" name="speed_on_raw">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="6" name="speed_off_raw">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="7" name="consistency_ok">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="8" name="source_immediate_bad">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="9" name="enable">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="10" name="reset">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="11" name="stage">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_UINT8_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">uint8</P>
+    </data>
+    <data SSID="12" name="spin_mask">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="13" name="speed_valid">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="14" name="no_move_confirmed">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="15" name="source_bad">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="16" name="nspin">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="17" name="P">
+      <P Name="scope">PARAMETER_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="method">SF_INHERITED_TYPE</P>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">Inherit: Same as Simulink</P>
+    </data>
+    <data SSID="53" name="spin_on_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="method">SF_INHERITED_TYPE</P>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">Inherit: From definition in chart</P>
+    </data>
+    <data SSID="54" name="spin_clear_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="method">SF_INHERITED_TYPE</P>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">Inherit: From definition in chart</P>
+    </data>
+    <data SSID="55" name="no_move_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="method">SF_INHERITED_TYPE</P>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">Inherit: From definition in chart</P>
+    </data>
+    <data SSID="56" name="speed_on_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="method">SF_INHERITED_TYPE</P>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">Inherit: From definition in chart</P>
+    </data>
+    <data SSID="57" name="speed_off_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="method">SF_INHERITED_TYPE</P>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">Inherit: From definition in chart</P>
+    </data>
+    <data SSID="58" name="cons_bad_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="method">SF_INHERITED_TYPE</P>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">Inherit: From definition in chart</P>
+    </data>
+    <data SSID="59" name="desired_stage">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">-1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_UINT8_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">uint8</P>
+    </data>
+    <data SSID="119" name="i">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="120" name="dv_warning">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="121" name="fast_warning">
+      <P Name="scope">INPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="122" name="prewarn">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="123" name="warn_age">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="124" name="control_phase">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_UINT8_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">uint8</P>
+    </data>
+    <data SSID="125" name="warn_on_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="126" name="warn_clear_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="127" name="warn_early_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="128" name="handover_t">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+    <data SSID="129" name="warn_armed">
+      <P Name="scope">LOCAL_DATA</P>
+      <props>
+        <array>
+          <P Name="size">[4 1]</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_BOOLEAN_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_INHERITED</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">boolean</P>
+    </data>
+    <data SSID="130" name="handover_alpha">
+      <P Name="scope">OUTPUT_DATA</P>
+      <props>
+        <array>
+          <P Name="size">1</P>
+        </array>
+        <type>
+          <P Name="primitive">SF_DOUBLE_TYPE</P>
+          <P Name="isSigned">1</P>
+          <P Name="wordLength">16</P>
+        </type>
+        <P Name="frame">SF_FRAME_NO</P>
+        <unit>
+          <P Name="name">inherit</P>
+        </unit>
+      </props>
+      <P Name="dataType">double</P>
+    </data>
+  </Children>
+</chart>

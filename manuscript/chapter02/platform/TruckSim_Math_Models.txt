@@ -1,0 +1,388 @@
+Mechanical Simulation
+
+755 Phoenix Drive, Ann Arbor MI, 48108, USA • 734 668-2930 • Fax: 734 668-2877 •  Email: info@carsim.com carsim.com
+
+TruckSim solves equations that represent the dynamic
+behavior of vehicles , including combination vehicles with
+one or more trailers . The VehicleSim ® (VS) architecture
+includes the built -in VS Command scripting language to
+add new capabilities at runtime t o automate tests or add
+features to the math models. Further, the models can work
+with other software (Simulink, LabVIEW, ETAS ASCET,
+Custom C/C++ programs, Visual Basic, etc.) for
+automation or extensions to the math models.
+Vehicle Math Models
+Configurable Table Functions
+• Potentially nonlinear relationships between independent
+and dependent variables are defined with VS
+Configurable Functions that are set at runtime to use:
+o Constants
+o Linear coefficients
+o Nonlinear tables with several interpolation methods
+involving one or two independent variables
+o Algebraic formulas involving other variables
+• When linear coefficients or linear interpolation methods
+are selected, the simulations can run even faster.
+• No built-in limit to the length of tables.
+• Independent and dependent variables can be transformed
+in support of normalized functions.
+VS Reference Paths
+• Up to 200 VS Reference Paths, each with a sequenc e of
+segments (straight, arc, clothoid, X-Y table).
+• Reference paths are used for driver controls, traffic
+vehicles, and road definitions.
+Driver Controls
+• All driver controls can be specified u sing built-in model
+options, defined by equations added at runtime with VS
+Commands, or imported from other software.
+• The built -in driver model can steer to follow a target
+path, which can be changed during the run.
+• Closed-Loop Speed Controller based on target speed and
+acceleration limits, curvature of the target path, and 3D
+road geometry (banking, grade, curvature).
+• Gear shifting and clutch controls can be handled with
+shift schedules and automatic throttle-clutch interactions.
+• Closed-loop and open -loop controls can be combined to
+simulate intervention systems.
+• Open-loop steering can be angle or torque.
+• Open-loop braking can be pedal force or fluid pressure.
+3D Road Geometry and Friction
+• Up to 100 road surfaces are supported, each with its own
+reference path.
+• Vertical elevation is added with several components,
+each specified as a function of path S (station) and L
+(lateral offset) coordinates.
+• Roads can have variable width, allowing highly efficient
+descriptions of complex geometries.
+• Road profiles are included that “wander” to follow the
+vehicle wherever it goes. This provides efficient use of
+high-frequency measured road roughness data.
+• Friction is specified relativ e to the reference path with a
+variable-width function of station and lateral distance.
+• Road geometry can be imported from other software or
+defined by equations that are added at runtime.
+• The VS API includes functions to provide access to the
+3D road geometry for user-supplied equations for model
+extensions or additional outputs.
+Vehicle Configurations
+• A vehicle may have up to 31 semitrailers.
+• Each vehicle unit may have one or more suspensions, up
+to a limit of 128 suspensions in total for the vehicle.
+• The suspensions may be organized in groups as needed
+to support tandem and tridem load sharing.
+• Sprung masses may be simple rigid bodies, or include
+frame rails that account for torsional compliance.
+• The lead unit may have a suspended cab attached to
+frame rails.
+• Semitrailers are attached with hitches that have three
+translational compliances. Rotations may be resisted by
+nonlinear stiffness, viscous damping, and friction.
+Wind and Aerodynamic Effects
+• Six aerodynamic forces and moments are applied to the
+sprung mass of the lead unit and trailer(s).
+• These forces and moments are Configurable Functions
+of aerodynamic slip.
+• Ambient wind speed and heading can be set with tables,
+runtime equations, or imported from other software.
+Suspensions
+• Suspensions can be generic (independent) or solid axle.
+• Tandem and tridem suspensions include static load
+distributions, dynamic load transfer, and load transfer
+due to brake torque.
+• Suspensions are either un -steered, or they include full
+3D kinematics for inclined steering axes of the wheels.
+: Math Models
+
+ 2 / 4
+• Suspensions have full nonlinear kinematical behavior
+and are asymmetric.
+• Suspension springs and dampers are nonlinear and
+include hysteresis due to friction.
+• Separate forces are included for bump stops.
+• Mechanical ratios for the compressi on of springs,
+dampers, jounce and rebound stops are specified with
+Configurable Functions that can be nonlinear.
+• Suspension roll moments include a nonlinear auxiliary
+roll moment and linear coefficient roll damper.
+• Every suspension has compliance in the l ateral and
+longitudinal directions.
+• Independent suspensions and solid axles with steering
+include toe and camber compliance effects.
+• All compliances can be represented with either linear
+coefficients or nonlinear Configurable Functions.
+Steering System
+• For steered wheels, the  interactions between the
+suspension, steering, tire, and ground are handled with a
+detailed multibody model with an inclined kingpin axis.
+• The steering model includes specific details for rack -
+and-pinion and recirculating ball-type systems.
+• Steer angle of each road wheel is available as rotation as
+measured in a K&C rig (in the sprung mass coordinate
+system), or as rotation about the kingpin axis.
+• The steering system includes detailed options for manual
+or dynamic power boost, including column assist.
+• Compliance options support control of the left wheel,
+control of the right wheel, or symmetric.
+• Special equations are used for low -speed conditions to
+simulate ground friction steer torque.
+Brake System
+• Brake control can be set with pedal f orce (with or
+without boost) or master cylinder pressure.
+• The control input pressure from the master cylinder is
+proportioned for each wheel-end brake actuator.
+• Brake torque is modeled as a nonlinear function of
+actuator pressure and thermal effects.
+• The brake system has several options for providing ABS
+control from external programs such as Simulink, or
+using a simple built-in controller.
+• Special equations handle wheel lockup to obtain the
+correct reaction torque and avoid numerical instability.
+Tires
+• Dual tires are available for all wheels.
+• TruckSim includes several tire models. It  is ready to run
+with a fully asymmetric table -based model, an extended
+model (more tables for camber effects), the Pacejka 5.2
+version of the Magic Formula, and MF -Tyre from
+TASS/TNO.
+• TruckSim runs with MF -Swift from TASS/TNO and
+FTire from COSIN (extra licenses are required from
+TASS and COSIN, respectively, to use their models).
+• Different models can be applied to different wheels of
+the same vehicle.
+• The built-in models use nonlinear tables for lateral force,
+longitudinal force, aligning moment, and overturning
+moment as functions of slip, load, and camber.
+• Special equations are used to maintain realistic tire
+behavior at low speed, including parking on a grade.
+• Variable friction conditions are handled using similarity
+to maintain both linear and limit properties of the tire.
+Separate coefficients are used for X and Y components.
+• Transient effects of rolling are included using relaxation
+length. Relaxation lengths can be consta nt or defined as
+nonlinear functions of vertical force and slip.
+• Tire contact can be handled with one, two, or four points
+to account for contact patch dimensions.
+Powertrain
+• TruckSim has detailed powertrain models for various
+drive settings (4x2, 4x4, 6x2 , 6x4, 6x6, etc.) with up to
+five drive axles on the lead unit. There is also a minimal
+model in which torque is applied directly to the wheels
+on the lead unit.
+• Engine torque is defined with a Configurable Function of
+throttle input and crankshaft angular velocity.
+• Fuel consumption is defined with a 2D table.
+• The engine feeds torque to the transmission either
+through a hydraulic torque converter or through a
+mechanical clutch.
+• The transmission converts torque and speed based on the
+current gear selection, with spin inertias and efficiencies
+that depend on the gear selection.
+• Continuously variable transmissions (CVT) are
+supported.
+• The torque from the transmission goes to a differential
+for a single -axle drive system. With two -axle drive
+systems, the transmi ssion applies torque to a transfer
+case with a torque bias. Additional transfer cases are
+added for drive systems with up to five axles.
+• The transfer case unit and differential models are similar.
+All have four model options:
+1. Always locked.
+2. Viscous coupling.
+3. Coupling applied using a clutch. The clutch can be
+controlled externally or with built-in logic.
+ 3 / 4
+4. Yaw control differential system, which involves two
+clutches with reduction gears in parallel over a
+differential. The system allows control of the torqu e
+distribution between left and right, or front and rear.
+• Each transfer case has a torque bias that can be used with
+any of the above non-locked options.
+• Twin-clutch is an alternative to an axle differential. The
+system involves a gearbox in the middle of  the axle and
+two clutches between each wheel and the gearbox.
+• Torsional compliance of the driveline is characterized by
+a natural frequency and damping ratio.
+• TruckSim provides tight, low -level integration with the
+commercial tool AVL Cruise. The GUI in TruckSim and
+AVL-Cruise support automatic connections. An optional
+license is needed to use the Cruise interface.
+Sensors and Traffic
+• The models include several kinds of virtual sensors that
+detect various types of vehicle motion, including
+acceleration, speed, and previews of the road ahead.
+• Up to 200 moving objects can be added that are updated
+automatically to convert simple road -based commands
+into full 3D geometry. The objects can be recycled for
+extensive runs, set to reappear after they go out of view.
+• Motion of an object can be constant, set by specifying
+speed, set with algebraic equations, or imported from
+third-party software.
+• Objects that move based on speed support offtracking, to
+produce realistic low-speed traffic turns at intersections.
+• Up to  99 range and detection sensors can be included
+that detect the moving objects.  An optiona l license is
+needed to use the Sensor feature.
+• Each detection includes 22 variables that can be exported
+to external controllers (e.g., ADAS).
+• Objects can block each other (occlusion). The sensor
+detection variables respond only to the portion of the
+object that is within the field of view.
+Solver Program Input and Outputs
+TruckSim uses standard VS library routines for processing
+input files, performing standard calcul ations, and
+generating output files.
+Input Data Files
+• TruckSim reads all input from text files that are normally
+generated automatically. These files can also be made
+externally for advanced applications.
+• Input files for TruckSim follow a simple keyword -based
+format called the Parsfile. TruckSim can recognize
+thousands of keywords when processing input files.
+• Parsfiles are efficient for software to read and write,
+while also being easy for people to read and edit.
+• Each input line can optionally specify alt ernate units for
+the specified input parameter.
+• Values can be assigned directly to model parameters
+with numbers. Users can also specify values with
+numerical expressions (e.g., 1/16), or symbolic algebraic
+expressions involving other model variables.
+• TruckSim process es VS Commands at runtime that
+define new variables, add equations to the model, change
+units for variables, and otherwise extend the original
+TruckSim model to meet custom requirements.
+• Parsfiles support the INCLUDE capability, allowing
+many advanced applications such as design of
+experiments (DOE), sensitivity studies, and automation.
+Output Variables
+• TruckSim generate s from 600 to thousands of output
+variables, depending on the number of trailers, sensors,
+traffic vehicles, etc.
+• Commands used at runtime add sets of motion outputs,
+driver preview points, and other outputs as needed.
+• A subset of the available outputs can be specified at run -
+time, to control the size and organization of output files.
+• Writing to file can be enabled and disabled  during the
+run to save only interesting results.
+• New output variables can be defined at runtime.
+• TruckSim provides a GUI for browsing the lists of
+available variables, sorting by category types.
+• All variables are described in documentation files in both
+text and spreadsheet format.
+• Output files may be written in several binary forms (32 -
+bit and 64-bit) or CSV (text) spreadsheet format.
+• Output variables are used for several purposes:
+o Make plots that show vehicle behavior.
+o Input to post-processing software.
+o Motion information for video visualization.
+o Define conditions for VS Events when new vehicle
+or control properties take effect.
+o Used in VS Command formulas added at runtime.
+o Export to other software during the simulation.
+Working with Simulink
+®
+ and External Models
+• On Windows machines, the TruckSim math model is a
+DLL file that runs in many environments:
+o TruckSim runs models with no additional software.
+o Models run as blocks in MATLAB/Simulink,
+LabVIEW, and other simulation environments.
+o Models can run as functional mockup units (FMU)
+using the functional mockup interface (FMI). FMUs
+may access database files or be defined as
+completely self-contained files.
+© Mechanical Simulation Corporation. Last revision November 2017.  4 / 4
+o Models wo rk with Visual Basic, MATLAB, and
+other programming languages that can load DLL
+files and access their functions with the VS API.
+• TruckSim includes both 32-bit and 64-bit DLLs.
+• C/C++ can be used to extend the math models, accessing
+thousands of parameters and variables using the VS API.
+• MATLAB, Visual Basic (VB), and other l anguages can
+run the models with Windows COM for automation.
+• Math model solver programs are compiled to native code
+for real -time systems to interface with the RT test
+control software.
+• TruckSim has a LINEARIZE command to generate
+linearized A, B, C, and D matrices for use in MATLAB.
+• TruckSim has built-in commands for adding forces and
+moments to extend the model.
+Input Variables
+• Calculations from external models  and measurements
+from har dware-in-the-loop (HIL) can be imported into
+TruckSim. These include most forces and moments,
+fluid pressures, controls, ground geometry under each
+tire, etc.
+• The vehicle models can import data for hundreds of
+built-in variables.
+• Most of the import variab les can be combined with
+native internal variables with one of three modes:
+1. replace the native variable,
+2. add to the native variable, or
+3. multiply with the native variable
+• TruckSim provides a browser for activating import
+variables from the lists of all those that are available.
+• New import variables can be defined at runtime to pass
+through data from other software. E.g., variables from
+Simulink can be passed through to the animator.
+Export Variables
+• All variables available for writing to output files are al so
+available for export to Simulink or external code.
+• Variables are exported only if activated at runtime, as
+needed to be compatible with the external model.
+• New export variables can be defined at runtime.
+Multibody Model Specifications
+State Variables and Degrees of Freedom
+TruckSim ha s ordinary differential equations  (ODEs) for
+multibody system dynamics, fluids, tires, controllers, and
+other dynamic parts.
+• The multibody mechanical  system for the lead unit  and
+each trailer vehicle has mechanical degrees  of freedom
+(DOF) representing the following:
+o The sprung mass is a rigid body with six DOF
+o Each suspension has two DOF. (The 3D motions
+follow constraint data from K&C tests.)
+o Each wheel has one spin DOF
+• When used for a two-axle truck, TruckSim has over 110
+ODEs; vehicles with more axles and/or trailers can have
+hundreds more. Each multibody DOF has two ODEs;
+other equations represent the dynamics of components:
+o Each tire has two DOFs for lagged response.
+o MF-Tyre/MF-Swift and FTire add more DOFs.
+o The fluid in each brake cylinder has one DOF.
+o The engine crankshaft has one DOF.
+o Throttle has a lag with one DOF.
+o Fuel consumption has one DOF.
+• TruckSim has hundreds of state variables, needed to
+fully define the state of the system (along with
+parameters and Confi gurable Function definitions).
+These include the ODE variables plus others:
+o Each friction element has a state variable for
+hysteresis (suspension springs, steering system, low-
+speed tire steer).
+o Clutches and built -in controllers  (e.g., ABS) have
+locked states.
+o Other dynamic mode conditions have state variables.
+Equation Form
+• The equations of motion are derived from first principals
+for 3D motions of multiple connected rigid bodies.
+• The equations of motion are ordinary differential
+equations (ODE’s) that are well behaved (not stiff).
+• The built-in VS library provides six methods for solving
+the ODE’s (Adams-Bashforth, Adams-Moulton, Runge-
+Kutta, and Euler methods).
+• All methods run at a fixed time step and work well for
+real-time applications.
+• The algorithms wo rk well with measured and sampled
+data sources, even when there are discontinuities.
+• The equations are compiled with extensive optimizations
+for efficient use either alone or with other software (e.g.,
+Simulink, LabVIEW).
+Initialization and Restarts
+• TruckSim supports many initialization options, from
+automatic to detailed specification of any state variable.
+• The complete state of the vehicle model is saved at the
+end of each run to suppo rt continuation  of advanced
+automation and optimization methods.
+• The st ate of the model can be saved during a run and
+fully restored during the run, in support of advanced
+optimization methods and repetitive test sequences.
